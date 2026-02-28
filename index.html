@@ -1,37 +1,27 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TH True DNA – Tinh Thể Sữa Độc Bản</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #003E7E;
-      --navy-deep: #002B5C;
-      --navy-dark: #001830;
-      --blue-mid: #0057A8;
-      --blue-bright: #0072CE;
-      --sky: #A8D8F0;
-      --sky-light: #D6EEFA;
-      --white: #FFFFFF;
-      --cream: #F0F6FC;
-      --gold: #C9A84C;
+      --navy:       #003E7E;
+      --navy-deep:  #002B5C;
+      --navy-dark:  #001830;
+      --blue-mid:   #0057A8;
+      --blue-bright:#0072CE;
+      --sky:        #A8D8F0;
+      --sky-light:  #D6EEFA;
+      --white:      #FFFFFF;
+      --cream:      #F0F6FC;
+      --gold:       #C9A84C;
       --gold-light: #E8C97A;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--navy-dark);
@@ -52,9 +42,7 @@
     /* ── NAVBAR ── */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 18px 60px;
       display: flex;
@@ -62,7 +50,7 @@
       align-items: center;
       background: rgba(0, 24, 48, 0.8);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(168, 216, 240, 0.15);
+      border-bottom: 1px solid rgba(168,216,240,0.15);
     }
 
     .nav-logo {
@@ -72,17 +60,14 @@
     }
 
     .nav-logo-mark {
-      width: 34px;
-      height: 34px;
+      width: 34px; height: 34px;
       background: linear-gradient(135deg, var(--blue-mid), var(--sky));
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
       animation: spinHex 10s linear infinite;
     }
 
     @keyframes spinHex {
-      to {
-        transform: rotate(360deg);
-      }
+      to { transform: rotate(360deg); }
     }
 
     .nav-logo span {
@@ -104,7 +89,7 @@
     }
 
     .nav-links a {
-      color: rgba(255, 255, 255, 0.55);
+      color: rgba(255,255,255,0.55);
       text-decoration: none;
       font-size: 0.82rem;
       letter-spacing: 0.14em;
@@ -112,9 +97,7 @@
       transition: color .3s;
     }
 
-    .nav-links a:hover {
-      color: var(--sky);
-    }
+    .nav-links a:hover { color: var(--sky); }
 
     .nav-cta {
       padding: 10px 24px;
@@ -149,9 +132,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 110%, rgba(0, 114, 206, 0.28) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 50% at 15% 25%, rgba(0, 62, 126, 0.3) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 70% at 85% 15%, rgba(168, 216, 240, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 50% 110%, rgba(0,114,206,0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 15% 25%, rgba(0,62,126,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 70% at 85% 15%, rgba(168,216,240,0.08) 0%, transparent 60%),
         var(--navy-dark);
     }
 
@@ -159,51 +142,16 @@
     .hero-circle {
       position: absolute;
       border-radius: 50%;
-      border: 1px solid rgba(168, 216, 240, 0.12);
+      border: 1px solid rgba(168,216,240,0.12);
     }
-
-    .hero-circle:nth-child(1) {
-      width: 600px;
-      height: 600px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: expandRing 4s ease-in-out infinite;
-    }
-
-    .hero-circle:nth-child(2) {
-      width: 900px;
-      height: 900px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: expandRing 4s ease-in-out infinite 1s;
-    }
-
-    .hero-circle:nth-child(3) {
-      width: 1200px;
-      height: 1200px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: expandRing 4s ease-in-out infinite 2s;
-    }
+    .hero-circle:nth-child(1) { width: 600px; height: 600px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: expandRing 4s ease-in-out infinite; }
+    .hero-circle:nth-child(2) { width: 900px; height: 900px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: expandRing 4s ease-in-out infinite 1s; }
+    .hero-circle:nth-child(3) { width: 1200px; height: 1200px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: expandRing 4s ease-in-out infinite 2s; }
 
     @keyframes expandRing {
-      0% {
-        opacity: 0.5;
-        transform: translate(-50%, -50%) scale(0.95);
-      }
-
-      50% {
-        opacity: 0.15;
-        transform: translate(-50%, -50%) scale(1);
-      }
-
-      100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1.05);
-      }
+      0%   { opacity: 0.5; transform: translate(-50%,-50%) scale(0.95); }
+      50%  { opacity: 0.15; transform: translate(-50%,-50%) scale(1); }
+      100% { opacity: 0; transform: translate(-50%,-50%) scale(1.05); }
     }
 
     .hero-content {
@@ -218,8 +166,8 @@
       align-items: center;
       gap: 8px;
       padding: 6px 18px;
-      border: 1px solid rgba(168, 216, 240, 0.35);
-      background: rgba(168, 216, 240, 0.07);
+      border: 1px solid rgba(168,216,240,0.35);
+      background: rgba(168,216,240,0.07);
       border-radius: 2px;
       font-size: 0.7rem;
       letter-spacing: 0.22em;
@@ -231,25 +179,15 @@
 
     .hero-badge::before {
       content: '';
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       background: var(--sky);
       border-radius: 50%;
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: .4;
-        transform: scale(1.6);
-      }
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(1.6); }
     }
 
     .hero-title {
@@ -261,10 +199,7 @@
       animation: fadeUp .9s ease .15s both;
     }
 
-    .hero-title .line-1 {
-      display: block;
-      color: var(--cream);
-    }
+    .hero-title .line-1 { display: block; color: var(--cream); }
 
     .hero-title .line-2 {
       display: block;
@@ -277,7 +212,7 @@
 
     .hero-sub {
       font-size: 1rem;
-      color: rgba(255, 255, 255, 0.52);
+      color: rgba(255,255,255,0.52);
       font-weight: 300;
       line-height: 1.8;
       max-width: 560px;
@@ -308,19 +243,19 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(0, 114, 206, 0.45);
+      box-shadow: 0 12px 40px rgba(0,114,206,0.45);
     }
 
     .btn-secondary {
       padding: 16px 40px;
       background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.65);
       font-family: 'DM Sans', sans-serif;
       font-size: 0.82rem;
       letter-spacing: 0.12em;
@@ -328,7 +263,7 @@
       cursor: pointer;
       transition: all .3s;
       text-decoration: none;
-      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
     }
 
     .btn-secondary:hover {
@@ -347,38 +282,19 @@
     }
 
     @keyframes floatCrystal {
-
-      0%,
-      100% {
-        transform: translateY(-50%) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(calc(-50% - 22px)) rotate(4deg);
-      }
+      0%,100% { transform: translateY(-50%) rotate(0deg); }
+      50%      { transform: translateY(calc(-50% - 22px)) rotate(4deg); }
     }
 
-    .hero-crystal svg {
-      filter: drop-shadow(0 0 36px rgba(168, 216, 240, 0.55));
-    }
+    .hero-crystal svg { filter: drop-shadow(0 0 36px rgba(168,216,240,0.55)); }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity:0; transform:translateY(30px); }
+      to   { opacity:1; transform:translateY(0); }
     }
 
     /* ── SECTION HELPERS ── */
-    section {
-      position: relative;
-      z-index: 1;
-    }
+    section { position: relative; z-index: 1; }
 
     .section-label {
       font-size: 0.68rem;
@@ -402,7 +318,7 @@
     /* ── ABOUT ── */
     .about {
       padding: 120px 60px;
-      background: rgba(0, 43, 92, 0.45);
+      background: rgba(0,43,92,0.45);
       backdrop-filter: blur(2px);
     }
 
@@ -430,35 +346,16 @@
       animation: spinRing linear infinite;
     }
 
-    .dna-ring:nth-child(1) {
-      inset: 0;
-      border-color: rgba(0, 114, 206, .25);
-      animation-duration: 20s;
-    }
+    .dna-ring:nth-child(1) { inset:0;   border-color:rgba(0,114,206,.25); animation-duration:20s; }
+    .dna-ring:nth-child(2) { inset:12%; border-color:rgba(168,216,240,.2); animation-duration:15s; animation-direction:reverse; }
+    .dna-ring:nth-child(3) { inset:24%; border-color:rgba(201,168,76,.3);  animation-duration:10s; }
 
-    .dna-ring:nth-child(2) {
-      inset: 12%;
-      border-color: rgba(168, 216, 240, .2);
-      animation-duration: 15s;
-      animation-direction: reverse;
-    }
-
-    .dna-ring:nth-child(3) {
-      inset: 24%;
-      border-color: rgba(201, 168, 76, .3);
-      animation-duration: 10s;
-    }
-
-    @keyframes spinRing {
-      to {
-        transform: rotate(360deg);
-      }
-    }
+    @keyframes spinRing { to { transform:rotate(360deg); } }
 
     .dna-center {
       position: absolute;
       inset: 36%;
-      background: radial-gradient(circle, rgba(168, 216, 240, .25), rgba(0, 62, 126, .6));
+      background: radial-gradient(circle, rgba(168,216,240,.25), rgba(0,62,126,.6));
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -467,7 +364,7 @@
       font-size: 2rem;
       font-weight: 600;
       color: var(--sky);
-      border: 1px solid rgba(168, 216, 240, .35);
+      border: 1px solid rgba(168,216,240,.35);
     }
 
     .orbit-dot {
@@ -475,39 +372,25 @@
       border-radius: 50%;
       top: calc(50% - 4px);
       left: calc(50% - 4px);
-      width: 8px;
-      height: 8px;
+      width: 8px; height: 8px;
     }
 
     .orbit-dot:nth-child(4) {
-      background: var(--sky);
-      box-shadow: 0 0 10px var(--sky);
-      animation: orbitA 4s linear infinite;
-      margin-left: 46%;
+      background: var(--sky); box-shadow: 0 0 10px var(--sky);
+      animation: orbitA 4s linear infinite; margin-left: 46%;
     }
-
     .orbit-dot:nth-child(5) {
-      background: var(--gold-light);
-      box-shadow: 0 0 10px var(--gold);
-      animation: orbitA 6s linear infinite reverse;
-      margin-left: 36%;
+      background: var(--gold-light); box-shadow: 0 0 10px var(--gold);
+      animation: orbitA 6s linear infinite reverse; margin-left: 36%;
     }
-
     .orbit-dot:nth-child(6) {
-      background: #fff;
-      box-shadow: 0 0 8px #fff;
-      animation: orbitA 8s linear infinite;
-      margin-left: 28%;
+      background: #fff; box-shadow: 0 0 8px #fff;
+      animation: orbitA 8s linear infinite; margin-left: 28%;
     }
 
     @keyframes orbitA {
-      from {
-        transform: rotate(0deg) translateX(0);
-      }
-
-      to {
-        transform: rotate(360deg) translateX(0);
-      }
+      from { transform: rotate(0deg) translateX(0); }
+      to   { transform: rotate(360deg) translateX(0); }
     }
 
     .about-text h2 {
@@ -519,22 +402,16 @@
       color: var(--cream);
     }
 
-    .about-text h2 em {
-      color: var(--sky);
-      font-style: italic;
-    }
+    .about-text h2 em { color: var(--sky); font-style: italic; }
 
     .about-text p {
       font-size: 0.96rem;
       line-height: 1.85;
-      color: rgba(255, 255, 255, .58);
+      color: rgba(255,255,255,.58);
       margin-bottom: 18px;
     }
 
-    .about-text p strong {
-      color: var(--cream);
-      font-weight: 500;
-    }
+    .about-text p strong { color: var(--cream); font-weight: 500; }
 
     .about-tags {
       display: flex;
@@ -545,8 +422,8 @@
 
     .tag {
       padding: 6px 14px;
-      border: 1px solid rgba(0, 114, 206, .35);
-      background: rgba(0, 114, 206, .08);
+      border: 1px solid rgba(0,114,206,.35);
+      background: rgba(0,114,206,.08);
       color: var(--sky);
       font-size: 0.73rem;
       letter-spacing: 0.12em;
@@ -554,27 +431,17 @@
     }
 
     /* ── HOW IT WORKS ── */
-    .how {
-      padding: 120px 60px;
-    }
+    .how { padding: 120px 60px; }
 
-    .how-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .how-inner { max-width: 1200px; margin: 0 auto; }
 
     .how-header {
       text-align: center;
       margin-bottom: 72px;
     }
 
-    .how-header .section-label {
-      justify-content: center;
-    }
-
-    .how-header .section-label::before {
-      display: inline-block;
-    }
+    .how-header .section-label { justify-content: center; }
+    .how-header .section-label::before { display: inline-block; }
 
     .how-header h2 {
       font-family: 'Cormorant Garamond', serif;
@@ -584,24 +451,15 @@
       margin-bottom: 14px;
     }
 
-    .how-header h2 em {
-      color: var(--sky);
-      font-style: italic;
-    }
-
-    .how-header p {
-      color: rgba(255, 255, 255, .48);
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
+    .how-header h2 em { color: var(--sky); font-style: italic; }
+    .how-header p { color: rgba(255,255,255,.48); max-width: 480px; margin: 0 auto; line-height: 1.7; }
 
     .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 2px;
-      background: rgba(0, 87, 168, 0.2);
-      border: 1px solid rgba(0, 87, 168, 0.25);
+      background: rgba(0,87,168,0.2);
+      border: 1px solid rgba(0,87,168,0.25);
     }
 
     .step {
@@ -612,24 +470,18 @@
       transition: background .3s;
     }
 
-    .step:hover {
-      background: rgba(0, 43, 92, 0.8);
-    }
+    .step:hover { background: rgba(0,43,92,0.8); }
 
     .step::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 2px;
-      width: 0;
+      bottom: 0; left: 0;
+      height: 2px; width: 0;
       background: linear-gradient(90deg, var(--navy), var(--sky));
       transition: width .5s ease;
     }
 
-    .step:hover::after {
-      width: 100%;
-    }
+    .step:hover::after { width: 100%; }
 
     .step:not(:last-child)::before {
       content: '→';
@@ -646,16 +498,12 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 3.8rem;
       font-weight: 300;
-      color: rgba(168, 216, 240, .12);
+      color: rgba(168,216,240,.12);
       line-height: 1;
       margin-bottom: 20px;
     }
 
-    .step-icon {
-      width: 46px;
-      height: 46px;
-      margin-bottom: 18px;
-    }
+    .step-icon { width: 46px; height: 46px; margin-bottom: 18px; }
 
     .step h3 {
       font-family: 'Cormorant Garamond', serif;
@@ -665,23 +513,16 @@
       margin-bottom: 10px;
     }
 
-    .step p {
-      font-size: 0.86rem;
-      line-height: 1.75;
-      color: rgba(255, 255, 255, .48);
-    }
+    .step p { font-size: 0.86rem; line-height: 1.75; color: rgba(255,255,255,.48); }
 
     /* ── CRYSTALS ── */
     .crystals {
       padding: 120px 60px;
-      background: rgba(0, 43, 92, 0.35);
+      background: rgba(0,43,92,0.35);
       overflow: hidden;
     }
 
-    .crystals-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .crystals-inner { max-width: 1200px; margin: 0 auto; }
 
     .crystals-header {
       display: grid;
@@ -699,30 +540,20 @@
       color: var(--cream);
     }
 
-    .crystals-header h2 em {
-      color: var(--gold-light);
-      font-style: italic;
-    }
-
-    .crystals-header p {
-      color: rgba(255, 255, 255, .5);
-      line-height: 1.8;
-    }
+    .crystals-header h2 em { color: var(--gold-light); font-style: italic; }
+    .crystals-header p { color: rgba(255,255,255,.5); line-height: 1.8; }
 
     .crystal-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
       gap: 20px;
     }
 
     .crystal-card {
       position: relative;
-      width: calc(33.333% - 14px);
-      min-width: 280px;
       aspect-ratio: 3/4;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255,255,255,.07);
       cursor: pointer;
     }
 
@@ -732,9 +563,7 @@
       transition: transform .6s ease;
     }
 
-    .crystal-card:hover .crystal-card-bg {
-      transform: scale(1.05);
-    }
+    .crystal-card:hover .crystal-card-bg { transform: scale(1.05); }
 
     .crystal-card-bg.sunflower {
       background: radial-gradient(ellipse at 50% 30%, #FFE066 0%, #F5A623 45%, #8B5E0A 100%);
@@ -745,27 +574,7 @@
     }
 
     .crystal-card-bg.emerald {
-      background: radial-gradient(ellipse at 50% 30%, #88E2D0 0%, #209C82 45%, #003E5C 100%);
-    }
-
-    .crystal-card-bg.coral {
-      background: radial-gradient(ellipse at 50% 30%, #FFB6A1 0%, #FF6B57 45%, #8A2519 100%);
-    }
-
-    .crystal-card-bg.rosequartz {
-      background: radial-gradient(ellipse at 50% 30%, #FFE5E8 0%, #F48FB1 45%, #882A4A 100%);
-    }
-
-    @media (max-width: 900px) {
-      .crystal-card {
-        width: calc(50% - 10px);
-      }
-    }
-
-    @media (max-width: 560px) {
-      .crystal-card {
-        width: 100%;
-      }
+      background: radial-gradient(ellipse at 50% 30%, #D6EEFA 0%, #4DB8E8 40%, #003E7E 100%);
     }
 
     .crystal-inner-shape {
@@ -779,38 +588,26 @@
     .crystal-inner-shape svg {
       width: 62%;
       opacity: .88;
-      filter: drop-shadow(0 0 22px rgba(255, 255, 255, .55));
+      filter: drop-shadow(0 0 22px rgba(255,255,255,.55));
       animation: shimmer 4s ease-in-out infinite;
     }
 
     @keyframes shimmer {
-
-      0%,
-      100% {
-        filter: drop-shadow(0 0 18px rgba(255, 255, 255, .5));
-      }
-
-      50% {
-        filter: drop-shadow(0 0 42px rgba(255, 255, 255, .9));
-      }
+      0%,100% { filter: drop-shadow(0 0 18px rgba(255,255,255,.5)); }
+      50%      { filter: drop-shadow(0 0 42px rgba(255,255,255,.9)); }
     }
 
     .crystal-overlay {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 20, 50, .88));
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,20,50,.88));
       padding: 32px 22px 22px;
       transform: translateY(28px);
       opacity: 0;
       transition: all .4s ease;
     }
 
-    .crystal-card:hover .crystal-overlay {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    .crystal-card:hover .crystal-overlay { transform: translateY(0); opacity: 1; }
 
     .crystal-name {
       font-family: 'Cormorant Garamond', serif;
@@ -819,37 +616,29 @@
       margin-bottom: 6px;
     }
 
-    .crystal-desc {
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, .68);
-      line-height: 1.6;
-    }
+    .crystal-desc { font-size: 0.78rem; color: rgba(255,255,255,.68); line-height: 1.6; }
 
     .crystal-badge {
       position: absolute;
-      top: 14px;
-      right: 14px;
+      top: 14px; right: 14px;
       padding: 4px 10px;
-      background: rgba(0, 0, 0, .45);
+      background: rgba(0,0,0,.45);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, .2);
+      border: 1px solid rgba(255,255,255,.2);
       font-size: 0.63rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, .8);
+      color: rgba(255,255,255,.8);
     }
 
     /* ── INPUT SECTION ── */
     .input-section {
       padding: 120px 60px;
       text-align: center;
-      background: radial-gradient(ellipse 80% 80% at 50% 110%, rgba(0, 114, 206, .22), transparent 68%), var(--navy-dark);
+      background: radial-gradient(ellipse 80% 80% at 50% 110%, rgba(0,114,206,.22), transparent 68%), var(--navy-dark);
     }
 
-    .input-inner {
-      max-width: 620px;
-      margin: 0 auto;
-    }
+    .input-inner { max-width: 620px; margin: 0 auto; }
 
     .input-inner h2 {
       font-family: 'Cormorant Garamond', serif;
@@ -860,13 +649,10 @@
       line-height: 1.1;
     }
 
-    .input-inner h2 em {
-      color: var(--sky);
-      font-style: italic;
-    }
+    .input-inner h2 em { color: var(--sky); font-style: italic; }
 
-    .input-inner>p {
-      color: rgba(255, 255, 255, .48);
+    .input-inner > p {
+      color: rgba(255,255,255,.48);
       margin-bottom: 48px;
       line-height: 1.75;
     }
@@ -878,8 +664,8 @@
 
     .code-input {
       flex: 1;
-      background: rgba(255, 255, 255, .04);
-      border: 1px solid rgba(0, 114, 206, .35);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(0,114,206,.35);
       border-right: none;
       padding: 18px 22px;
       color: var(--white);
@@ -890,13 +676,8 @@
       transition: border-color .3s;
     }
 
-    .code-input::placeholder {
-      color: rgba(255, 255, 255, .2);
-    }
-
-    .code-input:focus {
-      border-color: var(--sky);
-    }
+    .code-input::placeholder { color: rgba(255,255,255,.2); }
+    .code-input:focus { border-color: var(--sky); }
 
     .code-submit {
       padding: 18px 32px;
@@ -914,20 +695,18 @@
       white-space: nowrap;
     }
 
-    .code-submit:hover {
-      box-shadow: 0 0 30px rgba(0, 114, 206, .45);
-    }
+    .code-submit:hover { box-shadow: 0 0 30px rgba(0,114,206,.45); }
 
     .input-note {
       font-size: 0.76rem;
-      color: rgba(255, 255, 255, .28);
+      color: rgba(255,255,255,.28);
       letter-spacing: 0.05em;
     }
 
     /* ── FOOTER ── */
     footer {
-      background: rgba(0, 0, 0, .4);
-      border-top: 1px solid rgba(0, 114, 206, .15);
+      background: rgba(0,0,0,.4);
+      border-top: 1px solid rgba(0,114,206,.15);
       padding: 44px 60px;
       display: flex;
       justify-content: space-between;
@@ -937,19 +716,11 @@
     .footer-brand {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.1rem;
-      color: rgba(255, 255, 255, .45);
+      color: rgba(255,255,255,.45);
     }
 
-    .footer-brand em {
-      color: var(--sky);
-      font-style: normal;
-    }
-
-    .footer-copy {
-      font-size: 0.76rem;
-      color: rgba(255, 255, 255, .22);
-      letter-spacing: .05em;
-    }
+    .footer-brand em { color: var(--sky); font-style: normal; }
+    .footer-copy { font-size: 0.76rem; color: rgba(255,255,255,.22); letter-spacing: .05em; }
 
     /* ── REVEAL ── */
     .reveal {
@@ -958,10 +729,7 @@
       transition: opacity .8s ease, transform .8s ease;
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ── AI MECHANISM SECTION ── */
     .ai-mechanism {
@@ -970,23 +738,15 @@
       overflow: hidden;
     }
 
-    .ai-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .ai-inner { max-width: 1200px; margin: 0 auto; }
 
     .ai-header {
       text-align: center;
       margin-bottom: 80px;
     }
 
-    .ai-header .section-label {
-      justify-content: center;
-    }
-
-    .ai-header .section-label::before {
-      display: inline-block;
-    }
+    .ai-header .section-label { justify-content: center; }
+    .ai-header .section-label::before { display: inline-block; }
 
     .ai-header h2 {
       font-family: 'Cormorant Garamond', serif;
@@ -996,17 +756,8 @@
       margin-bottom: 14px;
     }
 
-    .ai-header h2 em {
-      color: var(--sky);
-      font-style: italic;
-    }
-
-    .ai-header p {
-      color: rgba(255, 255, 255, .48);
-      max-width: 520px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
+    .ai-header h2 em { color: var(--sky); font-style: italic; }
+    .ai-header p { color: rgba(255,255,255,.48); max-width: 520px; margin: 0 auto; line-height: 1.7; }
 
     /* Pipeline flow */
     .pipeline {
@@ -1014,29 +765,25 @@
       align-items: stretch;
       gap: 0;
       margin-bottom: 80px;
-      border: 1px solid rgba(0, 114, 206, 0.2);
+      border: 1px solid rgba(0,114,206,0.2);
     }
 
     .pipeline-node {
       flex: 1;
       padding: 36px 28px;
-      background: rgba(0, 43, 92, 0.3);
+      background: rgba(0,43,92,0.3);
       position: relative;
       transition: background .3s;
     }
 
-    .pipeline-node:hover {
-      background: rgba(0, 43, 92, 0.6);
-    }
+    .pipeline-node:hover { background: rgba(0,43,92,0.6); }
 
     .pipeline-node:not(:last-child)::after {
       content: '';
       position: absolute;
-      right: -1px;
-      top: 50%;
+      right: -1px; top: 50%;
       transform: translateY(-50%);
-      width: 0;
-      height: 0;
+      width: 0; height: 0;
       border-top: 18px solid transparent;
       border-bottom: 18px solid transparent;
       border-left: 18px solid var(--navy-dark);
@@ -1046,25 +793,22 @@
     .pipeline-node:not(:last-child)::before {
       content: '';
       position: absolute;
-      right: -20px;
-      top: 50%;
+      right: -20px; top: 50%;
       transform: translateY(-50%);
-      width: 0;
-      height: 0;
+      width: 0; height: 0;
       border-top: 20px solid transparent;
       border-bottom: 20px solid transparent;
-      border-left: 20px solid rgba(0, 114, 206, 0.3);
+      border-left: 20px solid rgba(0,114,206,0.3);
       z-index: 1;
     }
 
     .pipeline-node:last-child {
-      background: linear-gradient(135deg, rgba(0, 62, 126, 0.5), rgba(0, 114, 206, 0.25));
-      border-left: 1px solid rgba(168, 216, 240, 0.25);
+      background: linear-gradient(135deg, rgba(0,62,126,0.5), rgba(0,114,206,0.25));
+      border-left: 1px solid rgba(168,216,240,0.25);
     }
 
     .node-icon {
-      width: 44px;
-      height: 44px;
+      width: 44px; height: 44px;
       margin-bottom: 16px;
       display: flex;
       align-items: center;
@@ -1090,14 +834,14 @@
 
     .node-desc {
       font-size: 0.82rem;
-      color: rgba(255, 255, 255, .45);
+      color: rgba(255,255,255,.45);
       line-height: 1.7;
     }
 
     .node-code {
       margin-top: 12px;
       padding: 10px 14px;
-      background: rgba(0, 0, 0, .35);
+      background: rgba(0,0,0,.35);
       border-left: 2px solid var(--sky);
       font-family: 'Courier New', monospace;
       font-size: 0.75rem;
@@ -1123,22 +867,13 @@
       line-height: 1.2;
     }
 
-    .pers-left h3 em {
-      color: var(--sky);
-      font-style: italic;
-    }
-
-    .pers-left p {
-      color: rgba(255, 255, 255, .5);
-      font-size: .92rem;
-      line-height: 1.75;
-      margin-bottom: 24px;
-    }
+    .pers-left h3 em { color: var(--sky); font-style: italic; }
+    .pers-left p { color: rgba(255,255,255,.5); font-size: .92rem; line-height: 1.75; margin-bottom: 24px; }
 
     .seed-breakdown {
       padding: 20px 24px;
-      background: rgba(0, 0, 0, .3);
-      border: 1px solid rgba(0, 114, 206, .2);
+      background: rgba(0,0,0,.3);
+      border: 1px solid rgba(0,114,206,.2);
       font-family: 'Courier New', monospace;
       font-size: 0.85rem;
     }
@@ -1148,12 +883,10 @@
       align-items: center;
       gap: 12px;
       padding: 8px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, .06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
 
-    .seed-row:last-child {
-      border-bottom: none;
-    }
+    .seed-row:last-child { border-bottom: none; }
 
     .seed-key {
       color: var(--sky);
@@ -1164,7 +897,7 @@
     }
 
     .seed-val {
-      color: rgba(255, 255, 255, .75);
+      color: rgba(255,255,255,.75);
       font-size: .8rem;
     }
 
@@ -1172,46 +905,28 @@
       color: var(--gold-light);
     }
 
-    .pers-right {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+    .pers-right { display: flex; flex-direction: column; gap: 14px; }
 
     .pers-card {
       display: flex;
       align-items: center;
       gap: 20px;
       padding: 20px 22px;
-      background: rgba(0, 43, 92, .3);
-      border: 1px solid rgba(0, 114, 206, .15);
+      background: rgba(0,43,92,.3);
+      border: 1px solid rgba(0,114,206,.15);
       border-left: 3px solid;
       transition: background .3s;
     }
 
-    .pers-card:hover {
-      background: rgba(0, 43, 92, .6);
-    }
+    .pers-card:hover { background: rgba(0,43,92,.6); }
 
-    .pers-card:nth-child(1) {
-      border-left-color: var(--sky);
-    }
-
-    .pers-card:nth-child(2) {
-      border-left-color: var(--gold-light);
-    }
-
-    .pers-card:nth-child(3) {
-      border-left-color: #90E0C0;
-    }
-
-    .pers-card:nth-child(4) {
-      border-left-color: #C0A0FF;
-    }
+    .pers-card:nth-child(1) { border-left-color: var(--sky); }
+    .pers-card:nth-child(2) { border-left-color: var(--gold-light); }
+    .pers-card:nth-child(3) { border-left-color: #90E0C0; }
+    .pers-card:nth-child(4) { border-left-color: #C0A0FF; }
 
     .pers-card-icon {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
@@ -1219,9 +934,7 @@
       font-size: 1.4rem;
     }
 
-    .pers-card-body {
-      flex: 1;
-    }
+    .pers-card-body { flex: 1; }
 
     .pers-card-title {
       font-size: .82rem;
@@ -1232,7 +945,7 @@
 
     .pers-card-desc {
       font-size: .76rem;
-      color: rgba(255, 255, 255, .45);
+      color: rgba(255,255,255,.45);
       line-height: 1.6;
     }
 
@@ -1247,700 +960,799 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      nav {
-        padding: 14px 20px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 100px 24px 60px;
-      }
-
-      .hero-crystal {
-        display: none;
-      }
-
-      .about {
-        padding: 80px 24px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .ai-mechanism {
-        padding: 80px 24px;
-      }
-
-      .pipeline {
-        flex-direction: column;
-      }
-
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-crystal { display: none; }
+      .about { padding: 80px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .ai-mechanism { padding: 80px 24px; }
+      .pipeline { flex-direction: column; }
       .pipeline-node:not(:last-child)::after,
-      .pipeline-node:not(:last-child)::before {
-        display: none;
-      }
+      .pipeline-node:not(:last-child)::before { display: none; }
+      .personalization { grid-template-columns: 1fr; gap: 40px; }
 
-      .personalization {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .steps {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .crystals {
-        padding: 80px 24px;
-      }
-
-      .crystals-header {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .crystal-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .input-section {
-        padding: 80px 24px;
-      }
-
-      footer {
-        padding: 28px 20px;
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .crystals { padding: 80px 24px; }
+      .crystals-header { grid-template-columns: 1fr; gap: 20px; }
+      .crystal-grid { grid-template-columns: 1fr 1fr; }
+      .input-section { padding: 80px 24px; }
+      footer { padding: 28px 20px; flex-direction: column; gap: 12px; text-align: center; }
     }
 
     @media (max-width: 560px) {
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      .crystal-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: center;
-      }
+      .steps { grid-template-columns: 1fr; }
+      .crystal-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
-
 <body>
 
-  <canvas id="crystalCanvas"></canvas>
+<canvas id="crystalCanvas"></canvas>
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="nav-logo">
-      <div class="nav-logo-mark"></div>
-      <span>TH <em>True DNA</em></span>
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark"></div>
+    <span>TH <em>True DNA</em></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">Chiến dịch</a></li>
+    <li><a href="#how">Cách thức</a></li>
+    <li><a href="#crystals">Tinh thể</a></li>
+    <li><a href="#redeem">Nhận ngay</a></li>
+  </ul>
+  <button class="nav-cta">Nhập mã ngay</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Chiến dịch độc bản · TH True Milk × AI Art</div>
+    <h1 class="hero-title">
+      <span class="line-1">Tinh Thể Sữa</span>
+      <span class="line-2">Chỉ Của Riêng Bạn</span>
+    </h1>
+    <p class="hero-sub">
+      Mỗi mã số thẻ cào dưới lốc sữa TH là một "hạt giống số" độc nhất —
+      được AI kiến tạo thành tác phẩm nghệ thuật tinh thể sữa lộng lẫy, mang dấu ấn chỉ bạn mới có.
+    </p>
+    <div class="hero-actions">
+      <a href="#redeem" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Đúc tinh thể ngay
+      </a>
+      <a href="#about" class="btn-secondary">Tìm hiểu thêm</a>
     </div>
-    <ul class="nav-links">
-      <li><a href="#about">Chiến dịch</a></li>
-      <li><a href="#how">Cách thức</a></li>
-      <li><a href="#crystals">Tinh thể</a></li>
-      <li><a href="#redeem">Nhận ngay</a></li>
-    </ul>
-    <button class="nav-cta">Nhập mã ngay</button>
-  </nav>
+  </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg">
-      <div class="hero-circle"></div>
-      <div class="hero-circle"></div>
-      <div class="hero-circle"></div>
+  <!-- Floating crystal -->
+  <div class="hero-crystal">
+    <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="cg1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#D6EEFA" stop-opacity="0.95"/>
+          <stop offset="50%" stop-color="#0072CE" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#002B5C" stop-opacity="0.98"/>
+        </linearGradient>
+        <linearGradient id="cg2" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#A8D8F0" stop-opacity="0.75"/>
+          <stop offset="100%" stop-color="#0057A8" stop-opacity="0.92"/>
+        </linearGradient>
+      </defs>
+      <polygon points="100,10 160,60 180,140 100,270 20,140 40,60" fill="url(#cg1)" opacity="0.92"/>
+      <polygon points="100,10 160,60 100,100" fill="#D6EEFA" opacity="0.45"/>
+      <polygon points="100,10 40,60 100,100"  fill="#A8D8F0" opacity="0.35"/>
+      <polygon points="160,60 180,140 100,100" fill="url(#cg2)" opacity="0.72"/>
+      <polygon points="40,60 20,140 100,100"  fill="#0057A8" opacity="0.6"/>
+      <polygon points="180,140 100,270 100,100" fill="#002B5C" opacity="0.82"/>
+      <polygon points="20,140 100,270 100,100"  fill="#0072CE" opacity="0.42"/>
+      <line x1="100" y1="10" x2="100" y2="270" stroke="rgba(255,255,255,0.12)" stroke-width="0.6"/>
+      <ellipse cx="100" cy="54" rx="22" ry="8" fill="white" opacity="0.2"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="dna-visual">
+        <div class="dna-ring"></div>
+        <div class="dna-ring"></div>
+        <div class="dna-ring"></div>
+        <div class="dna-center">DNA</div>
+        <div class="orbit-dot"></div>
+        <div class="orbit-dot"></div>
+        <div class="orbit-dot"></div>
+      </div>
     </div>
 
-    <div class="hero-content">
-      <div class="hero-badge">Chiến dịch độc bản · TH True Milk × AI Art</div>
-      <h1 class="hero-title">
-        <span class="line-1">Tinh Thể Sữa</span>
-        <span class="line-2">Chỉ Của Riêng Bạn</span>
-      </h1>
-      <p class="hero-sub">
-        Mỗi mã số thẻ cào dưới lốc sữa TH là một "hạt giống số" độc nhất —
-        được AI kiến tạo thành tác phẩm nghệ thuật tinh thể sữa lộng lẫy, mang dấu ấn chỉ bạn mới có.
+    <div class="about-text reveal">
+      <div class="section-label">Về chiến dịch</div>
+      <h2>Khoa học · Nghệ thuật ·<br><em>Cá nhân hóa cực hạn</em></h2>
+      <p>
+        <strong>TH True DNA</strong> lấy cảm hứng từ sự thuần khiết của giọt sữa "Thật" — biến mỗi mã số thẻ cào dưới lốc sữa TH thành một <strong>"hạt giống số"</strong> (Seed) độc nhất vô nhị.
       </p>
-      <div class="hero-actions">
-        <a href="#redeem" class="btn-primary">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-          </svg>
-          Đúc tinh thể ngay
-        </a>
-        <a href="#about" class="btn-secondary">Tìm hiểu thêm</a>
+      <p>
+        Thay vì những phần quà vật chất thông thường, chúng tôi tặng cho mỗi khách hàng một <strong>tác phẩm nghệ thuật tinh thể sữa</strong> được kiến tạo bởi trí tuệ nhân tạo — sự kết hợp hoàn hảo giữa khoa học, nghệ thuật và cá nhân hóa trong kỷ nguyên số.
+      </p>
+      <div class="about-tags">
+        <span class="tag">AI Generated Art</span>
+        <span class="tag">Unique Seed</span>
+        <span class="tag">Digital Collectible</span>
+        <span class="tag">TH True Milk</span>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Floating crystal -->
-    <div class="hero-crystal">
-      <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="cg1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#D6EEFA" stop-opacity="0.95" />
-            <stop offset="50%" stop-color="#0072CE" stop-opacity="0.85" />
-            <stop offset="100%" stop-color="#002B5C" stop-opacity="0.98" />
-          </linearGradient>
-          <linearGradient id="cg2" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#A8D8F0" stop-opacity="0.75" />
-            <stop offset="100%" stop-color="#0057A8" stop-opacity="0.92" />
-          </linearGradient>
-        </defs>
-        <polygon points="100,10 160,60 180,140 100,270 20,140 40,60" fill="url(#cg1)" opacity="0.92" />
-        <polygon points="100,10 160,60 100,100" fill="#D6EEFA" opacity="0.45" />
-        <polygon points="100,10 40,60 100,100" fill="#A8D8F0" opacity="0.35" />
-        <polygon points="160,60 180,140 100,100" fill="url(#cg2)" opacity="0.72" />
-        <polygon points="40,60 20,140 100,100" fill="#0057A8" opacity="0.6" />
-        <polygon points="180,140 100,270 100,100" fill="#002B5C" opacity="0.82" />
-        <polygon points="20,140 100,270 100,100" fill="#0072CE" opacity="0.42" />
-        <line x1="100" y1="10" x2="100" y2="270" stroke="rgba(255,255,255,0.12)" stroke-width="0.6" />
-        <ellipse cx="100" cy="54" rx="22" ry="8" fill="white" opacity="0.2" />
-      </svg>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-grid">
-      <div class="about-visual">
-        <div class="dna-visual">
-          <div class="dna-ring"></div>
-          <div class="dna-ring"></div>
-          <div class="dna-ring"></div>
-          <div class="dna-center">DNA</div>
-          <div class="orbit-dot"></div>
-          <div class="orbit-dot"></div>
-          <div class="orbit-dot"></div>
-        </div>
-      </div>
-
-      <div class="about-text reveal">
-        <div class="section-label">Về chiến dịch</div>
-        <h2>Khoa học · Nghệ thuật ·<br><em>Cá nhân hóa cực hạn</em></h2>
-        <p>
-          <strong>TH True DNA</strong> lấy cảm hứng từ sự thuần khiết của giọt sữa "Thật" — biến mỗi mã số thẻ cào dưới
-          lốc sữa TH thành một <strong>"hạt giống số"</strong> (Seed) độc nhất vô nhị.
-        </p>
-        <p>
-          Thay vì những phần quà vật chất thông thường, chúng tôi tặng cho mỗi khách hàng một <strong>tác phẩm nghệ
-            thuật tinh thể sữa</strong> được kiến tạo bởi trí tuệ nhân tạo — sự kết hợp hoàn hảo giữa khoa học, nghệ
-          thuật và cá nhân hóa trong kỷ nguyên số.
-        </p>
-        <div class="about-tags">
-          <span class="tag">AI Generated Art</span>
-          <span class="tag">Unique Seed</span>
-          <span class="tag">Digital Collectible</span>
-          <span class="tag">TH True Milk</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="how" id="how">
-    <div class="how-inner">
-      <div class="how-header reveal">
-        <div class="section-label" style="justify-content:center;">
-          <span style="width:32px;height:1px;background:var(--sky);display:inline-block;"></span>
-          Cách thức
-        </div>
-        <h2>Hành Trình <em>Đúc Tinh Thể</em></h2>
-        <p>4 bước đơn giản để sở hữu tác phẩm nghệ thuật số độc bản của riêng bạn</p>
-      </div>
-
-      <div class="steps reveal">
-        <div class="step">
-          <div class="step-num">01</div>
-          <svg class="step-icon" viewBox="0 0 48 48" fill="none">
-            <rect x="8" y="6" width="32" height="36" rx="2" stroke="#A8D8F0" stroke-width="1.5" />
-            <rect x="14" y="26" width="20" height="10" rx="1" stroke="#A8D8F0" stroke-width="1.5" />
-            <circle cx="24" cy="17" r="5" stroke="#0072CE" stroke-width="1.5" />
-          </svg>
-          <h3>Mua lốc sữa TH</h3>
-          <p>Mỗi lốc sữa TH True Milk đều chứa một mã số định danh duy nhất bên dưới.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <svg class="step-icon" viewBox="0 0 48 48" fill="none">
-            <rect x="6" y="6" width="16" height="16" rx="2" stroke="#A8D8F0" stroke-width="1.5" />
-            <rect x="26" y="6" width="16" height="16" rx="2" stroke="#A8D8F0" stroke-width="1.5" />
-            <rect x="6" y="26" width="16" height="16" rx="2" stroke="#A8D8F0" stroke-width="1.5" />
-            <rect x="30" y="30" width="8" height="8" rx="1" fill="#A8D8F0" opacity="0.45" />
-            <rect x="10" y="10" width="8" height="8" rx="1" fill="#0072CE" opacity="0.4" />
-            <rect x="30" y="10" width="8" height="8" rx="1" fill="#0072CE" opacity="0.4" />
-            <rect x="10" y="30" width="8" height="8" rx="1" fill="#0072CE" opacity="0.4" />
-          </svg>
-          <h3>Quét mã QR</h3>
-          <p>Quét QR trên bao bì, bạn được dẫn đến "Xưởng đúc tinh thể" của chiến dịch.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <svg class="step-icon" viewBox="0 0 48 48" fill="none">
-            <rect x="8" y="14" width="32" height="24" rx="2" stroke="#A8D8F0" stroke-width="1.5" />
-            <path d="M16 26h4M22 22h4M28 26h4" stroke="#0072CE" stroke-width="2" stroke-linecap="round" />
-            <path d="M24 10v4" stroke="#A8D8F0" stroke-width="1.5" />
-          </svg>
-          <h3>Nhập mã thẻ cào</h3>
-          <p>Chỉ cần nhập dãy số mã thẻ cào — đây chính là "hạt giống" tạo nên tinh thể của bạn.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">04</div>
-          <svg class="step-icon" viewBox="0 0 48 48" fill="none">
-            <polygon points="24,4 38,16 42,30 24,44 6,30 10,16" stroke="#C9A84C" stroke-width="1.5" fill="none" />
-            <polygon points="24,4 38,16 24,22" fill="#E8C97A" opacity="0.3" />
-            <polygon points="24,4 10,16 24,22" fill="#C9A84C" opacity="0.3" />
-            <line x1="24" y1="4" x2="24" y2="44" stroke="rgba(201,168,76,0.3)" stroke-width="0.8" />
-          </svg>
-          <h3>Nhận tinh thể độc bản</h3>
-          <p>AI phân tích dãy số và "đúc" ngay tác phẩm tinh thể sữa lộng lẫy chỉ dành riêng cho bạn.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI MECHANISM -->
-  <section class="ai-mechanism" id="ai-mechanism">
-    <div class="ai-inner">
-
-      <div class="ai-header reveal">
-        <div class="section-label" style="justify-content:center;">
-          <span style="width:32px;height:1px;background:var(--sky);display:inline-block;"></span>
-          Cơ chế công nghệ
-        </div>
-        <h2>AI Tạo Tinh Thể <em>Như Thế Nào?</em></h2>
-        <p>Mã thẻ cào của bạn trở thành "chìa khóa toán học" — mở ra đúng một cánh cửa trong 18 tỷ tỷ khả năng mà AI có
-          thể tạo ra.</p>
-      </div>
-
-      <!-- Pipeline -->
-      <div class="pipeline reveal">
-
-        <div class="pipeline-node">
-          <div class="node-icon">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <rect x="4" y="6" width="28" height="24" rx="2" stroke="#A8D8F0" stroke-width="1.2" />
-              <rect x="10" y="16" width="16" height="8" rx="1" stroke="#A8D8F0" stroke-width="1" />
-              <circle cx="18" cy="12" r="3.5" stroke="#0072CE" stroke-width="1.2" />
-            </svg>
-          </div>
-          <div class="node-label">Bước 1</div>
-          <div class="node-title">Nhập mã thẻ cào</div>
-          <div class="node-desc">Dãy số độc nhất dưới lốc sữa TH được gửi lên hệ thống.</div>
-          <div class="node-code">TH-2026-48291037</div>
-        </div>
-
-        <div class="pipeline-node">
-          <div class="node-icon">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="18" r="12" stroke="#A8D8F0" stroke-width="1.2" stroke-dasharray="3 2" />
-              <path d="M12 18h4M20 18h4M18 12v4M18 20v4" stroke="#0072CE" stroke-width="1.5" stroke-linecap="round" />
-              <circle cx="18" cy="18" r="3" fill="#A8D8F0" opacity=".5" />
-            </svg>
-          </div>
-          <div class="node-label">Bước 2</div>
-          <div class="node-title">Tổng hợp Seed</div>
-          <div class="node-desc">Hệ thống kết hợp mã số + thời điểm nhập + metadata thành một Seed duy nhất.</div>
-          <div class="node-code">
-            mã + 14:23:07<br>
-            + #device_hash<br>
-            → <span style="color:var(--gold-light)">Seed: 8472910384</span>
-          </div>
-        </div>
-
-        <div class="pipeline-node">
-          <div class="node-icon">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <rect x="6" y="6" width="10" height="10" rx="1" stroke="#A8D8F0" stroke-width="1" />
-              <rect x="20" y="6" width="10" height="10" rx="1" stroke="#A8D8F0" stroke-width="1" />
-              <rect x="6" y="20" width="10" height="10" rx="1" stroke="#A8D8F0" stroke-width="1" />
-              <rect x="20" y="20" width="10" height="10" rx="1" stroke="#0072CE" stroke-width="1.5" />
-              <path d="M17 11h2M17 25h2M11 17v2M25 17v2" stroke="#A8D8F0" stroke-width="1" opacity=".5" />
-            </svg>
-          </div>
-          <div class="node-label">Bước 3</div>
-          <div class="node-title">AI nhận Seed</div>
-          <div class="node-desc">Stable Diffusion nhận Seed + prompt cố định — Seed điều khiển toàn bộ quá trình sinh
-            ảnh.</div>
-          <div class="node-code">
-            seed = 8472910384<br>
-            prompt = "milk crystal,<br>
-            &nbsp;iridescent, macro..."
-          </div>
-        </div>
-
-        <div class="pipeline-node">
-          <div class="node-icon">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <polygon points="18,3 30,11 30,25 18,33 6,25 6,11" stroke="#C9A84C" stroke-width="1.2" fill="none" />
-              <polygon points="18,3 30,11 18,16" fill="#E8C97A" opacity=".35" />
-              <polygon points="18,3 6,11 18,16" fill="#C9A84C" opacity=".3" />
-              <ellipse cx="18" cy="10" rx="6" ry="2.5" fill="white" opacity=".15" />
-            </svg>
-          </div>
-          <div class="node-label">Kết quả</div>
-          <div class="node-title">Tinh thể độc bản</div>
-          <div class="node-desc">Một tác phẩm nghệ thuật ra đời — không thể trùng lặp vì Seed của bạn là duy nhất.</div>
-          <div class="node-code" style="color:var(--gold-light)">
-            ✦ 18 tỷ tỷ khả năng<br>
-            ✦ Chỉ 1 kết quả cho bạn
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Personalization breakdown -->
-      <div class="personalization reveal">
-
-        <div class="pers-left">
-          <h3>Seed Giải Mã Thành<br><em>Câu Chuyện Của Bạn</em></h3>
-          <p>Seed không chỉ tạo ra sự ngẫu nhiên — mỗi phần trong dãy số được phân tích và ánh xạ thành các thuộc tính
-            thị giác cụ thể của tinh thể.</p>
-
-          <div class="seed-breakdown">
-            <div class="seed-row">
-              <span class="seed-key">Mã thẻ cào</span>
-              <span class="seed-val"><span>TH-2026-48291037</span></span>
-            </div>
-            <div class="seed-row">
-              <span class="seed-key">Thời điểm nhập</span>
-              <span class="seed-val"><span>14:23:07 / 28-02-2026</span></span>
-            </div>
-            <div class="seed-row">
-              <span class="seed-key">Device hash</span>
-              <span class="seed-val"><span>#A3F9C2</span></span>
-            </div>
-            <div class="seed-row">
-              <span class="seed-key">Số thứ tự</span>
-              <span class="seed-val"><span>#000412</span></span>
-            </div>
-            <div class="seed-row" style="margin-top:4px;">
-              <span class="seed-key" style="color:var(--gold-light)">Final Seed</span>
-              <span class="seed-val" style="color:var(--gold-light); font-size:.75rem;">8472910384029820264</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pers-right">
-          <div class="pers-card">
-            <div class="pers-card-icon">🔷</div>
-            <div class="pers-card-body">
-              <div class="pers-card-title">Số lẻ / chẵn trong mã</div>
-              <div class="pers-card-desc">Quyết định hình dạng tinh thể — số lẻ tạo góc nhọn sắc sảo, số chẵn tạo đường
-                cong mềm mại.</div>
-            </div>
-            <div class="pers-card-result">Hình dạng →</div>
-          </div>
-
-          <div class="pers-card">
-            <div class="pers-card-icon">🌈</div>
-            <div class="pers-card-body">
-              <div class="pers-card-title">Tổng các chữ số</div>
-              <div class="pers-card-desc">Xác định tông màu chủ đạo — tổng nhỏ ra tông lạnh (xanh băng), tổng lớn ra
-                tông ấm (vàng hổ phách).</div>
-            </div>
-            <div class="pers-card-result">Màu sắc →</div>
-          </div>
-
-          <div class="pers-card">
-            <div class="pers-card-icon">💎</div>
-            <div class="pers-card-body">
-              <div class="pers-card-title">Ký tự đầu mã</div>
-              <div class="pers-card-desc">Phân loại nhóm tinh thể — Pha Lê, Hướng Dương, Đại Dương, San Hô hay Thạch Anh
-                Hồng.</div>
-            </div>
-            <div class="pers-card-result">Loại tinh thể →</div>
-          </div>
-
-          <div class="pers-card">
-            <div class="pers-card-icon">🕐</div>
-            <div class="pers-card-body">
-              <div class="pers-card-title">Thời điểm nhập mã</div>
-              <div class="pers-card-desc">Ảnh hưởng đến độ sáng tối — nhập lúc bình minh cho tinh thể rực rỡ, nửa đêm
-                cho tinh thể huyền bí.</div>
-            </div>
-            <div class="pers-card-result">Ánh sáng →</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CRYSTALS -->
-  <section class="crystals" id="crystals">
-    <div class="crystals-inner">
-      <div class="crystals-header reveal">
-        <div>
-          <div class="section-label">Bộ sưu tập</div>
-          <h2>Những Tinh Thể<br><em>Lộng Lẫy</em> Chờ Bạn</h2>
-        </div>
-        <p>Mỗi tinh thể mang màu sắc và ý nghĩa riêng biệt, được sinh ra từ chính dãy số độc nhất của bạn. Không ai có
-          tinh thể giống ai.</p>
-      </div>
-
-      <div class="crystal-grid reveal">
-
-        <div class="crystal-card">
-          <div class="crystal-card-bg pure"></div>
-          <div class="crystal-inner-shape">
-            <svg viewBox="0 0 120 160" fill="none">
-              <polygon points="60,10 95,50 60,140 25,50" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.8)"
-                stroke-width="0.8" />
-              <polygon points="60,10 95,50 60,65" fill="rgba(255,255,255,0.6)" />
-              <polygon points="60,10 25,50 60,65" fill="rgba(168,216,240,0.5)" />
-              <polygon points="95,50 60,140 60,65" fill="rgba(168,216,240,0.3)" />
-              <polygon points="25,50 60,140 60,65" fill="rgba(255,255,255,0.2)" />
-              <polygon points="45,35 75,35 60,65" fill="rgba(255,255,255,0.8)" />
-            </svg>
-          </div>
-          <div class="crystal-badge">Pha Lê</div>
-          <div class="crystal-overlay">
-            <div class="crystal-name">Tinh Thể Thuần Khiết</div>
-            <div class="crystal-desc">Trong suốt như giọt sữa đầu tiên — biểu tượng của sự tinh khiết và chân thật tự
-              nhiên.</div>
-          </div>
-        </div>
-
-        <div class="crystal-card">
-          <div class="crystal-card-bg sunflower"></div>
-          <div class="crystal-inner-shape">
-            <svg viewBox="0 0 120 160" fill="none">
-              <polygon points="60,40 100,20 70,60" fill="rgba(255,240,120,0.5)" />
-              <polygon points="60,40 20,20 50,60" fill="rgba(255,200,60,0.4)" />
-              <polygon points="70,60 110,80 70,100" fill="rgba(255,220,60,0.6)" />
-              <polygon points="50,60 10,80 50,100" fill="rgba(255,255,150,0.5)" />
-              <polygon points="60,10 85,80 60,150 35,80" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.7)"
-                stroke-width="0.8" />
-              <polygon points="60,10 85,80 60,80" fill="rgba(255,220,60,0.7)" />
-              <polygon points="60,10 35,80 60,80" fill="rgba(255,250,180,0.6)" />
-              <polygon points="85,80 60,150 60,80" fill="rgba(255,180,40,0.4)" />
-              <polygon points="35,80 60,150 60,80" fill="rgba(255,220,60,0.3)" />
-            </svg>
-          </div>
-          <div class="crystal-badge">Hướng Dương</div>
-          <div class="crystal-overlay">
-            <div class="crystal-name">Tinh Thể Năng Lượng</div>
-            <div class="crystal-desc">Tỏa sáng như ánh bình minh — dành cho những tâm hồn rực rỡ và tràn đầy sức sống.
-            </div>
-          </div>
-        </div>
-
-        <div class="crystal-card">
-          <div class="crystal-card-bg emerald"></div>
-          <div class="crystal-inner-shape">
-            <svg viewBox="0 0 120 160" fill="none">
-              <polygon points="30,60 50,45 50,120 30,100" fill="rgba(100,200,180,0.4)" stroke="rgba(255,255,255,0.5)"
-                stroke-width="0.5" />
-              <polygon points="30,60 40,50 50,45" fill="rgba(255,255,255,0.6)" />
-              <polygon points="70,55 90,70 90,130 70,110" fill="rgba(30,150,130,0.5)" stroke="rgba(255,255,255,0.4)"
-                stroke-width="0.5" />
-              <polygon points="70,55 80,45 90,70" fill="rgba(150,230,210,0.5)" />
-              <polygon points="50,20 75,35 75,140 50,120" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.8)"
-                stroke-width="0.8" />
-              <polygon points="50,20 62,10 75,35" fill="rgba(200,255,240,0.7)" />
-              <polygon points="50,20 62,140 50,120" fill="rgba(100,220,190,0.4)" />
-              <polygon points="75,35 62,140 75,140" fill="rgba(40,160,140,0.6)" />
-            </svg>
-          </div>
-          <div class="crystal-badge">Đại Dương</div>
-          <div class="crystal-overlay">
-            <div class="crystal-name">Tinh Thể Lục Bảo</div>
-            <div class="crystal-desc">Xanh mát và sâu thẳm — biểu tượng của sự tĩnh lặng, mang hơi thở của dòng suối tự
-              nhiên.</div>
-          </div>
-        </div>
-
-        <div class="crystal-card">
-          <div class="crystal-card-bg coral"></div>
-          <div class="crystal-inner-shape">
-            <svg viewBox="0 0 120 160" fill="none">
-              <polygon points="40,110 20,60 35,70" fill="rgba(255,160,140,0.6)" stroke="rgba(255,255,255,0.5)"
-                stroke-width="0.5" />
-              <polygon points="80,120 105,50 90,65" fill="rgba(255,100,80,0.5)" stroke="rgba(255,255,255,0.4)"
-                stroke-width="0.5" />
-              <path d="M50,140 L45,60 L60,20 L75,70 L70,140 Z" fill="rgba(255,255,255,0.15)"
-                stroke="rgba(255,255,255,0.8)" stroke-width="0.8" />
-              <polygon points="45,60 60,20 60,140" fill="rgba(255,180,160,0.7)" />
-              <polygon points="75,70 60,20 60,140" fill="rgba(220,80,60,0.5)" />
-              <polygon points="45,60 60,50 75,70" fill="rgba(255,255,255,0.4)" />
-            </svg>
-          </div>
-          <div class="crystal-badge">San Hô</div>
-          <div class="crystal-overlay">
-            <div class="crystal-name">Tinh Thể Nhiệt Huyết</div>
-            <div class="crystal-desc">Tự do vươn mình rẽ nhánh — tượng trưng cho sự sáng tạo vô hạn và đam mê bùng cháy.
-            </div>
-          </div>
-        </div>
-
-        <div class="crystal-card">
-          <div class="crystal-card-bg rosequartz"></div>
-          <div class="crystal-inner-shape">
-            <svg viewBox="0 0 120 160" fill="none">
-              <polygon points="70,40 100,55 100,95 70,110 40,95 40,55" fill="rgba(240,120,150,0.3)"
-                stroke="rgba(255,255,255,0.3)" stroke-width="0.5" />
-              <polygon points="70,40 100,55 70,75 40,55" fill="rgba(255,180,200,0.4)" />
-              <polygon points="50,60 85,80 85,130 50,150 15,130 15,80" fill="rgba(255,255,255,0.15)"
-                stroke="rgba(255,255,255,0.8)" stroke-width="0.8" />
-              <polygon points="50,60 85,80 50,100 15,80" fill="rgba(255,230,235,0.8)" />
-              <polygon points="15,80 50,100 50,150 15,130" fill="rgba(255,160,180,0.6)" />
-              <polygon points="85,80 50,100 50,150 85,130" fill="rgba(200,80,110,0.4)" />
-            </svg>
-          </div>
-          <div class="crystal-badge">Thạch Anh Hồng</div>
-          <div class="crystal-overlay">
-            <div class="crystal-name">Tinh Thể Chữa Lành</div>
-            <div class="crystal-desc">Mềm mại và ấm áp — mang năng lượng của sự thấu cảm, dịu dàng nâng niu cảm xúc.
-            </div>
-          </div>
-        </div>
-
-      </div>
-  </section>
-
-  <!-- REDEEM -->
-  <section class="input-section" id="redeem">
-    <div class="input-inner">
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="how-header reveal">
       <div class="section-label" style="justify-content:center;">
         <span style="width:32px;height:1px;background:var(--sky);display:inline-block;"></span>
-        Xưởng đúc tinh thể
+        Cách thức
       </div>
-      <h2 class="reveal">Nhập Mã — <em>Nhận Ngay</em><br>Tinh Thể Của Bạn</h2>
-      <p class="reveal">Dãy số thẻ cào dưới lốc sữa TH chính là chìa khóa.<br>Hãy nhập vào để AI kiến tạo tác phẩm nghệ
-        thuật độc bản.</p>
-      <div class="code-input-wrap reveal">
-        <input id="codeInput" class="code-input" type="text" placeholder="Nhập mã số thẻ cào (VD: TH-2026-XXXXXXXX)"
-          maxlength="24" />
-        <button id="codeSubmit" class="code-submit">Đúc Tinh Thể →</button>
-      </div>
-      <p class="input-note reveal">Mỗi mã chỉ sử dụng một lần · Tác phẩm độc bản chỉ thuộc về bạn</p>
+      <h2>Hành Trình <em>Đúc Tinh Thể</em></h2>
+      <p>4 bước đơn giản để sở hữu tác phẩm nghệ thuật số độc bản của riêng bạn</p>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-brand">TH <em>true MILK</em> × True DNA</div>
-    <div class="footer-copy">© 2026 TH True Milk. All rights reserved.</div>
-  </footer>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <svg class="step-icon" viewBox="0 0 48 48" fill="none">
+          <rect x="8" y="6" width="32" height="36" rx="2" stroke="#A8D8F0" stroke-width="1.5"/>
+          <rect x="14" y="26" width="20" height="10" rx="1" stroke="#A8D8F0" stroke-width="1.5"/>
+          <circle cx="24" cy="17" r="5" stroke="#0072CE" stroke-width="1.5"/>
+        </svg>
+        <h3>Mua lốc sữa TH</h3>
+        <p>Mỗi lốc sữa TH True Milk đều chứa một mã số định danh duy nhất bên dưới.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <svg class="step-icon" viewBox="0 0 48 48" fill="none">
+          <rect x="6" y="6" width="16" height="16" rx="2" stroke="#A8D8F0" stroke-width="1.5"/>
+          <rect x="26" y="6" width="16" height="16" rx="2" stroke="#A8D8F0" stroke-width="1.5"/>
+          <rect x="6" y="26" width="16" height="16" rx="2" stroke="#A8D8F0" stroke-width="1.5"/>
+          <rect x="30" y="30" width="8" height="8" rx="1" fill="#A8D8F0" opacity="0.45"/>
+          <rect x="10" y="10" width="8" height="8" rx="1" fill="#0072CE" opacity="0.4"/>
+          <rect x="30" y="10" width="8" height="8" rx="1" fill="#0072CE" opacity="0.4"/>
+          <rect x="10" y="30" width="8" height="8" rx="1" fill="#0072CE" opacity="0.4"/>
+        </svg>
+        <h3>Quét mã QR</h3>
+        <p>Quét QR trên bao bì, bạn được dẫn đến "Xưởng đúc tinh thể" của chiến dịch.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <svg class="step-icon" viewBox="0 0 48 48" fill="none">
+          <rect x="8" y="14" width="32" height="24" rx="2" stroke="#A8D8F0" stroke-width="1.5"/>
+          <path d="M16 26h4M22 22h4M28 26h4" stroke="#0072CE" stroke-width="2" stroke-linecap="round"/>
+          <path d="M24 10v4" stroke="#A8D8F0" stroke-width="1.5"/>
+        </svg>
+        <h3>Nhập mã thẻ cào</h3>
+        <p>Chỉ cần nhập dãy số mã thẻ cào — đây chính là "hạt giống" tạo nên tinh thể của bạn.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <svg class="step-icon" viewBox="0 0 48 48" fill="none">
+          <polygon points="24,4 38,16 42,30 24,44 6,30 10,16" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+          <polygon points="24,4 38,16 24,22" fill="#E8C97A" opacity="0.3"/>
+          <polygon points="24,4 10,16 24,22" fill="#C9A84C" opacity="0.3"/>
+          <line x1="24" y1="4" x2="24" y2="44" stroke="rgba(201,168,76,0.3)" stroke-width="0.8"/>
+        </svg>
+        <h3>Nhận tinh thể độc bản</h3>
+        <p>AI phân tích dãy số và "đúc" ngay tác phẩm tinh thể sữa lộng lẫy chỉ dành riêng cho bạn.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    /* ── CANVAS PARTICLES ── */
-    const canvas = document.getElementById('crystalCanvas');
-    const ctx = canvas.getContext('2d');
+<!-- AI MECHANISM -->
+<section class="ai-mechanism" id="ai-mechanism">
+  <div class="ai-inner">
 
-    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    resize();
-    window.addEventListener('resize', resize);
+    <div class="ai-header reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span style="width:32px;height:1px;background:var(--sky);display:inline-block;"></span>
+        Cơ chế công nghệ
+      </div>
+      <h2>AI Tạo Tinh Thể <em>Như Thế Nào?</em></h2>
+      <p>Mã thẻ cào của bạn trở thành "chìa khóa toán học" — mở ra đúng một cánh cửa trong 18 tỷ tỷ khả năng mà AI có thể tạo ra.</p>
+    </div>
 
-    class Particle {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 1.8 + 0.4;
-        this.vx = (Math.random() - .5) * 0.3;
-        this.vy = -Math.random() * 0.38 - 0.08;
-        this.alpha = Math.random() * 0.55 + 0.1;
-        this.life = 0;
-        this.maxLife = Math.random() * 200 + 100;
-        const r = Math.random();
-        this.color = r > .65
-          ? `rgba(168,216,240,${this.alpha})`
-          : r > .35
-            ? `rgba(0,114,206,${this.alpha})`
-            : `rgba(201,168,76,${this.alpha})`;
-        this.diamond = Math.random() > .82;
-      }
-      update() {
-        this.x += this.vx; this.y += this.vy; this.life++;
-        if (this.life > this.maxLife || this.y < -10) this.reset();
-      }
-      draw() {
-        ctx.save();
-        ctx.globalAlpha = this.alpha * (1 - this.life / this.maxLife);
-        ctx.fillStyle = this.color;
-        if (this.diamond) {
-          const s = this.size * 2.2;
-          ctx.beginPath();
-          ctx.moveTo(this.x, this.y - s);
-          ctx.lineTo(this.x + s * .55, this.y);
-          ctx.lineTo(this.x, this.y + s);
-          ctx.lineTo(this.x - s * .55, this.y);
-          ctx.closePath();
-          ctx.fill();
-        } else {
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.restore();
-      }
+    <!-- Pipeline -->
+    <div class="pipeline reveal">
+
+      <div class="pipeline-node">
+        <div class="node-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <rect x="4" y="6" width="28" height="24" rx="2" stroke="#A8D8F0" stroke-width="1.2"/>
+            <rect x="10" y="16" width="16" height="8" rx="1" stroke="#A8D8F0" stroke-width="1"/>
+            <circle cx="18" cy="12" r="3.5" stroke="#0072CE" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="node-label">Bước 1</div>
+        <div class="node-title">Nhập mã thẻ cào</div>
+        <div class="node-desc">Dãy số độc nhất dưới lốc sữa TH được gửi lên hệ thống.</div>
+        <div class="node-code">TH-2026-48291037</div>
+      </div>
+
+      <div class="pipeline-node">
+        <div class="node-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="12" stroke="#A8D8F0" stroke-width="1.2" stroke-dasharray="3 2"/>
+            <path d="M12 18h4M20 18h4M18 12v4M18 20v4" stroke="#0072CE" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="18" cy="18" r="3" fill="#A8D8F0" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="node-label">Bước 2</div>
+        <div class="node-title">Tổng hợp Seed</div>
+        <div class="node-desc">Hệ thống kết hợp mã số + thời điểm nhập + metadata thành một Seed duy nhất.</div>
+        <div class="node-code">
+          mã + 14:23:07<br>
+          + #device_hash<br>
+          → <span style="color:var(--gold-light)">Seed: 8472910384</span>
+        </div>
+      </div>
+
+      <div class="pipeline-node">
+        <div class="node-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <rect x="6" y="6" width="10" height="10" rx="1" stroke="#A8D8F0" stroke-width="1"/>
+            <rect x="20" y="6" width="10" height="10" rx="1" stroke="#A8D8F0" stroke-width="1"/>
+            <rect x="6" y="20" width="10" height="10" rx="1" stroke="#A8D8F0" stroke-width="1"/>
+            <rect x="20" y="20" width="10" height="10" rx="1" stroke="#0072CE" stroke-width="1.5"/>
+            <path d="M17 11h2M17 25h2M11 17v2M25 17v2" stroke="#A8D8F0" stroke-width="1" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="node-label">Bước 3</div>
+        <div class="node-title">AI nhận Seed</div>
+        <div class="node-desc">Stable Diffusion nhận Seed + prompt cố định — Seed điều khiển toàn bộ quá trình sinh ảnh.</div>
+        <div class="node-code">
+          seed = 8472910384<br>
+          prompt = "milk crystal,<br>
+          &nbsp;iridescent, macro..."
+        </div>
+      </div>
+
+      <div class="pipeline-node">
+        <div class="node-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <polygon points="18,3 30,11 30,25 18,33 6,25 6,11" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
+            <polygon points="18,3 30,11 18,16" fill="#E8C97A" opacity=".35"/>
+            <polygon points="18,3 6,11 18,16"  fill="#C9A84C" opacity=".3"/>
+            <ellipse cx="18" cy="10" rx="6" ry="2.5" fill="white" opacity=".15"/>
+          </svg>
+        </div>
+        <div class="node-label">Kết quả</div>
+        <div class="node-title">Tinh thể độc bản</div>
+        <div class="node-desc">Một tác phẩm nghệ thuật ra đời — không thể trùng lặp vì Seed của bạn là duy nhất.</div>
+        <div class="node-code" style="color:var(--gold-light)">
+          ✦ 18 tỷ tỷ khả năng<br>
+          ✦ Chỉ 1 kết quả cho bạn
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Personalization breakdown -->
+    <div class="personalization reveal">
+
+      <div class="pers-left">
+        <h3>Seed Giải Mã Thành<br><em>Câu Chuyện Của Bạn</em></h3>
+        <p>Seed không chỉ tạo ra sự ngẫu nhiên — mỗi phần trong dãy số được phân tích và ánh xạ thành các thuộc tính thị giác cụ thể của tinh thể.</p>
+
+        <div class="seed-breakdown">
+          <div class="seed-row">
+            <span class="seed-key">Mã thẻ cào</span>
+            <span class="seed-val"><span>TH-2026-48291037</span></span>
+          </div>
+          <div class="seed-row">
+            <span class="seed-key">Thời điểm nhập</span>
+            <span class="seed-val"><span>14:23:07 / 28-02-2026</span></span>
+          </div>
+          <div class="seed-row">
+            <span class="seed-key">Device hash</span>
+            <span class="seed-val"><span>#A3F9C2</span></span>
+          </div>
+          <div class="seed-row">
+            <span class="seed-key">Số thứ tự</span>
+            <span class="seed-val"><span>#000412</span></span>
+          </div>
+          <div class="seed-row" style="margin-top:4px;">
+            <span class="seed-key" style="color:var(--gold-light)">Final Seed</span>
+            <span class="seed-val" style="color:var(--gold-light); font-size:.75rem;">8472910384029820264</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pers-right">
+        <div class="pers-card">
+          <div class="pers-card-icon">🔷</div>
+          <div class="pers-card-body">
+            <div class="pers-card-title">Số lẻ / chẵn trong mã</div>
+            <div class="pers-card-desc">Quyết định hình dạng tinh thể — số lẻ tạo góc nhọn sắc sảo, số chẵn tạo đường cong mềm mại.</div>
+          </div>
+          <div class="pers-card-result">Hình dạng →</div>
+        </div>
+
+        <div class="pers-card">
+          <div class="pers-card-icon">🌈</div>
+          <div class="pers-card-body">
+            <div class="pers-card-title">Tổng các chữ số</div>
+            <div class="pers-card-desc">Xác định tông màu chủ đạo — tổng nhỏ ra tông lạnh (xanh băng), tổng lớn ra tông ấm (vàng hổ phách).</div>
+          </div>
+          <div class="pers-card-result">Màu sắc →</div>
+        </div>
+
+        <div class="pers-card">
+          <div class="pers-card-icon">💎</div>
+          <div class="pers-card-body">
+            <div class="pers-card-title">Ký tự đầu mã</div>
+            <div class="pers-card-desc">Phân loại nhóm tinh thể — Pha Lê, Hướng Dương, Đại Dương, San Hô hay Thạch Anh Hồng.</div>
+          </div>
+          <div class="pers-card-result">Loại tinh thể →</div>
+        </div>
+
+        <div class="pers-card">
+          <div class="pers-card-icon">🕐</div>
+          <div class="pers-card-body">
+            <div class="pers-card-title">Thời điểm nhập mã</div>
+            <div class="pers-card-desc">Ảnh hưởng đến độ sáng tối — nhập lúc bình minh cho tinh thể rực rỡ, nửa đêm cho tinh thể huyền bí.</div>
+          </div>
+          <div class="pers-card-result">Ánh sáng →</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CRYSTALS -->
+<section class="crystals" id="crystals">
+  <div class="crystals-inner">
+    <div class="crystals-header reveal">
+      <div>
+        <div class="section-label">Bộ sưu tập</div>
+        <h2>Những Tinh Thể<br><em>Lộng Lẫy</em> Chờ Bạn</h2>
+      </div>
+      <p>Mỗi tinh thể mang màu sắc và ý nghĩa riêng biệt, được sinh ra từ chính dãy số độc nhất của bạn. Không ai có tinh thể giống ai.</p>
+    </div>
+
+    <div class="crystal-grid reveal">
+      <div class="crystal-card">
+        <div class="crystal-card-bg sunflower"></div>
+        <div class="crystal-inner-shape">
+          <svg viewBox="0 0 120 160" fill="none">
+            <polygon points="60,5 100,35 115,80 60,155 5,80 20,35" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
+            <polygon points="60,5 100,35 60,60" fill="rgba(255,220,60,0.5)"/>
+            <polygon points="60,5 20,35 60,60"  fill="rgba(255,240,120,0.4)"/>
+            <ellipse cx="60" cy="30" rx="16" ry="6" fill="rgba(255,255,255,0.3)"/>
+          </svg>
+        </div>
+        <div class="crystal-badge">Hướng Dương</div>
+        <div class="crystal-overlay">
+          <div class="crystal-name">Tinh Thể Năng Lượng</div>
+          <div class="crystal-desc">Tỏa sáng như ánh bình minh — dành cho những tâm hồn rực rỡ và tràn đầy sức sống.</div>
+        </div>
+      </div>
+
+      <div class="crystal-card">
+        <div class="crystal-card-bg pure"></div>
+        <div class="crystal-inner-shape">
+          <svg viewBox="0 0 120 160" fill="none">
+            <polygon points="60,5 100,35 115,80 60,155 5,80 20,35" fill="rgba(255,255,255,0.32)" stroke="rgba(255,255,255,0.75)" stroke-width="0.8"/>
+            <polygon points="60,5 100,35 60,60" fill="rgba(200,240,255,0.5)"/>
+            <polygon points="60,5 20,35 60,60"  fill="rgba(255,255,255,0.45)"/>
+            <ellipse cx="60" cy="30" rx="18" ry="7" fill="rgba(255,255,255,0.55)"/>
+          </svg>
+        </div>
+        <div class="crystal-badge">Pha Lê</div>
+        <div class="crystal-overlay">
+          <div class="crystal-name">Tinh Thể Thuần Khiết</div>
+          <div class="crystal-desc">Trong suốt như giọt sữa đầu tiên — biểu tượng của sự tinh khiết và chân thật tự nhiên.</div>
+        </div>
+      </div>
+
+      <div class="crystal-card">
+        <div class="crystal-card-bg emerald"></div>
+        <div class="crystal-inner-shape">
+          <svg viewBox="0 0 120 160" fill="none">
+            <polygon points="60,5 100,35 115,80 60,155 5,80 20,35" fill="rgba(255,255,255,0.22)" stroke="rgba(168,216,240,0.65)" stroke-width="0.8"/>
+            <polygon points="60,5 100,35 60,60" fill="rgba(100,180,240,0.5)"/>
+            <polygon points="60,5 20,35 60,60"  fill="rgba(150,220,255,0.4)"/>
+            <ellipse cx="60" cy="30" rx="16" ry="6" fill="rgba(200,240,255,0.45)"/>
+          </svg>
+        </div>
+        <div class="crystal-badge">Đại Dương</div>
+        <div class="crystal-overlay">
+          <div class="crystal-name">Tinh Thể Thảo Nguyên</div>
+          <div class="crystal-desc">Xanh mát như bầu trời Ba Vì — nơi những chú bò TH gặm cỏ tự nhiên mỗi sớm bình minh.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REDEEM / CRYSTAL GENERATOR -->
+<section class="input-section" id="redeem" style="padding:120px 60px;">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+
+    <div class="section-label" style="justify-content:center;">
+      <span style="width:32px;height:1px;background:var(--sky);display:inline-block;"></span>
+      Xưởng đúc tinh thể
+    </div>
+
+    <h2 class="reveal" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:300;color:var(--cream);margin-bottom:14px;line-height:1.1;">
+      Nhập Mã — <em style="color:var(--sky);font-style:italic;">Đúc Ngay</em><br>Tinh Thể Của Bạn
+    </h2>
+    <p class="reveal" style="color:rgba(255,255,255,.48);margin-bottom:40px;line-height:1.75;">
+      Dãy số thẻ cào là "hạt giống" — hệ thống sẽ kiến tạo tinh thể độc bản<br>chỉ dành riêng cho bạn, ngay trên trình duyệt.
+    </p>
+
+    <!-- Input row -->
+    <div class="reveal" style="display:flex;gap:0;max-width:600px;margin:0 auto 40px;">
+      <input id="codeInput" type="text" placeholder="Nhập mã thẻ cào (VD: TH-2026-XXXXXXXX)" maxlength="24"
+        style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(0,114,206,.35);border-right:none;
+               padding:16px 20px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.95rem;
+               letter-spacing:.1em;outline:none;transition:border-color .3s;"
+        onfocus="this.style.borderColor='rgba(168,216,240,.7)'"
+        onblur="this.style.borderColor='rgba(0,114,206,.35)'"
+      />
+      <button id="codeSubmit" onclick="generateCrystal()"
+        style="padding:16px 28px;background:linear-gradient(135deg,var(--navy),var(--blue-bright));
+               border:1px solid var(--blue-bright);border-left:none;color:#fff;
+               font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;
+               letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+               white-space:nowrap;transition:all .3s;">
+        Đúc Tinh Thể ✦
+      </button>
+    </div>
+
+    <!-- Crystal output -->
+    <div id="crystalOutput" style="display:none;animation:fadeUp .6s ease both;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;text-align:left;
+                  border:1px solid rgba(0,114,206,.2);padding:40px;background:rgba(0,43,92,.3);">
+
+        <!-- Canvas -->
+        <div style="text-align:center;">
+          <canvas id="crystalCanvas2" width="360" height="400"
+            style="width:100%;border:1px solid rgba(168,216,240,.12);"></canvas>
+          <button onclick="downloadCrystal()"
+            style="margin-top:16px;padding:12px 28px;background:transparent;
+                   border:1px solid rgba(168,216,240,.4);color:var(--sky);
+                   font-family:'DM Sans',sans-serif;font-size:.78rem;letter-spacing:.12em;
+                   text-transform:uppercase;cursor:pointer;transition:all .3s;width:100%;"
+            onmouseover="this.style.background='rgba(0,114,206,.2)'"
+            onmouseout="this.style.background='transparent'">
+            ↓ Lưu Tinh Thể
+          </button>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <div style="font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sky);
+                      margin-bottom:12px;opacity:.7;">Tinh thể của bạn</div>
+          <div id="crystalName" style="font-family:'Cormorant Garamond',serif;font-size:2rem;
+               font-weight:300;color:var(--cream);margin-bottom:6px;"></div>
+          <div id="crystalType" style="font-size:.8rem;color:var(--sky);letter-spacing:.1em;
+               text-transform:uppercase;margin-bottom:24px;opacity:.8;"></div>
+          <div id="crystalMeaning" style="font-size:.9rem;color:rgba(255,255,255,.6);
+               line-height:1.8;margin-bottom:28px;"></div>
+
+          <!-- Attributes -->
+          <div id="crystalAttrs" style="display:flex;flex-direction:column;gap:10px;"></div>
+
+          <!-- Seed display -->
+          <div id="crystalSeedBox" style="margin-top:24px;padding:14px 16px;
+               background:rgba(0,0,0,.3);border-left:2px solid rgba(168,216,240,.4);
+               font-family:'Courier New',monospace;font-size:.72rem;color:rgba(255,255,255,.4);"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="reveal" style="margin-top:20px;font-size:.76rem;color:rgba(255,255,255,.25);letter-spacing:.05em;">
+      Mỗi mã tạo ra tinh thể độc nhất · Sinh bằng Canvas API · Không cần server
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">TH <em>true MILK</em> × True DNA</div>
+  <div class="footer-copy">© 2026 TH True Milk. All rights reserved.</div>
+</footer>
+
+<script>
+  /* ── CANVAS PARTICLES (background) ── */
+  const canvas = document.getElementById('crystalCanvas');
+  const ctx    = canvas.getContext('2d');
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height;
+      this.size=Math.random()*1.8+.4; this.vx=(Math.random()-.5)*.3;
+      this.vy=-Math.random()*.38-.08; this.alpha=Math.random()*.55+.1;
+      this.life=0; this.maxLife=Math.random()*200+100;
+      const r=Math.random();
+      this.color=r>.65?`rgba(168,216,240,${this.alpha})`:r>.35?`rgba(0,114,206,${this.alpha})`:`rgba(201,168,76,${this.alpha})`;
+      this.diamond=Math.random()>.82;
+    }
+    update(){ this.x+=this.vx; this.y+=this.vy; this.life++; if(this.life>this.maxLife||this.y<-10)this.reset(); }
+    draw(){
+      ctx.save(); ctx.globalAlpha=this.alpha*(1-this.life/this.maxLife); ctx.fillStyle=this.color;
+      if(this.diamond){ const s=this.size*2.2; ctx.beginPath(); ctx.moveTo(this.x,this.y-s); ctx.lineTo(this.x+s*.55,this.y); ctx.lineTo(this.x,this.y+s); ctx.lineTo(this.x-s*.55,this.y); ctx.closePath(); ctx.fill(); }
+      else { ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill(); }
+      ctx.restore();
+    }
+  }
+  const particles = Array.from({length:90},()=>new Particle());
+  (function loop(){ ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(loop); })();
+
+  /* ── SCROLL REVEAL ── */
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{ if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*80); });
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+  /* ══════════════════════════════════════
+     CRYSTAL GENERATOR ENGINE
+  ══════════════════════════════════════ */
+
+  // Seeded pseudo-random (mulberry32)
+  function seededRNG(seed) {
+    let s = seed >>> 0;
+    return function() {
+      s += 0x6D2B79F5;
+      let t = Math.imul(s ^ s>>>15, 1 | s);
+      t = t + Math.imul(t ^ t>>>7, 61 | t) ^ t;
+      return ((t ^ t>>>14) >>> 0) / 4294967296;
+    };
+  }
+
+  // Hash string → number
+  function hashCode(str) {
+    let h = 2166136261;
+    for (let i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+
+  // Crystal definitions
+  const CRYSTAL_TYPES = [
+    { name:'Tinh Thể Pha Lê',    type:'PHA LÊ',      meaning:'Trong suốt và thuần khiết như giọt sữa đầu tiên — biểu tượng của sự chân thật và tinh khiết tuyệt đối.',  hue:[190,220], sat:[60,90],  light:[65,90] },
+    { name:'Tinh Thể Hướng Dương', type:'HƯỚNG DƯƠNG', meaning:'Rực rỡ và tràn đầy năng lượng như ánh bình minh — dành cho những tâm hồn luôn hướng về phía ánh sáng.', hue:[35,55],   sat:[80,100], light:[55,75] },
+    { name:'Tinh Thể Đại Dương',  type:'ĐẠI DƯƠNG',   meaning:'Sâu thẳm và bao la như biển cả — mang trong mình nguồn dinh dưỡng vô tận từ thiên nhiên thuần khiết.',      hue:[195,230], sat:[70,95],  light:[40,65] },
+    { name:'Tinh Thể Ngọc Lục',  type:'NGỌC LỤC',    meaning:'Tươi mát như đồng cỏ Ba Vì mỗi sớm bình minh — nơi những chú bò TH gặm cỏ xanh tự nhiên mỗi ngày.',        hue:[130,160], sat:[55,80],  light:[45,70] },
+    { name:'Tinh Thể Hồng Ngọc', type:'HỒNG NGỌC',   meaning:'Dịu dàng và ấm áp như tình yêu của người mẹ — biểu tượng của sự chăm sóc và gắn kết bền chặt.',            hue:[330,355], sat:[60,85],  light:[55,75] },
+    { name:'Tinh Thể Thạch Anh', type:'THẠCH ANH',   meaning:'Huyền bí và quý giá như tinh chất của đất trời — mang sức mạnh tiềm ẩn từ những giá trị cốt lõi bền vững.', hue:[265,295], sat:[50,80],  light:[50,72] },
+  ];
+
+  const ATTR_NAMES = ['Độ tinh khiết','Năng lượng','Cộng hưởng','Độ hiếm','Ánh sáng'];
+
+  function drawCrystal(seed, ctype, rng) {
+    const cv = document.getElementById('crystalCanvas2');
+    const c  = cv.getContext('2d');
+    const W = cv.width, H = cv.height;
+    c.clearRect(0,0,W,H);
+
+    // Background
+    const bg = c.createRadialGradient(W/2,H/2,10,W/2,H/2,W*.7);
+    bg.addColorStop(0, `hsla(${ctype.hue[0]+10},40%,12%,1)`);
+    bg.addColorStop(1, 'hsl(220,40%,5%)');
+    c.fillStyle = bg;
+    c.fillRect(0,0,W,H);
+
+    // Crystal params from seed
+    const facets   = 5 + Math.floor(rng() * 4);         // 5-8 facets
+    const h1       = ctype.hue[0] + rng()*(ctype.hue[1]-ctype.hue[0]);
+    const h2       = h1 + 20 + rng()*40;
+    const s1       = ctype.sat[0]  + rng()*(ctype.sat[1]-ctype.sat[0]);
+    const l1       = ctype.light[0]+ rng()*(ctype.light[1]-ctype.light[0]);
+    const tiltX    = (.5 - rng()) * 30;
+    const tiltY    = (.5 - rng()) * 20;
+    const topW     = 0.18 + rng() * 0.14;   // tip width
+    const bodyH    = 0.55 + rng() * 0.12;   // body height ratio
+    const shimmer  = rng();                  // highlight intensity
+    const inclusions = Math.floor(rng() * 4); // internal fractures
+
+    const cx = W/2 + tiltX, cy = H * .46;
+    const TH = H * .08, BH = H * .88;
+    const TW = W * topW, BW = W * .34;
+
+    // Draw multiple crystal layers
+    function crystalPoly(offsetX, scale) {
+      const top = cy - H * bodyH * scale;
+      const bot = cy + H * .3 * scale;
+      const pts = [
+        [cx+offsetX, TH],                         // apex
+        [cx + TW*scale+offsetX, top],              // top-right shoulder
+        [cx + BW*scale+offsetX, bot],              // body-right
+        [cx + BW*.5*scale+offsetX, BH],            // bottom-right
+        [cx+offsetX, BH + 8*scale],                // base
+        [cx - BW*.5*scale+offsetX, BH],            // bottom-left
+        [cx - BW*scale+offsetX, bot],              // body-left
+        [cx - TW*scale+offsetX, top],              // top-left shoulder
+      ];
+      c.beginPath();
+      c.moveTo(pts[0][0],pts[0][1]);
+      pts.slice(1).forEach(p=>c.lineTo(p[0],p[1]));
+      c.closePath();
+      return pts;
     }
 
-    const particles = Array.from({ length: 90 }, () => new Particle());
+    // Glow behind
+    c.save();
+    const glow = c.createRadialGradient(cx,cy,20,cx,cy,W*.45);
+    glow.addColorStop(0,`hsla(${h1},${s1}%,${l1}%,0.22)`);
+    glow.addColorStop(1,'transparent');
+    c.fillStyle=glow; c.fillRect(0,0,W,H); c.restore();
 
-    (function loop() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(loop);
-    })();
+    // Shadow crystal
+    c.save(); c.globalAlpha=.25;
+    const shadPts = crystalPoly(6, 1.01);
+    const shadG = c.createLinearGradient(cx-BW,TH,cx+BW,BH);
+    shadG.addColorStop(0,`hsla(${h1},40%,8%,1)`);
+    shadG.addColorStop(1,`hsla(${h2},30%,5%,1)`);
+    c.fillStyle=shadG; c.fill(); c.restore();
 
-    /* ── SCROLL REVEAL ── */
-    const revealEls = document.querySelectorAll('.reveal');
-    new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
-      });
-    }, { threshold: 0.1 }).observe
-      ? (() => {
-        const obs = new IntersectionObserver((entries) => {
-          entries.forEach((e, i) => {
-            if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
-          });
-        }, { threshold: 0.1 });
-        revealEls.forEach(r => obs.observe(r));
-      })()
-      : revealEls.forEach(r => r.classList.add('visible'));
+    // Main crystal facets
+    const pts = crystalPoly(0, 1.0);
+    const apex=[pts[0][0],pts[0][1]], base=[pts[4][0],pts[4][1]];
 
-    /* ── CODE INPUT ── */
-    const inp = document.getElementById('codeInput');
-    const btn = document.getElementById('codeSubmit');
+    // Left face
+    c.beginPath(); c.moveTo(apex[0],apex[1]); c.lineTo(pts[7][0],pts[7][1]); c.lineTo(pts[6][0],pts[6][1]); c.lineTo(pts[5][0],pts[5][1]); c.lineTo(base[0],base[1]); c.closePath();
+    const lgL = c.createLinearGradient(pts[7][0],pts[7][1],pts[5][0],pts[5][1]);
+    lgL.addColorStop(0,`hsla(${h1},${s1}%,${l1*.7}%,0.95)`);
+    lgL.addColorStop(1,`hsla(${h1},${s1}%,${l1*.4}%,0.95)`);
+    c.fillStyle=lgL; c.fill();
 
-    inp.addEventListener('input', () => {
-      inp.value = inp.value.toUpperCase().replace(/[^A-Z0-9\-]/g, '');
-    });
+    // Right face
+    c.beginPath(); c.moveTo(apex[0],apex[1]); c.lineTo(pts[1][0],pts[1][1]); c.lineTo(pts[2][0],pts[2][1]); c.lineTo(pts[3][0],pts[3][1]); c.lineTo(base[0],base[1]); c.closePath();
+    const lgR = c.createLinearGradient(pts[1][0],pts[1][1],pts[3][0],pts[3][1]);
+    lgR.addColorStop(0,`hsla(${h2},${s1*.9}%,${l1*.95}%,0.9)`);
+    lgR.addColorStop(1,`hsla(${h2},${s1*.7}%,${l1*.55}%,0.9)`);
+    c.fillStyle=lgR; c.fill();
 
-    btn.addEventListener('click', () => {
-      if (!inp.value.trim()) {
-        inp.style.borderColor = 'rgba(255,80,80,.6)';
-        inp.placeholder = 'Vui lòng nhập mã thẻ cào!';
-        setTimeout(() => {
-          inp.style.borderColor = 'rgba(0,114,206,.35)';
-          inp.placeholder = 'Nhập mã số thẻ cào (VD: TH-2026-XXXXXXXX)';
-        }, 2200);
-        return;
-      }
-      btn.textContent = '✦ Đang đúc...';
-      btn.style.background = 'linear-gradient(135deg, #002B5C, #0057A8)';
-      setTimeout(() => {
-        btn.textContent = '✓ Tinh thể đã sẵn sàng!';
-        btn.style.background = 'linear-gradient(135deg, #C9A84C, #E8C97A)';
-        btn.style.color = '#001830';
-      }, 1800);
-    });
-  </script>
+    // Center ridge highlight
+    c.beginPath(); c.moveTo(apex[0],apex[1]); c.lineTo(base[0],base[1]);
+    c.strokeStyle=`hsla(${h1},30%,${90}%,${shimmer*.35+.08})`; c.lineWidth=1.2; c.stroke();
+
+    // Top cap
+    c.beginPath(); c.moveTo(apex[0],apex[1]); c.lineTo(pts[1][0],pts[1][1]); c.lineTo(pts[7][0],pts[7][1]); c.closePath();
+    const capG = c.createLinearGradient(apex[0],apex[1],pts[1][0],pts[1][1]);
+    capG.addColorStop(0,`hsla(${h1},${s1*.5}%,${95}%,${shimmer*.4+.3})`);
+    capG.addColorStop(1,`hsla(${h1},${s1}%,${l1}%,0.5)`);
+    c.fillStyle=capG; c.fill();
+
+    // Inclusion lines (internal fractures)
+    for(let i=0;i<inclusions;i++){
+      const iy = TH + rng()*(BH-TH);
+      const ix = cx + (rng()-.5)*BW*.8;
+      c.beginPath(); c.moveTo(ix,iy); c.lineTo(ix+(rng()-.5)*60,iy+(rng()-.5)*60);
+      c.strokeStyle=`hsla(${h2},80%,90%,${rng()*.15+.04})`; c.lineWidth=.7; c.stroke();
+    }
+
+    // Outer edge
+    crystalPoly(0,1.0);
+    c.strokeStyle=`hsla(${h1},60%,${l1+10}%,0.35)`; c.lineWidth=1; c.stroke();
+
+    // Inner reflection ellipse
+    c.save(); c.globalAlpha=shimmer*.18+.06;
+    c.beginPath(); c.ellipse(cx, TH+H*.18, TW*.55, H*.06, 0, 0, Math.PI*2);
+    c.fillStyle=`hsla(${h1},30%,98%,1)`; c.fill(); c.restore();
+
+    // Floating sparkles
+    for(let i=0;i<8;i++){
+      const sx=cx+(rng()-.5)*BW*1.6, sy=TH+(rng())*(BH-TH);
+      const ss=rng()*2.5+.5;
+      c.save(); c.globalAlpha=rng()*.5+.1;
+      c.fillStyle=`hsla(${h1+rng()*30},80%,95%,1)`;
+      c.beginPath(); c.arc(sx,sy,ss,0,Math.PI*2); c.fill();
+      c.restore();
+    }
+
+    // TH watermark subtle
+    c.save(); c.globalAlpha=.06;
+    c.font=`bold ${H*.22}px 'Cormorant Garamond',serif`;
+    c.fillStyle='white'; c.textAlign='center'; c.textBaseline='middle';
+    c.fillText('TH',cx,cy+H*.08); c.restore();
+  }
+
+  // Main generate function
+  function generateCrystal() {
+    const raw = document.getElementById('codeInput').value.trim();
+    if(!raw){
+      const inp=document.getElementById('codeInput');
+      inp.style.borderColor='rgba(255,80,80,.7)';
+      inp.placeholder='Vui lòng nhập mã thẻ cào!';
+      setTimeout(()=>{ inp.style.borderColor='rgba(0,114,206,.35)'; inp.placeholder='Nhập mã thẻ cào (VD: TH-2026-XXXXXXXX)'; },2200);
+      return;
+    }
+
+    const btn=document.getElementById('codeSubmit');
+    btn.textContent='✦ Đang đúc...';
+    btn.style.opacity='.7';
+
+    setTimeout(()=>{
+      // Build seed
+      const timeComponent = new Date().getMinutes() + new Date().getSeconds();
+      const seedStr = raw.toUpperCase() + '|' + timeComponent;
+      const seedNum = hashCode(seedStr);
+      const rng = seededRNG(seedNum);
+
+      // Pick crystal type deterministically from code
+      const typeIdx = hashCode(raw.toUpperCase()) % CRYSTAL_TYPES.length;
+      const ctype   = CRYSTAL_TYPES[typeIdx];
+
+      // Generate attributes (consistent per code, not time)
+      const codeRng = seededRNG(hashCode(raw.toUpperCase()));
+      const attrs   = ATTR_NAMES.map(name=>({
+        name,
+        val: Math.floor(codeRng()*35)+65  // 65-100
+      }));
+
+      // Draw
+      drawCrystal(seedNum, ctype, rng);
+
+      // Populate info
+      document.getElementById('crystalName').textContent    = ctype.name;
+      document.getElementById('crystalType').textContent    = '✦ ' + ctype.type + ' ✦';
+      document.getElementById('crystalMeaning').textContent = ctype.meaning;
+
+      const attrsEl = document.getElementById('crystalAttrs');
+      attrsEl.innerHTML = attrs.map(a=>`
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="font-size:.75rem;color:rgba(255,255,255,.45);min-width:100px;">${a.name}</span>
+          <div style="flex:1;height:3px;background:rgba(255,255,255,.07);border-radius:2px;">
+            <div style="height:100%;width:${a.val}%;background:linear-gradient(90deg,var(--blue-bright),var(--sky));border-radius:2px;"></div>
+          </div>
+          <span style="font-size:.75rem;color:var(--sky);min-width:32px;text-align:right;">${a.val}</span>
+        </div>
+      `).join('');
+
+      document.getElementById('crystalSeedBox').innerHTML =
+        `Seed: <span style="color:var(--sky)">${seedNum}</span> · Mã: <span style="color:rgba(255,255,255,.5)">${raw.toUpperCase()}</span>`;
+
+      // Show output
+      const out = document.getElementById('crystalOutput');
+      out.style.display = 'block';
+      out.scrollIntoView({behavior:'smooth', block:'center'});
+
+      btn.textContent = '✓ Đúc lại';
+      btn.style.opacity = '1';
+      btn.style.background = 'linear-gradient(135deg,#002B5C,var(--blue-bright))';
+    }, 900);
+  }
+
+  // Download crystal
+  function downloadCrystal() {
+    const cv = document.getElementById('crystalCanvas2');
+    const name = document.getElementById('crystalName').textContent || 'tinh-the';
+    const link = document.createElement('a');
+    link.download = name.replace(/\s+/g,'-').toLowerCase() + '.png';
+    link.href = cv.toDataURL('image/png');
+    link.click();
+  }
+
+  // Enter key
+  document.getElementById('codeInput').addEventListener('keydown', e=>{
+    if(e.key==='Enter') generateCrystal();
+  });
+</script>
 </body>
-
 </html>
