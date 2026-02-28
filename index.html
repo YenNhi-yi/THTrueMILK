@@ -1513,19 +1513,8 @@
 
           <!-- Attributes -->
           <div id="crystalAttrs" style="display:flex;flex-direction:column;gap:10px;"></div>
-
-          <!-- Seed display -->
-          <div id="crystalSeedBox" style="margin-top:24px;padding:14px 16px;
-               background:rgba(0,0,0,.3);border-left:2px solid rgba(168,216,240,.4);
-               font-family:'Courier New',monospace;font-size:.72rem;color:rgba(255,255,255,.4);"></div>
-        </div>
-
       </div>
     </div>
-
-    <p class="reveal" style="margin-top:20px;font-size:.76rem;color:rgba(255,255,255,.25);letter-spacing:.05em;">
-      Mỗi mã tạo ra tinh thể độc nhất · Sinh bằng Canvas API · Không cần server
-    </p>
   </div>
 </section>
 
@@ -2421,10 +2410,6 @@
           </div>
           <span style="font-size:.74rem;color:rgba(255,255,255,.65);min-width:28px;text-align:right;">${a.val}</span>
         </div>`).join('');
-
-      document.getElementById('crystalSeedBox').innerHTML =
-        `Seed: <span style="color:${ctype.tag}">${seedNum}</span> &nbsp;·&nbsp; Mã: <span style="opacity:.5">${raw.toUpperCase()}</span>`;
-
       const out = document.getElementById('crystalOutput');
       out.style.display = 'block';
       out.scrollIntoView({ behavior: 'smooth', block: 'center' });
