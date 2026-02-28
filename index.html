@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TH True DNA – Tinh Thể Sữa Độc Bản</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:       #003E7E;
+      --navy-deep:  #002B5C;
+      --navy-dark:  #001830;
+      --blue-mid:   #0057A8;
+      --blue-bright:#0072CE;
+      --sky:        #A8D8F0;
+      --sky-light:  #D6EEFA;
+      --white:      #FFFFFF;
+      --cream:      #F0F6FC;
+      --gold:       #C9A84C;
+      --gold-light: #E8C97A;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy-dark);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── CANVAS ── */
+    #crystalCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 24, 48, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(168,216,240,0.15);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-mark {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--blue-mid), var(--sky));
+      clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+      animation: spinHex 10s linear infinite;
+    }
+
+    @keyframes spinHex {
+      to { transform: rotate(360deg); }
+    }
+
+    .nav-logo span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .nav-logo span em {
+      color: var(--sky);
+      font-style: normal;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color .3s;
+    }
+
+    .nav-links a:hover { color: var(--sky); }
+
+    .nav-cta {
+      padding: 10px 24px;
+      background: transparent;
+      border: 1px solid var(--blue-bright);
+      color: var(--sky);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-bright);
+      color: var(--white);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 60px 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 110%, rgba(0,114,206,0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 15% 25%, rgba(0,62,126,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 70% at 85% 15%, rgba(168,216,240,0.08) 0%, transparent 60%),
+        var(--navy-dark);
+    }
+
+    /* Milk drop decorative circles */
+    .hero-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(168,216,240,0.12);
+    }
+    .hero-circle:nth-child(1) { width: 600px; height: 600px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: expandRing 4s ease-in-out infinite; }
+    .hero-circle:nth-child(2) { width: 900px; height: 900px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: expandRing 4s ease-in-out infinite 1s; }
+    .hero-circle:nth-child(3) { width: 1200px; height: 1200px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: expandRing 4s ease-in-out infinite 2s; }
+
+    @keyframes expandRing {
+      0%   { opacity: 0.5; transform: translate(-50%,-50%) scale(0.95); }
+      50%  { opacity: 0.15; transform: translate(-50%,-50%) scale(1); }
+      100% { opacity: 0; transform: translate(-50%,-50%) scale(1.05); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 820px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border: 1px solid rgba(168,216,240,0.35);
+      background: rgba(168,216,240,0.07);
+      border-radius: 2px;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 32px;
+      animation: fadeUp .8s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--sky);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(1.6); }
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 1.0;
+      margin-bottom: 12px;
+      animation: fadeUp .9s ease .15s both;
+    }
+
+    .hero-title .line-1 { display: block; color: var(--cream); }
+
+    .hero-title .line-2 {
+      display: block;
+      font-style: italic;
+      background: linear-gradient(90deg, var(--sky-light), var(--sky), var(--blue-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.52);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 560px;
+      margin: 24px auto 48px;
+      animation: fadeUp 1s ease .3s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      animation: fadeUp 1s ease .45s both;
+    }
+
+    .btn-primary {
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--navy), var(--blue-bright));
+      border: 1px solid var(--blue-bright);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0,114,206,0.45);
+    }
+
+    .btn-secondary {
+      padding: 16px 40px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.65);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .3s;
+      text-decoration: none;
+      clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--sky);
+      color: var(--sky);
+    }
+
+    /* Crystal shape hero */
+    .hero-crystal {
+      position: absolute;
+      right: 7%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 260px;
+      animation: floatCrystal 7s ease-in-out infinite;
+    }
+
+    @keyframes floatCrystal {
+      0%,100% { transform: translateY(-50%) rotate(0deg); }
+      50%      { transform: translateY(calc(-50% - 22px)) rotate(4deg); }
+    }
+
+    .hero-crystal svg { filter: drop-shadow(0 0 36px rgba(168,216,240,0.55)); }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(30px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ── SECTION HELPERS ── */
+    section { position: relative; z-index: 1; }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--sky);
+      display: block;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: 120px 60px;
+      background: rgba(0,43,92,0.45);
+      backdrop-filter: blur(2px);
+    }
+
+    .about-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* DNA visual */
+    .dna-visual {
+      width: 100%;
+      max-width: 440px;
+      aspect-ratio: 1;
+      position: relative;
+    }
+
+    .dna-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid;
+      animation: spinRing linear infinite;
+    }
+
+    .dna-ring:nth-child(1) { inset:0;   border-color:rgba(0,114,206,.25); animation-duration:20s; }
+    .dna-ring:nth-child(2) { inset:12%; border-color:rgba(168,216,240,.2); animation-duration:15s; animation-direction:reverse; }
+    .dna-ring:nth-child(3) { inset:24%; border-color:rgba(201,168,76,.3);  animation-duration:10s; }
+
+    @keyframes spinRing { to { transform:rotate(360deg); } }
+
+    .dna-center {
+      position: absolute;
+      inset: 36%;
+      background: radial-gradient(circle, rgba(168,216,240,.25), rgba(0,62,126,.6));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--sky);
+      border: 1px solid rgba(168,216,240,.35);
+    }
+
+    .orbit-dot {
+      position: absolute;
+      border-radius: 50%;
+      top: calc(50% - 4px);
+      left: calc(50% - 4px);
+      width: 8px; height: 8px;
+    }
+
+    .orbit-dot:nth-child(4) {
+      background: var(--sky); box-shadow: 0 0 10px var(--sky);
+      animation: orbitA 4s linear infinite; margin-left: 46%;
+    }
+    .orbit-dot:nth-child(5) {
+      background: var(--gold-light); box-shadow: 0 0 10px var(--gold);
+      animation: orbitA 6s linear infinite reverse; margin-left: 36%;
+    }
+    .orbit-dot:nth-child(6) {
+      background: #fff; box-shadow: 0 0 8px #fff;
+      animation: orbitA 8s linear infinite; margin-left: 28%;
+    }
+
+    @keyframes orbitA {
+      from { transform: rotate(0deg) translateX(0); }
+      to   { transform: rotate(360deg) translateX(0); }
+    }
+
+    .about-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: var(--cream);
+    }
+
+    .about-text h2 em { color: var(--sky); font-style: italic; }
+
+    .about-text p {
+      font-size: 0.96rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,.58);
+      margin-bottom: 18px;
+    }
+
+    .about-text p strong { color: var(--cream); font-weight: 500; }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      padding: 6px 14px;
+      border: 1px solid rgba(0,114,206,.35);
+      background: rgba(0,114,206,.08);
+      color: var(--sky);
+      font-size: 0.73rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how { padding: 120px 60px; }
+
+    .how-inner { max-width: 1200px; margin: 0 auto; }
+
+    .how-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .how-header .section-label { justify-content: center; }
+    .how-header .section-label::before { display: inline-block; }
+
+    .how-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 14px;
+    }
+
+    .how-header h2 em { color: var(--sky); font-style: italic; }
+    .how-header p { color: rgba(255,255,255,.48); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: rgba(0,87,168,0.2);
+      border: 1px solid rgba(0,87,168,0.25);
+    }
+
+    .step {
+      background: var(--navy-dark);
+      padding: 48px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+
+    .step:hover { background: rgba(0,43,92,0.8); }
+
+    .step::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 2px; width: 0;
+      background: linear-gradient(90deg, var(--navy), var(--sky));
+      transition: width .5s ease;
+    }
+
+    .step:hover::after { width: 100%; }
+
+    .step:not(:last-child)::before {
+      content: '→';
+      position: absolute;
+      right: -13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--sky);
+      font-size: 1.1rem;
+      z-index: 2;
+    }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.8rem;
+      font-weight: 300;
+      color: rgba(168,216,240,.12);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .step-icon { width: 46px; height: 46px; margin-bottom: 18px; }
+
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .step p { font-size: 0.86rem; line-height: 1.75; color: rgba(255,255,255,.48); }
+
+    /* ── CRYSTALS ── */
+    .crystals {
+      padding: 120px 60px;
+      background: rgba(0,43,92,0.35);
+      overflow: hidden;
+    }
+
+    .crystals-inner { max-width: 1200px; margin: 0 auto; }
+
+    .crystals-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 60px;
+    }
+
+    .crystals-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--cream);
+    }
+
+    .crystals-header h2 em { color: var(--gold-light); font-style: italic; }
+    .crystals-header p { color: rgba(255,255,255,.5); line-height: 1.8; }
+
+    .crystal-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .crystal-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.07);
+      cursor: pointer;
+    }
+
+    .crystal-card-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform .6s ease;
+    }
+
+    .crystal-card:hover .crystal-card-bg { transform: scale(1.05); }
+
+    .crystal-card-bg.sunflower {
+      background: radial-gradient(ellipse at 50% 30%, #FFE066 0%, #F5A623 45%, #8B5E0A 100%);
+    }
+
+    .crystal-card-bg.pure {
+      background: radial-gradient(ellipse at 50% 30%, #E8F4FF 0%, #A8D8F0 40%, #1C6FAD 100%);
+    }
+
+    .crystal-card-bg.emerald {
+      background: radial-gradient(ellipse at 50% 30%, #D6EEFA 0%, #4DB8E8 40%, #003E7E 100%);
+    }
+
+    .crystal-inner-shape {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .crystal-inner-shape svg {
+      width: 62%;
+      opacity: .88;
+      filter: drop-shadow(0 0 22px rgba(255,255,255,.55));
+      animation: shimmer 4s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%,100% { filter: drop-shadow(0 0 18px rgba(255,255,255,.5)); }
+      50%      { filter: drop-shadow(0 0 42px rgba(255,255,255,.9)); }
+    }
+
+    .crystal-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,20,50,.88));
+      padding: 32px 22px 22px;
+      transform: translateY(28px);
+      opacity: 0;
+      transition: all .4s ease;
+    }
+
+    .crystal-card:hover .crystal-overlay { transform: translateY(0); opacity: 1; }
+
+    .crystal-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .crystal-desc { font-size: 0.78rem; color: rgba(255,255,255,.68); line-height: 1.6; }
+
+    .crystal-badge {
+      position: absolute;
+      top: 14px; right: 14px;
+      padding: 4px 10px;
+      background: rgba(0,0,0,.45);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.2);
+      font-size: 0.63rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.8);
+    }
+
+    /* ── INPUT SECTION ── */
+    .input-section {
+      padding: 120px 60px;
+      text-align: center;
+      background: radial-gradient(ellipse 80% 80% at 50% 110%, rgba(0,114,206,.22), transparent 68%), var(--navy-dark);
+    }
+
+    .input-inner { max-width: 620px; margin: 0 auto; }
+
+    .input-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+
+    .input-inner h2 em { color: var(--sky); font-style: italic; }
+
+    .input-inner > p {
+      color: rgba(255,255,255,.48);
+      margin-bottom: 48px;
+      line-height: 1.75;
+    }
+
+    .code-input-wrap {
+      display: flex;
+      margin-bottom: 18px;
+    }
+
+    .code-input {
+      flex: 1;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(0,114,206,.35);
+      border-right: none;
+      padding: 18px 22px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+      outline: none;
+      transition: border-color .3s;
+    }
+
+    .code-input::placeholder { color: rgba(255,255,255,.2); }
+    .code-input:focus { border-color: var(--sky); }
+
+    .code-submit {
+      padding: 18px 32px;
+      background: linear-gradient(135deg, var(--navy), var(--blue-bright));
+      border: 1px solid var(--blue-bright);
+      border-left: none;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .3s;
+      white-space: nowrap;
+    }
+
+    .code-submit:hover { box-shadow: 0 0 30px rgba(0,114,206,.45); }
+
+    .input-note {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,.28);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(0,0,0,.4);
+      border-top: 1px solid rgba(0,114,206,.15);
+      padding: 44px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.45);
+    }
+
+    .footer-brand em { color: var(--sky); font-style: normal; }
+    .footer-copy { font-size: 0.76rem; color: rgba(255,255,255,.22); letter-spacing: .05em; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-crystal { display: none; }
+      .about { padding: 80px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .how { padding: 80px 24px; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .crystals { padding: 80px 24px; }
+      .crystals-header { grid-template-columns: 1fr; gap: 20px; }
+      .crystal-grid { grid-template-columns: 1fr 1fr; }
+      .input-section { padding: 80px 24px; }
+      footer { padding: 28px 20px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (max-width: 560px) {
+      .steps { grid-template-columns: 1fr; }
+      .crystal-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="crystalCanvas"></canvas>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark"></div>
+    <span>TH <em>True DNA</em></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">Chiến dịch</a></li>
+    <li><a href="#how">Cách thức</a></li>
+    <li><a href="#crystals">Tinh thể</a></li>
+    <li><a href="#redeem">Nhận ngay</a></li>
+  </ul>
+  <button class="nav-cta">Nhập mã ngay</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Chiến dịch độc bản · TH True Milk × AI Art</div>
+    <h1 class="hero-title">
+      <span class="line-1">Tinh Thể Sữa</span>
+      <span class="line-2">Chỉ Của Riêng Bạn</span>
+    </h1>
+    <p class="hero-sub">
+      Mỗi mã số thẻ cào dưới lốc sữa TH là một "hạt giống số" độc nhất —
+      được AI kiến tạo thành tác phẩm nghệ thuật tinh thể sữa lộng lẫy, mang dấu ấn chỉ bạn mới có.
+    </p>
+    <div class="hero-actions">
+      <a href="#redeem" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Đúc tinh thể ngay
+      </a>
+      <a href="#about" class="btn-secondary">Tìm hiểu thêm</a>
+    </div>
+  </div>
+
+  <!-- Floating crystal -->
+  <div class="hero-crystal">
+    <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="cg1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#D6EEFA" stop-opacity="0.95"/>
+          <stop offset="50%" stop-color="#0072CE" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#002B5C" stop-opacity="0.98"/>
+        </linearGradient>
+        <linearGradient id="cg2" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#A8D8F0" stop-opacity="0.75"/>
+          <stop offset="100%" stop-color="#0057A8" stop-opacity="0.92"/>
+        </linearGradient>
+      </defs>
+      <polygon points="100,10 160,60 180,140 100,270 20,140 40,60" fill="url(#cg1)" opacity="0.92"/>
+      <polygon points="100,10 160,60 100,100" fill="#D6EEFA" opacity="0.45"/>
+      <polygon points="100,10 40,60 100,100"  fill="#A8D8F0" opacity="0.35"/>
+      <polygon points="160,60 180,140 100,100" fill="url(#cg2)" opacity="0.72"/>
+      <polygon points="40,60 20,140 100,100"  fill="#0057A8" opacity="0.6"/>
+      <polygon points="180,140 100,270 100,100" fill="#002B5C" opacity="0.82"/>
+      <polygon points="20,140 100,270 100,100"  fill="#0072CE" opacity="0.42"/>
+      <line x1="100" y1="10" x2="100" y2="270" stroke="rgba(255,255,255,0.12)" stroke-width="0.6"/>
+      <ellipse cx="100" cy="54" rx="22" ry="8" fill="white" opacity="0.2"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="dna-visual">
+        <div class="dna-ring"></div>
+        <div class="dna-ring"></div>
+        <div class="dna-ring"></div>
+        <div class="dna-center">DNA</div>
+        <div class="orbit-dot"></div>
+        <div class="orbit-dot"></div>
+        <div class="orbit-dot"></div>
+      </div>
+    </div>
+
+    <div class="about-text reveal">
+      <div class="section-label">Về chiến dịch</div>
+      <h2>Khoa học · Nghệ thuật ·<br><em>Cá nhân hóa cực hạn</em></h2>
+      <p>
+        <strong>TH True DNA</strong> lấy cảm hứng từ sự thuần khiết của giọt sữa "Thật" — biến mỗi mã số thẻ cào dưới lốc sữa TH thành một <strong>"hạt giống số"</strong> (Seed) độc nhất vô nhị.
+      </p>
+      <p>
+        Thay vì những phần quà vật chất thông thường, chúng tôi tặng cho mỗi khách hàng một <strong>tác phẩm nghệ thuật tinh thể sữa</strong> được kiến tạo bởi trí tuệ nhân tạo — sự kết hợp hoàn hảo giữa khoa học, nghệ thuật và cá nhân hóa trong kỷ nguyên số.
+      </p>
+      <div class="about-tags">
+        <span class="tag">AI Generated Art</span>
+        <span class="tag">Unique Seed</span>
+        <span class="tag">Digital Collectible</span>
+        <span class="tag">TH True Milk</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="how-header reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span style="width:32px;height:1px;background:var(--sky);display:inline-block;"></span>
+        Cách thức
+      </div>
+      <h2>Hành Trình <em>Đúc Tinh Thể</em></h2>
+      <p>4 bước đơn giản để sở hữu tác phẩm nghệ thuật số độc bản của riêng bạn</p>
+    </div>
+
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <svg class="step-icon" viewBox="0 0 48 48" fill="none">
+          <rect x="8" y="6" width="32" height="36" rx="2" stroke="#A8D8F0" stroke-width="1.5"/>
+          <rect x="14" y="26" width="20" height="10" rx="1" stroke="#A8D8F0" stroke-width="1.5"/>
+          <circle cx="24" cy="17" r="5" stroke="#0072CE" stroke-width="1.5"/>
+        </svg>
+        <h3>Mua lốc sữa TH</h3>
+        <p>Mỗi lốc sữa TH True Milk đều chứa một mã số định danh duy nhất bên dưới.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <svg class="step-icon" viewBox="0 0 48 48" fill="none">
+          <rect x="6" y="6" width="16" height="16" rx="2" stroke="#A8D8F0" stroke-width="1.5"/>
+          <rect x="26" y="6" width="16" height="16" rx="2" stroke="#A8D8F0" stroke-width="1.5"/>
+          <rect x="6" y="26" width="16" height="16" rx="2" stroke="#A8D8F0" stroke-width="1.5"/>
+          <rect x="30" y="30" width="8" height="8" rx="1" fill="#A8D8F0" opacity="0.45"/>
+          <rect x="10" y="10" width="8" height="8" rx="1" fill="#0072CE" opacity="0.4"/>
+          <rect x="30" y="10" width="8" height="8" rx="1" fill="#0072CE" opacity="0.4"/>
+          <rect x="10" y="30" width="8" height="8" rx="1" fill="#0072CE" opacity="0.4"/>
+        </svg>
+        <h3>Quét mã QR</h3>
+        <p>Quét QR trên bao bì, bạn được dẫn đến "Xưởng đúc tinh thể" của chiến dịch.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <svg class="step-icon" viewBox="0 0 48 48" fill="none">
+          <rect x="8" y="14" width="32" height="24" rx="2" stroke="#A8D8F0" stroke-width="1.5"/>
+          <path d="M16 26h4M22 22h4M28 26h4" stroke="#0072CE" stroke-width="2" stroke-linecap="round"/>
+          <path d="M24 10v4" stroke="#A8D8F0" stroke-width="1.5"/>
+        </svg>
+        <h3>Nhập mã thẻ cào</h3>
+        <p>Chỉ cần nhập dãy số mã thẻ cào — đây chính là "hạt giống" tạo nên tinh thể của bạn.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <svg class="step-icon" viewBox="0 0 48 48" fill="none">
+          <polygon points="24,4 38,16 42,30 24,44 6,30 10,16" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+          <polygon points="24,4 38,16 24,22" fill="#E8C97A" opacity="0.3"/>
+          <polygon points="24,4 10,16 24,22" fill="#C9A84C" opacity="0.3"/>
+          <line x1="24" y1="4" x2="24" y2="44" stroke="rgba(201,168,76,0.3)" stroke-width="0.8"/>
+        </svg>
+        <h3>Nhận tinh thể độc bản</h3>
+        <p>AI phân tích dãy số và "đúc" ngay tác phẩm tinh thể sữa lộng lẫy chỉ dành riêng cho bạn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRYSTALS -->
+<section class="crystals" id="crystals">
+  <div class="crystals-inner">
+    <div class="crystals-header reveal">
+      <div>
+        <div class="section-label">Bộ sưu tập</div>
+        <h2>Những Tinh Thể<br><em>Lộng Lẫy</em> Chờ Bạn</h2>
+      </div>
+      <p>Mỗi tinh thể mang màu sắc và ý nghĩa riêng biệt, được sinh ra từ chính dãy số độc nhất của bạn. Không ai có tinh thể giống ai.</p>
+    </div>
+
+    <div class="crystal-grid reveal">
+      <div class="crystal-card">
+        <div class="crystal-card-bg sunflower"></div>
+        <div class="crystal-inner-shape">
+          <svg viewBox="0 0 120 160" fill="none">
+            <polygon points="60,5 100,35 115,80 60,155 5,80 20,35" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
+            <polygon points="60,5 100,35 60,60" fill="rgba(255,220,60,0.5)"/>
+            <polygon points="60,5 20,35 60,60"  fill="rgba(255,240,120,0.4)"/>
+            <ellipse cx="60" cy="30" rx="16" ry="6" fill="rgba(255,255,255,0.3)"/>
+          </svg>
+        </div>
+        <div class="crystal-badge">Hướng Dương</div>
+        <div class="crystal-overlay">
+          <div class="crystal-name">Tinh Thể Năng Lượng</div>
+          <div class="crystal-desc">Tỏa sáng như ánh bình minh — dành cho những tâm hồn rực rỡ và tràn đầy sức sống.</div>
+        </div>
+      </div>
+
+      <div class="crystal-card">
+        <div class="crystal-card-bg pure"></div>
+        <div class="crystal-inner-shape">
+          <svg viewBox="0 0 120 160" fill="none">
+            <polygon points="60,5 100,35 115,80 60,155 5,80 20,35" fill="rgba(255,255,255,0.32)" stroke="rgba(255,255,255,0.75)" stroke-width="0.8"/>
+            <polygon points="60,5 100,35 60,60" fill="rgba(200,240,255,0.5)"/>
+            <polygon points="60,5 20,35 60,60"  fill="rgba(255,255,255,0.45)"/>
+            <ellipse cx="60" cy="30" rx="18" ry="7" fill="rgba(255,255,255,0.55)"/>
+          </svg>
+        </div>
+        <div class="crystal-badge">Pha Lê</div>
+        <div class="crystal-overlay">
+          <div class="crystal-name">Tinh Thể Thuần Khiết</div>
+          <div class="crystal-desc">Trong suốt như giọt sữa đầu tiên — biểu tượng của sự tinh khiết và chân thật tự nhiên.</div>
+        </div>
+      </div>
+
+      <div class="crystal-card">
+        <div class="crystal-card-bg emerald"></div>
+        <div class="crystal-inner-shape">
+          <svg viewBox="0 0 120 160" fill="none">
+            <polygon points="60,5 100,35 115,80 60,155 5,80 20,35" fill="rgba(255,255,255,0.22)" stroke="rgba(168,216,240,0.65)" stroke-width="0.8"/>
+            <polygon points="60,5 100,35 60,60" fill="rgba(100,180,240,0.5)"/>
+            <polygon points="60,5 20,35 60,60"  fill="rgba(150,220,255,0.4)"/>
+            <ellipse cx="60" cy="30" rx="16" ry="6" fill="rgba(200,240,255,0.45)"/>
+          </svg>
+        </div>
+        <div class="crystal-badge">Đại Dương</div>
+        <div class="crystal-overlay">
+          <div class="crystal-name">Tinh Thể Thảo Nguyên</div>
+          <div class="crystal-desc">Xanh mát như bầu trời Ba Vì — nơi những chú bò TH gặm cỏ tự nhiên mỗi sớm bình minh.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REDEEM -->
+<section class="input-section" id="redeem">
+  <div class="input-inner">
+    <div class="section-label" style="justify-content:center;">
+      <span style="width:32px;height:1px;background:var(--sky);display:inline-block;"></span>
+      Xưởng đúc tinh thể
+    </div>
+    <h2 class="reveal">Nhập Mã — <em>Nhận Ngay</em><br>Tinh Thể Của Bạn</h2>
+    <p class="reveal">Dãy số thẻ cào dưới lốc sữa TH chính là chìa khóa.<br>Hãy nhập vào để AI kiến tạo tác phẩm nghệ thuật độc bản.</p>
+    <div class="code-input-wrap reveal">
+      <input id="codeInput" class="code-input" type="text" placeholder="Nhập mã số thẻ cào (VD: TH-2026-XXXXXXXX)" maxlength="24"/>
+      <button id="codeSubmit" class="code-submit">Đúc Tinh Thể →</button>
+    </div>
+    <p class="input-note reveal">Mỗi mã chỉ sử dụng một lần · Tác phẩm độc bản chỉ thuộc về bạn</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">TH <em>true MILK</em> × True DNA</div>
+  <div class="footer-copy">© 2026 TH True Milk. All rights reserved.</div>
+</footer>
+
+<script>
+  /* ── CANVAS PARTICLES ── */
+  const canvas = document.getElementById('crystalCanvas');
+  const ctx    = canvas.getContext('2d');
+
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x     = Math.random() * canvas.width;
+      this.y     = Math.random() * canvas.height;
+      this.size  = Math.random() * 1.8 + 0.4;
+      this.vx    = (Math.random() - .5) * 0.3;
+      this.vy    = -Math.random() * 0.38 - 0.08;
+      this.alpha = Math.random() * 0.55 + 0.1;
+      this.life  = 0;
+      this.maxLife = Math.random() * 200 + 100;
+      const r = Math.random();
+      this.color = r > .65
+        ? `rgba(168,216,240,${this.alpha})`
+        : r > .35
+          ? `rgba(0,114,206,${this.alpha})`
+          : `rgba(201,168,76,${this.alpha})`;
+      this.diamond = Math.random() > .82;
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy; this.life++;
+      if (this.life > this.maxLife || this.y < -10) this.reset();
+    }
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = this.alpha * (1 - this.life / this.maxLife);
+      ctx.fillStyle = this.color;
+      if (this.diamond) {
+        const s = this.size * 2.2;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y - s);
+        ctx.lineTo(this.x + s * .55, this.y);
+        ctx.lineTo(this.x, this.y + s);
+        ctx.lineTo(this.x - s * .55, this.y);
+        ctx.closePath();
+        ctx.fill();
+      } else {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+  }
+
+  const particles = Array.from({ length: 90 }, () => new Particle());
+
+  (function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  })();
+
+  /* ── SCROLL REVEAL ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.1 }).observe
+    ? (() => {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+          });
+        }, { threshold: 0.1 });
+        revealEls.forEach(r => obs.observe(r));
+      })()
+    : revealEls.forEach(r => r.classList.add('visible'));
+
+  /* ── CODE INPUT ── */
+  const inp = document.getElementById('codeInput');
+  const btn = document.getElementById('codeSubmit');
+
+  inp.addEventListener('input', () => {
+    inp.value = inp.value.toUpperCase().replace(/[^A-Z0-9\-]/g, '');
+  });
+
+  btn.addEventListener('click', () => {
+    if (!inp.value.trim()) {
+      inp.style.borderColor = 'rgba(255,80,80,.6)';
+      inp.placeholder = 'Vui lòng nhập mã thẻ cào!';
+      setTimeout(() => {
+        inp.style.borderColor = 'rgba(0,114,206,.35)';
+        inp.placeholder = 'Nhập mã số thẻ cào (VD: TH-2026-XXXXXXXX)';
+      }, 2200);
+      return;
+    }
+    btn.textContent = '✦ Đang đúc...';
+    btn.style.background = 'linear-gradient(135deg, #002B5C, #0057A8)';
+    setTimeout(() => {
+      btn.textContent = '✓ Tinh thể đã sẵn sàng!';
+      btn.style.background = 'linear-gradient(135deg, #C9A84C, #E8C97A)';
+      btn.style.color = '#001830';
+    }, 1800);
+  });
+</script>
+</body>
+</html>
