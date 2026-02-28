@@ -1570,10 +1570,9 @@
   document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
 
   /* ══════════════════════════════════════
-     CRYSTAL GENERATOR ENGINE
+     CRYSTAL GENERATOR ENGINE — v7
   ══════════════════════════════════════ */
 
-  // Seeded pseudo-random (mulberry32)
   function seededRNG(seed) {
     let s = seed >>> 0;
     return function() {
@@ -1583,238 +1582,164 @@
       return ((t ^ t>>>14) >>> 0) / 4294967296;
     };
   }
-
-  // Hash string → number
   function hashCode(str) {
     let h = 2166136261;
-    for (let i = 0; i < str.length; i++) {
-      h ^= str.charCodeAt(i);
-      h = Math.imul(h, 16777619);
-    }
+    for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
     return h >>> 0;
   }
+  function poly(c, pts) {
+    c.beginPath(); c.moveTo(pts[0][0],pts[0][1]);
+    for(let i=1;i<pts.length;i++) c.lineTo(pts[i][0],pts[i][1]);
+    c.closePath();
+  }
+  function addSparkles(c, W, H, hue, rng, n, temp) {
+    for(let i=0;i<n;i++){
+      const sx=W*.08+rng()*W*.84, sy=H*.05+rng()*H*.9, ss=rng()*2.8+.4;
+      c.save(); c.globalAlpha=rng()*.45+.08;
+      if(rng()>.45){
+        const sh=temp==='warm'?hue+25:temp==='cool'?hue-15:hue;
+        c.fillStyle=`hsla(${sh},75%,94%,1)`;
+        c.beginPath();
+        c.moveTo(sx,sy-ss*1.8); c.lineTo(sx+ss*.5,sy-ss*.4); c.lineTo(sx+ss*1.8,sy);
+        c.lineTo(sx+ss*.5,sy+ss*.4); c.lineTo(sx,sy+ss*1.8); c.lineTo(sx-ss*.5,sy+ss*.4);
+        c.lineTo(sx-ss*1.8,sy); c.lineTo(sx-ss*.5,sy-ss*.4); c.closePath(); c.fill();
+      } else {
+        c.fillStyle=`rgba(255,255,255,${rng()*.3+.1})`;
+        c.beginPath(); c.arc(sx,sy,ss*.55,0,Math.PI*2); c.fill();
+      }
+      c.restore();
+    }
+  }
 
-  // Crystal definitions
+
+  /* PHA LÊ — diamond 8-facet */
+  function drawPhaLe(c,W,H,rng){
+    const cx=W/2+(rng()-.5)*18, hue=195+rng()*20;
+    const bg=c.createRadialGradient(cx,H*.45,8,cx,H*.5,W*.75);
+    bg.addColorStop(0,`hsl(${hue},55%,13%)`); bg.addColorStop(.6,`hsl(210,50%,7%)`); bg.addColorStop(1,`hsl(215,45%,3%)`);
+    c.fillStyle=bg; c.fillRect(0,0,W,H);
+    for(let r=0;r<3;r++){ const g=c.createRadialGradient(cx,H*.42,5,cx,H*.42,W*(.3+r*.12)); g.addColorStop(0,`hsla(${hue},80%,90%,${.1-.03*r})`); g.addColorStop(1,'transparent'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+    const ty=H*.07,by=H*.91,sh=rng()*.4+.5,tw=W*(rng()*.06+.1);
+    const mly=H*.42+rng()*H*.1,mry=H*.38+rng()*H*.1,mlx=cx-W*(.28+rng()*.06),mrx=cx+W*(.28+rng()*.06);
+    c.save(); c.globalAlpha=.18; poly(c,[[cx,ty+8],[mrx+8,mry],[cx+tw+8,by+6],[cx+8,by+10],[cx-tw+8,by+6],[mlx+8,mly]]); c.fillStyle='#000'; c.fill(); c.restore();
+    poly(c,[[cx,ty],[mlx,mly],[cx-tw,by],[cx,by]]); const f1=c.createLinearGradient(cx,ty,mlx,mly); f1.addColorStop(0,`hsla(${hue},50%,92%,.75)`); f1.addColorStop(.5,`hsla(${hue},65%,72%,.7)`); f1.addColorStop(1,`hsla(${hue},55%,38%,.85)`); c.fillStyle=f1; c.fill();
+    poly(c,[[cx,ty],[mrx,mry],[cx+tw,by],[cx,by]]); const f2=c.createLinearGradient(cx,ty,mrx,mry); f2.addColorStop(0,`hsla(${hue+15},40%,98%,.85)`); f2.addColorStop(.4,`hsla(${hue},60%,80%,.75)`); f2.addColorStop(1,`hsla(${hue+5},50%,42%,.9)`); c.fillStyle=f2; c.fill();
+    poly(c,[[mlx,mly],[mrx,mry],[cx+tw,by],[cx-tw,by]]); const f3=c.createLinearGradient(cx,mly,cx,by); f3.addColorStop(0,`hsla(${hue},45%,65%,.5)`); f3.addColorStop(1,`hsla(${hue},40%,22%,.7)`); c.fillStyle=f3; c.fill();
+    poly(c,[[cx-tw,ty+H*.04],[cx,ty],[cx+tw,ty+H*.04],[cx,ty+H*.1]]); const tc=c.createRadialGradient(cx,ty+H*.05,2,cx,ty+H*.05,tw*2); tc.addColorStop(0,`rgba(255,255,255,${sh*.65+.25})`); tc.addColorStop(1,`hsla(${hue},50%,80%,.2)`); c.fillStyle=tc; c.fill();
+    c.beginPath(); c.moveTo(cx,ty); c.lineTo(cx+(rng()-.5)*12,by); c.strokeStyle=`rgba(255,255,255,${sh*.2+.07})`; c.lineWidth=1.1; c.stroke();
+    for(let i=0;i<4;i++){ const fy=H*.25+i*H*.14+rng()*H*.05,fw=W*(.15+rng()*.12); c.save(); c.globalAlpha=rng()*.08+.03; c.beginPath(); c.ellipse(cx+(rng()-.5)*20,fy,fw,H*.012,rng()*.3-.15,0,Math.PI*2); c.fillStyle='white'; c.fill(); c.restore(); }
+    for(let i=0;i<4+Math.floor(rng()*3);i++){ const fy=H*.2+rng()*H*.55,fx=cx+(rng()-.5)*W*.35; c.beginPath(); c.moveTo(fx,fy); c.lineTo(fx+(rng()-.5)*W*.28,fy+(rng()-.5)*H*.22); c.strokeStyle=`rgba(255,255,255,${rng()*.1+.03})`; c.lineWidth=.55; c.stroke(); }
+    poly(c,[[cx,ty],[mrx,mry],[cx+tw,by],[cx-tw,by],[mlx,mly]]); c.strokeStyle=`hsla(${hue},55%,88%,.28)`; c.lineWidth=.9; c.stroke();
+    c.save(); c.globalAlpha=sh*.3+.12; c.beginPath(); c.ellipse(cx,ty+H*.14,W*.07,H*.025,0,0,Math.PI*2); c.fillStyle='rgba(255,255,255,.9)'; c.fill(); c.restore();
+    addSparkles(c,W,H,hue,rng,14,'cool');
+  }
+
+  /* HƯỚNG DƯƠNG — multi-shard starburst */
+  function drawHuongDuong(c,W,H,rng){
+    const cx=W/2+(rng()-.5)*20,cy=H*.46,hue=38+rng()*18;
+    const bg=c.createRadialGradient(cx,cy,5,cx,H*.6,W*.8); bg.addColorStop(0,`hsl(${hue+5},60%,11%)`); bg.addColorStop(.5,`hsl(${hue-5},50%,6%)`); bg.addColorStop(1,`hsl(30,40%,3%)`); c.fillStyle=bg; c.fillRect(0,0,W,H);
+    const glow=c.createRadialGradient(cx,cy,5,cx,cy,W*.45); glow.addColorStop(0,`hsla(${hue},95%,70%,.22)`); glow.addColorStop(.5,`hsla(${hue+10},80%,55%,.1)`); glow.addColorStop(1,'transparent'); c.fillStyle=glow; c.fillRect(0,0,W,H);
+    const sc=[{angle:-.9,h:.62,w:.13,dist:.08,b:0},{angle:-.25,h:.7,w:.15,dist:.04,b:.05},{angle:.35,h:.64,w:.13,dist:.06,b:.02},{angle:.85,h:.56,w:.11,dist:.09,b:-.05},{angle:-.55,h:.5,w:.1,dist:.11,b:-.08}];
+    sc.forEach((s,i)=>{ const sh=H*s.h,sw=W*s.w,ox=Math.sin(s.angle)*W*s.dist,oy=Math.cos(s.angle)*H*s.dist; c.save(); c.translate(cx+ox,cy+oy); c.rotate(s.angle*.5); const pts=[[0,-sh*.48],[sw*.55,-sh*.2],[sw*.65,0],[sw*.5,sh*.35],[0,sh*.52],[-sw*.5,sh*.35],[-sw*.65,0],[-sw*.55,-sh*.2]]; poly(c,pts); const sg=c.createLinearGradient(0,-sh*.45,0,sh*.5),lv=75+s.b*80; sg.addColorStop(0,`hsla(${hue+20+i*3},70%,${lv+12}%,.88)`); sg.addColorStop(.3,`hsla(${hue+10},85%,${lv}%,.82)`); sg.addColorStop(.7,`hsla(${hue},75%,${lv-18}%,.85)`); sg.addColorStop(1,`hsla(${hue-5},65%,${lv-35}%,.9)`); c.fillStyle=sg; c.fill(); poly(c,[[0,-sh*.48],[-sw*.55,-sh*.2],[-sw*.65,0],[-sw*.4,sh*.15],[0,0]]); const lh=c.createLinearGradient(-sw*.3,-sh*.3,0,0); lh.addColorStop(0,`hsla(${hue+25},60%,92%,.5)`); lh.addColorStop(1,`hsla(${hue},70%,65%,.2)`); c.fillStyle=lh; c.fill(); poly(c,[[0,-sh*.48],[sw*.4,-sh*.22],[0,-sh*.28],[-sw*.4,-sh*.22]]); c.fillStyle=`hsla(${hue+15},55%,96%,${.35+i*.04})`; c.fill(); c.beginPath(); c.moveTo(0,-sh*.45); c.lineTo((rng()-.5)*6,sh*.48); c.strokeStyle='rgba(255,255,255,.15)'; c.lineWidth=.9; c.stroke(); poly(c,pts); c.strokeStyle=`hsla(${hue+20},70%,80%,.25)`; c.lineWidth=.7; c.stroke(); c.restore(); });
+    const orb=c.createRadialGradient(cx,cy,0,cx,cy,W*.06); orb.addColorStop(0,`hsla(${hue+15},80%,98%,.9)`); orb.addColorStop(.5,`hsla(${hue},90%,80%,.6)`); orb.addColorStop(1,'transparent'); c.fillStyle=orb; c.beginPath(); c.arc(cx,cy,W*.06,0,Math.PI*2); c.fill();
+    addSparkles(c,W,H,hue,rng,16,'warm');
+  }
+
+  /* ĐẠI DƯƠNG — 3 tall columns */
+  function drawDaiDuong(c,W,H,rng){
+    const cx=W/2+(rng()-.5)*15,hue=160+rng()*28;
+    const bg=c.createRadialGradient(cx,H*.5,5,cx,H*.6,W*.8); bg.addColorStop(0,`hsl(${hue-5},55%,10%)`); bg.addColorStop(.6,`hsl(${hue+10},45%,5%)`); bg.addColorStop(1,`hsl(200,40%,3%)`); c.fillStyle=bg; c.fillRect(0,0,W,H);
+    const glow=c.createRadialGradient(cx,H*.6,10,cx,H*.4,W*.6); glow.addColorStop(0,`hsla(${hue},85%,60%,.16)`); glow.addColorStop(.7,`hsla(${hue+20},70%,50%,.07)`); glow.addColorStop(1,'transparent'); c.fillStyle=glow; c.fillRect(0,0,W,H);
+    for(let i=0;i<3;i++){ c.save(); c.globalAlpha=.05; c.beginPath(); c.ellipse(cx+(rng()-.5)*W*.4,H*(.3+rng()*.4),W*(.1+rng()*.15),H*.02,rng()*.5,0,Math.PI*2); c.fillStyle=`hsla(${hue+10},80%,85%,1)`; c.fill(); c.restore(); }
+    const cols=[{x:cx-W*.2,topY:H*.1,h:H*.74,w:W*.17,r:rng(),lean:W*.012},{x:cx+W*.03,topY:H*.05,h:H*.82,w:W*.19,r:rng(),lean:-W*.008},{x:cx+W*.24,topY:H*.16,h:H*.68,w:W*.14,r:rng(),lean:W*.015}];
+    cols.forEach((col,i)=>{ const hw=col.w/2,lean=col.lean; const pts=[[col.x+lean*.5,col.topY],[col.x+hw*.65+lean,col.topY+col.h*.07],[col.x+hw,col.topY+col.h*.25],[col.x+hw*.9,col.topY+col.h*.75],[col.x+hw*.6,col.topY+col.h],[col.x,col.topY+col.h+H*.01],[col.x-hw*.6,col.topY+col.h],[col.x-hw*.9,col.topY+col.h*.75],[col.x-hw,col.topY+col.h*.25],[col.x-hw*.65+lean,col.topY+col.h*.07]]; const tipX=col.x+lean*.5,tipY=col.topY; poly(c,[[tipX,tipY],pts[1],pts[2],pts[3],pts[4],[col.x,col.topY+col.h]]); const rf=c.createLinearGradient(tipX,tipY,col.x+hw,col.topY+col.h); rf.addColorStop(0,`hsla(${hue+15},70%,82%,.82)`); rf.addColorStop(.35,`hsla(${hue+8},75%,60%,.78)`); rf.addColorStop(.7,`hsla(${hue},65%,38%,.85)`); rf.addColorStop(1,`hsla(${hue-5},55%,20%,.9)`); c.fillStyle=rf; c.fill(); poly(c,[[tipX,tipY],pts[9],pts[8],pts[7],pts[6],[col.x,col.topY+col.h]]); const lf=c.createLinearGradient(tipX,tipY,col.x-hw,col.topY+col.h); lf.addColorStop(0,`hsla(${hue+25},55%,88%,.7)`); lf.addColorStop(.4,`hsla(${hue+10},65%,55%,.65)`); lf.addColorStop(1,`hsla(${hue},50%,28%,.8)`); c.fillStyle=lf; c.fill(); poly(c,[[tipX,tipY],pts[1],pts[9]]); c.fillStyle=`hsla(${hue+30},50%,95%,${.38+i*.04})`; c.fill(); poly(c,[pts[4],pts[5],pts[6]]); c.fillStyle=`hsla(${hue},45%,18%,.85)`; c.fill(); c.beginPath(); c.moveTo(tipX,tipY); c.lineTo(col.x+(col.r-.5)*8,col.topY+col.h+H*.01); c.strokeStyle='rgba(255,255,255,.12)'; c.lineWidth=.8; c.stroke(); for(let j=0;j<3;j++){ const fy=col.topY+col.h*.2+col.r*col.h*.5; c.save(); c.globalAlpha=.06; c.beginPath(); c.ellipse(col.x,fy+j*H*.1,hw*.5,H*.01,0,0,Math.PI*2); c.fillStyle='white'; c.fill(); c.restore(); } for(let j=0;j<2;j++){ const fy=col.topY+col.h*.3+rng()*col.h*.4,fx=col.x+(rng()-.5)*hw*.8; c.beginPath(); c.moveTo(fx,fy); c.lineTo(fx+(rng()-.5)*35,fy+(rng()-.5)*40); c.strokeStyle='rgba(255,255,255,.07)'; c.lineWidth=.6; c.stroke(); } poly(c,pts); c.strokeStyle=`hsla(${hue+20},65%,78%,.22)`; c.lineWidth=.8; c.stroke(); });
+    addSparkles(c,W,H,hue,rng,12,'cool');
+  }
+
+  /* SAN HÔ — main pillar + branches */
+  function drawSanHo(c,W,H,rng){
+    const cx=W/2+(rng()-.5)*18,hue=5+rng()*18;
+    const bg=c.createRadialGradient(cx,H*.4,5,cx,H*.65,W*.8); bg.addColorStop(0,`hsl(${hue+8},60%,10%)`); bg.addColorStop(.5,`hsl(${hue},50%,6%)`); bg.addColorStop(1,`hsl(${hue-10},40%,3%)`); c.fillStyle=bg; c.fillRect(0,0,W,H);
+    const glow=c.createRadialGradient(cx,H*.38,8,cx,H*.42,W*.48); glow.addColorStop(0,`hsla(${hue+10},90%,65%,.2)`); glow.addColorStop(.6,`hsla(${hue},75%,50%,.09)`); glow.addColorStop(1,'transparent'); c.fillStyle=glow; c.fillRect(0,0,W,H);
+    const mw=W*.175,mx=cx+(rng()-.5)*12; const mPts=[[mx,H*.06],[mx+mw*.55,H*.14],[mx+mw,H*.3],[mx+mw*.95,H*.62],[mx+mw*.65,H*.9],[mx,H*.93],[mx-mw*.65,H*.9],[mx-mw*.95,H*.62],[mx-mw,H*.3],[mx-mw*.55,H*.14]]; poly(c,mPts); const mg=c.createLinearGradient(mx-mw,H*.06,mx+mw,H*.93); mg.addColorStop(0,`hsla(${hue+15},80%,82%,.9)`); mg.addColorStop(.25,`hsla(${hue+8},85%,62%,.88)`); mg.addColorStop(.6,`hsla(${hue},75%,45%,.9)`); mg.addColorStop(1,`hsla(${hue-8},65%,22%,.95)`); c.fillStyle=mg; c.fill(); poly(c,[[mx,H*.06],mPts[9],mPts[8],mPts[7],[mx,H*.93]]); const lhg=c.createLinearGradient(mx-mw*.5,H*.06,mx,H*.93); lhg.addColorStop(0,`hsla(${hue+20},65%,78%,.5)`); lhg.addColorStop(1,`hsla(${hue},55%,28%,.55)`); c.fillStyle=lhg; c.fill(); poly(c,[[mx,H*.06],mPts[1],mPts[9]]); c.fillStyle=`hsla(${hue+20},50%,95%,.55)`; c.fill(); c.beginPath(); c.moveTo(mx,H*.06); c.lineTo(mx+(rng()-.5)*10,H*.9); c.strokeStyle='rgba(255,255,255,.18)'; c.lineWidth=1; c.stroke();
+    const branches=[{side:-1,y:H*.3,len:W*.22,angle:-.55,w:W*.1,h:H*.32},{side:1,y:H*.22,len:W*.26,angle:.5,w:W*.11,h:H*.28},{side:-1,y:H*.52,len:W*.17,angle:-.45,w:W*.08,h:H*.24}];
+    branches.forEach((b,i)=>{ const bw2=b.w/2,bx=mx+b.side*mw*.9,by=b.y; c.save(); c.translate(bx,by); c.rotate(b.angle*b.side); const bp=[[b.side*b.len,0],[b.side*(b.len*.35),-b.h*.4],[b.side*(b.len*.15),-b.h*.48],[0,-bw2*.4],[0,bw2*.4],[b.side*(b.len*.15),b.h*.48],[b.side*(b.len*.35),b.h*.4]]; poly(c,bp); const bsg=c.createLinearGradient(0,0,b.side*b.len,0); bsg.addColorStop(0,`hsla(${hue+18},75%,72%,.8)`); bsg.addColorStop(.5,`hsla(${hue+8},80%,55%,.78)`); bsg.addColorStop(1,`hsla(${hue},65%,35%,.85)`); c.fillStyle=bsg; c.fill(); poly(c,[[b.side*b.len,0],[b.side*(b.len*.35),-b.h*.4],[b.side*(b.len*.15),-b.h*.48],[0,-bw2*.4],[0,0]]); c.fillStyle=`hsla(${hue+25},55%,88%,.3)`; c.fill(); poly(c,bp); c.strokeStyle=`hsla(${hue+15},60%,75%,.2)`; c.lineWidth=.7; c.stroke(); c.restore(); });
+    poly(c,mPts); c.strokeStyle=`hsla(${hue+12},65%,78%,.28)`; c.lineWidth=.9; c.stroke(); c.save(); c.globalAlpha=.28; c.beginPath(); c.ellipse(mx,H*.17,mw*.45,H*.03,0,0,Math.PI*2); c.fillStyle='rgba(255,255,255,.85)'; c.fill(); c.restore();
+    addSparkles(c,W,H,hue,rng,13,'warm');
+  }
+
+  /* THẠCH ANH — hexagonal prism + satellite */
+  function drawThachAnh(c,W,H,rng){
+    const cx=W/2+(rng()-.5)*15,hue=270+rng()*28;
+    const bg=c.createRadialGradient(cx,H*.45,5,cx,H*.5,W*.8); bg.addColorStop(0,`hsl(${hue-15},45%,9%)`); bg.addColorStop(.55,`hsl(${hue},35%,5%)`); bg.addColorStop(1,`hsl(${hue+10},30%,3%)`); c.fillStyle=bg; c.fillRect(0,0,W,H);
+    for(let i=0;i<2;i++){ const g=c.createRadialGradient(cx+(i-.5)*W*.2,H*(.4+i*.15),5,cx+(i-.5)*W*.2,H*.45,W*(.35+i*.1)); g.addColorStop(0,`hsla(${hue+i*20},80%,65%,.14)`); g.addColorStop(1,'transparent'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+    const hR=W*.28,mainH=H*.62,startY=H*.1,endY=H*.1+H*.62,tipY=H*.1-H*.05;
+    [[0,1,.82],[1.047,.72,.72],[2.094,.52,.62]].forEach(([ao,lf,al],i)=>{ const x1=cx+hR*Math.cos(ao),x2=cx+hR*Math.cos(ao+1.047),tp1y=startY+H*.04*i,tp2y=startY+H*.04*(i+.5),bt1y=endY-H*.02*i,bt2y=endY-H*.02*(i+.5); poly(c,[[x1,tp1y],[x2,tp2y],[x2,bt2y],[x1,bt1y]]); const fg=c.createLinearGradient(x1,tp1y,x1,bt1y),hl=72*lf,ll=32*lf; fg.addColorStop(0,`hsla(${hue+15},65%,${hl}%,${al})`); fg.addColorStop(.4,`hsla(${hue},70%,${hl*.7}%,${al*.9})`); fg.addColorStop(1,`hsla(${hue-10},55%,${ll}%,${al})`); c.fillStyle=fg; c.fill(); c.beginPath(); c.moveTo(x1,tp1y); c.lineTo(x1,bt1y); c.strokeStyle=`hsla(${hue+20},60%,85%,.2)`; c.lineWidth=.8; c.stroke(); });
+    c.beginPath(); for(let i=0;i<6;i++){ const a=i/6*Math.PI*2-Math.PI/6,x=cx+hR*.85*Math.cos(a),y=tipY+H*.04+hR*.35*Math.sin(a)*.4; i===0?c.moveTo(x,y):c.lineTo(x,y); } c.closePath(); const th=c.createRadialGradient(cx,tipY+H*.06,2,cx,tipY+H*.06,hR*.7); th.addColorStop(0,`hsla(${hue+20},50%,92%,.65)`); th.addColorStop(.5,`hsla(${hue},60%,70%,.5)`); th.addColorStop(1,`hsla(${hue-10},50%,45%,.4)`); c.fillStyle=th; c.fill();
+    poly(c,[[cx-hR*.5,startY],[cx+hR*.5,startY],[cx,tipY]]); const tg=c.createLinearGradient(cx-hR*.5,startY,cx,tipY); tg.addColorStop(0,`hsla(${hue},55%,60%,.7)`); tg.addColorStop(1,`hsla(${hue+20},50%,90%,.8)`); c.fillStyle=tg; c.fill();
+    poly(c,[[cx-hR*.5,endY],[cx+hR*.5,endY],[cx+hR*.2,endY+H*.07],[cx,endY+H*.1],[cx-hR*.2,endY+H*.07]]); c.fillStyle=`hsla(${hue-15},50%,22%,.85)`; c.fill();
+    const sx=cx-W*.3,sy=H*.35,sR=W*.1,sh2=H*.3; poly(c,[[sx,sy-sh2*.45],[sx+sR*.55,sy-sh2*.1],[sx+sR*.5,sy+sh2*.45],[sx,sy+sh2*.48],[sx-sR*.5,sy+sh2*.45],[sx-sR*.55,sy-sh2*.1]]); const ssg=c.createLinearGradient(sx-sR,sy-sh2*.4,sx+sR,sy+sh2*.4); ssg.addColorStop(0,`hsla(${hue+25},60%,78%,.72)`); ssg.addColorStop(.5,`hsla(${hue},65%,52%,.68)`); ssg.addColorStop(1,`hsla(${hue-10},50%,28%,.78)`); c.fillStyle=ssg; c.fill(); poly(c,[[sx,sy-sh2*.45],[sx+sR*.55,sy-sh2*.1],[sx-sR*.55,sy-sh2*.1]]); c.fillStyle=`hsla(${hue+25},45%,90%,.3)`; c.fill();
+    for(let i=0;i<5;i++){ const fy=startY+rng()*mainH,fx=cx+(rng()-.5)*hR*.9; c.beginPath(); c.moveTo(fx,fy); c.lineTo(fx+(rng()-.5)*50,fy+(rng()-.5)*55); c.strokeStyle=`rgba(255,255,255,${rng()*.08+.03})`; c.lineWidth=.6; c.stroke(); }
+    c.save(); c.globalAlpha=.32; c.beginPath(); c.ellipse(cx,startY+H*.08,hR*.45,H*.025,0,0,Math.PI*2); c.fillStyle='rgba(255,255,255,.85)'; c.fill(); c.restore();
+    addSparkles(c,W,H,hue,rng,12,'cool');
+  }
+
+  /* HỒNG NGỌC — two interlocked prisms */
+  function drawHongNgoc(c,W,H,rng){
+    const cx=W/2+(rng()-.5)*12,hue=335+rng()*22;
+    const bg=c.createRadialGradient(cx,H*.42,5,cx,H*.6,W*.8); bg.addColorStop(0,`hsl(${hue-12},50%,10%)`); bg.addColorStop(.55,`hsl(${hue+5},40%,5%)`); bg.addColorStop(1,`hsl(${hue},30%,3%)`); c.fillStyle=bg; c.fillRect(0,0,W,H);
+    const glow=c.createRadialGradient(cx-W*.05,H*.38,5,cx,H*.45,W*.5); glow.addColorStop(0,`hsla(${hue},85%,72%,.18)`); glow.addColorStop(.5,`hsla(${hue+15},70%,60%,.09)`); glow.addColorStop(1,'transparent'); c.fillStyle=glow; c.fillRect(0,0,W,H);
+    const bodies=[{x:cx-W*.075,topY:H*.08,h:H*.75,rw:W*.22,lean:W*.02,al:.88},{x:cx+W*.1,topY:H*.15,h:H*.68,rw:W*.19,lean:-W*.015,al:.82}];
+    bodies.forEach((b,i)=>{ const hw=b.rw/2,lx=b.lean; const pts=[[b.x+lx*.4,b.topY],[b.x+hw*.6+lx,b.topY+b.h*.07],[b.x+b.rw*.5,b.topY+b.h*.22],[b.x+b.rw*.55,b.topY+b.h*.55],[b.x+b.rw*.4,b.topY+b.h*.82],[b.x+b.rw*.2,b.topY+b.h],[b.x,b.topY+b.h+H*.01],[b.x-b.rw*.2,b.topY+b.h],[b.x-b.rw*.4,b.topY+b.h*.82],[b.x-b.rw*.55,b.topY+b.h*.55],[b.x-b.rw*.5,b.topY+b.h*.22],[b.x-hw*.6+lx,b.topY+b.h*.07]]; poly(c,[[pts[0][0],pts[0][1]],pts[1],pts[2],pts[3],pts[4],pts[5],[b.x,b.topY+b.h]]); const rf=c.createLinearGradient(b.x,b.topY,b.x+b.rw*.5,b.topY+b.h); rf.addColorStop(0,`hsla(${hue+12},65%,88%,${b.al})`); rf.addColorStop(.3,`hsla(${hue+5},72%,70%,${b.al*.95})`); rf.addColorStop(.65,`hsla(${hue},62%,48%,${b.al*.9})`); rf.addColorStop(1,`hsla(${hue-8},52%,26%,${b.al})`); c.fillStyle=rf; c.fill(); poly(c,[[pts[0][0],pts[0][1]],pts[11],pts[10],pts[9],pts[8],pts[7],[b.x,b.topY+b.h]]); const lf=c.createLinearGradient(b.x-b.rw*.5,b.topY,b.x,b.topY+b.h); lf.addColorStop(0,`hsla(${hue+18},55%,82%,${b.al*.85})`); lf.addColorStop(.4,`hsla(${hue+8},60%,58%,${b.al*.8})`); lf.addColorStop(1,`hsla(${hue-5},48%,30%,${b.al*.85})`); c.fillStyle=lf; c.fill(); poly(c,[[pts[0][0],pts[0][1]],pts[1],pts[11]]); const tc=c.createLinearGradient(pts[11][0],pts[0][1],pts[1][0],pts[1][1]); tc.addColorStop(0,`hsla(${hue+20},55%,94%,${.45+i*.05})`); tc.addColorStop(1,`hsla(${hue},50%,78%,.3)`); c.fillStyle=tc; c.fill(); poly(c,[pts[5],pts[6],pts[7]]); c.fillStyle=`hsla(${hue-10},45%,22%,.8)`; c.fill(); c.beginPath(); c.moveTo(pts[0][0],pts[0][1]); c.lineTo(b.x+(rng()-.5)*8,b.topY+b.h+H*.01); c.strokeStyle=`rgba(255,255,255,${.12+i*.03})`; c.lineWidth=.9; c.stroke(); for(let j=0;j<4;j++){ const fy=b.topY+b.h*.2+j*b.h*.18+rng()*b.h*.05; c.save(); c.globalAlpha=.06+rng()*.04; c.beginPath(); c.ellipse(b.x,fy,b.rw*.38,H*.014,0,0,Math.PI*2); c.fillStyle=`hsla(${hue+20},70%,90%,1)`; c.fill(); c.restore(); } poly(c,pts); c.strokeStyle=`hsla(${hue+15},55%,82%,.2)`; c.lineWidth=.75; c.stroke(); });
+    bodies.forEach((b,i)=>{ c.save(); c.globalAlpha=.3-i*.06; c.beginPath(); c.ellipse(b.x,b.topY+H*.1,b.rw*.36,H*.028,i*.08-.04,0,Math.PI*2); c.fillStyle='rgba(255,255,255,.85)'; c.fill(); c.restore(); });
+    for(let i=0;i<4;i++){ const fy=H*.25+rng()*H*.45,fx=cx+(rng()-.5)*W*.38; c.beginPath(); c.moveTo(fx,fy); c.lineTo(fx+(rng()-.5)*42,fy+(rng()-.5)*42); c.strokeStyle='rgba(255,255,255,.07)'; c.lineWidth=.55; c.stroke(); }
+    addSparkles(c,W,H,hue,rng,13,'warm');
+  }
+
   const CRYSTAL_TYPES = [
-    { name:'Tinh Thể Pha Lê',    type:'PHA LÊ',      meaning:'Trong suốt và thuần khiết như giọt sữa đầu tiên — biểu tượng của sự chân thật và tinh khiết tuyệt đối.',  hue:[190,220], sat:[60,90],  light:[65,90] },
-    { name:'Tinh Thể Hướng Dương', type:'HƯỚNG DƯƠNG', meaning:'Rực rỡ và tràn đầy năng lượng như ánh bình minh — dành cho những tâm hồn luôn hướng về phía ánh sáng.', hue:[35,55],   sat:[80,100], light:[55,75] },
-    { name:'Tinh Thể Đại Dương',  type:'ĐẠI DƯƠNG',   meaning:'Sâu thẳm và bao la như biển cả — mang trong mình nguồn dinh dưỡng vô tận từ thiên nhiên thuần khiết.',      hue:[195,230], sat:[70,95],  light:[40,65] },
-    { name:'Tinh Thể Ngọc Lục',  type:'NGỌC LỤC',    meaning:'Tươi mát như đồng cỏ Ba Vì mỗi sớm bình minh — nơi những chú bò TH gặm cỏ xanh tự nhiên mỗi ngày.',        hue:[130,160], sat:[55,80],  light:[45,70] },
-    { name:'Tinh Thể Hồng Ngọc', type:'HỒNG NGỌC',   meaning:'Dịu dàng và ấm áp như tình yêu của người mẹ — biểu tượng của sự chăm sóc và gắn kết bền chặt.',            hue:[330,355], sat:[60,85],  light:[55,75] },
-    { name:'Tinh Thể Thạch Anh', type:'THẠCH ANH',   meaning:'Huyền bí và quý giá như tinh chất của đất trời — mang sức mạnh tiềm ẩn từ những giá trị cốt lõi bền vững.', hue:[265,295], sat:[50,80],  light:[50,72] },
+    { name:'Tinh Thể Pha Lê',     type:'PHA LÊ',        meaning:'Trong vắt như giọt sữa TH nguyên chất — không pha tạp, không thêm thắt. Bạn là người trân trọng sự thật và tinh khiết trong từng khoảnh khắc sống.',  draw:drawPhaLe },
+    { name:'Tinh Thể Hướng Dương',type:'HƯỚNG DƯƠNG',   meaning:'Tỏa sáng như đồng cỏ Ba Vì dưới nắng vàng — nơi đàn bò TH hấp thu năng lượng thiên nhiên mỗi ngày. Bạn mang trong mình nguồn sinh lực không bao giờ cạn.', draw:drawHuongDuong },
+    { name:'Tinh Thể Đại Dương',  type:'ĐẠI DƯƠNG',     meaning:'Trong lành như nguồn nước suối núi Ba Vì — nơi TH khởi nguồn câu chuyện sữa sạch. Bạn là người mang lại sự bình yên và thanh thản cho những người xung quanh.', draw:drawDaiDuong },
+    { name:'Tinh Thể San Hô',     type:'SAN HÔ',        meaning:'Rẽ nhánh tự do như hành trình TH mở rộng từ sữa tươi đến trăm sản phẩm dinh dưỡng. Bạn là người dám khác biệt, không ngừng vươn ra những vùng trời mới.', draw:drawSanHo },
+    { name:'Tinh Thể Thạch Anh',  type:'THẠCH ANH TÍM', meaning:'Huyền bí như bí quyết đằng sau công thức sữa TH — tích lũy từng tầng giá trị theo thời gian. Bạn mang chiều sâu và trí tuệ mà không phải ai cũng dễ dàng nhìn thấy.', draw:drawThachAnh },
+    { name:'Tinh Thể Hồng Ngọc',  type:'HỒNG NGỌC',     meaning:'Ấm áp như tình yêu người mẹ pha ly sữa TH mỗi sáng cho con — sự chăm sóc bền bỉ, không ồn ào nhưng thấm vào từng ngày. Bạn là chỗ dựa vững chắc của những người thân yêu.', draw:drawHongNgoc },
   ];
 
   const ATTR_NAMES = ['Độ tinh khiết','Năng lượng','Cộng hưởng','Độ hiếm','Ánh sáng'];
 
-  function drawCrystal(seed, ctype, rng) {
-    const cv = document.getElementById('crystalCanvas2');
-    const c  = cv.getContext('2d');
-    const W = cv.width, H = cv.height;
-    c.clearRect(0,0,W,H);
-
-    // Background
-    const bg = c.createRadialGradient(W/2,H/2,10,W/2,H/2,W*.7);
-    bg.addColorStop(0, `hsla(${ctype.hue[0]+10},40%,12%,1)`);
-    bg.addColorStop(1, 'hsl(220,40%,5%)');
-    c.fillStyle = bg;
-    c.fillRect(0,0,W,H);
-
-    // Crystal params from seed
-    const facets   = 5 + Math.floor(rng() * 4);         // 5-8 facets
-    const h1       = ctype.hue[0] + rng()*(ctype.hue[1]-ctype.hue[0]);
-    const h2       = h1 + 20 + rng()*40;
-    const s1       = ctype.sat[0]  + rng()*(ctype.sat[1]-ctype.sat[0]);
-    const l1       = ctype.light[0]+ rng()*(ctype.light[1]-ctype.light[0]);
-    const tiltX    = (.5 - rng()) * 30;
-    const tiltY    = (.5 - rng()) * 20;
-    const topW     = 0.18 + rng() * 0.14;   // tip width
-    const bodyH    = 0.55 + rng() * 0.12;   // body height ratio
-    const shimmer  = rng();                  // highlight intensity
-    const inclusions = Math.floor(rng() * 4); // internal fractures
-
-    const cx = W/2 + tiltX, cy = H * .46;
-    const TH = H * .08, BH = H * .88;
-    const TW = W * topW, BW = W * .34;
-
-    // Draw multiple crystal layers
-    function crystalPoly(offsetX, scale) {
-      const top = cy - H * bodyH * scale;
-      const bot = cy + H * .3 * scale;
-      const pts = [
-        [cx+offsetX, TH],                         // apex
-        [cx + TW*scale+offsetX, top],              // top-right shoulder
-        [cx + BW*scale+offsetX, bot],              // body-right
-        [cx + BW*.5*scale+offsetX, BH],            // bottom-right
-        [cx+offsetX, BH + 8*scale],                // base
-        [cx - BW*.5*scale+offsetX, BH],            // bottom-left
-        [cx - BW*scale+offsetX, bot],              // body-left
-        [cx - TW*scale+offsetX, top],              // top-left shoulder
-      ];
-      c.beginPath();
-      c.moveTo(pts[0][0],pts[0][1]);
-      pts.slice(1).forEach(p=>c.lineTo(p[0],p[1]));
-      c.closePath();
-      return pts;
-    }
-
-    // Glow behind
-    c.save();
-    const glow = c.createRadialGradient(cx,cy,20,cx,cy,W*.45);
-    glow.addColorStop(0,`hsla(${h1},${s1}%,${l1}%,0.22)`);
-    glow.addColorStop(1,'transparent');
-    c.fillStyle=glow; c.fillRect(0,0,W,H); c.restore();
-
-    // Shadow crystal
-    c.save(); c.globalAlpha=.25;
-    const shadPts = crystalPoly(6, 1.01);
-    const shadG = c.createLinearGradient(cx-BW,TH,cx+BW,BH);
-    shadG.addColorStop(0,`hsla(${h1},40%,8%,1)`);
-    shadG.addColorStop(1,`hsla(${h2},30%,5%,1)`);
-    c.fillStyle=shadG; c.fill(); c.restore();
-
-    // Main crystal facets
-    const pts = crystalPoly(0, 1.0);
-    const apex=[pts[0][0],pts[0][1]], base=[pts[4][0],pts[4][1]];
-
-    // Left face
-    c.beginPath(); c.moveTo(apex[0],apex[1]); c.lineTo(pts[7][0],pts[7][1]); c.lineTo(pts[6][0],pts[6][1]); c.lineTo(pts[5][0],pts[5][1]); c.lineTo(base[0],base[1]); c.closePath();
-    const lgL = c.createLinearGradient(pts[7][0],pts[7][1],pts[5][0],pts[5][1]);
-    lgL.addColorStop(0,`hsla(${h1},${s1}%,${l1*.7}%,0.95)`);
-    lgL.addColorStop(1,`hsla(${h1},${s1}%,${l1*.4}%,0.95)`);
-    c.fillStyle=lgL; c.fill();
-
-    // Right face
-    c.beginPath(); c.moveTo(apex[0],apex[1]); c.lineTo(pts[1][0],pts[1][1]); c.lineTo(pts[2][0],pts[2][1]); c.lineTo(pts[3][0],pts[3][1]); c.lineTo(base[0],base[1]); c.closePath();
-    const lgR = c.createLinearGradient(pts[1][0],pts[1][1],pts[3][0],pts[3][1]);
-    lgR.addColorStop(0,`hsla(${h2},${s1*.9}%,${l1*.95}%,0.9)`);
-    lgR.addColorStop(1,`hsla(${h2},${s1*.7}%,${l1*.55}%,0.9)`);
-    c.fillStyle=lgR; c.fill();
-
-    // Center ridge highlight
-    c.beginPath(); c.moveTo(apex[0],apex[1]); c.lineTo(base[0],base[1]);
-    c.strokeStyle=`hsla(${h1},30%,${90}%,${shimmer*.35+.08})`; c.lineWidth=1.2; c.stroke();
-
-    // Top cap
-    c.beginPath(); c.moveTo(apex[0],apex[1]); c.lineTo(pts[1][0],pts[1][1]); c.lineTo(pts[7][0],pts[7][1]); c.closePath();
-    const capG = c.createLinearGradient(apex[0],apex[1],pts[1][0],pts[1][1]);
-    capG.addColorStop(0,`hsla(${h1},${s1*.5}%,${95}%,${shimmer*.4+.3})`);
-    capG.addColorStop(1,`hsla(${h1},${s1}%,${l1}%,0.5)`);
-    c.fillStyle=capG; c.fill();
-
-    // Inclusion lines (internal fractures)
-    for(let i=0;i<inclusions;i++){
-      const iy = TH + rng()*(BH-TH);
-      const ix = cx + (rng()-.5)*BW*.8;
-      c.beginPath(); c.moveTo(ix,iy); c.lineTo(ix+(rng()-.5)*60,iy+(rng()-.5)*60);
-      c.strokeStyle=`hsla(${h2},80%,90%,${rng()*.15+.04})`; c.lineWidth=.7; c.stroke();
-    }
-
-    // Outer edge
-    crystalPoly(0,1.0);
-    c.strokeStyle=`hsla(${h1},60%,${l1+10}%,0.35)`; c.lineWidth=1; c.stroke();
-
-    // Inner reflection ellipse
-    c.save(); c.globalAlpha=shimmer*.18+.06;
-    c.beginPath(); c.ellipse(cx, TH+H*.18, TW*.55, H*.06, 0, 0, Math.PI*2);
-    c.fillStyle=`hsla(${h1},30%,98%,1)`; c.fill(); c.restore();
-
-    // Floating sparkles
-    for(let i=0;i<8;i++){
-      const sx=cx+(rng()-.5)*BW*1.6, sy=TH+(rng())*(BH-TH);
-      const ss=rng()*2.5+.5;
-      c.save(); c.globalAlpha=rng()*.5+.1;
-      c.fillStyle=`hsla(${h1+rng()*30},80%,95%,1)`;
-      c.beginPath(); c.arc(sx,sy,ss,0,Math.PI*2); c.fill();
-      c.restore();
-    }
-
-    // TH watermark subtle
-    c.save(); c.globalAlpha=.06;
-    c.font=`bold ${H*.22}px 'Cormorant Garamond',serif`;
-    c.fillStyle='white'; c.textAlign='center'; c.textBaseline='middle';
-    c.fillText('TH',cx,cy+H*.08); c.restore();
+  function drawCrystal(seedNum, ctype, rng) {
+    const cv=document.getElementById('crystalCanvas2'), c=cv.getContext('2d');
+    c.clearRect(0,0,cv.width,cv.height);
+    ctype.draw(c,cv.width,cv.height,rng);
+    c.save(); c.globalAlpha=.05; c.font=`300 ${cv.height*.16}px 'Cormorant Garamond',serif`; c.fillStyle='white'; c.textAlign='center'; c.textBaseline='middle'; c.fillText('TH',cv.width/2,cv.height*.52); c.restore();
   }
 
-  // Main generate function
   function generateCrystal() {
-    const raw = document.getElementById('codeInput').value.trim();
-    if(!raw){
-      const inp=document.getElementById('codeInput');
-      inp.style.borderColor='rgba(255,80,80,.7)';
-      inp.placeholder='Vui lòng nhập mã thẻ cào!';
-      setTimeout(()=>{ inp.style.borderColor='rgba(0,114,206,.35)'; inp.placeholder='Nhập mã thẻ cào (VD: TH-2026-XXXXXXXX)'; },2200);
-      return;
-    }
-
-    const btn=document.getElementById('codeSubmit');
-    btn.textContent='✦ Đang đúc...';
-    btn.style.opacity='.7';
-
+    const raw=document.getElementById('codeInput').value.trim();
+    if(!raw){ const inp=document.getElementById('codeInput'); inp.style.borderColor='rgba(255,80,80,.7)'; inp.placeholder='Vui lòng nhập mã thẻ cào!'; setTimeout(()=>{ inp.style.borderColor='rgba(0,114,206,.35)'; inp.placeholder='Nhập mã thẻ cào (VD: TH-2026-XXXXXXXX)'; },2200); return; }
+    const btn=document.getElementById('codeSubmit'); btn.textContent='✦ Đang đúc...'; btn.style.opacity='.7';
     setTimeout(()=>{
-      // Build seed
-      const timeComponent = new Date().getMinutes() + new Date().getSeconds();
-      const seedStr = raw.toUpperCase() + '|' + timeComponent;
-      const seedNum = hashCode(seedStr);
-      const rng = seededRNG(seedNum);
-
-      // Pick crystal type deterministically from code
-      const typeIdx = hashCode(raw.toUpperCase()) % CRYSTAL_TYPES.length;
-      const ctype   = CRYSTAL_TYPES[typeIdx];
-
-      // Generate attributes (consistent per code, not time)
-      const codeRng = seededRNG(hashCode(raw.toUpperCase()));
-      const attrs   = ATTR_NAMES.map(name=>({
-        name,
-        val: Math.floor(codeRng()*35)+65  // 65-100
-      }));
-
-      // Draw
-      drawCrystal(seedNum, ctype, rng);
-
-      // Populate info
-      document.getElementById('crystalName').textContent    = ctype.name;
-      document.getElementById('crystalType').textContent    = '✦ ' + ctype.type + ' ✦';
-      document.getElementById('crystalMeaning').textContent = ctype.meaning;
-
-      const attrsEl = document.getElementById('crystalAttrs');
-      attrsEl.innerHTML = attrs.map(a=>`
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span style="font-size:.75rem;color:rgba(255,255,255,.45);min-width:100px;">${a.name}</span>
-          <div style="flex:1;height:3px;background:rgba(255,255,255,.07);border-radius:2px;">
-            <div style="height:100%;width:${a.val}%;background:linear-gradient(90deg,var(--blue-bright),var(--sky));border-radius:2px;"></div>
-          </div>
-          <span style="font-size:.75rem;color:var(--sky);min-width:32px;text-align:right;">${a.val}</span>
-        </div>
-      `).join('');
-
-      document.getElementById('crystalSeedBox').innerHTML =
-        `Seed: <span style="color:var(--sky)">${seedNum}</span> · Mã: <span style="color:rgba(255,255,255,.5)">${raw.toUpperCase()}</span>`;
-
-      // Show output
-      const out = document.getElementById('crystalOutput');
-      out.style.display = 'block';
-      out.scrollIntoView({behavior:'smooth', block:'center'});
-
-      btn.textContent = '✓ Đúc lại';
-      btn.style.opacity = '1';
-      btn.style.background = 'linear-gradient(135deg,#002B5C,var(--blue-bright))';
-    }, 900);
+      const tc=new Date().getMinutes()+new Date().getSeconds(), seedNum=hashCode(raw.toUpperCase()+'|'+tc), rng=seededRNG(seedNum);
+      const ctype=CRYSTAL_TYPES[hashCode(raw.toUpperCase())%CRYSTAL_TYPES.length];
+      const codeRng=seededRNG(hashCode(raw.toUpperCase()));
+      const attrs=ATTR_NAMES.map(n=>({name:n,val:Math.floor(codeRng()*35)+65}));
+      drawCrystal(seedNum,ctype,rng);
+      document.getElementById('crystalName').textContent=ctype.name;
+      document.getElementById('crystalType').textContent='✦ '+ctype.type+' ✦';
+      document.getElementById('crystalMeaning').textContent=ctype.meaning;
+      document.getElementById('crystalAttrs').innerHTML=attrs.map(a=>`<div style="display:flex;align-items:center;gap:12px;"><span style="font-size:.75rem;color:rgba(255,255,255,.45);min-width:100px;">${a.name}</span><div style="flex:1;height:3px;background:rgba(255,255,255,.07);border-radius:2px;"><div style="height:100%;width:${a.val}%;background:linear-gradient(90deg,var(--blue-bright),var(--sky));border-radius:2px;"></div></div><span style="font-size:.75rem;color:var(--sky);min-width:32px;text-align:right;">${a.val}</span></div>`).join('');
+      document.getElementById('crystalSeedBox').innerHTML=`Seed: <span style="color:var(--sky)">${seedNum}</span> · Mã: <span style="color:rgba(255,255,255,.5)">${raw.toUpperCase()}</span>`;
+      const out=document.getElementById('crystalOutput'); out.style.display='block'; out.scrollIntoView({behavior:'smooth',block:'center'});
+      btn.textContent='✦ Đúc lại'; btn.style.opacity='1'; btn.style.background='linear-gradient(135deg,#002B5C,var(--blue-bright))';
+    },800);
   }
 
-  // Download crystal
   function downloadCrystal() {
-    const cv = document.getElementById('crystalCanvas2');
-    const name = document.getElementById('crystalName').textContent || 'tinh-the';
-    const link = document.createElement('a');
-    link.download = name.replace(/\s+/g,'-').toLowerCase() + '.png';
-    link.href = cv.toDataURL('image/png');
-    link.click();
+    const cv=document.getElementById('crystalCanvas2'), name=document.getElementById('crystalName').textContent||'tinh-the', link=document.createElement('a');
+    link.download=name.replace(/\s+/g,'-').toLowerCase()+'.png'; link.href=cv.toDataURL('image/png'); link.click();
   }
 
-  // Enter key
-  document.getElementById('codeInput').addEventListener('keydown', e=>{
-    if(e.key==='Enter') generateCrystal();
-  });
+  document.getElementById('codeInput').addEventListener('keydown',e=>{ if(e.key==='Enter') generateCrystal(); });
 </script>
 </body>
 </html>
