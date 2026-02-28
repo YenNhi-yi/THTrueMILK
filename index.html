@@ -2421,9 +2421,6 @@
           <span style="font-size:.74rem;color:rgba(255,255,255,.65);min-width:28px;text-align:right;">${a.val}</span>
         </div>`).join('');
 
-      document.getElementById('crystalSeedBox').innerHTML =
-        `Seed: <span style="color:${ctype.tag}">${seedNum}</span> &nbsp;·&nbsp; Mã: <span style="opacity:.5">${raw.toUpperCase()}</span>`;
-
       const out = document.getElementById('crystalOutput');
       out.style.display = 'block';
       out.scrollIntoView({ behavior: 'smooth', block: 'center' });
