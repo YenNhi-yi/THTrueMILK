@@ -544,16 +544,19 @@
     .crystals-header p { color: rgba(255,255,255,.5); line-height: 1.8; }
 
     .crystal-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
     }
 
     .crystal-card {
       position: relative;
+      width: calc(33.333% - 14px);
+      min-width: 260px;
       aspect-ratio: 3/4;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.07);
+      border: 1px solid rgba(255, 255, 255, .07);
       cursor: pointer;
     }
 
@@ -574,7 +577,15 @@
     }
 
     .crystal-card-bg.emerald {
-      background: radial-gradient(ellipse at 50% 30%, #D6EEFA 0%, #4DB8E8 40%, #003E7E 100%);
+      background: radial-gradient(ellipse at 50% 30%, #88E2D0 0%, #209C82 45%, #003E5C 100%);
+    }
+
+    .crystal-card-bg.coral {
+      background: radial-gradient(ellipse at 50% 30%, #FFB6A1 0%, #FF6B57 45%, #8A2519 100%);
+    }
+
+    .crystal-card-bg.rosequartz {
+      background: radial-gradient(ellipse at 50% 30%, #FFE5E8 0%, #F48FB1 45%, #882A4A 100%);
     }
 
     .crystal-inner-shape {
@@ -1329,31 +1340,17 @@
     </div>
 
     <div class="crystal-grid reveal">
-      <div class="crystal-card">
-        <div class="crystal-card-bg sunflower"></div>
-        <div class="crystal-inner-shape">
-          <svg viewBox="0 0 120 160" fill="none">
-            <polygon points="60,5 100,35 115,80 60,155 5,80 20,35" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
-            <polygon points="60,5 100,35 60,60" fill="rgba(255,220,60,0.5)"/>
-            <polygon points="60,5 20,35 60,60"  fill="rgba(255,240,120,0.4)"/>
-            <ellipse cx="60" cy="30" rx="16" ry="6" fill="rgba(255,255,255,0.3)"/>
-          </svg>
-        </div>
-        <div class="crystal-badge">Hướng Dương</div>
-        <div class="crystal-overlay">
-          <div class="crystal-name">Tinh Thể Năng Lượng</div>
-          <div class="crystal-desc">Tỏa sáng như ánh bình minh — dành cho những tâm hồn rực rỡ và tràn đầy sức sống.</div>
-        </div>
-      </div>
 
       <div class="crystal-card">
         <div class="crystal-card-bg pure"></div>
         <div class="crystal-inner-shape">
           <svg viewBox="0 0 120 160" fill="none">
-            <polygon points="60,5 100,35 115,80 60,155 5,80 20,35" fill="rgba(255,255,255,0.32)" stroke="rgba(255,255,255,0.75)" stroke-width="0.8"/>
-            <polygon points="60,5 100,35 60,60" fill="rgba(200,240,255,0.5)"/>
-            <polygon points="60,5 20,35 60,60"  fill="rgba(255,255,255,0.45)"/>
-            <ellipse cx="60" cy="30" rx="18" ry="7" fill="rgba(255,255,255,0.55)"/>
+            <polygon points="60,10 95,50 60,140 25,50" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.8)" stroke-width="0.8"/>
+            <polygon points="60,10 95,50 60,65" fill="rgba(255,255,255,0.6)"/>
+            <polygon points="60,10 25,50 60,65" fill="rgba(168,216,240,0.5)"/>
+            <polygon points="95,50 60,140 60,65" fill="rgba(168,216,240,0.3)"/>
+            <polygon points="25,50 60,140 60,65" fill="rgba(255,255,255,0.2)"/>
+            <polygon points="45,35 75,35 60,65" fill="rgba(255,255,255,0.8)"/>
           </svg>
         </div>
         <div class="crystal-badge">Pha Lê</div>
@@ -1364,21 +1361,86 @@
       </div>
 
       <div class="crystal-card">
+        <div class="crystal-card-bg sunflower"></div>
+        <div class="crystal-inner-shape">
+          <svg viewBox="0 0 120 160" fill="none">
+            <polygon points="60,40 100,20 70,60" fill="rgba(255,240,120,0.5)"/>
+            <polygon points="60,40 20,20 50,60" fill="rgba(255,200,60,0.4)"/>
+            <polygon points="70,60 110,80 70,100" fill="rgba(255,220,60,0.6)"/>
+            <polygon points="50,60 10,80 50,100" fill="rgba(255,255,150,0.5)"/>
+            <polygon points="60,10 85,80 60,150 35,80" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
+            <polygon points="60,10 85,80 60,80" fill="rgba(255,220,60,0.7)"/>
+            <polygon points="60,10 35,80 60,80" fill="rgba(255,250,180,0.6)"/>
+            <polygon points="85,80 60,150 60,80" fill="rgba(255,180,40,0.4)"/>
+            <polygon points="35,80 60,150 60,80" fill="rgba(255,220,60,0.3)"/>
+          </svg>
+        </div>
+        <div class="crystal-badge">Hướng Dương</div>
+        <div class="crystal-overlay">
+          <div class="crystal-name">Tinh Thể Năng Lượng</div>
+          <div class="crystal-desc">Tỏa sáng như ánh bình minh — dành cho những tâm hồn rực rỡ và tràn đầy sức sống.</div>
+        </div>
+      </div>
+
+      <div class="crystal-card">
         <div class="crystal-card-bg emerald"></div>
         <div class="crystal-inner-shape">
           <svg viewBox="0 0 120 160" fill="none">
-            <polygon points="60,5 100,35 115,80 60,155 5,80 20,35" fill="rgba(255,255,255,0.22)" stroke="rgba(168,216,240,0.65)" stroke-width="0.8"/>
-            <polygon points="60,5 100,35 60,60" fill="rgba(100,180,240,0.5)"/>
-            <polygon points="60,5 20,35 60,60"  fill="rgba(150,220,255,0.4)"/>
-            <ellipse cx="60" cy="30" rx="16" ry="6" fill="rgba(200,240,255,0.45)"/>
+            <polygon points="30,60 50,45 50,120 30,100" fill="rgba(100,200,180,0.4)" stroke="rgba(255,255,255,0.5)" stroke-width="0.5"/>
+            <polygon points="30,60 40,50 50,45" fill="rgba(255,255,255,0.6)"/>
+            <polygon points="70,55 90,70 90,130 70,110" fill="rgba(30,150,130,0.5)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+            <polygon points="70,55 80,45 90,70" fill="rgba(150,230,210,0.5)"/>
+            <polygon points="50,20 75,35 75,140 50,120" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.8)" stroke-width="0.8"/>
+            <polygon points="50,20 62,10 75,35" fill="rgba(200,255,240,0.7)"/>
+            <polygon points="50,20 62,140 50,120" fill="rgba(100,220,190,0.4)"/>
+            <polygon points="75,35 62,140 75,140" fill="rgba(40,160,140,0.6)"/>
           </svg>
         </div>
         <div class="crystal-badge">Đại Dương</div>
         <div class="crystal-overlay">
-          <div class="crystal-name">Tinh Thể Thảo Nguyên</div>
-          <div class="crystal-desc">Xanh mát như bầu trời Ba Vì — nơi những chú bò TH gặm cỏ tự nhiên mỗi sớm bình minh.</div>
+          <div class="crystal-name">Tinh Thể Lục Bảo</div>
+          <div class="crystal-desc">Xanh mát và sâu thẳm — biểu tượng của sự tĩnh lặng, mang hơi thở của dòng suối tự nhiên.</div>
         </div>
       </div>
+
+      <div class="crystal-card">
+        <div class="crystal-card-bg coral"></div>
+        <div class="crystal-inner-shape">
+          <svg viewBox="0 0 120 160" fill="none">
+            <polygon points="40,110 20,60 35,70" fill="rgba(255,160,140,0.6)" stroke="rgba(255,255,255,0.5)" stroke-width="0.5"/>
+            <polygon points="80,120 105,50 90,65" fill="rgba(255,100,80,0.5)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+            <path d="M50,140 L45,60 L60,20 L75,70 L70,140 Z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.8)" stroke-width="0.8"/>
+            <polygon points="45,60 60,20 60,140" fill="rgba(255,180,160,0.7)"/>
+            <polygon points="75,70 60,20 60,140" fill="rgba(220,80,60,0.5)"/>
+            <polygon points="45,60 60,50 75,70" fill="rgba(255,255,255,0.4)"/>
+          </svg>
+        </div>
+        <div class="crystal-badge">San Hô</div>
+        <div class="crystal-overlay">
+          <div class="crystal-name">Tinh Thể Nhiệt Huyết</div>
+          <div class="crystal-desc">Tự do vươn mình rẽ nhánh — tượng trưng cho sự sáng tạo vô hạn và đam mê bùng cháy.</div>
+        </div>
+      </div>
+
+      <div class="crystal-card">
+        <div class="crystal-card-bg rosequartz"></div>
+        <div class="crystal-inner-shape">
+          <svg viewBox="0 0 120 160" fill="none">
+            <polygon points="70,40 100,55 100,95 70,110 40,95 40,55" fill="rgba(240,120,150,0.3)" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+            <polygon points="70,40 100,55 70,75 40,55" fill="rgba(255,180,200,0.4)"/>
+            <polygon points="50,60 85,80 85,130 50,150 15,130 15,80" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.8)" stroke-width="0.8"/>
+            <polygon points="50,60 85,80 50,100 15,80" fill="rgba(255,230,235,0.8)"/>
+            <polygon points="15,80 50,100 50,150 15,130" fill="rgba(255,160,180,0.6)"/>
+            <polygon points="85,80 50,100 50,150 85,130" fill="rgba(200,80,110,0.4)"/>
+          </svg>
+        </div>
+        <div class="crystal-badge">Thạch Anh Hồng</div>
+        <div class="crystal-overlay">
+          <div class="crystal-name">Tinh Thể Chữa Lành</div>
+          <div class="crystal-desc">Mềm mại và ấm áp — mang năng lượng của sự thấu cảm, dịu dàng nâng niu cảm xúc.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
