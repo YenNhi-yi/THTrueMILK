@@ -699,10 +699,47 @@
 
 <!-- JavaScript cho demo và countdown -->
 <script>
-    // DEMO: hiển thị kết quả khi nhấn nút
     document.getElementById('generateBtn').addEventListener('click', function() {
-        document.getElementById('resultBox').classList.add('show');
-    });
+
+    const code = document.getElementById('codeInput').value.trim();
+
+    if(code === ""){
+        alert("Vui lòng nhập mã của bạn!");
+        return;
+    }
+
+    // Hiển thị result box
+    document.getElementById('resultBox').classList.add('show');
+
+    // ===== 1️⃣ TẠO SEED TỪ MÃ =====
+    let seed = 0;
+    for (let i = 0; i < code.length; i++) {
+        seed += code.charCodeAt(i);
+    }
+
+    // ===== 2️⃣ DANH SÁCH SẢN PHẨM =====
+    const products = [
+        "TH True Milk Ít Đường – Dành cho người năng động",
+        "TH True Milk Không Đường – Phù hợp lối sống cân bằng",
+        "TH True Yogurt – Hỗ trợ hệ tiêu hóa khỏe mạnh",
+        "TH True Nut – Sữa hạt giàu dinh dưỡng",
+        "TH True Milk Organic – Thanh khiết tự nhiên"
+    ];
+
+    // ===== 3️⃣ CHỌN SẢN PHẨM THEO SEED =====
+    const productIndex = seed % products.length;
+    const selectedProduct = products[productIndex];
+
+    document.getElementById("productName").innerText = selectedProduct;
+
+    // ===== 4️⃣ TẠO VOUCHER CÁ NHÂN HÓA =====
+    const discount = (seed % 20) + 10; // giảm 10% - 29%
+    const randomPart = Math.random().toString(36).substring(2,6).toUpperCase();
+    const voucher = "TH-" + randomPart + "-" + discount;
+
+    document.getElementById("voucherCode").innerText = voucher;
+
+});
 
     // Countdown đến 30/03 (nếu đã qua thì lấy năm sau)
     (function(){
