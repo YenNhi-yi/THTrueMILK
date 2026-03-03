@@ -3,70 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TH True DNA – Tinh Thể Sữa Độc Bản</title>
-    <!-- Fonts thanh lịch -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>TH True ADN - Khám phá tinh thể sữa của bạn</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --navy-dark: #001830;
-            --navy-deep: #002B5C;
-            --navy: #003E7E;
-            --blue-mid: #0057A8;
-            --blue-bright: #0072CE;
-            --sky: #A8D8F0;
-            --gold: #C9A84C;
-            --gold-light: #E8C97A;
-            --white: #FFFFFF;
-            --cream: #F0F6FC;
-            --gray-light: rgba(255,255,255,0.08);
-            --text-dim: rgba(255,255,255,0.65);
-            --text-very-dim: rgba(255,255,255,0.4);
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
         }
 
         body {
-            background-color: var(--navy-dark);
-            color: var(--white);
-            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #1F2937;
             line-height: 1.6;
-            overflow-x: hidden;
+        }
+
+        /* Màu sắc chủ đạo TH true Milk */
+        :root {
+            --primary: #0054A6;      /* Xanh TH */
+            --primary-light: #4D7DB5;
+            --accent: #FFD700;        /* Vàng gold */
+            --light-bg: #F8F9FA;
+            --gray: #E5E7EB;
+            --text-dark: #1F2937;
+            --white: #FFFFFF;
+            --shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.02);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
         }
 
         section {
-            padding: 100px 0;
-            border-bottom: 1px solid rgba(168,216,240,0.1);
+            padding: 80px 0;
+            border-bottom: 1px solid var(--gray);
         }
 
         section:last-of-type {
             border-bottom: none;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-        }
-
         h1 {
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            line-height: 1.1;
-            color: var(--white);
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--primary);
         }
 
         h2 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            margin-bottom: 20px;
-            color: var(--cream);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--primary);
             position: relative;
             display: inline-block;
         }
@@ -77,73 +68,67 @@
             bottom: -10px;
             left: 0;
             width: 80px;
-            height: 3px;
-            background: var(--gold);
+            height: 4px;
+            background: var(--accent);
             border-radius: 2px;
-        }
-
-        .section-label {
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--sky);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section-label::before {
-            content: '';
-            width: 32px;
-            height: 1px;
-            background: var(--sky);
-            display: block;
         }
 
         .btn {
             display: inline-block;
-            background: linear-gradient(135deg, var(--navy), var(--blue-bright));
-            border: 1px solid var(--blue-bright);
+            background: var(--primary);
             color: white;
-            padding: 14px 36px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 0.85rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+            padding: 14px 32px;
+            border-radius: 50px;
             text-decoration: none;
-            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
-            clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+            border: 2px solid transparent;
+            box-shadow: var(--shadow);
+            margin: 5px;
+            cursor: pointer;
             border: none;
         }
 
         .btn-outline {
             background: transparent;
-            border: 1px solid rgba(255,255,255,0.25);
-            color: rgba(255,255,255,0.8);
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
 
         .btn:hover {
+            background: #003d7a;
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0,114,206,0.3);
         }
 
         .btn-outline:hover {
-            border-color: var(--sky);
-            color: var(--sky);
+            background: var(--primary);
+            color: white;
+        }
+
+        .flex-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .flex-col {
+            flex: 1 1 300px;
+        }
+
+        .text-center {
+            text-align: center;
         }
 
         /* HEADER */
         header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(0,24,48,0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(168,216,240,0.15);
-            padding: 15px 0;
         }
 
         .header-container {
@@ -153,471 +138,256 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--white);
+            font-weight: 700;
+            color: var(--primary);
             text-decoration: none;
-            letter-spacing: -0.02em;
         }
 
         .logo span {
-            color: var(--gold);
-            font-style: italic;
+            color: var(--accent);
         }
 
         .nav-links {
             display: flex;
-            gap: 36px;
+            gap: 30px;
         }
 
         .nav-links a {
-            color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-size: 0.8rem;
+            color: var(--text-dark);
             font-weight: 500;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--sky);
+            color: var(--primary);
         }
 
-        /* HERO */
+        /* HERO SECTION */
         #hero {
-            padding: 140px 0 100px;
-            background: radial-gradient(circle at 70% 30%, rgba(0,114,206,0.25) 0%, transparent 50%),
-                        radial-gradient(circle at 20% 80%, rgba(168,216,240,0.15) 0%, transparent 45%),
-                        var(--navy-dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecf1 100%);
+            padding: 60px 0;
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 60px;
+        .hero-offer {
+            background: var(--accent);
+            color: var(--text-dark);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 600;
+            margin: 20px 0;
+            font-size: 1.2rem;
         }
 
-        .hero-content h1 {
-            margin-bottom: 20px;
-        }
-
-        .hero-content .line-1 {
-            display: block;
-            background: linear-gradient(135deg, #fff, var(--sky));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-content .line-2 {
-            display: block;
-            font-size: 0.4em;
-            font-weight: 300;
-            color: var(--gold-light);
-            margin-top: 5px;
-        }
-
-        .hero-sub {
-            color: var(--text-dim);
-            max-width: 500px;
-            margin: 30px 0 40px;
-            line-height: 1.8;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-crystal-icon {
-            font-size: 18rem;
-            line-height: 1;
-            filter: drop-shadow(0 0 40px rgba(168,216,240,0.6));
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* DEMO SECTION (CRYSTAL GENERATOR) */
+        /* DEMO SECTION (quan trọng) */
         #demo {
-            background: rgba(0,43,92,0.3);
+            background: var(--white);
         }
 
         .demo-box {
-            background: rgba(0,24,48,0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0,114,206,0.25);
-            padding: 60px;
-            border-radius: 32px;
-            margin-top: 40px;
-            box-shadow: 0 30px 50px -20px rgba(0,0,0,0.8);
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
         }
 
-        .demo-title {
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .step {
+            flex: 1 1 180px;
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
             text-align: center;
-            margin-bottom: 40px;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            font-weight: 500;
         }
 
-        .demo-title h3 {
-            font-size: 2rem;
-            color: var(--cream);
+        .step .emoji {
+            font-size: 2.5rem;
+            display: block;
             margin-bottom: 10px;
         }
 
-        .demo-steps {
+        .input-group {
             display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            margin-bottom: 50px;
+            max-width: 500px;
+            margin: 30px auto;
             flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
         }
 
-        .step-item {
-            flex: 1 1 180px;
-            text-align: center;
-            padding: 20px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(168,216,240,0.1);
-            border-radius: 20px;
-        }
-
-        .step-emoji {
-            font-size: 2.8rem;
-            display: block;
-            margin-bottom: 12px;
-            filter: drop-shadow(0 0 8px var(--sky));
-        }
-
-        .step-item p {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        .input-area {
-            max-width: 600px;
-            margin: 0 auto 40px;
-            display: flex;
-            gap: 0;
-        }
-
-        .input-area input {
-            flex: 1;
-            padding: 18px 24px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(0,114,206,0.4);
-            border-right: none;
-            color: white;
+        .input-group input {
+            flex: 1 1 250px;
+            padding: 15px 20px;
+            border: 1px solid var(--gray);
+            border-radius: 50px;
             font-size: 1rem;
             outline: none;
-            transition: border-color 0.3s;
+            transition: border 0.3s;
         }
 
-        .input-area input:focus {
-            border-color: var(--sky);
+        .input-group input:focus {
+            border-color: var(--primary);
         }
 
-        .input-area button {
-            padding: 18px 36px;
-            background: linear-gradient(135deg, var(--navy), var(--blue-bright));
-            border: none;
-            color: white;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-
-        .input-area button:hover {
-            background: linear-gradient(135deg, #002b5c, #0099ff);
-        }
-
-        .crystal-output {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-            margin-top: 50px;
+        .result {
+            background: white;
+            border-radius: 24px;
             padding: 30px;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(168,216,240,0.15);
+            margin-top: 30px;
+            border: 2px solid var(--accent);
+            display: none; /* Ẩn lúc đầu, sẽ hiện khi nhấn nút (dùng JS demo) */
         }
 
-        .crystal-canvas-container {
-            text-align: center;
-        }
-
-        #crystalCanvas2 {
-            width: 100%;
-            max-width: 360px;
-            height: auto;
-            border: 1px solid rgba(168,216,240,0.2);
-            background: #001220;
-        }
-
-        .crystal-info {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        .result.show {
+            display: block;
         }
 
         .crystal-name {
-            font-family: 'Playfair Display', serif;
             font-size: 2rem;
-            color: var(--cream);
+            font-weight: 700;
+            color: var(--primary);
         }
 
-        .crystal-type {
-            font-size: 0.9rem;
-            letter-spacing: 0.2em;
-            color: var(--sky);
-            text-transform: uppercase;
-        }
-
-        .crystal-meaning {
-            color: var(--text-dim);
-            line-height: 1.8;
-            font-style: italic;
-            border-left: 2px solid var(--gold);
-            padding-left: 20px;
-        }
-
-        .crystal-attributes {
+        .attributes {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
         }
 
-        .attr-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .attr-name {
-            min-width: 120px;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.8rem;
-        }
-
-        .attr-bar {
-            flex: 1;
-            height: 4px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .attr-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--sky), white);
-            border-radius: 2px;
-        }
-
-        .attr-value {
-            min-width: 30px;
-            color: rgba(255,255,255,0.6);
-            font-size: 0.8rem;
-        }
-
-        .download-btn {
-            margin-top: 10px;
-            padding: 12px;
-            background: transparent;
-            border: 1px solid rgba(168,216,240,0.4);
-            color: var(--sky);
-            cursor: pointer;
-            transition: 0.3s;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
-        }
-
-        .download-btn:hover {
-            background: rgba(0,114,206,0.2);
+        .attribute {
+            background: var(--light-bg);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 500;
         }
 
         /* GALLERY */
-        #gallery {
-            background: var(--navy-dark);
-        }
-
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
-        .gallery-card {
-            background: rgba(0,43,92,0.4);
-            border: 1px solid rgba(0,114,206,0.25);
+        .gallery-item {
+            background: var(--light-bg);
             padding: 30px 20px;
-            border-radius: 24px;
+            border-radius: 20px;
             text-align: center;
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s;
+            transition: 0.3s;
         }
 
-        .gallery-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--sky);
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow);
         }
 
-        .gallery-emoji {
-            font-size: 4rem;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 15px currentColor);
-        }
-
-        .gallery-card h3 {
-            font-size: 1.5rem;
-            color: var(--cream);
+        .gallery-item h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
             margin-bottom: 10px;
         }
 
-        .gallery-card p {
-            color: var(--text-very-dim);
-            font-size: 0.9rem;
+        .gallery-item .emoji-large {
+            font-size: 4rem;
+            display: block;
+            margin: 15px 0;
         }
 
         /* AI HOW */
-        #how-ai {
-            background: rgba(0,24,48,0.8);
-        }
-
-        .ai-grid {
+        #how-ai .ai-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
         .ai-card {
-            background: rgba(0,0,0,0.25);
-            border: 1px solid rgba(168,216,240,0.1);
-            padding: 40px 20px;
+            background: var(--light-bg);
+            padding: 30px 20px;
+            border-radius: 16px;
             text-align: center;
-            border-radius: 20px;
         }
 
-        .ai-emoji {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+        .ai-card .emoji-big {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
         }
 
-        .ai-card h3 {
-            font-size: 1.3rem;
-            color: var(--cream);
-            margin-bottom: 10px;
-        }
-
-        .ai-card p {
-            color: var(--text-very-dim);
-            font-size: 0.9rem;
-        }
-
-        /* WHY */
-        #why {
-            background: rgba(0,43,92,0.3);
-        }
-
+        /* WHY SECTION */
         .bullet-list {
             list-style: none;
             font-size: 1.2rem;
-            margin: 40px 0;
         }
 
         .bullet-list li {
-            margin: 20px 0;
+            margin: 15px 0;
             display: flex;
             align-items: center;
-            gap: 15px;
-            color: var(--text-dim);
+            gap: 10px;
         }
 
-        .bullet-list .emoji {
-            font-size: 1.8rem;
+        .bullet-list .emoji-check {
+            font-size: 1.5rem;
         }
 
-        /* OFFER */
+        /* OFFER SECTION */
         #offer {
-            background: linear-gradient(135deg, #001830, #002b5c);
-            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, #003366 100%);
+            color: white;
         }
 
-        .offer-box {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--gold);
-            border-radius: 40px;
-            padding: 50px;
-            max-width: 800px;
-            margin: 40px auto;
+        #offer h2 {
+            color: white;
         }
 
-        .offer-box p {
-            font-size: 1.3rem;
-            margin: 20px 0;
-            color: var(--cream);
+        #offer h2:after {
+            background: white;
         }
 
         .countdown {
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-top: 40px;
+            margin: 40px 0;
         }
 
         .countdown-item {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid rgba(168,216,240,0.3);
+            background: rgba(255,255,255,0.2);
             padding: 20px;
+            border-radius: 12px;
             min-width: 100px;
-            border-radius: 16px;
+            backdrop-filter: blur(4px);
         }
 
         .countdown-item span {
             font-size: 2.5rem;
-            font-weight: 600;
+            font-weight: 700;
             display: block;
-            color: var(--gold);
         }
 
-        .countdown-item small {
-            color: var(--text-very-dim);
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-        }
-
-        /* LEAD */
-        #lead {
-            background: rgba(0,24,48,0.9);
-        }
-
+        /* LEAD FORM */
         .lead-form {
             max-width: 500px;
             margin: 40px auto;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(168,216,240,0.15);
+            background: white;
             padding: 40px;
             border-radius: 24px;
+            box-shadow: var(--shadow);
         }
 
         .form-group {
@@ -625,94 +395,87 @@
         }
 
         input[type="email"],
-        input[type="tel"] {
+        input[type="tel"],
+        input[type="text"] {
             width: 100%;
-            padding: 16px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(168,216,240,0.2);
-            color: white;
-            font-size: 1rem;
+            padding: 15px;
+            border: 1px solid var(--gray);
             border-radius: 8px;
+            font-size: 1rem;
         }
 
         .checkbox {
             display: flex;
             align-items: center;
             gap: 10px;
-            color: var(--text-very-dim);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .btn-submit {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--navy), var(--blue-bright));
-            border: none;
+            background: var(--primary);
             color: white;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            cursor: pointer;
+            border: none;
+            padding: 16px;
             border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #003d7a;
         }
 
         /* FINAL CTA */
         #final-cta {
-            text-align: center;
-            background: rgba(0,43,92,0.5);
-        }
-
-        #final-cta h2 {
-            display: block;
+            background: var(--light-bg);
         }
 
         /* FOOTER */
         footer {
-            background: #001220;
+            background: var(--primary);
+            color: white;
             padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid rgba(168,216,240,0.1);
         }
 
         .footer-links {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
             margin-bottom: 20px;
         }
 
         .footer-links a {
-            color: var(--text-very-dim);
+            color: white;
             text-decoration: none;
-            font-size: 0.8rem;
-            transition: color 0.3s;
+            opacity: 0.9;
         }
 
         .footer-links a:hover {
-            color: var(--sky);
+            opacity: 1;
+            text-decoration: underline;
         }
 
-        .footer-copy {
-            color: rgba(255,255,255,0.2);
-            font-size: 0.7rem;
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-            section { padding: 70px 0; }
-            .hero-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 50px 0; }
             .header-container { flex-direction: column; gap: 15px; }
             .nav-links { gap: 20px; flex-wrap: wrap; justify-content: center; }
-            .demo-box { padding: 30px; }
-            .crystal-output { grid-template-columns: 1fr; }
-            .countdown { flex-wrap: wrap; }
+            .countdown { flex-wrap: wrap; gap: 15px; }
+            .countdown-item { min-width: 70px; padding: 15px; }
         }
     </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
     <div class="container header-container">
-        <a href="#" class="logo">TH true <span>DNA</span></a>
+        <a href="#" class="logo">TH True <span>ADN</span></a>
         <div class="nav-links">
             <a href="#hero">Trang chủ</a>
             <a href="#demo">Tạo tinh thể</a>
@@ -722,23 +485,25 @@
     </div>
 </header>
 
-<!-- 1️⃣ HERO -->
+<!-- 1️⃣ HERO SECTION -->
 <section id="hero">
-    <div class="container hero-grid">
-        <div class="hero-content">
-            <div class="section-label">TH true DNA</div>
-            <h1>
-                <span class="line-1">Tinh Thể Sữa</span>
-                <span class="line-2">chỉ của riêng bạn</span>
+    <div class="container flex-row">
+        <div class="hero-content flex-col">
+            <h1>KHÁM PHÁ ADN VỊ SỮA CỦA RIÊNG BẠN<br>
+                <span style="color: var(--primary-light);">Tinh Thể Độc Bản Được AI Kiến Tạo – Không Ai Giống Ai</span>
             </h1>
-            <p class="hero-sub">Mỗi hộp sữa TH chứa một mã số định danh độc bản – "hạt giống" để công nghệ AI kiến tạo tác phẩm tinh thể ánh sáng lộng lẫy, mang dấu ấn duy nhất thuộc về chính bạn.</p>
-            <div class="hero-actions">
-                <a href="#demo" class="btn">Đúc tinh thể ngay</a>
-                <a href="#about" class="btn btn-outline">Khám phá thêm</a>
+            <p style="font-size: 1.3rem; margin: 20px 0;">Mỗi mã dưới lốc sữa TH True Milk chứa một “dãy ADN ánh sáng” riêng. Nhập mã của bạn – hệ thống AI sẽ “đúc” nên tinh thể độc bản mang dấu ấn cá nhân.</p>
+            <div class="hero-offer">
+                🎁 1.000 tinh thể đầu tiên nhận thêm quà tặng phiên bản giới hạn
+            </div>
+            <div style="margin-top: 30px;">
+                <a href="#" class="btn">ĐÚC TINH THỂ NGAY</a>
+                <a href="#" class="btn btn-outline">TÔI MUỐN KHÁM PHÁ ADN CỦA MÌNH</a>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="hero-crystal-icon">💎</div>
+        <div class="flex-col text-center">
+            <!-- Minh họa tinh thể dạng text/emoji -->
+            <div style="font-size: 12rem; line-height: 1;">💎</div>
         </div>
     </div>
 </section>
@@ -746,37 +511,53 @@
 <!-- 2️⃣ DEMO TẠO TINH THỂ -->
 <section id="demo">
     <div class="container">
-        <div class="section-label">Xưởng đúc tinh thể</div>
-        <h2>Nhập mã – Đúc ngay<br><span style="color: var(--sky);">tinh thể của bạn</span></h2>
+        <h2>NHẬP MÃ – ĐÚC TINH THỂ CỦA BẠN NGAY</h2>
         <div class="demo-box">
-            <div class="demo-steps">
-                <div class="step-item"><span class="step-emoji">🥛</span><p>Mua lốc sữa TH</p></div>
-                <div class="step-item"><span class="step-emoji">📱</span><p>Quét mã QR</p></div>
-                <div class="step-item"><span class="step-emoji">⌨️</span><p>Nhập mã thẻ cào</p></div>
-                <div class="step-item"><span class="step-emoji">✨</span><p>AI tạo tinh thể</p></div>
+            <div class="steps">
+                <div class="step"><span class="emoji">🥛</span> Mua lốc sữa TH True Milk</div>
+                <div class="step"><span class="emoji">📱</span> Quét QR trên bao bì</div>
+                <div class="step"><span class="emoji">⌨️</span> Nhập mã thẻ cào bên dưới</div>
+                <div class="step"><span class="emoji">✨</span> AI tạo tinh thể độc bản</div>
             </div>
 
-            <div class="input-area">
-                <input type="text" id="codeInput" placeholder="Nhập mã thẻ cào (VD: TH-2026-XXXXXXXX)">
-                <button id="codeSubmit">Đúc tinh thể</button>
-            </div>
-
-            <!-- Kết quả tinh thể (ẩn ban đầu) -->
-            <div id="crystalOutput" style="display: none;">
-                <div class="crystal-output">
-                    <div class="crystal-canvas-container">
-                        <canvas id="crystalCanvas2" width="360" height="400"></canvas>
-                        <button class="download-btn" onclick="downloadCrystal()">↓ Lưu tinh thể</button>
-                    </div>
-                    <div class="crystal-info">
-                        <div>
-                            <div class="crystal-type" id="crystalType"></div>
-                            <div class="crystal-name" id="crystalName"></div>
-                        </div>
-                        <div class="crystal-meaning" id="crystalMeaning"></div>
-                        <div class="crystal-attributes" id="crystalAttrs"></div>
-                    </div>
+            <div style="text-align: center;">
+                <p style="font-size: 1.2rem; margin-bottom: 10px;">Nhập mã của bạn tại đây:</p>
+                <div class="input-group">
+                    <input type="text" id="codeInput" placeholder="Ví dụ: TH-ABCD-1234" value="TH-XYZ-7890">
+                    <button class="btn" id="generateBtn">ĐÚC TINH THỂ CỦA TÔI</button>
                 </div>
+            </div>
+
+            <!-- Kết quả giả lập (ẩn ban đầu, hiện khi bấm nút) -->
+            <div class="result" id="resultBox">
+                <div style="font-size: 5rem; text-align: center;">🔮</div>
+                <div class="crystal-name">✨ TINH THỂ: CRYSTAL AURORA 2398 ✨</div>
+                <div class="attributes">
+                    <span class="attribute">💡 Năng lượng sáng tạo</span>
+                    <span class="attribute">🧠 Tư duy độc lập</span>
+                    <span class="attribute">⚡ Tinh thần bền bỉ</span>
+                </div>
+                <p style="font-size: 1.2rem; font-style: italic;">“Bạn là người luôn tìm kiếm sự khác biệt và không ngừng phát triển bản thân.”</p>
+                <!-- PRODUCT RECOMMENDATION -->
+<div id="productSuggestion" style="margin-top:30px; padding:20px; background:#F8F9FA; border-radius:16px;">
+    <h3 style="color:#0054A6;">🎯 Sản phẩm dành riêng cho bạn:</h3>
+    <p id="productName" style="font-weight:600; font-size:1.2rem;"></p>
+    
+    <p style="margin-top:10px;">🎁 Mã ưu đãi cá nhân hóa:</p>
+    <div id="voucherCode" style="
+        font-size:1.5rem;
+        font-weight:700;
+        background:#FFD700;
+        padding:10px 20px;
+        border-radius:8px;
+        display:inline-block;
+        margin-top:10px;">
+    </div>
+
+    <div style="margin-top:20px;">
+        <button class="btn">MUA NGAY</button>
+    </div>
+</div>
             </div>
         </div>
     </div>
@@ -785,111 +566,100 @@
 <!-- 3️⃣ GALLERY BỘ SƯU TẬP -->
 <section id="gallery">
     <div class="container">
-        <div class="section-label">Bộ sưu tập</div>
-        <h2>Những tinh thể<br><span style="color: var(--gold);">lộng lẫy</span> chờ bạn</h2>
+        <h2>KHÁM PHÁ BỘ SƯU TẬP TINH THỂ ADN</h2>
         <div class="gallery-grid">
-            <div class="gallery-card">
-                <div class="gallery-emoji" style="color: #88E2D0;">💧</div>
-                <h3>Pha lê thuần khiết</h3>
-                <p>Trong vắt như giọt sữa TH đầu tiên</p>
+            <div class="gallery-item">
+                <span class="emoji-large">🔥</span>
+                <h3>CRYSTAL NĂNG LƯỢNG</h3>
+                <p>Rực rỡ – mạnh mẽ – truyền cảm hứng</p>
             </div>
-            <div class="gallery-card">
-                <div class="gallery-emoji" style="color: #FFD966;">🔥</div>
-                <h3>Năng lượng hướng dương</h3>
-                <p>Rực rỡ như đồng cỏ Ba Vì dưới nắng</p>
+            <div class="gallery-item">
+                <span class="emoji-large">🎨</span>
+                <h3>CRYSTAL SÁNG TẠO</h3>
+                <p>Phá cách – nghệ thuật – độc lập</p>
             </div>
-            <div class="gallery-card">
-                <div class="gallery-emoji" style="color: #6EC8B2;">🌊</div>
-                <h3>Đại dương thuần khiết</h3>
-                <p>Trong lành như nguồn nước suối Ba Vì</p>
+            <div class="gallery-item">
+                <span class="emoji-large">🛡️</span>
+                <h3>CRYSTAL BẢN LĨNH</h3>
+                <p>Kiên định – dẫn đầu – quyết đoán</p>
             </div>
-            <div class="gallery-card">
-                <div class="gallery-emoji" style="color: #FF9F7C;">🪸</div>
-                <h3>San hô nhiệt huyết</h3>
-                <p>Vươn mình tự do, không ngừng sáng tạo</p>
-            </div>
-            <div class="gallery-card">
-                <div class="gallery-emoji" style="color: #C77DFF;">🔮</div>
-                <h3>Thạch anh huyền bí</h3>
-                <p>Chiều sâu trí tuệ tích lũy năm tháng</p>
+            <div class="gallery-item">
+                <span class="emoji-large">💧</span>
+                <h3>CRYSTAL THANH KHIẾT</h3>
+                <p>Cân bằng – tinh tế – dịu dàng</p>
             </div>
         </div>
-        <p style="text-align: center; color: var(--text-very-dim); margin-top: 40px;">Mỗi tinh thể được tạo ra từ thuật toán cá nhân hóa dựa trên mã riêng của bạn. <strong>Không có hai tinh thể nào giống nhau.</strong></p>
+        <p style="text-align: center; margin-top: 40px; font-size: 1.2rem;">Mỗi tinh thể được tạo ra từ thuật toán cá nhân hóa dựa trên mã riêng của bạn. <strong>Không có hai tinh thể nào giống nhau.</strong></p>
     </div>
 </section>
 
 <!-- 4️⃣ AI HOẠT ĐỘNG NHƯ THẾ NÀO? -->
 <section id="how-ai">
     <div class="container">
-        <div class="section-label">Công nghệ AI</div>
-        <h2>Giải mã ADN ánh sáng</h2>
+        <h2>CÔNG NGHỆ AI GIẢI MÃ ADN ÁNH SÁNG</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px;">Hệ thống sử dụng thuật toán generative design để:</p>
         <div class="ai-grid">
             <div class="ai-card">
-                <div class="ai-emoji">🔢</div>
-                <h3>Chuyển đổi mã</h3>
-                <p>Mã thẻ cào thành dãy seed thuật toán</p>
+                <span class="emoji-big">🔢</span>
+                <h3>Chuyển đổi mã thành dãy seed thuật toán</h3>
             </div>
             <div class="ai-card">
-                <div class="ai-emoji">🔬</div>
-                <h3>Phân tích cấu trúc</h3>
-                <p>Tạo hình khối tinh thể độc bản</p>
+                <span class="emoji-big">🔬</span>
+                <h3>Phân tích và tạo cấu trúc tinh thể</h3>
             </div>
             <div class="ai-card">
-                <div class="ai-emoji">🌈</div>
-                <h3>Xây dựng màu sắc</h3>
-                <p>Hiệu ứng ánh sáng riêng biệt</p>
+                <span class="emoji-big">🌈</span>
+                <h3>Xây dựng màu sắc và hiệu ứng ánh sáng riêng</h3>
             </div>
             <div class="ai-card">
-                <div class="ai-emoji">🏷️</div>
-                <h3>Gán thuộc tính</h3>
-                <p>Phản ánh cá tính của bạn</p>
+                <span class="emoji-big">🏷️</span>
+                <h3>Gán thuộc tính cá tính tương ứng</h3>
             </div>
         </div>
-        <p style="text-align: center; color: var(--text-very-dim); margin-top: 50px;">Mỗi mã là một “bản thiết kế ánh sáng” độc nhất.</p>
+        <p style="text-align: center; margin-top: 40px; font-weight: 500;">Mỗi mã là một “bản thiết kế ánh sáng” độc nhất.</p>
     </div>
 </section>
 
-<!-- 5️⃣ VÌ SAO KHÁC BIỆT? -->
+<!-- 5️⃣ VÌ SAO TH TRUE ADN KHÁC BIỆT? -->
 <section id="why">
     <div class="container">
-        <div class="section-label">Trải nghiệm</div>
-        <h2>Sữa theo cách chưa từng có</h2>
+        <h2>TRẢI NGHIỆM SỮA THEO CÁCH CHƯA TỪNG CÓ</h2>
         <ul class="bullet-list">
-            <li><span class="emoji">✔️</span> Cá nhân hóa bằng AI</li>
-            <li><span class="emoji">✔️</span> Kết hợp khoa học & nghệ thuật ánh sáng</li>
-            <li><span class="emoji">✔️</span> Tạo Digital Collectible độc bản</li>
-            <li><span class="emoji">✔️</span> Mỗi khách hàng là một cá tính riêng</li>
+            <li><span class="emoji-check">✔️</span> Cá nhân hóa bằng AI</li>
+            <li><span class="emoji-check">✔️</span> Kết hợp khoa học & nghệ thuật ánh sáng</li>
+            <li><span class="emoji-check">✔️</span> Tạo Digital Collectible độc bản</li>
+            <li><span class="emoji-check">✔️</span> Mỗi khách hàng là một cá tính riêng</li>
         </ul>
-        <p style="font-size: 1.3rem; color: var(--cream);"><strong>TH True DNA không chỉ là sữa. Đó là trải nghiệm công nghệ và bản sắc.</strong></p>
+        <p style="font-size: 1.3rem; margin-top: 30px;"><strong>TH True ADN không chỉ là sữa. Đó là trải nghiệm công nghệ và bản sắc.</strong></p>
     </div>
 </section>
 
 <!-- 6️⃣ ƯU ĐÃI CHIẾN DỊCH -->
 <section id="offer">
-    <div class="container">
-        <div class="section-label" style="justify-content: center;">Giới hạn</div>
-        <h2 style="text-align: center;">Ưu đãi phiên bản giới hạn</h2>
-        <div class="offer-box">
-            <p>🎁 1.000 tinh thể đầu tiên nhận thêm:</p>
-            <p style="font-size: 1.1rem;">• Khung ảnh tinh thể đặc biệt<br>• Cơ hội tham gia mini game<br>• Voucher giảm giá</p>
+    <div class="container text-center">
+        <h2>ƯU ĐÃI PHIÊN BẢN GIỚI HẠN</h2>
+        <div style="background: rgba(255,255,255,0.1); border-radius: 40px; padding: 30px; margin: 30px 0;">
+            <p>🎁 1.000 tinh thể đầu tiên sẽ nhận thêm:</p>
+            <p style="font-size: 1.2rem;">• Khung ảnh tinh thể phiên bản đặc biệt<br>• Cơ hội tham gia mini game trúng quà<br>• Voucher giảm giá cho lần mua tiếp theo</p>
         </div>
-        <p style="font-size: 1.5rem; color: var(--gold);">⏳ Chương trình chỉ áp dụng đến 30/03</p>
+        <p style="font-size: 1.5rem;">⏳ Chương trình chỉ áp dụng đến 30/03</p>
+        <!-- Countdown timer -->
         <div class="countdown" id="countdown">
-            <div class="countdown-item"><span>00</span> <small>Ngày</small></div>
-            <div class="countdown-item"><span>00</span> <small>Giờ</small></div>
-            <div class="countdown-item"><span>00</span> <small>Phút</small></div>
-            <div class="countdown-item"><span>00</span> <small>Giây</small></div>
+            <div class="countdown-item"><span>02</span> Ngày</div>
+            <div class="countdown-item"><span>14</span> Giờ</div>
+            <div class="countdown-item"><span>35</span> Phút</div>
+            <div class="countdown-item"><span>22</span> Giây</div>
         </div>
     </div>
 </section>
 
 <!-- 7️⃣ LEAD CAPTURE -->
 <section id="lead">
-    <div class="container">
-        <div class="section-label">Đăng ký</div>
-        <h2>Nhận bộ sưu tập tinh thể mới nhất</h2>
+    <div class="container text-center">
+        <h2>NHẬN BỘ SƯU TẬP TINH THỂ MỚI NHẤT</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 20px;">Đăng ký để nhận thông báo và ưu đãi độc quyền</p>
         <div class="lead-form">
-            <form>
+            <form action="#" method="post">
                 <div class="form-group">
                     <input type="email" placeholder="Email của bạn" required>
                 </div>
@@ -898,9 +668,9 @@
                 </div>
                 <div class="form-group checkbox">
                     <input type="checkbox" id="consent" checked>
-                    <label for="consent">Đồng ý nhận thông tin ưu đãi</label>
+                    <label for="consent">Đồng ý nhận thông tin ưu đãi và cập nhật</label>
                 </div>
-                <button type="submit" class="btn-submit">Đăng ký ngay</button>
+                <button type="submit" class="btn-submit">ĐĂNG KÝ NGAY</button>
             </form>
         </div>
     </div>
@@ -908,148 +678,58 @@
 
 <!-- 8️⃣ CTA CUỐI TRANG -->
 <section id="final-cta">
-    <div class="container">
-        <h2>Sẵn sàng khám phá ADN của bạn?</h2>
-        <a href="#demo" class="btn" style="font-size: 1.2rem; padding: 16px 48px;">ĐÚC TINH THỂ NGAY</a>
-        <p style="margin-top: 30px; color: var(--text-very-dim);">TH True DNA – Cá nhân hóa vị sữa. Cá nhân hóa ánh sáng.</p>
+    <div class="container text-center">
+        <h2 style="display: block;">SẴN SÀNG KHÁM PHÁ ADN CỦA BẠN?</h2>
+        <a href="#" class="btn" style="font-size: 1.5rem; padding: 16px 48px;">ĐÚC TINH THỂ NGAY</a>
+        <p style="margin-top: 20px; font-style: italic;">TH True ADN – Cá nhân hóa vị sữa. Cá nhân hóa ánh sáng.</p>
     </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
     <div class="container">
         <div class="footer-links">
             <a href="#">Chính sách bảo mật</a>
             <a href="#">AI-powered system</a>
-            <a href="#">Theo dõi dữ liệu</a>
+            <a href="#">Theo dõi dữ liệu minh bạch</a>
         </div>
-        <div class="footer-copy">© 2026 TH True Milk. All rights reserved.</div>
+        <p style="text-align: center; opacity: 0.8;">© 2025 TH True Milk. Bản quyền thuộc về TH Group.</p>
     </div>
 </footer>
 
+<!-- JavaScript cho demo và countdown -->
 <script>
-    // ==================== COUNTDOWN ====================
-    (function() {
-        const targetDate = new Date(new Date().getFullYear(), 2, 30, 23, 59, 59); // 30/03
-        if (new Date() > targetDate) targetDate.setFullYear(targetDate.getFullYear() + 1);
-        function update() {
-            const diff = targetDate - new Date();
+    // DEMO: hiển thị kết quả khi nhấn nút
+    document.getElementById('generateBtn').addEventListener('click', function() {
+        document.getElementById('resultBox').classList.add('show');
+    });
+
+    // Countdown đến 30/03 (nếu đã qua thì lấy năm sau)
+    (function(){
+        const targetDate = new Date(new Date().getFullYear(), 2, 30, 23, 59, 59); // 30/03 (tháng 3 là 2)
+        if (new Date() > targetDate) {
+            targetDate.setFullYear(targetDate.getFullYear() + 1);
+        }
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
             if (diff <= 0) {
                 document.querySelectorAll('#countdown .countdown-item span').forEach(el => el.innerText = '00');
                 return;
             }
-            const days = Math.floor(diff / (1000*60*60*24));
-            const hours = Math.floor((diff % 86400000) / 3600000);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (86400000)) / (3600000));
             const minutes = Math.floor((diff % 3600000) / 60000);
             const seconds = Math.floor((diff % 60000) / 1000);
-            document.querySelectorAll('#countdown .countdown-item span')[0].innerText = days.toString().padStart(2,'0');
-            document.querySelectorAll('#countdown .countdown-item span')[1].innerText = hours.toString().padStart(2,'0');
-            document.querySelectorAll('#countdown .countdown-item span')[2].innerText = minutes.toString().padStart(2,'0');
-            document.querySelectorAll('#countdown .countdown-item span')[3].innerText = seconds.toString().padStart(2,'0');
+            document.querySelectorAll('#countdown .countdown-item')[0].querySelector('span').innerText = days.toString().padStart(2,'0');
+            document.querySelectorAll('#countdown .countdown-item')[1].querySelector('span').innerText = hours.toString().padStart(2,'0');
+            document.querySelectorAll('#countdown .countdown-item')[2].querySelector('span').innerText = minutes.toString().padStart(2,'0');
+            document.querySelectorAll('#countdown .countdown-item')[3].querySelector('span').innerText = seconds.toString().padStart(2,'0');
         }
-        update(); setInterval(update, 1000);
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
     })();
-
-    // ==================== CRYSTAL ENGINE ====================
-    // (Đã được rút gọn từ file index.html – chỉ giữ các hàm cần thiết)
-    function seededRNG(seed) {
-        let s = seed >>> 0;
-        return () => {
-            s += 0x6D2B79F5;
-            let t = Math.imul(s ^ s>>>15, 1 | s);
-            t = t + Math.imul(t ^ t>>>7, 61 | t) ^ t;
-            return ((t ^ t>>>14) >>> 0) / 4294967296;
-        };
-    }
-    function hashCode(str) {
-        let h = 2166136261;
-        for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
-        return h >>> 0;
-    }
-
-    // 6 loại tinh thể (vẽ canvas) – giữ nguyên từ file index.html
-    function drawPhaLe(c, W, H, rng) { /* ... cần copy từ file index.html ... */ }
-    function drawHuongDuong(c, W, H, rng) { /* ... */ }
-    function drawDaiDuong(c, W, H, rng) { /* ... */ }
-    function drawSanHo(c, W, H, rng) { /* ... */ }
-    function drawThachAnh(c, W, H, rng) { /* ... */ }
-    function drawHongNgoc(c, W, H, rng) { /* ... */ }
-
-    const CRYSTAL_TYPES = [
-        { name: 'Tinh Thể Pha Lê', type: 'PHA LÊ', tag: 'hsl(200,70%,72%)', meaning: 'Trong vắt như giọt sữa TH đầu tiên...', draw: drawPhaLe },
-        { name: 'Tinh Thể Hướng Dương', type: 'HƯỚNG DƯƠNG', tag: 'hsl(44,90%,65%)', meaning: 'Rực rỡ như đồng cỏ Ba Vì dưới nắng vàng...', draw: drawHuongDuong },
-        { name: 'Tinh Thể Đại Dương', type: 'ĐẠI DƯƠNG', tag: 'hsl(175,70%,58%)', meaning: 'Trong lành như nguồn nước suối Ba Vì...', draw: drawDaiDuong },
-        { name: 'Tinh Thể San Hô', type: 'SAN HÔ', tag: 'hsl(18,88%,65%)', meaning: 'Vươn nhánh tự do như hành trình TH...', draw: drawSanHo },
-        { name: 'Tinh Thể Thạch Anh', type: 'THẠCH ANH TÍM', tag: 'hsl(282,68%,72%)', meaning: 'Huyền bí như bí quyết từng giọt sữa TH...', draw: drawThachAnh },
-        { name: 'Tinh Thể Hồng Ngọc', type: 'HỒNG NGỌC', tag: 'hsl(345,72%,72%)', meaning: 'Ấm áp như bàn tay người mẹ...', draw: drawHongNgoc },
-    ];
-    const ATTR_NAMES = ['Độ tinh khiết','Năng lượng','Cộng hưởng','Độ hiếm','Ánh sáng nội tâm'];
-
-    function drawCrystal(seedNum, ctype, rng) {
-        const cv = document.getElementById('crystalCanvas2');
-        if (!cv) return;
-        const c = cv.getContext('2d');
-        c.clearRect(0, 0, cv.width, cv.height);
-        ctype.draw(c, cv.width, cv.height, rng);
-    }
-
-    function generateCrystal() {
-        const raw = document.getElementById('codeInput').value.trim();
-        if (!raw) {
-            alert('Vui lòng nhập mã thẻ cào!');
-            return;
-        }
-        const btn = document.getElementById('codeSubmit');
-        const originalText = btn.innerText;
-        btn.innerText = '✦ Đang đúc...';
-        btn.disabled = true;
-
-        setTimeout(() => {
-            const seedNum = hashCode(raw.toUpperCase() + '|' + Date.now());
-            const rng = seededRNG(seedNum);
-            const typeIdx = hashCode(raw.toUpperCase()) % CRYSTAL_TYPES.length;
-            const ctype = CRYSTAL_TYPES[typeIdx];
-            const codeRng = seededRNG(hashCode(raw.toUpperCase()));
-            const attrs = ATTR_NAMES.map(n => ({ name: n, val: Math.floor(codeRng()*35)+65 }));
-
-            drawCrystal(seedNum, ctype, rng);
-
-            document.getElementById('crystalName').innerText = ctype.name;
-            document.getElementById('crystalType').innerText = '✦ ' + ctype.type + ' ✦';
-            document.getElementById('crystalType').style.color = ctype.tag;
-            document.getElementById('crystalMeaning').innerText = ctype.meaning;
-
-            document.getElementById('crystalAttrs').innerHTML = attrs.map(a => `
-                <div class="attr-row">
-                    <span class="attr-name">${a.name}</span>
-                    <div class="attr-bar"><div class="attr-fill" style="width:${a.val}%; background: linear-gradient(90deg, ${ctype.tag}, white);"></div></div>
-                    <span class="attr-value">${a.val}</span>
-                </div>
-            `).join('');
-
-            document.getElementById('crystalOutput').style.display = 'block';
-            btn.innerText = originalText;
-            btn.disabled = false;
-        }, 500);
-    }
-
-    function downloadCrystal() {
-        const cv = document.getElementById('crystalCanvas2');
-        const name = document.getElementById('crystalName').innerText || 'tinh-the';
-        const link = document.createElement('a');
-        link.download = name.replace(/\s+/g,'-').toLowerCase() + '.png';
-        link.href = cv.toDataURL('image/png');
-        link.click();
-    }
-
-    document.getElementById('codeSubmit').addEventListener('click', generateCrystal);
-    document.getElementById('codeInput').addEventListener('keydown', e => { if (e.key === 'Enter') generateCrystal(); });
-
-    // Lưu ý: Các hàm draw... cần được định nghĩa đầy đủ (copy từ file index.html).
-    // Vì giới hạn độ dài, tôi chỉ đặt tên hàm, bạn cần copy nội dung từ file index.html vào đây.
-    // Dưới đây là phần khai báo đủ để code chạy, nhưng thực tế bạn phải paste phần vẽ của 6 hàm.
-    // (Trong thực tế, bạn sẽ copy toàn bộ phần định nghĩa draw... từ index.html vào đây.)
 </script>
 
-<!-- LƯU Ý: Các hàm draw... chưa được định nghĩa. Bạn cần copy từ file index.html vào đây để có hiệu ứng vẽ tinh thể. -->
 </body>
 </html>
