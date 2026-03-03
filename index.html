@@ -1303,79 +1303,32 @@
   </div>
 </section>
 
-<!-- ── LEAD CAPTURE (HubSpot Form) ── -->
+<!-- ── LEAD CAPTURE (HubSpot Real Form) ── -->
 <section class="lead-section" id="lead">
   <h2>Nhận bộ sưu tập mới nhất</h2>
   <p>Đăng ký để nhận thông báo và ưu đãi độc quyền từ TH True DNA</p>
 
-  <!--
-    HubSpot Form Embed
-    ──────────────────
-    Khi bạn đã có Portal ID + Form ID thật, xoá div#hs-form-placeholder
-    và uncomment đoạn script bên dưới.
-
-    Sau đó vào HubSpot → Marketing → Forms → [form] → Options:
-      • Redirect URL: trang cảm ơn của bạn
-      • Notifications: email nhận lead
-      • Connected Workflow: trigger automation email
-  -->
-  <div class="hs-form-wrapper" id="hs-form-placeholder">
-
-    <!-- PLACEHOLDER UI (hiển thị khi chưa có HubSpot ID thật) -->
-    <div style="text-align:center;padding:10px 0 24px;">
-      <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);margin-bottom:6px;">HubSpot Form Embed</div>
-      <div style="font-size:.82rem;color:var(--text-2);">
-        Điền <code style="color:var(--gold);background:rgba(232,201,122,.1);padding:2px 6px;">HUBSPOT_PORTAL_ID</code> +
-        <code style="color:var(--gold);background:rgba(232,201,122,.1);padding:2px 6px;">HUBSPOT_FORM_ID</code><br>vào block MARTECH ở đầu file để kích hoạt form thật.
-      </div>
-    </div>
-
-    <!-- Demo form fields (mimic HubSpot structure) -->
-    <div class="hs-form-field"><label>Họ và tên</label><input type="text"  id="demo_name"  placeholder="Nguyễn Văn A"></div>
-    <div class="hs-form-field"><label>Email</label><input type="email" id="demo_email" placeholder="email@example.com"></div>
-    <div class="hs-form-field"><label>Số điện thoại</label><input type="tel" id="demo_phone" placeholder="0912 345 678"></div>
-    <!-- Hidden UTM – HubSpot tự nhận nếu trang load với UTM params -->
-    <input type="hidden" id="hs_utm_source"   value="">
-    <input type="hidden" id="hs_utm_medium"   value="">
-    <input type="hidden" id="hs_utm_campaign" value="">
-
-    <div class="checkbox-row" style="margin:14px 0;">
-      <input type="checkbox" id="consent" checked>
-      <label for="consent" style="font-size:.82rem;color:var(--text-2);">Đồng ý nhận thông tin ưu đãi từ TH True Milk</label>
-    </div>
-    <button class="hs-button" onclick="demoLeadSubmit()">Đăng Ký Ngay</button>
+  <div class="hs-form-wrapper" style="max-width:520px;margin:0 auto;">
+    <div id="hubspot-form-target"></div>
   </div>
 
-  
-  ════════════════════════════════════════════════
-  HUBSPOT REAL EMBED – Uncomment khi có ID thật
-  ════════════════════════════════════════════════
-  <div id="hubspot-form-target"></div>
   <script charset="utf-8" type="text/javascript"
     src="//js.hsforms.net/forms/embed/v2.js"></script>
   <script>
-    hbspt. forms.create({
-      region:   "na1",                          // hoặc "eu1"
-      portalId: MARTECH.HUBSPOT_PORTAL_ID,
-      formId:   MARTECH.HUBSPOT_FORM_ID,
+    hbspt.forms.create({
+      region:   "na2",
+      portalId: "242823844",
+      formId:   "f40f5ae0-ae1b-4a7e-afa9-61e937ace761",
       target:   "#hubspot-form-target",
-      onFormSubmit: function($form) {
-        // Tự động pass UTM vào hidden fields trước khi submit
-        $form.find('input[name="utm_source"]').val(DL.utm.source);
-        $form.find('input[name="utm_medium"]').val(DL.utm.medium);
-        $form.find('input[name="utm_campaign"]').val(DL.utm.campaign);
-      },
       onFormSubmitted: function() {
-        // Fire tracking events sau khi submit thành công
-        track('lead_submit', { method:'hubspot', lead_score: DL.score });
-        fbq('track', 'Lead');
-        showToast('ok','💎 Đăng ký thành công! Kiểm tra email của bạn.');
+        if (typeof track === 'function') track('lead_submit', { method:'hubspot' });
+        if (typeof fbq !== 'undefined') fbq('track','Lead');
+        if (typeof showToast === 'function') showToast('ok','💎 Đăng ký thành công! Kiểm tra email của bạn.');
       }
     });
   </script>
-  ════════════════════════════════════════════════
-  
 </section>
+
 
 <!-- ── LEAD SCORE BADGE ── -->
 <div id="scoreBadge">
