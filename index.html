@@ -679,10 +679,6 @@
 
 <!-- JavaScript cho demo và countdown -->
 <script>
-    // DEMO: hiển thị kết quả khi nhấn nút
-    document.getElementById('generateBtn').addEventListener('click', function() {
-        document.getElementById('resultBox').classList.add('show');
-    });
 
     // Countdown đến 30/03 (nếu đã qua thì lấy năm sau)
     (function(){
@@ -709,6 +705,80 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
     })();
+
+    // ===== TẠO TINH THỂ THEO MÃ (AI GIẢ LẬP) =====
+
+function hashCode(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return Math.abs(hash);
+}
+
+const crystals = [
+    {
+        name: "CRYSTAL NĂNG LƯỢNG",
+        emoji: "🔥",
+        attributes: ["Bùng nổ ý tưởng", "Truyền cảm hứng", "Tinh thần mạnh mẽ"],
+        color: "#FF5722"
+    },
+    {
+        name: "CRYSTAL SÁNG TẠO",
+        emoji: "🎨",
+        attributes: ["Tư duy khác biệt", "Nghệ thuật", "Độc lập cá tính"],
+        color: "#9C27B0"
+    },
+    {
+        name: "CRYSTAL BẢN LĨNH",
+        emoji: "🛡️",
+        attributes: ["Kiên định", "Dẫn đầu", "Quyết đoán"],
+        color: "#0054A6"
+    },
+    {
+        name: "CRYSTAL THANH KHIẾT",
+        emoji: "💧",
+        attributes: ["Tinh tế", "Cân bằng", "Dịu dàng"],
+        color: "#00BCD4"
+    }
+];
+
+document.getElementById('generateBtn').addEventListener('click', function() {
+
+    const code = document.getElementById('codeInput').value.trim();
+
+    if (code === "") {
+        alert("Vui lòng nhập mã để đúc tinh thể!");
+        return;
+    }
+
+    const hash = hashCode(code);
+    const crystalIndex = hash % crystals.length;
+    const selectedCrystal = crystals[crystalIndex];
+
+    const uniqueId = hash.toString().slice(-4);
+
+    // Update kết quả
+    document.querySelector('#resultBox .crystal-name').innerText =
+        `✨ TINH THỂ: ${selectedCrystal.name} ${uniqueId} ✨`;
+
+    document.querySelector('#resultBox div:first-child').innerText =
+        selectedCrystal.emoji;
+
+    const attributeContainer = document.querySelector('#resultBox .attributes');
+    attributeContainer.innerHTML = "";
+
+    selectedCrystal.attributes.forEach(attr => {
+        const span = document.createElement("span");
+        span.className = "attribute";
+        span.innerText = attr;
+        attributeContainer.appendChild(span);
+    });
+
+    document.getElementById('resultBox').style.borderColor = selectedCrystal.color;
+
+    document.getElementById('resultBox').classList.add('show');
+});
 </script>
 
 </body>
