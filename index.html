@@ -23,6 +23,7 @@
       CHATBOT_PROVIDER:  'tidio',
       TIDIO_KEY:         '76pum0cutzep7saxerdop4t99a5h23di',
       CHATBASE_ID:       'XXXXXXXXXX',
+      GEMINI_KEY:        'AIzaSyCObV8J4PEFPMCCeD-8Yyzfg-NBe2emQXc',
     };
   </script>
 
@@ -1250,7 +1251,7 @@
   <div class="hs-form-wrapper" style="max-width:520px;margin:0 auto;">
     <div id="hubspot-form-target"></div>
   </div>
-  <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+  <script charset="utf-8" type="text/javascript" src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
   <script>
     hbspt.forms.create({
       region:   "na2",
@@ -1625,54 +1626,106 @@
     "TH True Milk Organic – Thanh khiết tự nhiên"
   ];
 
-  function generateCrystal() {
-    const raw = document.getElementById('codeInput').value.trim();
-    if (!raw) { alert('Vui lòng nhập mã thẻ cào!'); return; }
-    const btn = document.getElementById('codeSubmit');
-    btn.textContent = '✦ Đang đúc...'; btn.style.opacity = '.6';
-    setTimeout(() => {
-      const seedNum  = hashCode(raw.toUpperCase() + '|' + new Date().getMinutes());
-      const rng      = seededRNG(seedNum);
-      const typeIdx  = hashCode(raw.toUpperCase()) % CRYSTAL_TYPES.length;
-      const ctype    = CRYSTAL_TYPES[typeIdx];
-      const codeRng  = seededRNG(hashCode(raw.toUpperCase()));
-      const attrs    = ATTR_NAMES.map(n => ({ name:n, val:Math.floor(codeRng()*35)+65 }));
-      const cv = document.getElementById('crystalCanvas2');
-      const ctx2 = cv.getContext('2d');
-      ctx2.clearRect(0,0,cv.width,cv.height);
-      ctype.draw(ctx2, cv.width, cv.height, rng);
-      ctx2.save(); ctx2.globalAlpha = 0.04;
-      ctx2.font = `300 ${cv.height*.15}px 'Cormorant Garamond',serif`;
-      ctx2.fillStyle='white'; ctx2.textAlign='center'; ctx2.textBaseline='middle';
-      ctx2.fillText('TH', cv.width/2, cv.height*.52); ctx2.restore();
-      document.getElementById('crystalName').textContent    = ctype.name;
-      document.getElementById('crystalType').textContent    = '✦ ' + ctype.type + ' ✦';
-      document.getElementById('crystalType').style.color    = ctype.tag;
-      document.getElementById('crystalMeaning').textContent = ctype.meaning;
-      document.getElementById('crystalAttrs').innerHTML = attrs.map(a => `
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span style="font-size:.72rem;color:var(--text-3);min-width:126px;">${a.name}</span>
-          <div style="flex:1;height:2px;background:var(--border);border-radius:2px;overflow:hidden;">
-            <div style="height:100%;width:${a.val}%;background:linear-gradient(90deg,${ctype.tag},rgba(255,255,255,.7));"></div>
-          </div>
-          <span style="font-size:.72rem;color:var(--text-2);min-width:26px;text-align:right;">${a.val}</span>
-        </div>`).join('');
-      const productIndex = seedNum % products.length;
-      document.getElementById('productName').innerText = products[productIndex];
-      const discount = (seedNum % 20) + 10;
-      const randomPart = Math.random().toString(36).substring(2,6).toUpperCase();
-      document.getElementById('voucherCode').innerText = "TH-" + randomPart + "-" + discount;
-      document.getElementById('productSuggestion').style.display = 'block';
-      const out = document.getElementById('crystalOutput');
-      out.style.display = 'grid';
-      out.scrollIntoView({ behavior:'smooth', block:'center' });
-      btn.textContent = '✦ Đúc lại'; btn.style.opacity = '1';
-      // Tracking
-      if (typeof track === 'function') {
-        track('crystal_generate', { crystal_name: ctype.name });
-      }
-    }, 900);
-  }
+  async function fetchGeminiMeaning(crystalName, crystalType, attrs, codeHash) {
+  const attrText = attrs.map(a => `${a.name}: ${a.val}`).join(', ');
+
+  const prompt = `
+Bạn là một nhà thơ và nhà tâm lý học viết về năng lượng tinh thể.
+Người dùng vừa nhận được tinh thể "${crystalName}" (loại: ${crystalType}).
+Các chỉ số tinh thể của họ: ${attrText}.
+Mã định danh tinh thể: ${codeHash}.
+
+Hãy viết đúng 3-4 câu mô tả ý nghĩa tinh thể này dành riêng cho người này.
+Yêu cầu:
+- Phản ánh các chỉ số cao/thấp cụ thể (đừng nói chung chung)
+- Kết nối với giá trị sữa TH: thiên nhiên, thuần khiết, chăm sóc sức khỏe
+- Giọng văn thi vị, ấm áp, tiếng Việt
+- Không dùng dấu ngoặc kép, không bullet point, chỉ trả về đoạn văn thuần túy
+  `.trim();
+
+  const res = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${MARTECH.GEMINI_KEY}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+              temperature: 0.85,    // sáng tạo vừa phải
+              maxOutputTokens: 200, // ~3-4 câu là đủ
+            }
+          })
+        }
+      );
+    
+      const data = await res.json();
+      return data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim()
+        ?? null; // trả null nếu lỗi → fallback về text cứng
+    }
+
+function generateCrystal() {  // ← dòng cũ, giữ nguyên
+  const raw = document.getElementById('codeInput').value.trim();
+  if (!raw) { alert('Vui lòng nhập mã thẻ cào!'); return; }
+  const btn = document.getElementById('codeSubmit');
+  btn.textContent = '✦ Đang đúc...'; btn.style.opacity = '.6';
+  setTimeout(() => {
+    const seedNum  = hashCode(raw.toUpperCase() + '|' + new Date().getMinutes());
+    const rng      = seededRNG(seedNum);
+    const typeIdx  = hashCode(raw.toUpperCase()) % CRYSTAL_TYPES.length;
+    const ctype    = CRYSTAL_TYPES[typeIdx];
+    const codeRng  = seededRNG(hashCode(raw.toUpperCase()));
+    const attrs    = ATTR_NAMES.map(n => ({ name:n, val:Math.floor(codeRng()*35)+65 }));
+    const cv = document.getElementById('crystalCanvas2');
+    const ctx2 = cv.getContext('2d');
+    ctx2.clearRect(0,0,cv.width,cv.height);
+    ctype.draw(ctx2, cv.width, cv.height, rng);
+    ctx2.save(); ctx2.globalAlpha = 0.04;
+    ctx2.font = `300 ${cv.height*.15}px 'Cormorant Garamond',serif`;
+    ctx2.fillStyle='white'; ctx2.textAlign='center'; ctx2.textBaseline='middle';
+    ctx2.fillText('TH', cv.width/2, cv.height*.52); ctx2.restore();
+    document.getElementById('crystalName').textContent    = ctype.name;
+    document.getElementById('crystalType').textContent    = '✦ ' + ctype.type + ' ✦';
+    document.getElementById('crystalType').style.color    = ctype.tag;
+    const meaningEl = document.getElementById('crystalMeaning');
+      meaningEl.textContent = '✦ Đang giải mã năng lượng tinh thể của bạn...';
+      meaningEl.style.opacity = '0.5';
+      meaningEl.style.fontStyle = 'italic';
+      
+      fetchGeminiMeaning(ctype.name, ctype.type, attrs, seedNum.toString(16))
+        .then(aiText => {
+          meaningEl.textContent = aiText || ctype.meaning;
+          meaningEl.style.opacity = '1';
+          meaningEl.style.fontStyle = 'normal';
+        })
+        .catch(() => {
+          meaningEl.textContent = ctype.meaning;
+          meaningEl.style.opacity = '1';
+          meaningEl.style.fontStyle = 'normal';
+        });
+    document.getElementById('crystalAttrs').innerHTML = attrs.map(a => `
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span style="font-size:.72rem;color:var(--text-3);min-width:126px;">${a.name}</span>
+        <div style="flex:1;height:2px;background:var(--border);border-radius:2px;overflow:hidden;">
+          <div style="height:100%;width:${a.val}%;background:linear-gradient(90deg,${ctype.tag},rgba(255,255,255,.7));"></div>
+        </div>
+        <span style="font-size:.72rem;color:var(--text-2);min-width:26px;text-align:right;">${a.val}</span>
+      </div>`).join('');
+    const productIndex = seedNum % products.length;
+    document.getElementById('productName').innerText = products[productIndex];
+    const discount = (seedNum % 20) + 10;
+    const randomPart = Math.random().toString(36).substring(2,6).toUpperCase();
+    document.getElementById('voucherCode').innerText = "TH-" + randomPart + "-" + discount;
+    document.getElementById('productSuggestion').style.display = 'block';
+    const out = document.getElementById('crystalOutput');
+    out.style.display = 'grid';
+    out.scrollIntoView({ behavior:'smooth', block:'center' });
+    btn.textContent = '✦ Đúc lại'; btn.style.opacity = '1';
+    // Tracking
+    if (typeof track === 'function') {
+      track('crystal_generate', { crystal_name: ctype.name });
+    }
+  }, 900);
+}
 
   function downloadCrystal() {
     const cv   = document.getElementById('crystalCanvas2');
