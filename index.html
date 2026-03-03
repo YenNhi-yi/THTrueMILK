@@ -4,54 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TH True DNA – Tinh Thể Sữa Độc Bản</title>
+
+  <!-- FIX #8: Thêm meta SEO / Open Graph -->
+  <meta name="description" content="Khám phá ADN vị sữa của riêng bạn – Tinh thể độc bản được AI kiến tạo từ mã thẻ cào TH True Milk. Không ai giống ai.">
+  <meta property="og:title" content="TH True DNA – Tinh Thể Sữa Độc Bản">
+  <meta property="og:description" content="Nhập mã thẻ cào – AI sẽ đúc tinh thể độc bản mang dấu ấn cá nhân của bạn.">
+  <meta property="og:type" content="website">
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!--
-  ╔══════════════════════════════════════════════════════════════╗
-  ║  MARTECH CONFIGURATION – Điền ID thật vào đây trước deploy  ║
-  ╠══════════════════════════════════════════════════════════════╣
-  ║  1. GA4:      Đăng nhập analytics.google.com → Admin        ║
-  ║               → Data Streams → lấy Measurement ID G-XXXXX   ║
-  ║  2. Meta:     business.facebook.com → Events Manager        ║
-  ║               → Connect Data Sources → Web Pixel            ║
-  ║  3. HubSpot:  app.hubspot.com → Marketing → Forms           ║
-  ║               → Tạo form → Share → lấy Portal ID + Form ID  ║
-  ║  4. Chatbot:  Tidio: tidio.com → Settings → Installation    ║
-  ║               hoặc Chatbase: chatbase.co → Embed → lấy ID   ║
-  ╚══════════════════════════════════════════════════════════════╝
-  -->
   <script>
-    // ─── THAY CÁC GIÁ TRỊ NÀY ───────────────────────────────
-    const MARTECH = {
-      GA4_ID:            'G-HGQCC2RXYD',       // ← GA4 Measurement ID
-      META_PIXEL_ID:     '786937573962433',    // ← Meta Pixel ID (15 chữ số)
-      HUBSPOT_PORTAL_ID: '242823844',            // ← HubSpot Portal ID
-      HUBSPOT_FORM_ID:   'f40f5ae0-ae1b-4a7e-afa9-61e937ace761', // ← Form GUID
-      // Chatbot: chọn 1 trong 2
-      CHATBOT_PROVIDER:  'tidio',              // 'tidio' hoặc 'chatbase'
-      TIDIO_KEY:         '76pum0cutzep7saxerdop4t99a5h23di', // ← Tidio public key
-      CHATBASE_ID:       'XXXXXXXXXX',         // ← Chatbase chatbot ID
+    // FIX #1: Đổi const → var để window.MARTECH hoạt động đúng
+    var MARTECH = {
+      GA4_ID:            'G-HGQCC2RXYD',
+      META_PIXEL_ID:     '786937573962433',
+      HUBSPOT_PORTAL_ID: '242823844',
+      HUBSPOT_FORM_ID:   'f40f5ae0-ae1b-4a7e-afa9-61e937ace761',
+      CHATBOT_PROVIDER:  'tidio',
+      TIDIO_KEY:         '76pum0cutzep7saxerdop4t99a5h23di',
+      CHATBASE_ID:       'XXXXXXXXXX',
     };
-    // ─────────────────────────────────────────────────────────
   </script>
 
-  <!-- ① Google Analytics 4 -->
+  <!-- FIX #2: GA4 với s.onload để đảm bảo script load xong mới gọi gtag('config') -->
   <script>
-    // Tự động inject GA4 sau khi MARTECH config được set
     (function injectGA4(){
       if(!window.MARTECH) return setTimeout(injectGA4, 50);
       var s = document.createElement('script');
       s.async = true;
       s.src = 'https://www.googletagmanager.com/gtag/js?id=' + MARTECH.GA4_ID;
-      document.head.appendChild(s);
       window.dataLayer = window.dataLayer || [];
       window.gtag = function(){ dataLayer.push(arguments); };
-      gtag('js', new Date());
-      gtag('config', MARTECH.GA4_ID, { send_page_view: true });
+      s.onload = function() {
+        gtag('js', new Date());
+        gtag('config', MARTECH.GA4_ID, { send_page_view: true });
+      };
+      document.head.appendChild(s);
     })();
   </script>
 
-  <!-- ② Meta Pixel -->
+  <!-- FIX #3: Meta Pixel – init trước, PageView sau, đúng thứ tự -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
     n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -59,58 +51,46 @@
     t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window,document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    // fbq init sẽ được gọi sau khi DOM load (xem js cuối file)
+    fbq('init', '786937573962433');
+    fbq('track', 'PageView');
   </script>
+  <!-- FIX #5: noscript dùng Pixel ID thật thay vì PIXEL_PLACEHOLDER -->
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=PIXEL_PLACEHOLDER&ev=PageView&noscript=1"/>
+      src="https://www.facebook.com/tr?id=786937573962433&ev=PageView&noscript=1"/>
   </noscript>
 
-  <!-- ③ HubSpot Tracking Pixel (embed analytics + forms) -->
-  <!-- Thay PORTAL_ID thật vào src dưới -->
+  <!-- HubSpot Tracking Pixel -->
   <script type="text/javascript" id="hs-script-loader" async defer
-    src="https://js.hs-scripts.com/242823844.js">
-    <!-- src="https://js.hs-scripts.com/[HUBSPOT_PORTAL_ID].js" -->
-  </script>
+    src="https://js.hs-scripts.com/242823844.js"></script>
 
   <style>
     /* ============================================================
        UNIFIED COLOR SYSTEM – Dark Luxury Theme
        ============================================================ */
     :root {
-      /* Backgrounds – one consistent dark palette */
-      --bg-base:    #050d1b;   /* deepest layer */
-      --bg-surface: #08152a;   /* sections */
-      --bg-raised:  #0d1f3c;   /* cards / panels */
+      --bg-base:    #050d1b;
+      --bg-surface: #08152a;
+      --bg-raised:  #0d1f3c;
       --bg-glass:   rgba(8, 21, 42, 0.82);
-
-      /* Brand */
       --navy:       #0054A6;
       --navy-mid:   #1a6bc4;
       --navy-light: #2d85e0;
-
-      /* Accents */
       --sky:        #A8D8F0;
       --sky-dim:    rgba(168, 216, 240, 0.55);
       --gold:       #E8C97A;
       --gold-bright:#FFD700;
       --gold-dim:   rgba(232, 201, 122, 0.6);
-
-      /* Text */
-      --text-1: #EEF4FF;                    /* headings / primary */
-      --text-2: rgba(238, 244, 255, 0.62);  /* body */
-      --text-3: rgba(238, 244, 255, 0.35);  /* muted */
-
-      /* Borders */
+      /* FIX #6: Tăng opacity text-2 từ 0.62 → 0.75 để đạt WCAG AA */
+      --text-1: #EEF4FF;
+      --text-2: rgba(238, 244, 255, 0.75);
+      --text-3: rgba(238, 244, 255, 0.45);
       --border:       rgba(168, 216, 240, 0.12);
       --border-mid:   rgba(168, 216, 240, 0.22);
       --border-bright:rgba(168, 216, 240, 0.40);
-
-      /* Shadows */
       --shadow-glow: 0 0 40px rgba(0, 114, 206, 0.25);
     }
 
-    /* ── UTM / Score badge (top-right, appears after first interaction) ── */
     #scoreBadge {
       position: fixed; top: 74px; right: 20px; z-index: 200;
       background: var(--bg-raised); border: 1px solid var(--border-mid);
@@ -123,7 +103,6 @@
     .sb-bar-wrap { height:2px; background:var(--border); margin-top:7px; }
     .sb-bar { height:100%; background:linear-gradient(90deg,var(--navy-mid),var(--sky)); transition:width .6s ease; }
 
-    /* ── Event log (bottom-left, dev overlay) ── */
     #eventLog {
       position: fixed; bottom:20px; left:20px; z-index:200;
       background: rgba(5,13,27,.92); border:1px solid var(--border);
@@ -143,7 +122,6 @@
     }
     #evToggle:hover { background:var(--navy); }
 
-    /* ── HubSpot form wrapper ── */
     .hs-form-wrapper {
       background: var(--bg-raised); border:1px solid var(--border-mid);
       padding: 40px; max-width:520px; margin:0 auto;
@@ -169,7 +147,6 @@
     .hs-form-wrapper .hs-error-msgs { color:#f87171; font-size:.74rem; margin:-10px 0 10px; list-style:none; }
     .hs-form-wrapper .submitted-message { color:var(--sky); font-size:.95rem; line-height:1.8; text-align:center; padding:20px 0; }
 
-    /* ── Toast notifications ── */
     #toastWrap { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:9999; display:flex; flex-direction:column; gap:8px; pointer-events:none; }
     .toast { background:var(--bg-raised); border:1px solid var(--border-mid); padding:12px 20px; font-size:.8rem; color:var(--text-1); display:flex; align-items:center; gap:10px; min-width:260px; animation:fadeUp .3s ease; box-shadow:0 8px 28px rgba(0,0,0,.4); }
     .toast.ok  { border-left:3px solid #4ade80; }
@@ -186,7 +163,6 @@
       overflow-x: hidden;
     }
 
-    /* ── Background particle canvas ── */
     #crystalCanvas {
       position: fixed;
       inset: 0;
@@ -244,6 +220,19 @@
     }
     .nav-cta:hover { background: var(--navy); border-color: var(--navy-mid); color: #fff; }
 
+    /* FIX #4: Hamburger menu cho mobile */
+    .nav-hamburger {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border-bright);
+      color: var(--sky);
+      font-size: 1.2rem;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all .3s;
+    }
+    .nav-hamburger:hover { background: var(--navy); }
+
     /* ============================================================
        HERO
        ============================================================ */
@@ -258,7 +247,6 @@
       background: var(--bg-base);
     }
 
-    /* Ambient orbs */
     .hero-orb {
       position: absolute;
       border-radius: 50%;
@@ -370,7 +358,6 @@
       animation: fadeUp 1s ease .48s both;
     }
 
-    /* Buttons – unified */
     .btn-crystal {
       display: inline-flex;
       align-items: center;
@@ -411,9 +398,6 @@
 
     @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
 
-    /* ============================================================
-       SECTION LABEL (shared)
-       ============================================================ */
     .section-label {
       font-size: 0.67rem;
       letter-spacing: 0.28em;
@@ -473,7 +457,6 @@
       text-transform: uppercase;
     }
 
-    /* DNA visual placeholder */
     .dna-visual-box {
       width: 100%;
       aspect-ratio: 1;
@@ -635,7 +618,7 @@
     }
 
     /* ============================================================
-       REDEEM / CRYSTAL GENERATOR
+       REDEEM
        ============================================================ */
     .redeem-section {
       padding: 120px 60px;
@@ -688,7 +671,6 @@
     }
     .code-submit:hover { background: var(--navy-light); }
 
-    /* Crystal output */
     #crystalOutput {
       border: 1px solid var(--border-mid);
       background: var(--bg-raised);
@@ -827,7 +809,7 @@
     .why-icon-box span { font-size: 9rem; opacity: 0.75; }
 
     /* ============================================================
-       OFFER SECTION
+       OFFER
        ============================================================ */
     .offer-section {
       padding: 120px 60px;
@@ -894,51 +876,6 @@
       margin-bottom: 10px;
     }
     .lead-section > p { color: var(--text-2); font-size: 0.93rem; margin-bottom: 36px; }
-    .lead-form {
-      max-width: 460px;
-      margin: 0 auto;
-      background: var(--bg-raised);
-      border: 1px solid var(--border-mid);
-      padding: 40px;
-    }
-    .form-group { margin-bottom: 18px; }
-    .form-group input[type="email"],
-    .form-group input[type="tel"] {
-      width: 100%;
-      padding: 14px 18px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      color: var(--text-1);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.92rem;
-      outline: none;
-      transition: border-color .3s;
-    }
-    .form-group input:focus { border-color: var(--border-bright); }
-    .form-group input::placeholder { color: var(--text-3); }
-    .checkbox-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text-2);
-      font-size: 0.84rem;
-      margin-bottom: 24px;
-    }
-    .btn-submit {
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
-      border: 1px solid var(--navy-light);
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      font-size: 0.82rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all .3s;
-    }
-    .btn-submit:hover { background: var(--navy-light); box-shadow: 0 0 30px rgba(0,114,206,0.35); }
 
     /* ============================================================
        FOOTER
@@ -960,11 +897,26 @@
     .footer-copy { font-size: 0.74rem; color: var(--text-3); letter-spacing: .06em; }
 
     /* ============================================================
-       RESPONSIVE
+       RESPONSIVE – FIX #4: Hamburger + mobile nav
        ============================================================ */
     @media (max-width: 900px) {
       nav { padding: 14px 20px; }
       .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 72px; left: 0; right: 0;
+        background: var(--bg-surface);
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border);
+        z-index: 99;
+        gap: 16px;
+      }
+      .nav-links.open a { font-size: 0.9rem; padding: 8px 0; }
+      .nav-hamburger { display: block; }
+      .nav-cta { display: none; }
+
       .hero { padding: 100px 24px 50px; }
       .about, .how, .crystals, .redeem-section, .ai-mechanism,
       .why-different, .offer-section, .lead-section { padding: 80px 24px; }
@@ -992,7 +944,7 @@
 
 <canvas id="crystalCanvas"></canvas>
 
-<!-- ── NAVBAR ── -->
+<!-- NAVBAR -->
 <nav>
   <a href="#" class="nav-logo">
     <img src="asset/TH.png" alt="TH Logo" class="img-th" />
@@ -1001,37 +953,32 @@
       <span class="text-dna">DNA</span>
     </span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#about">Chiến dịch</a></li>
-    <li><a href="#how">Cách thức</a></li>
-    <li><a href="#crystals">Tinh thể</a></li>
-    <li><a href="#redeem">Nhận ngay</a></li>
-    <li><a href="#ai-mechanism">AI</a></li>
-    <li><a href="#offer">Ưu đãi</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" onclick="closeMenu()">Chiến dịch</a></li>
+    <li><a href="#how" onclick="closeMenu()">Cách thức</a></li>
+    <li><a href="#crystals" onclick="closeMenu()">Tinh thể</a></li>
+    <li><a href="#redeem" onclick="closeMenu()">Nhận ngay</a></li>
+    <li><a href="#ai-mechanism" onclick="closeMenu()">AI</a></li>
+    <li><a href="#offer" onclick="closeMenu()">Ưu đãi</a></li>
   </ul>
+  <!-- FIX #4: Hamburger button -->
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
   <button class="nav-cta">Nhập mã ngay</button>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-orb"></div>
   <div class="hero-orb"></div>
   <div class="hero-orb"></div>
-
   <div class="hero-content">
     <div class="hero-badge">TH true DNA</div>
-
     <h1 class="hero-title">
       <span class="line-main">KHÁM PHÁ ADN VỊ SỮA<br>CỦA RIÊNG BẠN</span>
       <span class="line-sub">Tinh Thể Độc Bản Được AI Kiến Tạo – Không Ai Giống Ai</span>
     </h1>
-
     <p class="hero-sub">Mỗi mã dưới lốc sữa TH True Milk chứa một "dãy ADN ánh sáng" riêng. Nhập mã của bạn – hệ thống AI sẽ "đúc" nên tinh thể độc bản mang dấu ấn cá nhân.</p>
-
-    <div class="hero-offer">
-      ✦ 1.000 tinh thể đầu tiên nhận thêm quà tặng phiên bản giới hạn ✦
-    </div>
-
+    <div class="hero-offer">✦ 1.000 tinh thể đầu tiên nhận thêm quà tặng phiên bản giới hạn ✦</div>
     <div class="hero-actions">
       <a href="#redeem" class="btn-crystal solid">Đúc Tinh Thể Ngay</a>
       <a href="#about"  class="btn-crystal outline">Khám Phá ADN Của Tôi</a>
@@ -1039,7 +986,7 @@
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-grid">
     <div class="dna-visual-box">◈</div>
@@ -1057,7 +1004,7 @@
   </div>
 </section>
 
-<!-- ── HOW IT WORKS ── -->
+<!-- HOW IT WORKS -->
 <section class="how" id="how">
   <div class="how-inner">
     <div class="how-header">
@@ -1090,7 +1037,7 @@
   </div>
 </section>
 
-<!-- ── CRYSTALS ── -->
+<!-- CRYSTALS -->
 <section class="crystals" id="crystals">
   <div class="crystals-inner">
     <div class="crystals-header">
@@ -1101,7 +1048,6 @@
       <p>Mỗi tinh thể mang màu sắc và ý nghĩa riêng biệt, được sinh ra từ chính dãy số độc nhất của bạn. Không ai có tinh thể giống ai.</p>
     </div>
     <div class="crystal-grid">
-      <!-- Pha Lê -->
       <div class="crystal-card">
         <div class="crystal-card-bg pure"></div>
         <div class="crystal-inner-shape">
@@ -1120,7 +1066,6 @@
           <div class="crystal-desc">Trong suốt như giọt sữa đầu tiên — biểu tượng của sự tinh khiết và chân thật tự nhiên.</div>
         </div>
       </div>
-      <!-- Hướng Dương -->
       <div class="crystal-card">
         <div class="crystal-card-bg sunflower"></div>
         <div class="crystal-inner-shape">
@@ -1138,7 +1083,6 @@
           <div class="crystal-desc">Tỏa sáng như ánh bình minh — dành cho những tâm hồn rực rỡ và tràn đầy sức sống.</div>
         </div>
       </div>
-      <!-- Đại Dương -->
       <div class="crystal-card">
         <div class="crystal-card-bg emerald"></div>
         <div class="crystal-inner-shape">
@@ -1155,7 +1099,6 @@
           <div class="crystal-desc">Xanh mát và sâu thẳm — biểu tượng của sự tĩnh lặng, mang hơi thở của dòng suối tự nhiên.</div>
         </div>
       </div>
-      <!-- San Hô -->
       <div class="crystal-card">
         <div class="crystal-card-bg coral"></div>
         <div class="crystal-inner-shape">
@@ -1172,7 +1115,6 @@
           <div class="crystal-desc">Tự do vươn mình rẽ nhánh — tượng trưng cho sự sáng tạo vô hạn và đam mê bùng cháy.</div>
         </div>
       </div>
-      <!-- Thạch Anh Hồng -->
       <div class="crystal-card">
         <div class="crystal-card-bg rosequartz"></div>
         <div class="crystal-inner-shape">
@@ -1193,19 +1135,17 @@
   </div>
 </section>
 
-<!-- ── REDEEM ── -->
+<!-- REDEEM -->
 <section class="redeem-section" id="redeem">
   <div style="max-width:860px;margin:0 auto;">
     <div class="section-label" style="justify-content:center;">Xưởng đúc tinh thể</div>
     <h2>Nhập Mã — <em>Đúc Ngay</em><br>Tinh Thể Của Bạn</h2>
     <p>Dãy số thẻ cào là "hạt giống" — hệ thống sẽ kiến tạo tinh thể độc bản<br>chỉ dành riêng cho bạn.</p>
-
     <div class="code-row">
       <input id="codeInput" class="code-input" type="text"
         placeholder="Nhập mã thẻ cào (VD: TH-2026-XXXXXXXX)" maxlength="24" />
       <button id="codeSubmit" class="code-submit" onclick="generateCrystal()">Đúc Tinh Thể ✦</button>
     </div>
-
     <div id="crystalOutput" style="display:none;animation:fadeUp .6s ease both;">
       <div style="text-align:center;">
         <canvas id="crystalCanvas2" width="360" height="400" style="width:100%;border:1px solid var(--border);"></canvas>
@@ -1231,7 +1171,7 @@
   </div>
 </section>
 
-<!-- ── AI MECHANISM ── -->
+<!-- AI MECHANISM -->
 <section class="ai-mechanism" id="ai-mechanism">
   <div class="ai-inner">
     <div class="ai-header">
@@ -1268,7 +1208,7 @@
   </div>
 </section>
 
-<!-- ── WHY DIFFERENT ── -->
+<!-- WHY DIFFERENT -->
 <section class="why-different">
   <div class="why-grid">
     <div>
@@ -1287,7 +1227,7 @@
   </div>
 </section>
 
-<!-- ── OFFER ── -->
+<!-- OFFER -->
 <section class="offer-section" id="offer">
   <div class="offer-box">
     <h2>Ưu Đãi <em>Phiên Bản Giới Hạn</em></h2>
@@ -1303,17 +1243,14 @@
   </div>
 </section>
 
-<!-- ── LEAD CAPTURE (HubSpot Real Form) ── -->
+<!-- LEAD CAPTURE -->
 <section class="lead-section" id="lead">
   <h2>Nhận bộ sưu tập mới nhất</h2>
   <p>Đăng ký để nhận thông báo và ưu đãi độc quyền từ TH True DNA</p>
-
   <div class="hs-form-wrapper" style="max-width:520px;margin:0 auto;">
     <div id="hubspot-form-target"></div>
   </div>
-
-  <script charset="utf-8" type="text/javascript"
-    src="//js.hsforms.net/forms/embed/v2.js"></script>
+  <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
   <script>
     hbspt.forms.create({
       region:   "na2",
@@ -1329,8 +1266,7 @@
   </script>
 </section>
 
-
-<!-- ── LEAD SCORE BADGE ── -->
+<!-- SCORE BADGE -->
 <div id="scoreBadge">
   <div class="sb-label">Engagement Score</div>
   <div class="sb-score" id="sbNum">0</div>
@@ -1338,27 +1274,38 @@
   <div class="sb-bar-wrap"><div class="sb-bar" id="sbBar" style="width:0%"></div></div>
 </div>
 
-<!-- ── EVENT LOG TOGGLE (dev/demo) ── -->
+<!-- EVENT LOG -->
 <button id="evToggle" onclick="toggleLog()">⬡ Event Log</button>
 <div id="eventLog" style="display:none;">
   <h5>⬡ Data Layer Events</h5>
   <div id="evRows"></div>
 </div>
 
-<!-- ── TOAST ── -->
+<!-- TOAST -->
 <div id="toastWrap"></div>
 
-  <script src="//code.tidio.co/76pum0cutzep7saxerdop4t99a5h23di.js" async></script>
-<!-- ── FOOTER ── -->
+<script src="//code.tidio.co/76pum0cutzep7saxerdop4t99a5h23di.js" async></script>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-brand">TH <em>true MILK</em> × True DNA</div>
   <div class="footer-copy">© 2026 TH True Milk. All rights reserved.</div>
 </footer>
 
-<!-- ============================================================
-     JAVASCRIPT – unchanged logic, unified references
-     ============================================================ -->
 <script>
+  // FIX #4: Hamburger toggle
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('navLinks').classList.remove('open');
+  }
+  // Đóng menu khi click ngoài
+  document.addEventListener('click', function(e) {
+    const nav = document.querySelector('nav');
+    if (!nav.contains(e.target)) closeMenu();
+  });
+
   // Background particles
   const bgCanvas = document.getElementById('crystalCanvas');
   const bgCtx    = bgCanvas.getContext('2d');
@@ -1414,7 +1361,7 @@
     requestAnimationFrame(loop);
   })();
 
-  // ── Crystal engine helpers ──
+  // Crystal engine helpers
   function seededRNG(seed) {
     let s = seed >>> 0;
     return () => {
@@ -1493,7 +1440,6 @@
     }
   }
 
-  // Crystal draw functions (identical to original)
   function drawPhaLe(c, W, H, rng) {
     const cx = W / 2 + (rng() - 0.5) * 16;
     const hue = 200 + rng() * 20, sh = rng() * 0.3 + 0.6;
@@ -1691,7 +1637,6 @@
       const ctype    = CRYSTAL_TYPES[typeIdx];
       const codeRng  = seededRNG(hashCode(raw.toUpperCase()));
       const attrs    = ATTR_NAMES.map(n => ({ name:n, val:Math.floor(codeRng()*35)+65 }));
-
       const cv = document.getElementById('crystalCanvas2');
       const ctx2 = cv.getContext('2d');
       ctx2.clearRect(0,0,cv.width,cv.height);
@@ -1700,7 +1645,6 @@
       ctx2.font = `300 ${cv.height*.15}px 'Cormorant Garamond',serif`;
       ctx2.fillStyle='white'; ctx2.textAlign='center'; ctx2.textBaseline='middle';
       ctx2.fillText('TH', cv.width/2, cv.height*.52); ctx2.restore();
-
       document.getElementById('crystalName').textContent    = ctype.name;
       document.getElementById('crystalType').textContent    = '✦ ' + ctype.type + ' ✦';
       document.getElementById('crystalType').style.color    = ctype.tag;
@@ -1713,18 +1657,20 @@
           </div>
           <span style="font-size:.72rem;color:var(--text-2);min-width:26px;text-align:right;">${a.val}</span>
         </div>`).join('');
-
       const productIndex = seedNum % products.length;
       document.getElementById('productName').innerText = products[productIndex];
       const discount = (seedNum % 20) + 10;
       const randomPart = Math.random().toString(36).substring(2,6).toUpperCase();
       document.getElementById('voucherCode').innerText = "TH-" + randomPart + "-" + discount;
       document.getElementById('productSuggestion').style.display = 'block';
-
       const out = document.getElementById('crystalOutput');
       out.style.display = 'grid';
       out.scrollIntoView({ behavior:'smooth', block:'center' });
       btn.textContent = '✦ Đúc lại'; btn.style.opacity = '1';
+      // Tracking
+      if (typeof track === 'function') {
+        track('crystal_generate', { crystal_name: ctype.name });
+      }
     }, 900);
   }
 
@@ -1738,13 +1684,17 @@
 
   document.getElementById('codeInput').addEventListener('keydown', e => { if (e.key==='Enter') generateCrystal(); });
 
-  // Countdown
+  // FIX #7: Countdown với fallback message khi hết hạn
   (function(){
     const target = new Date(new Date().getFullYear(), 2, 30, 23, 59, 59);
     if (new Date() > target) target.setFullYear(target.getFullYear()+1);
     function update() {
       const diff = target - new Date();
-      if (diff <= 0) return;
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML =
+          '<p style="color:var(--gold);font-size:1rem;padding:20px 0;">Chương trình đã kết thúc. Đón chờ mùa sau! 💎</p>';
+        return;
+      }
       const spans = document.querySelectorAll('#countdown .countdown-item span');
       if (spans.length < 4) return;
       spans[0].innerText = String(Math.floor(diff/86400000)).padStart(2,'0');
@@ -1755,50 +1705,37 @@
     update(); setInterval(update, 1000);
   })();
 
-  /* ================================================================
-     MARTECH DATA LAYER
-     ================================================================ */
+  // MARTECH DATA LAYER
   const DL = {
-    utm:       {},
-    score:     0,
-    events:    [],
-    crystal:   null,
-    startTime: Date.now(),
-    scrollMax: 0,
-    ctaHits:   0,
+    utm: {}, score: 0, events: [], crystal: null,
+    startTime: Date.now(), scrollMax: 0, ctaHits: 0,
   };
 
-  /* ── Helpers ── */
   function track(name, params={}) {
-    // GA4
     if (typeof gtag !== 'undefined') {
       gtag('event', name, {
         ...params,
         page_title: document.title,
-        campaign:   DL.utm.campaign || 'direct'
+        campaign: DL.utm.campaign || 'direct'
       });
     }
-    // Meta Pixel
     if (typeof fbq !== 'undefined') {
       const MAP = {
-        cta_click:         'InitiateCheckout',
-        crystal_generate:  'ViewContent',
-        lead_submit:       'Lead',
-        scroll_75:         'AddToCart',
+        cta_click: 'InitiateCheckout',
+        crystal_generate: 'ViewContent',
+        lead_submit: 'Lead',
+        scroll_75: 'AddToCart',
       };
       if (MAP[name]) fbq('track', MAP[name], params);
     }
-    // HubSpot identify (when _hsq available)
     if (window._hsq) {
-      window._hsq = window._hsq || [];
       _hsq.push(['trackEvent', { id: name, value: JSON.stringify(params) }]);
     }
-    // Score + log
     addScore(name);
     logEvent(name);
   }
 
-  /* ── UTM capture ── */
+  // UTM capture
   (function(){
     const p = new URLSearchParams(location.search);
     DL.utm = {
@@ -1807,21 +1744,10 @@
       campaign: p.get('utm_campaign') || 'none',
       content:  p.get('utm_content')  || 'none',
     };
-    // Pass to HubSpot hidden fields if present
-    ['source','medium','campaign'].forEach(k => {
-      const el = document.getElementById('hs_utm_' + k);
-      if (el) el.value = DL.utm[k];
-    });
-    // GA4 page_view with UTM
     track('page_view', DL.utm);
-    // Meta Pixel init & PageView
-    if (typeof fbq !== 'undefined' && MARTECH.META_PIXEL_ID !== '000000000000000') {
-      fbq('init', MARTECH.META_PIXEL_ID);
-      fbq('track', 'PageView');
-    }
   })();
 
-  /* ── Scroll depth ── */
+  // Scroll depth
   const scrollFired = new Set();
   window.addEventListener('scroll', ()=>{
     const pct = Math.round(scrollY / (document.body.scrollHeight - innerHeight) * 100);
@@ -1834,28 +1760,28 @@
     });
   }, { passive:true });
 
-  /* ── CTA click tracking ── */
+  // CTA tracking
   document.querySelectorAll('.btn-crystal, .nav-cta, #codeSubmit').forEach(el=>{
     el.addEventListener('click', function(){
       DL.ctaHits++;
       track('cta_click', {
-        label:    this.textContent.trim().slice(0,40),
+        label: this.textContent.trim().slice(0,40),
         location: this.closest('section')?.id || 'nav'
       });
     });
   });
 
-  /* ── Lead scoring ── */
+  // Lead scoring
   const SCORE_MAP = {
-    page_view:        5,  scroll_25:  3,  scroll_50:  5,
-    scroll_75:        8,  scroll_90: 10,  cta_click: 10,
-    crystal_generate:20,  lead_submit:40,
+    page_view:5, scroll_25:3, scroll_50:5,
+    scroll_75:8, scroll_90:10, cta_click:10,
+    crystal_generate:20, lead_submit:40,
   };
   const TIERS = [
-    { min:0,  label:'Visitor',   color:'#94a3b8' },
-    { min:15, label:'Interested',color:'#A8D8F0' },
-    { min:35, label:'Engaged',   color:'#fbbf24' },
-    { min:65, label:'Hot Lead',  color:'#4ade80' },
+    { min:0,  label:'Visitor',    color:'#94a3b8' },
+    { min:15, label:'Interested', color:'#A8D8F0' },
+    { min:35, label:'Engaged',    color:'#fbbf24' },
+    { min:65, label:'Hot Lead',   color:'#4ade80' },
   ];
   function addScore(evt) {
     const pts = SCORE_MAP[evt] || 0;
@@ -1870,7 +1796,6 @@
     document.getElementById('sbBar').style.width  = DL.score + '%';
   }
 
-  /* ── Event log (demo/dev overlay) ── */
   function logEvent(name) {
     const t = new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
     DL.events.unshift({name,t});
@@ -1885,7 +1810,6 @@
     el.style.display = el.style.display==='none' ? 'block' : 'none';
   }
 
-  /* ── Toast ── */
   function showToast(type, msg) {
     const wrap = document.getElementById('toastWrap');
     const t = document.createElement('div');
@@ -1894,53 +1818,6 @@
     wrap.appendChild(t);
     setTimeout(()=>{ t.style.opacity='0'; t.style.transition='opacity .4s'; setTimeout(()=>t.remove(),400); }, 3500);
   }
-
-  /* ── Crystal generate – fire tracking ── */
-  const _origGenerate = generateCrystal;
-  generateCrystal = function(){
-    _origGenerate();
-    setTimeout(()=>{
-      const name = document.getElementById('crystalName')?.textContent;
-      if (name) {
-        DL.crystal = name;
-        track('crystal_generate', { crystal_name: name });
-        // Pass crystal type to HubSpot hidden field if demo form exists
-        const inp = document.getElementById('hs_utm_campaign');
-        if (!inp) return;
-      }
-    }, 1100);
-  };
-
-  /* ── Demo lead submit (placeholder – replace với HubSpot real embed) ── */
-  function demoLeadSubmit() {
-    const name  = document.getElementById('demo_name')?.value.trim();
-    const email = document.getElementById('demo_email')?.value.trim();
-    const phone = document.getElementById('demo_phone')?.value.trim();
-    if (!name || !email) { showToast('err','⚠ Vui lòng điền đầy đủ thông tin.'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('err','⚠ Email không đúng định dạng.'); return; }
-    // HubSpot identify
-    if (window._hsq) {
-      _hsq.push(['identify', { email, firstname: name, phone,
-        utm_source:   DL.utm.source,
-        utm_medium:   DL.utm.medium,
-        utm_campaign: DL.utm.campaign,
-        crystal_type: DL.crystal || '',
-      }]);
-      _hsq.push(['trackPageView']);
-    }
-    track('lead_submit', { email, method:'hubspot_demo' });
-    showToast('ok','💎 Đăng ký thành công! Kiểm tra email của bạn.');
-    // Show success state
-    document.getElementById('hs-form-placeholder').innerHTML =
-      `<div style="text-align:center;padding:30px 10px;">
-        <div style="font-size:3rem;margin-bottom:14px;">💎</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--text-1);margin-bottom:8px;">Chào mừng ${name}!</div>
-        <div style="color:var(--text-2);font-size:.88rem;line-height:1.8;">Thông tin đã được ghi nhận.<br>HubSpot sẽ kích hoạt automation email cho bạn.</div>
-        <div style="margin-top:16px;font-size:.72rem;color:var(--sky);letter-spacing:.1em;">UTM: ${DL.utm.source} / ${DL.utm.medium} / ${DL.utm.campaign}</div>
-      </div>`;
-  }
-
-
 </script>
 </body>
 </html>
