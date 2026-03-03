@@ -8,17 +8,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy:       #003E7E;
-      --navy-deep:  #002B5C;
-      --navy-dark:  #001830;
-      --blue-mid:   #0057A8;
-      --blue-bright:#0072CE;
-      --sky:        #A8D8F0;
-      --sky-light:  #D6EEFA;
-      --white:      #FFFFFF;
-      --cream:      #F0F6FC;
-      --gold:       #C9A84C;
-      --gold-light: #E8C97A;
+      --primary: #0054A6;      /* Xanh TH đậm */
+      --primary-light: #4D7DB5;
+      --accent: #FFD700;        /* Vàng gold */
+      --light-bg: #F8F9FA;
+      --gray: #E5E7EB;
+      --text-dark: #1F2937;
+      --white: #FFFFFF;
+      --shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.02);
+      
+      --navy: #0054A6;
+      --navy-deep: #003d7a;
+      --navy-dark: #ffffff;      /* Nền sáng */
+      --blue-mid: #4D7DB5;
+      --blue-bright: #0054A6;
+      --sky: #E5E7EB;
+      --sky-light: #F8F9FA;
+      --cream: #FFFFFF;
+      --gold: #FFD700;
+      --gold-light: #FFE55C;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -255,15 +263,17 @@
   <div class="hero-visual-layout" style="display: flex; align-items: center; justify-content: space-between; position: relative; min-height: 420px;">
     <div class="hero-text-side" style="flex: 1.2; text-align: left; padding-left: 6vw; z-index: 2; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 0; margin-top: -10px;">
       <div class="hero-badge" style="align-self: center; margin-bottom: 8px; padding-left: 40px; padding-right: 40px;">TH true DNA</div>
-      <h1 class="hero-title" style="white-space: nowrap; margin-bottom: 8px; line-height: 1.3; padding-top: 15px;">
-        <span class="line-1">Tinh Thể Sữa</span>
-        <span class="line-2">chỉ của riêng bạn</span>
-      </h1>
-      <p class="hero-sub">Mỗi hộp sữa TH chứa đựng một mã số định danh độc bản – "hạt giống" để công nghệ AI khai mở nguồn năng lượng tinh khiết, kiến tạo nên <b>tác phẩm tinh thể ánh sáng lộng lẫy</b>, mang dấu ấn duy nhất thuộc về chính bạn.</p>
-      <div class="hero-actions">
-        <a href="#redeem" class="crystal-btn">Đúc Tinh Thể Ngay</a>
-        <a href="#about" class="crystal-btn-outline">Khám Phá Thêm</a>
-      </div>
+      <h1 class="hero-title">
+  KHÁM PHÁ ADN VỊ SỮA CỦA RIÊNG BẠN<br>
+  <span style=" color: var(--primary-light);">Tinh Thể Độc Bản Được AI Kiến Tạo – Không Ai Giống Ai</span>
+    </h1>
+    <p class="hero-sub">Mỗi mã dưới lốc sữa TH True Milk chứa một “dãy ADN ánh sáng” riêng. Nhập mã của bạn – hệ thống AI sẽ “đúc” nên tinh thể độc bản mang dấu ấn cá nhân.</p>
+    <div class="hero-offer" style="background: var(--accent); color: var(--text-dark); padding: 10px 20px; border-radius: 30px; display: inline-block; font-weight: 600; margin: 20px 0;">
+      1.000 tinh thể đầu tiên nhận thêm quà tặng phiên bản giới hạn
+    </div>
+    <div class="hero-actions">
+      <a href="#redeem" class="crystal-btn" style="background: var(--primary); color: white; border: none;">ĐÚC TINH THỂ NGAY</a>
+      <a href="#about" class="crystal-btn-outline" style="border-color: var(--primary); color: var(--primary);">TÔI MUỐN KHÁM PHÁ ADN CỦA MÌNH</a>
     </div>
     <div class="hero-image-side">
       <img src="asset/5.png" class="hero-milk-main" alt="Hộp sữa chính" />
@@ -285,17 +295,14 @@
         <div class="orbit-dot"></div>
       </div>
     </div>
-    <div class="about-text reveal">
-      <div class="section-label">Về chiến dịch</div>
-      <h2>Khoa học · Nghệ thuật ·<br><em>Cá nhân hóa cực hạn</em></h2>
-      <p><strong>TH True DNA</strong> lấy cảm hứng từ sự thuần khiết của giọt sữa "Thật" — biến mỗi mã số thẻ cào dưới lốc sữa TH thành một <strong>"hạt giống số"</strong> (Seed) độc nhất vô nhị.</p>
-      <p>Thay vì những phần quà vật chất thông thường, chúng tôi tặng cho mỗi khách hàng một <strong>tác phẩm nghệ thuật tinh thể sữa</strong> được kiến tạo bởi trí tuệ nhân tạo — sự kết hợp hoàn hảo giữa khoa học, nghệ thuật và cá nhân hóa trong kỷ nguyên số.</p>
-      <div class="about-tags">
-        <span class="tag">Canvas Engine Generated Art</span>
-        <span class="tag">Unique Seed</span>
-        <span class="tag">Digital Collectible</span>
-        <span class="tag">TH True Milk</span>
-      </div>
+    <div class="section-label">Về chiến dịch</div>
+    <h2>Khoa học · Nghệ thuật ·<br><em>Cá nhân hóa cực hạn</em></h2>
+    <p><strong>TH True DNA</strong> lấy cảm hứng từ sự thuần khiết của giọt sữa "Thật" — biến mỗi mã số thẻ cào dưới lốc sữa TH thành một <strong>"hạt giống số"</strong> (Seed) độc nhất vô nhị.</p>
+    <p>Thay vì những phần quà vật chất thông thường, chúng tôi tặng cho mỗi khách hàng một <strong>tác phẩm nghệ thuật tinh thể sữa</strong> được kiến tạo bởi trí tuệ nhân tạo — sự kết hợp hoàn hảo giữa khoa học, nghệ thuật và cá nhân hóa trong kỷ nguyên số.</p>
+    <div class="about-tags">
+      <span class="tag">Canvas Engine Generated Art</span>
+      <span class="tag">Unique Seed</span>
+      <span class="tag">Digital Collectible</span>
     </div>
   </div>
 </section>
