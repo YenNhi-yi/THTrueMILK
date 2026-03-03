@@ -72,7 +72,7 @@
     .nav-links a { color: var(--navy-dark); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; transition: color .3s; }
     .nav-links a:hover { color: var(--blue-mid); }
     .nav-cta { padding: 10px 24px; background: transparent; border: 1px solid var(--blue-mid); color: var(--blue-mid); font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: all .3s; }
-    .nav-cta:hover { background: var(--blue-mid); color: var(--white); }
+    .nav-cta:hover { background: var(--blue-mid); color: var(--primary); }
 
     /* Hero */
     .hero { position: relative; min-height: 85vh; display: flex; align-items: flex-start; justify-content: center; padding: 90px 60px 40px; overflow: hidden; background: var(--navy-dark); }
@@ -150,7 +150,7 @@
     @keyframes shimmer { 0%,100% { filter: drop-shadow(0 0 18px rgba(255,255,255,.5)); } 50% { filter: drop-shadow(0 0 42px rgba(255,255,255,.9)); } }
     .crystal-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,20,50,.88)); padding: 32px 22px 22px; transform: translateY(28px); opacity: 0; transition: all .4s ease; }
     .crystal-card:hover .crystal-overlay { transform: translateY(0); opacity: 1; }
-    .crystal-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 6px; }
+    .crystal-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--primary); margin-bottom: 6px; }
     .crystal-desc { font-size: 0.78rem; color: rgba(255,255,255,.68); line-height: 1.6; }
     .crystal-badge { position: absolute; top: 14px; right: 14px; padding: 4px 10px; background: rgba(0,0,0,.45); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.2); font-size: 0.63rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,.8); }
 
@@ -474,9 +474,9 @@
           <div id="crystalMeaning" style="font-size:.9rem;color:rgba(255,255,255,.6); line-height:1.8;margin-bottom:28px;"></div>
           <div id="crystalAttrs" style="display:flex;flex-direction:column;gap:10px;"></div>
           <div id="productSuggestion" class="product-suggestion" style="margin-top:30px; display:none;">
-            <h3 style="color:var(--sky); font-size:1.1rem; margin-bottom:10px;">🎯 Sản phẩm dành riêng cho bạn:</h3>
+            <h3 style="color:var(--sky); font-size:1.1rem; margin-bottom:10px;">Sản phẩm dành riêng cho bạn:</h3>
             <p id="productName" style="font-weight:600; font-size:1.2rem; color:var(--gold-light);"></p>
-            <p style="margin-top:15px;">🎁 Mã ưu đãi cá nhân hóa:</p>
+            <p style="margin-top:15px;">Mã ưu đãi cá nhân hóa:</p>
             <div id="voucherCode" class="voucher-code"></div>
             <div style="margin-top:20px;">
               <button class="btn-primary" style="padding:12px 24px; font-size:0.8rem;">MUA NGAY</button>
@@ -498,7 +498,7 @@
     </div>
     <div class="pipeline">
       <div class="pipeline-node">
-        <div class="node-icon">🔢</div>
+        <div class="node-icon"></div>
         <div class="node-label">Bước 1</div>
         <div class="node-title">Chuyển đổi mã thành seed</div>
         <div class="node-desc">Mã thẻ cào được băm thành chuỗi số nguyên (seed) làm nền tảng cho mọi biến đổi.</div>
@@ -510,13 +510,13 @@
         <div class="node-desc">Seed quyết định số mặt cắt, góc chiết quang và độ tinh khiết của tinh thể.</div>
       </div>
       <div class="pipeline-node">
-        <div class="node-icon">🌈</div>
+        <div class="node-icon"></div>
         <div class="node-label">Bước 3</div>
         <div class="node-title">Xây dựng màu sắc & hiệu ứng</div>
         <div class="node-desc">AI phối màu gradient, caustics và ánh sáng nội tại dựa trên đặc trưng của seed.</div>
       </div>
       <div class="pipeline-node">
-        <div class="node-icon">🏷️</div>
+        <div class="node-icon"></div>
         <div class="node-label">Bước 4</div>
         <div class="node-title">Gán thuộc tính cá tính</div>
         <div class="node-desc">Mỗi tinh thể mang một ý nghĩa tinh thần tương ứng với dãy số của bạn.</div>
@@ -539,7 +539,7 @@
       </ul>
     </div>
     <div style="text-align:center;">
-      <span style="font-size:12rem; opacity:0.8;">✨</span>
+      <span style="font-size:12rem; opacity:0.8;"></span>
     </div>
   </div>
 </section>
@@ -548,7 +548,7 @@
 <section class="offer-section" id="offer">
   <div class="offer-box">
     <h2 style="font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:300; color:var(--cream);">Ưu Đãi <em style="color:var(--gold);">Phiên Bản Giới Hạn</em></h2>
-    <p style="font-size:1.2rem; margin:20px 0;">🎁 1.000 tinh thể đầu tiên nhận thêm:</p>
+    <p style="font-size:1.2rem; margin:20px 0;">1.000 tinh thể đầu tiên nhận thêm:</p>
     <p>• Khung ảnh tinh thể phiên bản đặc biệt<br>• Cơ hội tham gia minigame trúng quà<br>• Voucher giảm giá cho lần mua tiếp theo</p>
     <div class="countdown" id="countdown">
       <div class="countdown-item"><span>02</span> Ngày</div>
