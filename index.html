@@ -69,7 +69,7 @@
   <!-- ③ HubSpot Tracking Pixel (embed analytics + forms) -->
   <!-- Thay PORTAL_ID thật vào src dưới -->
   <script type="text/javascript" id="hs-script-loader" async defer
-    src="https://js.hs-scripts.com/XXXXXXX.js">
+    src="https://js.hs-scripts.com/242823844.js">
     <!-- src="https://js.hs-scripts.com/[HUBSPOT_PORTAL_ID].js" -->
   </script>
 
@@ -77,7 +77,7 @@
     /* ============================================================
        UNIFIED COLOR SYSTEM – Dark Luxury Theme
        ============================================================ */
-    :root {
+    : root {
       /* Backgrounds – one consistent dark palette */
       --bg-base:    #050d1b;   /* deepest layer */
       --bg-surface: #08152a;   /* sections */
@@ -1346,7 +1346,7 @@
     <button class="hs-button" onclick="demoLeadSubmit()">Đăng Ký Ngay</button>
   </div>
 
-  <!--
+  
   ════════════════════════════════════════════════
   HUBSPOT REAL EMBED – Uncomment khi có ID thật
   ════════════════════════════════════════════════
@@ -1354,7 +1354,7 @@
   <script charset="utf-8" type="text/javascript"
     src="//js.hsforms.net/forms/embed/v2.js"></script>
   <script>
-    hbspt.forms.create({
+    hbspt. forms.create({
       region:   "na1",                          // hoặc "eu1"
       portalId: MARTECH.HUBSPOT_PORTAL_ID,
       formId:   MARTECH.HUBSPOT_FORM_ID,
@@ -1368,13 +1368,13 @@
       onFormSubmitted: function() {
         // Fire tracking events sau khi submit thành công
         track('lead_submit', { method:'hubspot', lead_score: DL.score });
-        fbq('track','Lead');
+        fbq('track', 'Lead');
         showToast('ok','💎 Đăng ký thành công! Kiểm tra email của bạn.');
       }
     });
   </script>
   ════════════════════════════════════════════════
-  -->
+  
 </section>
 
 <!-- ── LEAD SCORE BADGE ── -->
@@ -1395,40 +1395,7 @@
 <!-- ── TOAST ── -->
 <div id="toastWrap"></div>
 
-<!--
-  ════════════════════════════════════════════════════════
-  CHATBOT EMBED – Chọn 1 trong 2 provider
-
-  ① TIDIO (Recommended – có live chat + AI bot)
-  ─────────────────────────────────────────────
-  Đăng ký: tidio.com → Settings → Developer → Public Key
-  Uncomment script dưới:
-
-  <script src="//code.tidio.co/[TIDIO_KEY].js" async></script>
-
-  Sau đó vào Tidio Dashboard → Lyro AI:
-    • Train với FAQ sản phẩm TH True Milk
-    • Set trigger: "Xin chào" khi user ở trang > 30s
-    • Tùy chỉnh màu widget: #0054A6 (navy TH)
-
-  ② CHATBASE (Recommended – GPT-4 trained on custom data)
-  ─────────────────────────────────────────────────────────
-  Đăng ký: chatbase.co → New Chatbot → Upload PDF/text sản phẩm TH
-  → Deploy → Embed → lấy chatbot ID
-  Uncomment script dưới:
-
-  <script>
-    window.embeddedChatbotConfig = {
-      chatbotId: "[CHATBASE_ID]",
-      domain: "www.chatbase.co"
-    }
-  </script>
-  <script src="https://www.chatbase.co/embed.min.js"
-    chatbotId="[CHATBASE_ID]" domain="www.chatbase.co" defer></script>
-
-  ════════════════════════════════════════════════════════
--->
-
+  <script src="//code.tidio.co/76pum0cutzep7saxerdop4t99a5h23di.js" async></script>
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-brand">TH <em>true MILK</em> × True DNA</div>
