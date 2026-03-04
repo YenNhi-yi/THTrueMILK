@@ -1151,6 +1151,25 @@
       <div style="text-align:center;">
         <canvas id="crystalCanvas2" width="360" height="400" style="width:100%;border:1px solid var(--border);"></canvas>
         <button class="dl-btn" onclick="downloadCrystal()">↓ Lưu Tinh Thể</button>
+
+        <!-- GEMINI AI IMAGE -->
+        <div id="geminiImageWrapper" style="display:none;margin-top:20px;animation:fadeUp .6s ease both;">
+          <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px;">
+            ✦ Gemini AI Vision
+          </div>
+          <div style="position:relative;border:1px solid var(--border-mid);background:var(--bg-base);min-height:180px;display:flex;align-items:center;justify-content:center;">
+            <img id="geminiArtImage" src="" alt=""
+              style="width:100%;display:block;object-fit:cover;max-height:340px;" />
+            <div id="geminiImagePlaceholder"
+              style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            </div>
+          </div>
+          <div id="geminiImageStatus"
+            style="font-size:.72rem;color:var(--sky);margin-top:8px;letter-spacing:.06em;min-height:20px;"></div>
+          <button class="dl-btn" onclick="downloadGeminiImage()" style="margin-top:8px;">
+            ↓ Lưu Ảnh AI
+          </button>
+        </div>
       </div>
       <div>
         <div class="section-label">Tinh thể của bạn</div>
@@ -1729,6 +1748,73 @@ Hãy trả về JSON với đúng format sau, không thêm gì khác:
     }
   }
 
+  // ============================================================
+  // GEMINI IMAGE GENERATION – Sinh ảnh nghệ thuật tinh thể
+  // ============================================================
+  async function fetchGeminiCrystalImage(crystalName, crystalType, attrs) {
+    const highest = [...attrs].sort((a,b) => b.val - a.val)[0];
+    const colorMap = {
+      'PHA LÊ':       'translucent ice blue crystal, white light refraction',
+      'HƯỚNG DƯƠNG':  'golden yellow sunflower crystal, warm amber light',
+      'ĐẠI DƯƠNG':    'deep teal emerald crystal, ocean green light',
+      'SAN HÔ':       'coral red crystal, warm orange glow',
+      'THẠCH ANH TÍM':'purple amethyst crystal, violet mystical light',
+      'HỒNG NGỌC':    'rose pink ruby crystal, soft pink shimmer',
+    };
+    const colorDesc = colorMap[crystalType] || 'luminous crystal, ethereal light';
+
+    const prompt = `A single majestic ${colorDesc}, floating in dark space. 
+Ultra detailed macro photography style. The crystal has ${highest.name} energy at ${highest.val}/100. 
+Milk-white mist surrounds the base, pure natural essence. 
+Cinematic lighting, 8K, hyperrealistic, black background, no text, no watermark.`;
+
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${MARTECH.GEMINI_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { responseModalities: ['IMAGE', 'TEXT'] }
+        })
+      }
+    );
+
+    const data = await res.json();
+    // Tìm phần image trong response
+    const parts = data?.candidates?.[0]?.content?.parts ?? [];
+    const imgPart = parts.find(p => p.inlineData?.mimeType?.startsWith('image/'));
+    if (!imgPart) return null;
+    return `data:${imgPart.inlineData.mimeType};base64,${imgPart.inlineData.data}`;
+  }
+
+  function showGeminiImage(dataUrl, crystalName) {
+    const wrapper = document.getElementById('geminiImageWrapper');
+    const img     = document.getElementById('geminiArtImage');
+    const status  = document.getElementById('geminiImageStatus');
+    if (!wrapper || !img) return;
+
+    img.src = dataUrl;
+    img.alt = `Gemini AI – ${crystalName}`;
+    status.textContent  = '✦ Diễn giải nghệ thuật bởi Gemini AI';
+    status.style.color  = 'var(--sky)';
+    wrapper.style.display = 'block';
+  }
+
+  function showGeminiLoading() {
+    const wrapper = document.getElementById('geminiImageWrapper');
+    const status  = document.getElementById('geminiImageStatus');
+    if (!wrapper) return;
+    wrapper.style.display = 'block';
+    document.getElementById('geminiArtImage').src = '';
+    status.innerHTML = '<span style="color:var(--sky);opacity:.6;font-style:italic;">✦ Gemini AI đang vẽ tinh thể của bạn...</span>';
+  }
+
+  function hideGeminiImage() {
+    const wrapper = document.getElementById('geminiImageWrapper');
+    if (wrapper) wrapper.style.display = 'none';
+  }
+
 function generateCrystal() {  // ← dòng cũ, giữ nguyên
   const raw = document.getElementById('codeInput').value.trim();
   if (!raw) { alert('Vui lòng nhập mã thẻ cào!'); return; }
@@ -1837,12 +1923,42 @@ function generateCrystal() {  // ← dòng cũ, giữ nguyên
     out.style.display = 'grid';
     out.scrollIntoView({ behavior:'smooth', block:'center' });
     btn.textContent = '✦ Đúc lại'; btn.style.opacity = '1';
+
+    // Gọi Gemini sinh ảnh nghệ thuật song song
+    showGeminiLoading();
+    fetchGeminiCrystalImage(ctype.name, ctype.type, attrs)
+      .then(dataUrl => {
+        if (dataUrl) {
+          showGeminiImage(dataUrl, ctype.name);
+          // Ẩn placeholder khi ảnh load xong
+          const ph = document.getElementById('geminiImagePlaceholder');
+          if (ph) ph.style.display = 'none';
+        } else {
+          const status = document.getElementById('geminiImageStatus');
+          if (status) status.innerHTML = '<span style="color:var(--text-3);font-style:italic;font-size:.7rem;">Gemini image không khả dụng lúc này</span>';
+        }
+      })
+      .catch(() => {
+        const status = document.getElementById('geminiImageStatus');
+        if (status) status.innerHTML = '<span style="color:var(--text-3);font-style:italic;font-size:.7rem;">Gemini image không khả dụng lúc này</span>';
+      });
+
     // Tracking
     if (typeof track === 'function') {
       track('crystal_generate', { crystal_name: ctype.name });
     }
   }, 900);
 }
+
+  function downloadGeminiImage() {
+    const img  = document.getElementById('geminiArtImage');
+    if (!img || !img.src || img.src === window.location.href) return;
+    const name = document.getElementById('crystalName').textContent || 'tinh-the-ai';
+    const link = document.createElement('a');
+    link.download = name.replace(/\s+/g,'-').toLowerCase() + '-gemini.png';
+    link.href = img.src;
+    link.click();
+  }
 
   function downloadCrystal() {
     const cv   = document.getElementById('crystalCanvas2');
