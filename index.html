@@ -1274,19 +1274,30 @@
   <div class="hs-form-wrapper" style="max-width:520px;margin:0 auto;">
     <div id="hubspot-form-target"></div>
   </div>
-  <script charset="utf-8" type="text/javascript" src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
   <script>
-    hbspt.forms.create({
-      region:   "na2",
-      portalId: "242823844",
-      formId:   "f40f5ae0-ae1b-4a7e-afa9-61e937ace761",
-      target:   "#hubspot-form-target",
-      onFormSubmitted: function() {
-        if (typeof track === 'function') track('lead_submit', { method:'hubspot' });
-        if (typeof fbq !== 'undefined') fbq('track','Lead');
-        if (typeof showToast === 'function') showToast('ok','💎 Đăng ký thành công! Kiểm tra email của bạn.');
-      }
-    });
+    // FIX lỗi "hbspt is not defined": load script trước, gọi create() trong onload
+    (function() {
+      if (window.__hsFormDone) return;
+      window.__hsFormDone = true;
+      var s = document.createElement('script');
+      s.charset = 'utf-8';
+      s.type    = 'text/javascript';
+      s.src     = 'https://js-na2.hsforms.net/forms/embed/v2.js';
+      s.onload  = function() {
+        hbspt.forms.create({
+          region:   "na2",
+          portalId: "242823844",
+          formId:   "f40f5ae0-ae1b-4a7e-afa9-61e937ace761",
+          target:   "#hubspot-form-target",
+          onFormSubmitted: function() {
+            if (typeof track === 'function') track('lead_submit', { method:'hubspot' });
+            if (typeof fbq !== 'undefined') fbq('track','Lead');
+            if (typeof showToast === 'function') showToast('ok','💎 Đăng ký thành công! Kiểm tra email của bạn.');
+          }
+        });
+      };
+      document.head.appendChild(s);
+    })();
   </script>
 </section>
 
@@ -1749,65 +1760,73 @@ Hãy trả về JSON với đúng format sau, không thêm gì khác:
   }
 
   // ============================================================
-  // GEMINI IMAGE GENERATION – Sinh ảnh nghệ thuật tinh thể
+  // POLLINATIONS AI – Sinh ảnh nghệ thuật tinh thể (miễn phí, ổn định)
   // ============================================================
-  async function fetchGeminiCrystalImage(crystalName, crystalType, attrs) {
+  function fetchCrystalImage(crystalName, crystalType, attrs) {
     const highest = [...attrs].sort((a,b) => b.val - a.val)[0];
+    const lowest  = [...attrs].sort((a,b) => a.val - b.val)[0];
+
     const colorMap = {
-      'PHA LÊ':       'translucent ice blue crystal, white light refraction',
-      'HƯỚNG DƯƠNG':  'golden yellow sunflower crystal, warm amber light',
-      'ĐẠI DƯƠNG':    'deep teal emerald crystal, ocean green light',
-      'SAN HÔ':       'coral red crystal, warm orange glow',
-      'THẠCH ANH TÍM':'purple amethyst crystal, violet mystical light',
-      'HỒNG NGỌC':    'rose pink ruby crystal, soft pink shimmer',
+      'PHA LÊ':        'translucent ice blue crystal, pure white light refraction, frozen water droplets',
+      'HƯỚNG DƯƠNG':   'golden yellow sunflower crystal, warm amber glow, honey light rays',
+      'ĐẠI DƯƠNG':     'deep teal emerald crystal, ocean green bioluminescence, underwater light',
+      'SAN HÔ':        'coral red branching crystal, warm orange ember glow, fire light',
+      'THẠCH ANH TÍM': 'purple amethyst hexagonal crystal, violet mystical aura, starlight',
+      'HỒNG NGỌC':     'rose pink ruby crystal, soft pink shimmer, cherry blossom light',
     };
-    const colorDesc = colorMap[crystalType] || 'luminous crystal, ethereal light';
+    const colorDesc = colorMap[crystalType] || 'luminous magical crystal, ethereal rainbow light';
 
-    const prompt = `A single majestic ${colorDesc}, floating in dark space. 
-Ultra detailed macro photography style. The crystal has ${highest.name} energy at ${highest.val}/100. 
-Milk-white mist surrounds the base, pure natural essence. 
-Cinematic lighting, 8K, hyperrealistic, black background, no text, no watermark.`;
+    const prompt = `A single majestic ${colorDesc}, floating in dark cosmic space, 
+milk-white mist surrounding the base, ultra detailed macro photography, 
+cinematic dramatic lighting, 8K hyperrealistic, pure black background, 
+no text no watermark, ${highest.name} energy radiating at ${highest.val} percent intensity, 
+TH True Milk brand essence, natural purity`;
 
-    const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${MARTECH.GEMINI_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { responseModalities: ['IMAGE', 'TEXT'] }
-        })
-      }
-    );
-
-    const data = await res.json();
-    // Tìm phần image trong response
-    const parts = data?.candidates?.[0]?.content?.parts ?? [];
-    const imgPart = parts.find(p => p.inlineData?.mimeType?.startsWith('image/'));
-    if (!imgPart) return null;
-    return `data:${imgPart.inlineData.mimeType};base64,${imgPart.inlineData.data}`;
+    // Pollinations AI: chỉ cần encode prompt vào URL
+    const encoded = encodeURIComponent(prompt);
+    const seed    = Math.floor(Math.random() * 999999);
+    return `https://image.pollinations.ai/prompt/${encoded}?width=512&height=512&seed=${seed}&nologo=true&enhance=true`;
   }
 
-  function showGeminiImage(dataUrl, crystalName) {
+  function showGeminiImage(imageUrl, crystalName) {
     const wrapper = document.getElementById('geminiImageWrapper');
     const img     = document.getElementById('geminiArtImage');
     const status  = document.getElementById('geminiImageStatus');
+    const ph      = document.getElementById('geminiImagePlaceholder');
     if (!wrapper || !img) return;
 
-    img.src = dataUrl;
-    img.alt = `Gemini AI – ${crystalName}`;
-    status.textContent  = '✦ Diễn giải nghệ thuật bởi Gemini AI';
-    status.style.color  = 'var(--sky)';
+    // Hiện loading spinner trước
+    if (ph) ph.innerHTML = `<div style="color:var(--sky);opacity:.6;font-style:italic;font-size:.8rem;text-align:center;padding:20px;">
+      <div style="font-size:1.5rem;margin-bottom:8px;animation:pulse 1.5s infinite;">◈</div>
+      AI đang vẽ tinh thể...
+    </div>`;
     wrapper.style.display = 'block';
+
+    // Load ảnh
+    const tempImg = new Image();
+    tempImg.onload = function() {
+      img.src = imageUrl;
+      if (ph) ph.style.display = 'none';
+      status.innerHTML = '✦ Diễn giải nghệ thuật bởi <strong style="color:var(--sky)">Pollinations AI</strong>';
+    };
+    tempImg.onerror = function() {
+      if (ph) ph.innerHTML = '';
+      status.innerHTML = '<span style="color:var(--text-3);font-style:italic;font-size:.7rem;">Không thể sinh ảnh AI lúc này</span>';
+    };
+    tempImg.src = imageUrl;
   }
 
   function showGeminiLoading() {
     const wrapper = document.getElementById('geminiImageWrapper');
-    const status  = document.getElementById('geminiImageStatus');
     if (!wrapper) return;
     wrapper.style.display = 'block';
     document.getElementById('geminiArtImage').src = '';
-    status.innerHTML = '<span style="color:var(--sky);opacity:.6;font-style:italic;">✦ Gemini AI đang vẽ tinh thể của bạn...</span>';
+    const ph = document.getElementById('geminiImagePlaceholder');
+    if (ph) ph.innerHTML = `<div style="color:var(--sky);opacity:.6;font-style:italic;font-size:.8rem;text-align:center;padding:20px;">
+      <div style="font-size:1.5rem;margin-bottom:8px;animation:pulse 1.5s infinite;">◈</div>
+      AI đang vẽ tinh thể của bạn...
+    </div>`;
+    document.getElementById('geminiImageStatus').innerHTML = '';
   }
 
   function hideGeminiImage() {
@@ -1924,24 +1943,10 @@ function generateCrystal() {  // ← dòng cũ, giữ nguyên
     out.scrollIntoView({ behavior:'smooth', block:'center' });
     btn.textContent = '✦ Đúc lại'; btn.style.opacity = '1';
 
-    // Gọi Gemini sinh ảnh nghệ thuật song song
+    // Gọi Pollinations AI sinh ảnh nghệ thuật song song
     showGeminiLoading();
-    fetchGeminiCrystalImage(ctype.name, ctype.type, attrs)
-      .then(dataUrl => {
-        if (dataUrl) {
-          showGeminiImage(dataUrl, ctype.name);
-          // Ẩn placeholder khi ảnh load xong
-          const ph = document.getElementById('geminiImagePlaceholder');
-          if (ph) ph.style.display = 'none';
-        } else {
-          const status = document.getElementById('geminiImageStatus');
-          if (status) status.innerHTML = '<span style="color:var(--text-3);font-style:italic;font-size:.7rem;">Gemini image không khả dụng lúc này</span>';
-        }
-      })
-      .catch(() => {
-        const status = document.getElementById('geminiImageStatus');
-        if (status) status.innerHTML = '<span style="color:var(--text-3);font-style:italic;font-size:.7rem;">Gemini image không khả dụng lúc này</span>';
-      });
+    const imageUrl = fetchCrystalImage(ctype.name, ctype.type, attrs);
+    showGeminiImage(imageUrl, ctype.name);
 
     // Tracking
     if (typeof track === 'function') {
@@ -1951,13 +1956,21 @@ function generateCrystal() {  // ← dòng cũ, giữ nguyên
 }
 
   function downloadGeminiImage() {
-    const img  = document.getElementById('geminiArtImage');
+    const img = document.getElementById('geminiArtImage');
     if (!img || !img.src || img.src === window.location.href) return;
     const name = document.getElementById('crystalName').textContent || 'tinh-the-ai';
-    const link = document.createElement('a');
-    link.download = name.replace(/\s+/g,'-').toLowerCase() + '-gemini.png';
-    link.href = img.src;
-    link.click();
+    // Dùng fetch để download ảnh cross-origin từ Pollinations
+    fetch(img.src)
+      .then(r => r.blob())
+      .then(blob => {
+        const url  = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = name.replace(/\s+/g,'-').toLowerCase() + '-ai.png';
+        link.href = url;
+        link.click();
+        URL.revokeObjectURL(url);
+      })
+      .catch(() => alert('Không thể tải ảnh, vui lòng thử lại.'));
   }
 
   function downloadCrystal() {
@@ -1997,6 +2010,32 @@ function generateCrystal() {  // ← dòng cũ, giữ nguyên
     startTime: Date.now(), scrollMax: 0, ctaHits: 0,
   };
 
+  // FIX: khai báo SCORE_MAP và TIERS TRƯỚC khi dùng trong track() / addScore()
+  const SCORE_MAP = {
+    page_view:5, scroll_25:3, scroll_50:5,
+    scroll_75:8, scroll_90:10, cta_click:10,
+    crystal_generate:20, lead_submit:40,
+  };
+  const TIERS = [
+    { min:0,  label:'Visitor',    color:'#94a3b8' },
+    { min:15, label:'Interested', color:'#A8D8F0' },
+    { min:35, label:'Engaged',    color:'#fbbf24' },
+    { min:65, label:'Hot Lead',   color:'#4ade80' },
+  ];
+
+  function addScore(evt) {
+    const pts = SCORE_MAP[evt] || 0;
+    if (!pts) return;
+    DL.score = Math.min(100, DL.score + pts);
+    const tier = [...TIERS].reverse().find(t => DL.score >= t.min) || TIERS[0];
+    const badge = document.getElementById('scoreBadge');
+    badge.style.display = 'block';
+    document.getElementById('sbNum').textContent  = DL.score;
+    document.getElementById('sbTier').textContent = tier.label;
+    document.getElementById('sbTier').style.color = tier.color;
+    document.getElementById('sbBar').style.width  = DL.score + '%';
+  }
+
   function track(name, params={}) {
     if (typeof gtag !== 'undefined') {
       gtag('event', name, {
@@ -2019,67 +2058,6 @@ function generateCrystal() {  // ← dòng cũ, giữ nguyên
     }
     addScore(name);
     logEvent(name);
-  }
-
-  // UTM capture
-  (function(){
-    const p = new URLSearchParams(location.search);
-    DL.utm = {
-      source:   p.get('utm_source')   || 'direct',
-      medium:   p.get('utm_medium')   || 'none',
-      campaign: p.get('utm_campaign') || 'none',
-      content:  p.get('utm_content')  || 'none',
-    };
-    track('page_view', DL.utm);
-  })();
-
-  // Scroll depth
-  const scrollFired = new Set();
-  window.addEventListener('scroll', ()=>{
-    const pct = Math.round(scrollY / (document.body.scrollHeight - innerHeight) * 100);
-    if (pct > DL.scrollMax) DL.scrollMax = pct;
-    [25,50,75,90].forEach(m=>{
-      if (pct >= m && !scrollFired.has(m)) {
-        scrollFired.add(m);
-        track('scroll_'+m, { depth: m });
-      }
-    });
-  }, { passive:true });
-
-  // CTA tracking
-  document.querySelectorAll('.btn-crystal, .nav-cta, #codeSubmit').forEach(el=>{
-    el.addEventListener('click', function(){
-      DL.ctaHits++;
-      track('cta_click', {
-        label: this.textContent.trim().slice(0,40),
-        location: this.closest('section')?.id || 'nav'
-      });
-    });
-  });
-
-  // Lead scoring
-  const SCORE_MAP = {
-    page_view:5, scroll_25:3, scroll_50:5,
-    scroll_75:8, scroll_90:10, cta_click:10,
-    crystal_generate:20, lead_submit:40,
-  };
-  const TIERS = [
-    { min:0,  label:'Visitor',    color:'#94a3b8' },
-    { min:15, label:'Interested', color:'#A8D8F0' },
-    { min:35, label:'Engaged',    color:'#fbbf24' },
-    { min:65, label:'Hot Lead',   color:'#4ade80' },
-  ];
-  function addScore(evt) {
-    const pts = SCORE_MAP[evt] || 0;
-    if (!pts) return;
-    DL.score = Math.min(100, DL.score + pts);
-    const tier = [...TIERS].reverse().find(t => DL.score >= t.min) || TIERS[0];
-    const badge = document.getElementById('scoreBadge');
-    badge.style.display = 'block';
-    document.getElementById('sbNum').textContent  = DL.score;
-    document.getElementById('sbTier').textContent = tier.label;
-    document.getElementById('sbTier').style.color = tier.color;
-    document.getElementById('sbBar').style.width  = DL.score + '%';
   }
 
   function logEvent(name) {
