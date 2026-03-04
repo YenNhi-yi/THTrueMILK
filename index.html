@@ -1159,12 +1159,16 @@
         <div id="crystalMeaning" style="font-size:.9rem;color:var(--text-2);line-height:1.85;margin-bottom:26px;"></div>
         <div id="crystalAttrs"   style="display:flex;flex-direction:column;gap:10px;"></div>
         <div id="productSuggestion" class="product-suggestion" style="display:none;">
-          <h3 style="color:var(--sky);font-size:1rem;margin-bottom:10px;">Sản phẩm dành riêng cho bạn:</h3>
+          <h3 style="color:var(--sky);font-size:1rem;margin-bottom:10px;">✦ AI gợi ý sản phẩm dành riêng cho bạn:</h3>
           <p id="productName" style="font-weight:600;font-size:1.1rem;color:var(--gold);"></p>
+          <div id="productBenefit" style="margin-top:10px;"></div>
           <p style="margin-top:14px;color:var(--text-2);font-size:.88rem;">Mã ưu đãi cá nhân hóa:</p>
           <div id="voucherCode" class="voucher-code"></div>
           <div style="margin-top:18px;">
-            <button class="btn-crystal solid" style="padding:12px 24px;font-size:.78rem;">Mua Ngay</button>
+            <a id="buyNowBtn" href="https://www.thmilk.vn/en/home-2/" target="_blank" rel="noopener"
+              class="btn-crystal solid" style="padding:12px 24px;font-size:.78rem;display:inline-flex;text-decoration:none;">
+              🛒 Mua Ngay
+            </a>
           </div>
         </div>
       </div>
@@ -1251,7 +1255,7 @@
   <div class="hs-form-wrapper" style="max-width:520px;margin:0 auto;">
     <div id="hubspot-form-target"></div>
   </div>
-  <script charset="utf-8" type="text/javascript" src="https://js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script charset="utf-8" type="text/javascript" src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
   <script>
     hbspt.forms.create({
       region:   "na2",
@@ -1618,50 +1622,112 @@
     { name:'Tinh Thể Hồng Ngọc',   type:'HỒNG NGỌC',     tag:'hsl(345,72%,72%)', meaning:'Ấm áp như bàn tay người mẹ pha ly sữa TH mỗi sáng cho con — sự yêu thương bền bỉ, lặng lẽ nhưng thấm vào từng khoảnh khắc. Bạn là trái tim ấm áp, là chỗ dựa vững chắc của mọi người.', draw:drawHongNgoc },
   ];
   const ATTR_NAMES = ['Độ tinh khiết','Năng lượng','Cộng hưởng','Độ hiếm','Ánh sáng nội tâm'];
-  const products = [
-    "TH True Milk Ít Đường – Dành cho người năng động",
-    "TH True Milk Không Đường – Phù hợp lối sống cân bằng",
-    "TH True Yogurt – Hỗ trợ hệ tiêu hóa khỏe mạnh",
-    "TH True Nut – Sữa hạt giàu dinh dưỡng",
-    "TH True Milk Organic – Thanh khiết tự nhiên"
-  ];
 
+  // ============================================================
+  // HƯỚNG 1: Gemini viết mô tả tinh thể cá nhân hóa sâu hơn
+  // ============================================================
   async function fetchGeminiMeaning(crystalName, crystalType, attrs, codeHash) {
-  const attrText = attrs.map(a => `${a.name}: ${a.val}`).join(', ');
+    // Phân loại từng chỉ số thành cao / trung bình / thấp có ý nghĩa
+    const attrLabels = attrs.map(a => {
+      const level = a.val >= 85 ? 'rất cao' : a.val >= 75 ? 'cao' : a.val >= 65 ? 'trung bình' : 'thấp';
+      return `${a.name} ${level} (${a.val}/100)`;
+    });
 
-  const prompt = `
-Bạn là một nhà thơ và nhà tâm lý học viết về năng lượng tinh thể.
-Người dùng vừa nhận được tinh thể "${crystalName}" (loại: ${crystalType}).
-Các chỉ số tinh thể của họ: ${attrText}.
-Mã định danh tinh thể: ${codeHash}.
+    // Tìm chỉ số nổi bật nhất và thấp nhất để Gemini nhấn mạnh
+    const highest = [...attrs].sort((a,b) => b.val - a.val)[0];
+    const lowest  = [...attrs].sort((a,b) => a.val - b.val)[0];
 
-Hãy viết đúng 3-4 câu mô tả ý nghĩa tinh thể này dành riêng cho người này.
-Yêu cầu:
-- Phản ánh các chỉ số cao/thấp cụ thể (đừng nói chung chung)
-- Kết nối với giá trị sữa TH: thiên nhiên, thuần khiết, chăm sóc sức khỏe
-- Giọng văn thi vị, ấm áp, tiếng Việt
-- Không dùng dấu ngoặc kép, không bullet point, chỉ trả về đoạn văn thuần túy
-  `.trim();
+    const prompt = `
+Bạn là một nhà thơ viết về năng lượng tinh thể sữa TH.
+Người dùng vừa được đúc tinh thể "${crystalName}" (loại: ${crystalType}).
 
-  const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${MARTECH.GEMINI_KEY}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: {
-              temperature: 0.85,    // sáng tạo vừa phải
-              maxOutputTokens: 200, // ~3-4 câu là đủ
-            }
-          })
-        }
-      );
-    
-      const data = await res.json();
-      return data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim()
-        ?? null; // trả null nếu lỗi → fallback về text cứng
+Hồ sơ tinh thể của họ:
+${attrLabels.join('\n')}
+
+Điểm nổi bật nhất: ${highest.name} (${highest.val}/100)
+Điểm cần nuôi dưỡng: ${lowest.name} (${lowest.val}/100)
+
+Hãy viết đúng 3 câu mô tả cá nhân hóa theo cấu trúc sau:
+- Câu 1: Mô tả tinh thể dựa trên chỉ số nổi bật nhất, dùng hình ảnh thiên nhiên TH (đồng cỏ, giọt sữa, ánh ban mai...)
+- Câu 2: Nói về điểm cần nuôi dưỡng theo cách tích cực, khích lệ
+- Câu 3: Kết nối với thông điệp TH "Thật sự thiên nhiên, thật sự tốt cho sức khỏe"
+
+Ví dụ văn phong mong muốn:
+"Năng lượng của bạn tỏa sáng như đồng cỏ Ba Vì lúc bình minh — mạnh mẽ, thuần khiết và không ngừng vươn lên. Hãy dành thêm thời gian nuôi dưỡng nội tâm, như TH chắt lọc từng giọt sữa qua nhiều tầng tự nhiên. Bạn và tinh thể này cùng mang một sứ mệnh: lan tỏa điều tốt đẹp thật sự."
+
+Yêu cầu: tiếng Việt, không dùng dấu ngoặc kép, không bullet point, chỉ trả về 3 câu văn xuôi thuần túy.
+    `.trim();
+
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${MARTECH.GEMINI_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0.9,
+            maxOutputTokens: 250,
+          }
+        })
+      }
+    );
+    const data = await res.json();
+    return data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? null;
+  }
+
+  // ============================================================
+  // HƯỚNG 2: Gemini gợi ý sản phẩm TH thông minh theo tinh thể
+  // ============================================================
+  async function fetchGeminiProduct(crystalName, crystalType, attrs) {
+    const highest = [...attrs].sort((a,b) => b.val - a.val)[0];
+    const lowest  = [...attrs].sort((a,b) => a.val - b.val)[0];
+
+    const prompt = `
+Bạn là chuyên gia dinh dưỡng của thương hiệu TH True Milk.
+Người dùng có tinh thể "${crystalName}" (loại: ${crystalType}).
+Chỉ số nổi bật: ${highest.name} ${highest.val}/100.
+Chỉ số cần cải thiện: ${lowest.name} ${lowest.val}/100.
+
+Danh sách sản phẩm TH hiện có:
+1. TH True Milk Ít Đường – cho người năng động, giữ vóc dáng
+2. TH True Milk Không Đường – cho lối sống cân bằng, kiểm soát đường
+3. TH True Yogurt – hỗ trợ tiêu hóa, tăng đề kháng
+4. TH True Nut – sữa hạt thực vật, giàu năng lượng tự nhiên
+5. TH True Milk Organic – thuần khiết tối đa, không chất bảo quản
+
+Hãy trả về JSON với đúng format sau, không thêm gì khác:
+{
+  "product": "Tên sản phẩm TH phù hợp nhất",
+  "reason": "1 câu ngắn giải thích tại sao phù hợp với tinh thể này",
+  "benefit": "1 lợi ích sức khỏe cụ thể phù hợp với chỉ số cần cải thiện"
+}
+    `.trim();
+
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${MARTECH.GEMINI_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0.3,
+            maxOutputTokens: 150,
+          }
+        })
+      }
+    );
+    const data = await res.json();
+    const raw = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? null;
+    if (!raw) return null;
+    try {
+      const clean = raw.replace(/```json|```/g, '').trim();
+      return JSON.parse(clean);
+    } catch(e) {
+      return null;
     }
+  }
 
 function generateCrystal() {  // ← dòng cũ, giữ nguyên
   const raw = document.getElementById('codeInput').value.trim();
@@ -1686,22 +1752,22 @@ function generateCrystal() {  // ← dòng cũ, giữ nguyên
     document.getElementById('crystalName').textContent    = ctype.name;
     document.getElementById('crystalType').textContent    = '✦ ' + ctype.type + ' ✦';
     document.getElementById('crystalType').style.color    = ctype.tag;
+    // HƯỚNG 1: AI viết mô tả cá nhân hóa
     const meaningEl = document.getElementById('crystalMeaning');
-      meaningEl.textContent = '✦ Đang giải mã năng lượng tinh thể của bạn...';
-      meaningEl.style.opacity = '0.5';
-      meaningEl.style.fontStyle = 'italic';
-      
-      fetchGeminiMeaning(ctype.name, ctype.type, attrs, seedNum.toString(16))
-        .then(aiText => {
-          meaningEl.textContent = aiText || ctype.meaning;
-          meaningEl.style.opacity = '1';
-          meaningEl.style.fontStyle = 'normal';
-        })
-        .catch(() => {
-          meaningEl.textContent = ctype.meaning;
-          meaningEl.style.opacity = '1';
-          meaningEl.style.fontStyle = 'normal';
-        });
+    meaningEl.innerHTML = '<span style="color:var(--sky);opacity:.6;font-style:italic;">✦ Gemini AI đang giải mã năng lượng tinh thể của bạn...</span>';
+
+    fetchGeminiMeaning(ctype.name, ctype.type, attrs, seedNum.toString(16))
+      .then(aiText => {
+        meaningEl.textContent = aiText || ctype.meaning;
+        meaningEl.style.opacity = '1';
+        meaningEl.style.fontStyle = 'normal';
+      })
+      .catch(() => {
+        meaningEl.textContent = ctype.meaning;
+        meaningEl.style.opacity = '1';
+        meaningEl.style.fontStyle = 'normal';
+      });
+
     document.getElementById('crystalAttrs').innerHTML = attrs.map(a => `
       <div style="display:flex;align-items:center;gap:12px;">
         <span style="font-size:.72rem;color:var(--text-3);min-width:126px;">${a.name}</span>
@@ -1710,12 +1776,63 @@ function generateCrystal() {  // ← dòng cũ, giữ nguyên
         </div>
         <span style="font-size:.72rem;color:var(--text-2);min-width:26px;text-align:right;">${a.val}</span>
       </div>`).join('');
-    const productIndex = seedNum % products.length;
-    document.getElementById('productName').innerText = products[productIndex];
-    const discount = (seedNum % 20) + 10;
-    const randomPart = Math.random().toString(36).substring(2,6).toUpperCase();
+
+    // HƯỚNG 2: AI gợi ý sản phẩm TH thông minh
+    const productEl   = document.getElementById('productName');
+    const benefitEl   = document.getElementById('productBenefit');
+    const productSugg = document.getElementById('productSuggestion');
+    productEl.innerHTML  = '<span style="color:var(--sky);opacity:.6;font-style:italic;font-size:.85rem;">✦ AI đang chọn sản phẩm phù hợp nhất cho bạn...</span>';
+    if (benefitEl) benefitEl.textContent = '';
+    productSugg.style.display = 'block';
+
+    const discount    = (seedNum % 20) + 10;
+    const randomPart  = Math.random().toString(36).substring(2,6).toUpperCase();
     document.getElementById('voucherCode').innerText = "TH-" + randomPart + "-" + discount;
-    document.getElementById('productSuggestion').style.display = 'block';
+
+    // Map tên sản phẩm → URL thmilk.vn
+    const PRODUCT_URLS = {
+      "TH True Milk Ít Đường":   "https://www.thmilk.vn/en/products/th-true-milk-uht-less-sugar-fresh-milk-180ml/",
+      "TH True Milk Không Đường":"https://www.thmilk.vn/en/products/th-true-milk-uht-pure-fresh-milk-1-liter/",
+      "TH True Yogurt":          "https://www.thmilk.vn/en/products/less-sugar-yogurt/",
+      "TH True Nut":             "https://www.thmilk.vn/en/products/walnut-milk-th-true-nut-180-ml/",
+      "TH True Milk Organic":    "https://www.thmilk.vn/en/products/uht-fresh-milk-th-true-milk-topkid-formula-purely-made-with-organic-fresh-milk-natural-vanilla-ice-cream-flavour-180ml/",
+    };
+
+    function makeProductLink(name, fullLabel) {
+      // Tìm key khớp trong PRODUCT_URLS (tìm theo từ khóa)
+      const key = Object.keys(PRODUCT_URLS).find(k => name.includes(k) || k.includes(name.split('–')[0].trim()));
+      const url = key ? PRODUCT_URLS[key] : "https://www.thmilk.vn/en/home-2/";
+      // Cập nhật nút Mua Ngay
+      const buyBtn = document.getElementById('buyNowBtn');
+      if (buyBtn) buyBtn.href = url;
+      return `<a href="${url}" target="_blank" rel="noopener"
+        style="color:var(--gold);font-weight:700;font-size:1.05rem;text-decoration:underline;text-underline-offset:4px;
+               text-decoration-color:rgba(232,201,122,0.4);transition:all .2s;display:inline-block;"
+        onmouseover="this.style.color='#FFD700';this.style.textDecorationColor='#FFD700';"
+        onmouseout="this.style.color='var(--gold)';this.style.textDecorationColor='rgba(232,201,122,0.4)';">
+        ${fullLabel || name} ↗
+      </a>`;
+    }
+
+    fetchGeminiProduct(ctype.name, ctype.type, attrs)
+      .then(result => {
+        if (result && result.product) {
+          productEl.innerHTML = makeProductLink(result.product, result.product);
+          if (benefitEl && result.reason) {
+            benefitEl.innerHTML = `
+              <span style="color:var(--text-2);font-size:.82rem;line-height:1.7;">${result.reason}</span>
+              <br><span style="color:var(--gold);font-size:.8rem;margin-top:6px;display:block;">💡 ${result.benefit}</span>`;
+          }
+        } else {
+          // Fallback nếu AI lỗi
+          const fallbackKeys = Object.keys(PRODUCT_URLS);
+          const fallbackName = fallbackKeys[seedNum % fallbackKeys.length];
+          productEl.innerHTML = makeProductLink(fallbackName, fallbackName);
+        }
+      })
+      .catch(() => {
+        productEl.innerHTML = makeProductLink("TH True Milk Organic", "TH True Milk Organic – Thuần khiết tự nhiên");
+      });
     const out = document.getElementById('crystalOutput');
     out.style.display = 'grid';
     out.scrollIntoView({ behavior:'smooth', block:'center' });
