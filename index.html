@@ -2221,185 +2221,458 @@ canvas#crystalCanvas2 {
   }
 }
 
-    /* ============================================================
-   WHY DIFFERENT - Khối Kính Không Gian (Theo Mockup)
+/* ============================================================
+   WHY DIFFERENT — Holographic Ticket 
    ============================================================ */
 .why-different {
-  padding: 140px 60px;
-  /* Dải màu nền tĩnh lặng, sâu thẳm */
-  background: radial-gradient(ellipse at right center, rgba(13, 31, 60, 0.3) 0%, var(--bg-base) 70%);
+  padding: 140px 60px 180px;
+  background:
+    radial-gradient(ellipse at 30% 60%, rgba(0,84,166,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 30%, rgba(168,216,240,0.07) 0%, transparent 50%),
+    var(--bg-base);
   border-top: none;
   position: relative;
   overflow: hidden;
 }
 
-.why-grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr; /* Cột chữ nhỉnh hơn cột hình một chút */
-  gap: 80px;
-  align-items: center; /* Đảm bảo 2 bên canh giữa trục dọc tuyệt đối */
+/* Ambient light từ phía sau deck bài */
+.why-different::before {
+  content: '';
+  position: absolute;
+  bottom: 20%; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 300px;
+  background: radial-gradient(ellipse, rgba(0,84,166,0.18) 0%, transparent 65%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.ht-header {
+  text-align: center;
+  margin-bottom: 100px;
   position: relative;
   z-index: 2;
 }
-
-/* --- TITLE --- */
-.why-grid h2 {
+.ht-header h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.5rem, 4.5vw, 3.8rem);
   font-weight: 300;
   color: var(--text-1);
-  margin-bottom: 40px;
+  margin-bottom: 14px;
+  line-height: 1.15;
 }
-
-/* --- DANH SÁCH BÊN TRÁI (Kính mờ bo tròn y hệt mockup) --- */
-.why-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.why-list li {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 22px 30px;
-  background: rgba(8, 21, 42, 0.6); /* Nền tối mờ */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(168, 216, 240, 0.12); /* Viền cực mỏng */
-  border-radius: 20px;
-  font-size: 1.05rem;
-  color: rgba(238, 244, 255, 0.85);
-  line-height: 1.6;
-  font-weight: 300;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.why-list li:hover {
-  background: rgba(13, 31, 60, 0.8);
-  border-color: rgba(168, 216, 240, 0.3);
-  transform: translateX(12px); /* Chỉ trượt nhẹ */
-  box-shadow: 0 15px 40px rgba(0, 84, 166, 0.2), inset 0 0 15px rgba(168, 216, 240, 0.05);
-}
-
-/* Ngôi sao 4 cánh mượt mà */
-.why-list li::before {
-  content: '✦';
+.ht-header h2 em {
   color: var(--gold);
-  font-size: 1.4rem;
-  flex-shrink: 0;
-  text-shadow: 0 0 15px rgba(232, 201, 122, 0.4);
-  transition: transform 0.4s ease;
+  font-style: italic;
+  text-shadow: 0 0 40px rgba(232,201,122,0.45);
 }
-.why-list li:hover::before {
-  transform: scale(1.15);
-  color: var(--gold-bright);
-}
-
-/* --- KHU VỰC BÊN PHẢI: KHỐI KÍNH VUÔNG LUNG LINH --- */
-.why-icon-box {
-  position: relative;
-  width: 100%;
+.ht-header p {
+  font-size: .9rem;
+  color: var(--text-2);
+  font-weight: 300;
   max-width: 460px;
   margin: 0 auto;
-  aspect-ratio: 1; /* Khung hình vuông để các vòng tròn hoàn hảo */
-  background: transparent;
-  border: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Lõi tự động canh chính giữa */
+  line-height: 1.7;
 }
 
-/* 2 Vòng quỹ đạo đồng tâm */
-.why-icon-box::before {
-  content: '';
-  position: absolute;
-  inset: 0; /* Vòng ngoài cùng to nhất */
-  border-radius: 50%;
-  border: 1px solid rgba(168, 216, 240, 0.08);
-  animation: spinOrbit 30s linear infinite;
-}
-
-.why-icon-box::after {
-  content: '';
-  position: absolute;
-  inset: 15%; /* Vòng thứ 2 nhỏ hơn */
-  border-radius: 50%;
-  border: 1px dashed rgba(168, 216, 240, 0.15);
-  animation: spinOrbit 40s linear infinite reverse;
-}
-
-/* KHỐI KÍNH VUÔNG TRUNG TÂM (Square Glass Core) */
-.why-icon-box span {
-  color: transparent !important; /* Xóa emoji cũ */
+/* =============================================
+   DECK — Bộ bài chồng nhau
+   ============================================= */
+.ht-deck-wrap {
   position: relative;
-  width: 38%; /* Chiếm 38% không gian vòng tròn */
-  height: 38%;
-  
-  /* Tạo chất liệu kính (Glassmorphism) */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(168, 216, 240, 0.02) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  
-  /* Viền kính: sáng ở góc trên trái, chìm dần ở dưới phải */
-  border-top: 1.5px solid rgba(255, 255, 255, 0.5);
-  border-left: 1.5px solid rgba(255, 255, 255, 0.3);
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 2px; /* Hơi bo nhẹ góc để bớt gắt */
-  
-  /* Hào quang màu xanh lung linh phát ra từ khối vuông */
-  box-shadow: 
-    0 0 60px rgba(168, 216, 240, 0.3),
-    0 0 100px rgba(0, 84, 166, 0.3),
-    inset 0 0 30px rgba(168, 216, 240, 0.15);
-    
-  animation: floatCrystalCube 7s ease-in-out infinite;
+  max-width: 900px;
+  margin: 0 auto;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
 }
 
-/* Tạo thêm một quầng sáng cực mạnh hắt ra đằng sau khối vuông */
-.why-icon-box span::before {
-  content: '';
+/* Container chứa 4 thẻ chồng */
+.ht-deck {
+  position: relative;
+  width: 380px;
+  height: 220px;
+  cursor: pointer;
+}
+
+/* Trạng thái hover: deck nở ra */
+.ht-deck:hover .ht-card:nth-child(1) { transform: translateX(-320px) rotate(-8deg) translateY(-10px); }
+.ht-deck:hover .ht-card:nth-child(2) { transform: translateX(-107px) rotate(-3deg) translateY(-5px); }
+.ht-deck:hover .ht-card:nth-child(3) { transform: translateX(107px) rotate(3deg) translateY(-5px); }
+.ht-deck:hover .ht-card:nth-child(4) { transform: translateX(320px) rotate(8deg) translateY(-10px); }
+
+/* =============================================
+   THẺ VÉ — Base
+   ============================================= */
+.ht-card {
   position: absolute;
   top: 50%; left: 50%;
-  width: 150%; height: 150%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(168, 216, 240, 0.25) 0%, transparent 60%);
-  filter: blur(30px);
-  z-index: -1;
+  width: 240px;
+  height: 380px;
+  margin-left: -120px;
+  margin-top: -190px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .5s cubic-bezier(.25,.8,.25,1), box-shadow .5s ease;
+  transform-origin: center bottom;
+
+  /* Glassmorphism base */
+  background: linear-gradient(145deg,
+    rgba(13,31,60,0.85) 0%,
+    rgba(8,21,42,0.92) 50%,
+    rgba(5,13,27,0.95) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(168,216,240,0.18);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(255,255,255,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.1);
 }
 
-/* Hiệu ứng trôi nổi nhẹ nhàng, không đổi góc xoay */
-@keyframes floatCrystalCube {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
+/* Stack mặc định — chồng lệch nhau */
+.ht-card:nth-child(1) {
+  transform: translateX(-18px) rotate(-4deg);
+  z-index: 1;
+  border-color: rgba(232,201,122,0.22);
+}
+.ht-card:nth-child(2) {
+  transform: translateX(-6px) rotate(-1.5deg);
+  z-index: 2;
+  border-color: rgba(168,216,240,0.2);
+}
+.ht-card:nth-child(3) {
+  transform: translateX(6px) rotate(1.5deg);
+  z-index: 3;
+  border-color: rgba(168,216,240,0.22);
+}
+.ht-card:nth-child(4) {
+  transform: translateX(18px) rotate(4deg);
+  z-index: 4;
+  border-color: rgba(0,180,255,0.25);
 }
 
-@keyframes spinOrbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Hover từng thẻ riêng */
+.ht-deck:hover .ht-card {
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.6),
+    0 0 40px rgba(0,84,166,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.ht-deck:hover .ht-card:nth-child(4) {
+  box-shadow:
+    0 50px 100px rgba(0,0,0,0.65),
+    0 0 60px rgba(0,114,206,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
-/* --- Mobile Responsive --- */
-@media (max-width: 900px) {
-  .why-grid {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-  .why-list li:hover {
-    transform: translateY(-5px); /* Trên mobile trượt lên thay vì trượt ngang */
-  }
-  .why-icon-box {
-    max-width: 320px;
-  }
+/* =============================================
+   HOLOGRAPHIC SHIMMER — xanh dương & trắng, vừa phải
+   ============================================= */
+.ht-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 20%,
+    rgba(255,255,255,0.02) 26%,
+    rgba(168,216,240,0.07) 32%,
+    rgba(255,255,255,0.09) 38%,
+    rgba(45,133,224,0.08) 44%,
+    rgba(168,216,240,0.10) 50%,
+    rgba(255,255,255,0.08) 56%,
+    rgba(0,84,166,0.06) 62%,
+    rgba(168,216,240,0.04) 68%,
+    transparent 76%,
+    transparent 100%
+  );
+  background-size: 400% 400%;
+  opacity: 0;
+  transition: opacity .5s ease;
+  z-index: 10;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: none;
 }
 
+.ht-deck:hover .ht-card::before {
+  opacity: 1;
+  animation: holoShimmer 2.8s linear forwards;
+}
+.ht-deck:hover .ht-card:nth-child(2)::before { animation-delay: .2s; }
+.ht-deck:hover .ht-card:nth-child(3)::before { animation-delay: .4s; }
+.ht-deck:hover .ht-card:nth-child(4)::before { animation-delay: .6s; }
+
+@keyframes holoShimmer {
+  0%   { background-position: 200% 0%; filter: brightness(1); }
+  100% { background-position: -100% 0%; filter: brightness(1.12); }
+}
+
+/* =============================================
+   NỘI DUNG BÊN TRONG THẺ
+   ============================================= */
+.ht-card-body {
+  position: relative;
+  z-index: 5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 20px 20px;
+}
+
+/* --- TOP BAR: logo + barcode --- */
+.ht-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.ht-logo-area {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.ht-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: .85rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text-1);
+  letter-spacing: .02em;
+  line-height: 1;
+}
+.ht-logo-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .48rem;
+  font-weight: 500;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--sky);
+  opacity: .7;
+}
+
+/* Barcode dọc */
+.ht-barcode {
+  display: flex;
+  gap: 2px;
+  align-items: flex-start;
+  height: 40px;
+}
+.ht-barcode span {
+  display: block;
+  width: 2px;
+  background: rgba(168,216,240,0.35);
+  border-radius: 1px;
+  transition: background .3s;
+}
+.ht-barcode span:nth-child(odd)  { height: 100%; }
+.ht-barcode span:nth-child(3n)   { height: 65%; background: rgba(168,216,240,0.2); }
+.ht-barcode span:nth-child(5n)   { height: 80%; width: 3px; background: rgba(168,216,240,0.5); }
+.ht-deck:hover .ht-barcode span  { background: rgba(168,216,240,0.6); }
+
+/* --- DIVIDER chấm đứt --- */
+.ht-divider {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 4px -20px;
+  position: relative;
+}
+.ht-divider::before,
+.ht-divider::after {
+  content: '';
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--bg-base);
+  box-shadow: inset 0 0 0 1px rgba(168,216,240,0.15);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+.ht-divider-line {
+  flex: 1;
+  border-top: 1px dashed rgba(168,216,240,0.18);
+}
+
+/* --- MIDDLE: Tên tính năng kiểu stamp --- */
+.ht-stamp-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 0 12px;
+}
+.ht-stamp-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: var(--sky);
+  filter: drop-shadow(0 0 10px rgba(168,216,240,0.6));
+  transition: filter .4s;
+  line-height: 1;
+}
+.ht-deck:hover .ht-card .ht-stamp-icon {
+  filter: drop-shadow(0 0 20px rgba(168,216,240,1));
+}
+.ht-stamp-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .55rem;
+  font-weight: 600;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+  opacity: .8;
+}
+.ht-stamp-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--text-1);
+  line-height: 1.25;
+  /* Emboss effect */
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.08),
+    0 -1px 0 rgba(0,0,0,0.5);
+}
+.ht-stamp-desc {
+  margin-top: 10px;
+  font-size: .73rem;
+  color: var(--text-2);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* --- BOTTOM: Serial number --- */
+.ht-serial {
+  margin-top: auto;
+  padding-top: 14px;
+}
+.ht-serial-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ht-serial-num {
+  font-family: 'Courier New', monospace;
+  font-size: .58rem;
+  letter-spacing: .18em;
+  color: rgba(168,216,240,0.3);
+  transition: color .4s;
+}
+.ht-deck:hover .ht-card .ht-serial-num {
+  color: rgba(168,216,240,0.55);
+}
+.ht-serial-tag {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .5rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(232,201,122,0.4);
+  border: 1px solid rgba(232,201,122,0.15);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+/* Màu accent khác nhau cho mỗi thẻ */
+.ht-card:nth-child(1) .ht-stamp-icon { color: var(--gold); filter: drop-shadow(0 0 10px rgba(232,201,122,0.6)); }
+.ht-card:nth-child(2) .ht-stamp-icon { color: var(--sky); }
+.ht-card:nth-child(3) .ht-stamp-icon { color: #a78bfa; filter: drop-shadow(0 0 10px rgba(167,139,250,0.6)); }
+.ht-card:nth-child(4) .ht-stamp-icon { color: #030444; filter: drop-shadow(0 0 10px rgba(1, 15, 78, 0.6)); }
+
+.ht-card:nth-child(2) { background: linear-gradient(145deg, rgba(15,10,30,0.9) 0%, rgba(8, 5, 20, 0.74) 100%); }
+.ht-card:nth-child(1) { background: linear-gradient(145deg, rgba(20,15,5,0.9) 0%, rgba(13,10,3,0.95) 100%); }
+.ht-card:nth-child(4) { background: linear-gradient(145deg, rgba(1, 14, 49, 0.88) 0%, rgba(0, 72, 94, 0.95) 100%); }
+
+/* =============================================
+   HINT TEXT bên cạnh deck
+   ============================================= */
+.ht-hint {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+.ht-hint span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(168,216,240,0.3);
+  transition: color .3s;
+}
+.ht-deck:hover ~ .ht-hint span,
+.ht-deck-wrap:hover .ht-hint span {
+  color: rgba(168,216,240,0.6);
+}
+.ht-hint-line {
+  width: 30px; height: 1px;
+  background: rgba(168,216,240,0.2);
+}
+
+/* Footer */
+.ht-footer {
+  text-align: center;
+  margin-top: 100px;
+  position: relative;
+  z-index: 2;
+}
+.ht-footer-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.ht-footer-divider::before,
+.ht-footer-divider::after {
+  content: '';
+  width: 80px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(168,216,240,0.25));
+}
+.ht-footer-divider::after {
+  background: linear-gradient(270deg, transparent, rgba(168,216,240,0.25));
+}
+.ht-footer-divider-icon {
+  font-size: .8rem;
+  color: rgba(168,216,240,0.35);
+}
+.ht-footer p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-2);
+  letter-spacing: .02em;
+}
+.ht-footer p em {
+  color: var(--gold);
+  font-style: normal;
+  text-shadow: 0 0 20px rgba(232,201,122,0.35);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .why-different { padding: 80px 24px 140px; }
+  .ht-deck { width: 260px; height: 160px; }
+  .ht-card { width: 200px; height: 320px; margin-left: -100px; margin-top: -160px; }
+.ht-deck:hover .ht-card:nth-child(1) { transform: translateX(-320px) rotate(-8deg) translateY(-10px); }
+.ht-deck:hover .ht-card:nth-child(2) { transform: translateX(-107px) rotate(-3deg) translateY(-5px); }
+.ht-deck:hover .ht-card:nth-child(3) { transform: translateX(107px) rotate(3deg) translateY(-5px); }
+.ht-deck:hover .ht-card:nth-child(4) { transform: translateX(320px) rotate(8deg) translateY(-10px); }
+}
     /* ============================================================
        OFFER
        ============================================================ */
@@ -2655,6 +2928,10 @@ footer::before {
 
 .footer-bottom-links .divider {
   color: rgba(255, 255, 255, 0.15);
+}
+
+.one-line{
+  white-space: nowrap;
 }
 
 /* --- Mobile Responsive --- */
@@ -3243,24 +3520,200 @@ footer::before {
     </div>
   </section>
 
-  <!-- WHY DIFFERENT -->
+<!-- WHY DIFFERENT — Holographic Ticket -->
   <section class="why-different">
-    <div class="why-grid">
-      <div>
-        <div class="section-label">Trải nghiệm</div>
-        <h2>Chưa từng có</h2>
-        <ul class="why-list">
-          <li>Cá nhân hóa bằng AI – mỗi mã cho một kết quả riêng</li>
-          <li>Kết hợp khoa học ánh sáng & nghệ thuật thị giác</li>
-          <li>Tạo Digital Collectible độc bản, có thể lưu trữ</li>
-          <li>Phản ánh cá tính người dùng qua thuộc tính tinh thể</li>
-        </ul>
-      </div>
-      <div class="why-icon-box">
-        <span>💎</span>
-      </div>
+
+    <div class="ht-header">
+      <div class="section-label" style="justify-content:center;">Trải nghiệm</div>
+      <h2>Chưa <em>Từng Có</em></h2>
+      <p  class="one-line">Bốn điểm độc bản — mỗi thẻ một dấu ấn riêng, không ai có thể sao chép</p>
     </div>
+
+    <div class="ht-deck-wrap">
+      <div class="ht-deck">
+
+        <!-- THẺ 1 — Cá nhân hóa / Gold -->
+        <div class="ht-card">
+          <div class="ht-card-body">
+            <div class="ht-top">
+              <div class="ht-logo-area">
+                <span class="ht-logo-text">true</span>
+                <span class="ht-logo-sub">DNA · TH</span>
+              </div>
+              <div class="ht-barcode">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="ht-divider">
+              <div class="ht-divider-line"></div>
+            </div>
+            <div class="ht-stamp-area">
+              <div class="ht-stamp-icon">◈</div>
+              <div class="ht-stamp-label">Spec 01 · AI Core</div>
+              <div class="ht-stamp-title">Cá nhân hóa<br>tuyệt đối</div>
+              <div class="ht-stamp-desc">Mỗi mã số là hạt giống duy nhất — AI đúc tinh thể chưa từng tồn tại.</div>
+            </div>
+            <div class="ht-serial">
+              <div class="ht-divider" style="margin-bottom:12px;">
+                <div class="ht-divider-line"></div>
+              </div>
+              <div class="ht-serial-row">
+                <span class="ht-serial-num">TH·2026·0001·AAIX</span>
+                <span class="ht-serial-tag">UNIQUE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- THẺ 2 — Khoa học / Sky -->
+        <div class="ht-card">
+          <div class="ht-card-body">
+            <div class="ht-top">
+              <div class="ht-logo-area">
+                <span class="ht-logo-text">true</span>
+                <span class="ht-logo-sub">DNA · TH</span>
+              </div>
+              <div class="ht-barcode">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="ht-divider">
+              <div class="ht-divider-line"></div>
+            </div>
+            <div class="ht-stamp-area">
+              <div class="ht-stamp-icon">✦</div>
+              <div class="ht-stamp-label">Spec 02 · Optics</div>
+              <div class="ht-stamp-title">Khoa học<br>ánh sáng</div>
+              <div class="ht-stamp-desc">Góc chiết quang, caustics và quang phổ — tính toán từ số của riêng bạn.</div>
+            </div>
+            <div class="ht-serial">
+              <div class="ht-divider" style="margin-bottom:12px;">
+                <div class="ht-divider-line"></div>
+              </div>
+              <div class="ht-serial-row">
+                <span class="ht-serial-num">TH·2026·0002·BFLY</span>
+                <span class="ht-serial-tag">SCIENCE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- THẺ 3 — Collectible / Purple -->
+        <div class="ht-card">
+          <div class="ht-card-body">
+            <div class="ht-top">
+              <div class="ht-logo-area">
+                <span class="ht-logo-text">true</span>
+                <span class="ht-logo-sub">DNA · TH</span>
+              </div>
+              <div class="ht-barcode">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="ht-divider">
+              <div class="ht-divider-line"></div>
+            </div>
+            <div class="ht-stamp-area">
+              <div class="ht-stamp-icon">⬡</div>
+              <div class="ht-stamp-label">Spec 03 · NFT</div>
+              <div class="ht-stamp-title">Digital Collectible<br>độc bản</div>
+              <div class="ht-stamp-desc">Tải về, lưu trữ mãi mãi — không ai tái tạo được lần thứ hai.</div>
+            </div>
+            <div class="ht-serial">
+              <div class="ht-divider" style="margin-bottom:12px;">
+                <div class="ht-divider-line"></div>
+              </div>
+              <div class="ht-serial-row">
+                <span class="ht-serial-num">TH·2026·0003·CRVX</span>
+                <span class="ht-serial-tag">LIMITED</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- THẺ 4 — Identity / Green -->
+        <div class="ht-card">
+          <div class="ht-card-body">
+            <div class="ht-top">
+              <div class="ht-logo-area">
+                <span class="ht-logo-text">true</span>
+                <span class="ht-logo-sub">DNA · TH</span>
+              </div>
+              <div class="ht-barcode">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="ht-divider">
+              <div class="ht-divider-line"></div>
+            </div>
+            <div class="ht-stamp-area">
+              <div class="ht-stamp-icon">◉</div>
+              <div class="ht-stamp-label">Spec 04 · Identity</div>
+              <div class="ht-stamp-title">Phản chiếu<br>cá tính bạn</div>
+              <div class="ht-stamp-desc">Màu sắc, hình dáng và ý nghĩa — bức chân dung số đúc từ con người bạn.</div>
+            </div>
+            <div class="ht-serial">
+              <div class="ht-divider" style="margin-bottom:12px;">
+                <div class="ht-divider-line"></div>
+              </div>
+              <div class="ht-serial-row">
+                <span class="ht-serial-num">TH·2026·0004·DXNA</span>
+                <span class="ht-serial-tag">YOURS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /ht-deck -->
+
+      <div class="ht-hint">
+        <div class="ht-hint-line"></div>
+        <span>Hover để khám phá</span>
+        <div class="ht-hint-line"></div>
+      </div>
+
+    </div><!-- /ht-deck-wrap -->
+
+    <div class="ht-footer">
+      <div class="ht-footer-divider">
+        <span class="ht-footer-divider-icon">✦</span>
+      </div>
+      <p>Mã của bạn. Tinh thể của bạn. <em>Không ai giống ai.</em></p>
+    </div>
+
   </section>
+  
+  <script>
+  // Tinh thể xoay theo chuột trong kính
+  (function(){
+    var lens = document.getElementById('microLens');
+    var crystal = document.getElementById('microCrystalSvg');
+    if (!lens || !crystal) return;
+    lens.addEventListener('mousemove', function(e){
+      var r = lens.getBoundingClientRect();
+      var cx = r.left + r.width/2, cy = r.top + r.height/2;
+      var dx = (e.clientX - cx) / (r.width/2);
+      var dy = (e.clientY - cy) / (r.height/2);
+      crystal.style.transform = 'rotateY('+( dx*18)+'deg) rotateX('+(-dy*12)+'deg)';
+    });
+    lens.addEventListener('mouseleave', function(){
+      crystal.style.transform = '';
+      crystal.style.transition = 'transform .6s ease';
+      setTimeout(function(){ crystal.style.transition = 'transform .08s linear'; }, 650);
+    });
+    lens.addEventListener('mouseenter', function(){
+      crystal.style.transition = 'transform .08s linear';
+    });
+  })();
+  </script>
 
   <!-- OFFER -->
   <section class="offer-section" id="offer">
@@ -3332,8 +3785,7 @@ footer::before {
 
   <!-- TOAST -->
   <div id="toastWrap"></div>
-
-  <script src="https://code.tidio.co/76pum0cutzep7saxerdop4t99a5h23di.js" async></script>
+  <script src="//code.tidio.co/76pum0cutzep7saxerdop4t99a5h23di.js" async></script>
 
   <footer>
     <div class="footer-container">
@@ -3358,7 +3810,6 @@ footer::before {
           </a>
         </div>
       </div>
-
       <div class="footer-col">
         <h4 class="footer-title">Liên hệ TH</h4>
         <ul class="footer-links text-contact">
@@ -3366,11 +3817,10 @@ footer::before {
           <li><strong>Trụ sở:</strong> 166 Nguyễn Thái Học, P. Quang Trung, TP. Vinh, Nghệ An</li>
           <li><strong>VP Hà Nội:</strong> Tòa nhà BAC A BANK, 09 Đào Duy Anh, Đống Đa, Hà Nội</li>
           <li><strong>Hotline:</strong> <a href="tel:1800545440" class="highlight-link">1800 54 54 40</a></li>
-          <li><strong>Email:</strong> <a href="mailto:chamsockhachhang@thmilk.vn">chamsockhachhang@thmilk.vn</a></li>
+          <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#a6c5cec7cbd5c9c5cdcec7c5cecec7c8c1e6d2cecbcfcacd88d0c8"><span class="__cf_email__" data-cfemail="adcec5ccc0dec2cec6c5cccec5c5ccc3caedd9c5c0c4c1c683dbc3">[email&#160;protected]</span></a></li>
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
       <div class="footer-copy">© 2026 Công ty Cổ phần Chuỗi Thực phẩm TH. All rights reserved.</div>
       <div class="footer-bottom-links">
@@ -3380,8 +3830,7 @@ footer::before {
       </div>
     </div>
   </footer>
-
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // FIX #4: Hamburger toggle
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
@@ -4302,12 +4751,11 @@ TH True Milk brand essence, natural purity`;
     function showToast(type, msg) {
       const wrap = document.getElementById('toastWrap');
       const t = document.createElement('div');
-      t.className = 'toast ' + type;
+    t.className = 'toast ' + type;
       t.innerHTML = msg;
       wrap.appendChild(t);
       setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity .4s'; setTimeout(() => t.remove(), 400); }, 3500);
     }
   </script>
 </body>
-
 </html>
