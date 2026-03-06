@@ -352,107 +352,164 @@
       left: 0;
       right: 0;
       z-index: 100;
-      padding: 16px 60px;
+      padding: 0 60px;
+      height: 68px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(5, 13, 27, 0.88);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(4, 12, 28, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(168, 216, 240, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
     }
 
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 2px;
+      gap: 6px;
       text-decoration: none;
     }
 
     .img-th {
-      height: 44px;
-      margin-right: -8px;
-      filter: brightness(0) invert(1);
-      opacity: 0.92;
+      height: 36px;
+      margin-right: 2px;
+      opacity: 0.95;
+      /* Xoá bộ lọc trắng hoàn toàn vì nó làm logo thành cục trắng xoá nếu PNG chưa tách viền */
+      /* filter: brightness(0) invert(1); */
     }
 
     .logo-text {
       display: flex;
       align-items: baseline;
-      gap: 5px;
-      color: var(--text-1);
+    }
+
+    .text-th-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      position: relative;
+    }
+
+    .text-th-star {
+      color: #e8c97a;
+      font-size: 0.9rem;
+      position: absolute;
+      top: -2px;
+      right: -12px;
     }
 
     .text-true {
       font-family: 'Playfair Display', serif;
-      font-size: 1.75rem;
+      font-size: 1.45rem;
       font-weight: 700;
       font-style: italic;
       text-transform: lowercase;
+      color: rgba(238, 244, 255, 0.95);
+      margin-left: 16px;
+      margin-right: 6px;
     }
 
     .text-dna {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.35rem;
-      font-weight: 300;
+      font-size: 1.1rem;
+      font-weight: 400;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       color: var(--sky);
     }
 
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 36px;
       list-style: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .nav-links a {
-      color: var(--text-2);
+      color: rgba(238, 244, 255, 0.9);
       text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      transition: color .3s;
+      transition: color .25s, text-shadow .25s;
+      position: relative;
+      padding-bottom: 4px; /* Space for the underline */
     }
 
-    .nav-links a:hover {
-      color: var(--sky);
+    /* The underline that appears on hover and active */
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #ffffff;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(168, 216, 240, 0.4);
     }
 
     .nav-cta {
-      padding: 9px 22px;
-      background: transparent;
-      border: 1px solid var(--border-bright);
-      color: var(--sky);
+      padding: 9px 24px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(168, 216, 240, 0.4);
+      color: #ffffff;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: all .3s;
+      transition: all .3s ease;
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
     }
 
     .nav-cta:hover {
-      background: var(--navy);
-      border-color: var(--navy-mid);
+      background: rgba(168, 216, 240, 0.15);
+      border-color: var(--sky);
       color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(168, 216, 240, 0.2);
     }
 
-    /* FIX #4: Hamburger menu cho mobile */
+    /* Hamburger menu cho mobile */
     .nav-hamburger {
       display: none;
       background: transparent;
-      border: 1px solid var(--border-bright);
-      color: var(--sky);
+      border: 1px solid rgba(168, 216, 240, 0.4);
+      color: #fff;
       font-size: 1.2rem;
       padding: 6px 12px;
       cursor: pointer;
-      transition: all .3s;
+      transition: all .25s;
+      border-radius: 4px;
     }
 
     .nav-hamburger:hover {
-      background: var(--navy);
+      background: #0054A6;
+      color: #fff;
     }
 
     /* ============================================================
@@ -460,13 +517,96 @@
        ============================================================ */
     .hero {
       position: relative;
-      min-height: 90vh;
-      display: flex;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 48fr 52fr;
       align-items: center;
-      justify-content: center;
-      padding: 110px 60px 60px;
+      padding: 120px 80px 100px;
       overflow: hidden;
-      background: var(--bg-base);
+      background: #020815; /* Deeper navy matching the image */
+      gap: 20px;
+    }
+
+    /* Mesh gradient overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 100% 30%, rgba(0, 114, 206, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 84, 166, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(0, 50, 120, 0.2) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Ambient stars (using radial gradients for tiny dots) */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: 
+        radial-gradient(1.5px 1.5px at 20% 30%, rgba(255,255,255,0.6) 100%, transparent),
+        radial-gradient(2px 2px at 15% 70%, rgba(255,255,255,0.4) 100%, transparent),
+        radial-gradient(1.5px 1.5px at 25% 85%, rgba(168,216,240,0.6) 100%, transparent),
+        radial-gradient(2px 2px at 85% 20%, rgba(255,255,255,0.5) 100%, transparent),
+        radial-gradient(1.5px 1.5px at 90% 75%, rgba(168,216,240,0.7) 100%, transparent),
+        radial-gradient(1.5px 1.5px at 40% 40%, rgba(255,255,255,0.3) 100%, transparent),
+        radial-gradient(2px 2px at 60% 15%, rgba(168,216,240,0.4) 100%, transparent),
+        radial-gradient(2.5px 2.5px at 75% 60%, rgba(255,255,255,0.6) 100%, transparent);
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 1;
+      animation: driftStars 130s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes driftStars {
+      0% { transform: rotate(0deg) translateY(0); }
+      100% { transform: rotate(5deg) translateY(-5%); }
+    }
+
+    /* Lớp lưới nền bên dưới - Tách lớp để không đè lên chữ */
+    .hero-bg-grid {
+      position: absolute;
+      bottom: -15%;
+      left: -20%;
+      width: 140%;
+      height: 80vh;
+      background-image: 
+        linear-gradient(rgba(0, 150, 255, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 150, 255, 0.15) 1px, transparent 1px);
+      background-size: 60px 40px;
+      transform: perspective(700px) rotateX(75deg);
+      mask-image: radial-gradient(ellipse at bottom, black 10%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at bottom, black 10%, transparent 70%);
+      transform-origin: bottom center;
+      z-index: 0;
+      pointer-events: none;
+      animation: moveGrid 15s linear infinite;
+    }
+
+    @keyframes moveGrid {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 40px; }
+    }
+
+    /* Vòng tròn quỹ đạo (DNA wave slanting) nằm hoàn toàn dưới chữ */
+    .hero-dna-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.25; 
+      /* transform: rotate(15deg); Bỏ xoay để tránh góc cắt SVG */
+      filter: blur(1px) drop-shadow(0 0 15px rgba(168,216,240,0.3));
+      mask-image: radial-gradient(circle at 30% 60%, black 10%, transparent 60%);
+      -webkit-mask-image: radial-gradient(circle at 30% 60%, black 10%, transparent 60%);
     }
 
     .hero-orb {
@@ -474,215 +614,600 @@
       border-radius: 50%;
       filter: blur(100px);
       pointer-events: none;
-      animation: floatOrb 18s ease-in-out infinite alternate;
+      z-index: 1;
     }
 
-    .hero-orb:nth-child(1) {
-      width: 50vw;
-      height: 50vw;
-      top: -15%;
-      left: -12%;
-      background: radial-gradient(circle, rgba(0, 84, 166, 0.45), transparent 68%);
-    }
-
-    .hero-orb:nth-child(2) {
+    .hero-orb:nth-of-type(1) {
       width: 45vw;
       height: 45vw;
-      bottom: -18%;
-      right: -8%;
-      background: radial-gradient(circle, rgba(0, 114, 206, 0.35), transparent 68%);
-      animation-delay: -7s;
-      animation-duration: 22s;
+      top: -10%;
+      right: -5%;
+      background: radial-gradient(circle, rgba(168, 216, 240, 0.45), transparent 70%);
+      animation: pulseGlow 10s infinite alternate;
     }
 
-    .hero-orb:nth-child(3) {
-      width: 30vw;
-      height: 30vw;
-      top: 45%;
-      left: 48%;
-      background: radial-gradient(circle, rgba(168, 216, 240, 0.18), transparent 68%);
-      transform: translate(-50%, -50%);
-      animation-delay: -12s;
-      animation-duration: 14s;
+    .hero-orb:nth-of-type(2) {
+      width: 50vw;
+      height: 50vw;
+      bottom: -20%;
+      right: 15%;
+      background: radial-gradient(circle, rgba(70, 150, 240, 0.3), transparent 70%);
     }
 
-    @keyframes floatOrb {
-      0% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      50% {
-        transform: translate(4%, 8%) scale(1.08);
-      }
-
-      100% {
-        transform: translate(-4%, -8%) scale(0.94);
-      }
+    .hero-orb:nth-of-type(3) {
+      width: 35vw;
+      height: 35vw;
+      top: 40%;
+      left: 30%;
+      background: radial-gradient(circle, rgba(200, 230, 255, 0.15), transparent 70%);
     }
 
-    .hero-content {
+    @keyframes pulseGlow {
+      0% { opacity: 0.6; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.1); }
+    }
+
+    /* ── LEFT COLUMN ── */
+    .hero-left {
       position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 860px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 7px 36px;
-      border: 1px solid var(--border-mid);
-      background: rgba(168, 216, 240, 0.07);
-      backdrop-filter: blur(10px);
-      border-radius: 40px;
+    .hero-eyebrow {
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.30em;
       text-transform: uppercase;
-      color: var(--sky);
-      margin-bottom: 28px;
-      animation: fadeUp .8s ease both;
+      color: rgba(190, 210, 230, 0.65);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: fadeUp .7s ease both;
     }
 
-    .hero-badge::before,
-    .hero-badge::after {
+    .hero-eyebrow::before {
       content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--sky);
+      width: 5px;
+      height: 5px;
+      flex-shrink: 0;
+      background: rgba(180, 200, 220, 0.5);
       border-radius: 50%;
-      animation: pulse 2.2s infinite;
+      box-shadow: 0 0 6px rgba(168, 216, 240, 0.4);
+      animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1)
-      }
-
-      50% {
-        opacity: .35;
-        transform: scale(1.7)
-      }
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .35; transform: scale(1.7); }
     }
 
     .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 7.5vw, 6.5rem);
-      font-weight: 600;
-      line-height: 1.08;
-      margin-bottom: 10px;
-      animation: fadeUp .9s ease .12s both;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      line-height: 1.0;
+      margin-bottom: 28px;
+      animation: fadeUp .8s ease .15s both;
     }
 
-    .hero-title .line-main {
+    /* Line 1: elegant serif white — hero intro */
+    .title-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(2.5rem, 4vw, 4.5rem);
+      color: #ffffff;
+      -webkit-text-fill-color: #ffffff;
+      letter-spacing: 0.02em;
       display: block;
-      background: linear-gradient(130deg, #FFFFFF 10%, var(--sky) 100%);
+      margin-bottom: 5px;
+      line-height: 1.1;
+      white-space: nowrap;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(168, 216, 240, 0.4);
+      position: relative;
+    }
+
+    /* Line 2: hero statement — bold italic gold, dominant */
+    .title-heavy {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-style: normal;
+      font-size: clamp(3rem, 5.5vw, 6rem);
+      background: linear-gradient(to right, #ffffff 20%, #e6f5ff 50%, #ffffff 80%);
+      background-size: 200% auto;
+      color: #ffffff;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       letter-spacing: -0.01em;
-    }
-
-    .hero-title .line-sub {
       display: block;
-      font-size: clamp(1rem, 2vw, 1.5rem);
+      line-height: 1.0;
+      white-space: nowrap;
+      filter: drop-shadow(0 0 30px rgba(168, 216, 240, 0.5));
+      animation: shineText 6s linear infinite;
+    }
+
+    @keyframes shineText {
+      to { background-position: 200% center; }
+    }
+
+    .hero-subtitle-gold {
       font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      color: #ffdda1;
+      font-weight: 500;
+      line-height: 1.4;
+      max-width: 600px;
+      margin-bottom: 20px;
+      letter-spacing: 0.01em;
+      text-shadow: 0 0 15px rgba(232, 201, 122, 0.5);
+      animation: fadeUp 1s ease .3s both;
+    }
+
+    .hero-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.6;
       font-weight: 400;
-      font-style: normal;
-      letter-spacing: 0.08em;
-      color: var(--gold);
-      -webkit-text-fill-color: var(--gold);
-      margin-top: 14px;
-      opacity: 0.9;
-    }
-
-    .hero-sub {
-      font-size: 0.97rem;
-      color: var(--text-2);
-      font-weight: 300;
-      line-height: 1.85;
       max-width: 580px;
-      margin: 22px auto 14px;
-      animation: fadeUp 1s ease .28s both;
+      margin-bottom: 40px;
+      animation: fadeUp 1s ease .4s both;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5); /* Thêm bóng chữ để không bị chìm nền */
     }
 
-    .hero-offer {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--gold-bright), var(--gold));
-      color: var(--bg-base);
-      padding: 10px 24px;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-      margin: 18px 0 28px;
-      animation: fadeUp 1s ease .38s both;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 20px;
+    /* Glowing Premium CTA */
+    .btn-hero-cta {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 1s ease .48s both;
+      padding: 18px 45px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(0, 84, 166, 0.4), rgba(4, 14, 31, 0.8));
+      border: 1px solid rgba(168, 216, 240, 0.5);
+      border-radius: 50px;
+      cursor: pointer;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeUp 1s ease .42s both, ctaBorderPulse 3s ease 2s infinite;
+      margin-bottom: 22px;
+      box-shadow: 0 5px 25px rgba(0, 84, 166, 0.4), inset 0 0 15px rgba(168, 216, 240, 0.2);
     }
 
+    .btn-hero-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+      pointer-events: none;
+    }
+
+    @keyframes ctaBorderPulse {
+      0%, 100% { box-shadow: 0 5px 25px rgba(0, 84, 166, 0.4), inset 0 0 15px rgba(168, 216, 240, 0.2); border-color: rgba(168, 216, 240, 0.5); }
+      50% { box-shadow: 0 5px 40px rgba(0, 169, 255, 0.7), inset 0 0 25px rgba(168, 216, 240, 0.5); border-color: rgba(255, 255, 255, 1); }
+    }
+
+    .btn-hero-cta:hover {
+      transform: translateY(-4px) scale(1.02);
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(0, 120, 240, 0.6), rgba(0, 84, 166, 0.9));
+      border-color: #ffffff;
+      box-shadow: 0 10px 40px rgba(0, 169, 255, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+    
+    .btn-hero-cta:hover::before {
+      transform: translateX(100%);
+      transition: transform 0.6s ease;
+    }
+
+    .btn-text {
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Shimmer sweep on hover (Removed old bracket logic) */
+    .btn-glow {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+      transform: skewX(-25deg);
+      animation: buttonShimmer 3.5s infinite;
+    }
+
+    @keyframes buttonShimmer {
+      0% { left: -100%; }
+      20% { left: 200%; }
+      100% { left: 200%; }
+    }
+
+    /* Bottom Banner */
+    .hero-bottom-banner {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      max-width: 1200px;
+      padding: 20px 40px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05); /* Match the bright glass reflection */
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+      animation: fadeUp 1s ease .6s both;
+    }
+
+    /* The bright glowing golden stroke at the bottom */
+    .hero-bottom-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ffdda1, #ffffff, #ffdda1, transparent);
+      box-shadow: 0 0 20px 3px rgba(255, 221, 161, 0.7);
+      border-radius: 50%;
+    }
+
+    .hero-bottom-banner p {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    /* ── RIGHT COLUMN – Product Scene ── */
+    .hero-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Crystal light spill — bleeds leftward softly without cutting bounds */
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 150%;
+      height: 150%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at center,
+        rgba(168, 216, 240, 0.08) 0%,
+        rgba(110, 30, 220, 0.04) 40%,
+        transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .product-scene {
+      position: relative;
+      width: 480px;
+      height: 520px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Outer glow rings */
+    .scene-ring {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: ringPulse 3.5s ease-in-out infinite;
+    }
+    .scene-ring.r1 {
+      width: 340px; height: 340px;
+      border: 1px solid rgba(168, 216, 240, 0.3);
+      box-shadow: 0 0 50px rgba(0, 114, 206, 0.4), inset 0 0 50px rgba(0, 114, 206, 0.2);
+    }
+    .scene-ring.r2 {
+      width: 460px; height: 460px;
+      border: 1px dashed rgba(168, 216, 240, 0.15);
+      animation-delay: -1.8s; animation-duration: 4.8s;
+      transform: rotate(0deg);
+    }
+    .scene-ring.r3 {
+      width: 540px; height: 540px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      animation-delay: -.9s; animation-duration: 6s;
+    }
+
+    @keyframes ringPulse {
+      0%, 100% { opacity: 0.6; transform: scale(1) rotate(0deg); }
+      50%       { opacity: 1; transform: scale(1.05) rotate(10deg); border-color: rgba(255, 255, 255, 0.4); }
+    }
+
+    /* DNA helix background decoration */
+    .dna-helix {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.3;
+    }
+
+    /* Orbit arc ring (rotates slowly) */
+    .orbit-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px dashed rgba(168, 216, 240, 0.28);
+      pointer-events: none;
+      animation: spinSlow 28s linear infinite;
+      z-index: 1;
+    }
+    .orbit-ring.o1 {
+      width: 290px; height: 190px;
+      transform: rotate(-30deg);
+    }
+    .orbit-ring.o2 {
+      width: 200px; height: 300px;
+      transform: rotate(50deg);
+      animation-direction: reverse;
+      animation-duration: 22s;
+      border-color: rgba(232, 201, 122, 0.18);
+    }
+
+    @keyframes spinSlow {
+      from { transform: rotate(var(--r, 0deg)); }
+      to   { transform: rotate(calc(var(--r, 0deg) + 360deg)); }
+    }
+
+    /* Light streaks */
+    .light-streak {
+      position: absolute;
+      height: 1px;
+      border-radius: 1px;
+      pointer-events: none;
+      animation: streakFade 4s ease-in-out infinite;
+    }
+    .ls1 { width: 120px; top: 28%; left: 5%;  background: linear-gradient(90deg, transparent, rgba(168,216,240,0.55), transparent); transform: rotate(-15deg); animation-delay: 0s; }
+    .ls2 { width: 90px;  top: 55%; right: 3%; background: linear-gradient(90deg, transparent, rgba(168,216,240,0.45), transparent); transform: rotate(12deg);  animation-delay: -1.5s; }
+    .ls3 { width: 70px;  top: 72%; left: 12%; background: linear-gradient(90deg, transparent, rgba(232,201,122,0.4), transparent);  transform: rotate(-8deg);  animation-delay: -2.5s; }
+    .ls4 { width: 100px; top: 18%; right: 8%; background: linear-gradient(90deg, transparent, rgba(232,201,122,0.35), transparent); transform: rotate(20deg);  animation-delay: -0.8s; }
+
+    @keyframes streakFade {
+      0%, 100% { opacity: 0; }
+      30%, 70%  { opacity: 1; }
+    }
+
+    /* Product image – centered */
+    .product-img-wrap {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: floatProduct 5.5s transform cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }    @keyframes floatProduct {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%       { transform: translateY(-16px) scale(1.015); }
+    }
+
+    /* Halo / Ground reflection for the crystal */
+    .product-ground-glow {
+      position: absolute;
+      bottom: -60px;
+      width: 320px;
+      height: 100px;
+      background: radial-gradient(ellipse, rgba(168,216,240,0.5) 0%, rgba(0,84,166,0.3) 40%, transparent 70%);
+      transform: rotateX(75deg);
+      filter: blur(15px);
+      z-index: 0;
+      animation: pulseGround 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes pulseGround {
+      0%, 100% { opacity: 0.5; transform: rotateX(75deg) scale(0.9); }
+      50% { opacity: 1; transform: rotateX(75deg) scale(1.05); }
+    }
+
+    /* Central DNA and Milk Scene */
+    .inner-dna-scene {
+      animation: innerSceneFloat 6s ease-in-out infinite;
+    }
+
+    /* Giant Milk Splash - Organic CSS Effect */
+    .realistic-milk-splash {
+      width: 140%;
+      height: 140%;
+      object-fit: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+      animation: innerSceneFloat 6s ease-in-out infinite;
+      z-index: 10;
+    }
+
+    @keyframes dropFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-15px) scale(1.1); filter: drop-shadow(0 0 15px #fff); }
+    }
+
+    @keyframes innerSceneFloat {
+      0%, 100% { transform: translateY(0) scale(1) rotate(0deg); filter: drop-shadow(0 0 40px rgba(168, 216, 240, 0.4));}
+      50% { transform: translateY(-12px) scale(1.02) rotate(1deg); filter: drop-shadow(0 0 60px rgba(168, 216, 240, 0.6)) drop-shadow(0 0 120px rgba(0, 100, 200, 0.8)); }
+    }
+
+    .dna-core {
+      transform-origin: center;
+      animation: spinSlow 40s linear infinite;
+    }
+
+    /* Wrap to constrain center alignment */
+    .product-img-wrap {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: floatProduct 5.5s ease-in-out infinite;
+    }
+
+    @keyframes floatProduct {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%       { transform: translateY(-16px) scale(1.015); }
+    }
+
+    /* Hero crystal canvas (JS-rendered 3-D icosahedron) */
+    .hero-icosa-canvas {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      pointer-events: none;
+      filter:
+        drop-shadow(0 0 28px rgba(168, 216, 240, 0.50))
+        drop-shadow(0 0 75px rgba(80,  50, 220, 0.22));
+    }
+
+    /* Hide leftover inline SVG (replaced by canvas) */
+    .crystal-overlay { display: none !important; }
+
+    /* Ground glow under product */
+    .product-ground-glow {
+      position: absolute;
+      bottom: 2%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 250px; height: 40px;
+      background: radial-gradient(ellipse, rgba(0, 150, 220, 0.6), transparent 70%);
+      border-radius: 50%;
+      z-index: 3;
+      filter: blur(10px);
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+      50%       { opacity: 1;   transform: translateX(-50%) scale(1.2); }
+    }
+
+    /* Milk drop particles moving smoothly */
+    .milk-drop {
+      position: absolute;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: rgba(255, 255, 255, 0.95);
+      pointer-events: none;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(168, 216, 240, 0.6);
+      animation: dropFloat var(--d, 5s) ease-in-out infinite;
+    }
+    .md1 { width:15px; height:18px; top:12%; left:20%; --d:4.2s; }
+    .md2 { width:12px; height:15px; top:18%; right:15%; --d:5.8s; animation-delay:-2s; }
+    .md3 { width:14px; height:17px; bottom:20%; left:12%; --d:3.9s; animation-delay:-1.2s; }
+    .md4 { width:10px; height:12px; bottom:15%; right:18%; --d:5.2s; animation-delay:-.7s; }
+    .md5 { width:12px; height:14px; top:45%; left:5%; --d:4.7s; animation-delay:-3s; }
+    .md6 { width:10px; height:13px; top:38%; right:6%; --d:6s; animation-delay:-1.8s; }
+
+    @keyframes dropFloat {
+      0%   { transform: translateY(0) rotate(-15deg) scale(1); opacity: 0.9; }
+      50%  { transform: translateY(-30px) rotate(15deg) scale(1.1); opacity: 0.6; }
+      100% { transform: translateY(0) rotate(-15deg) scale(1); opacity: 0.9; }
+    }
+
+    /* Small sparkle diamonds */
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      width: 0; height: 0;
+    }
+    .sparkle::before, .sparkle::after {
+      content: '';
+      position: absolute;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 1px;
+    }
+    .sparkle::before { width: 1.5px; height: 10px; top: -5px; left: 0; }
+    .sparkle::after  { width: 10px; height: 1.5px; top: 0; left: -5px; }
+
+    .sp1 { top: 8%; left: 30%; animation: sparkleTwinkle 2.4s ease-in-out infinite; }
+    .sp2 { top: 12%; right: 25%; animation: sparkleTwinkle 3.1s ease-in-out infinite; animation-delay:-.9s; }
+    .sp3 { bottom: 14%; right: 28%; animation: sparkleTwinkle 2.8s ease-in-out infinite; animation-delay:-1.6s; }
+    .sp4 { bottom: 10%; left: 26%; animation: sparkleTwinkle 3.6s ease-in-out infinite; animation-delay:-2.1s; }
+
+    @keyframes sparkleTwinkle {
+      0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+      40%, 60%  { opacity: 1; transform: scale(1.2) rotate(45deg); }
+    }
+
+    /* ── Keep btn-crystal for other sections ── */
     .btn-crystal {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 15px 36px;
+      padding: 14px 38px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      transition: all .35s ease;
-      clip-path: polygon(10% 0, 100% 0, 100% 88%, 90% 100%, 0 100%, 0 12%);
+      transition: all .3s ease;
+      border-radius: 3px;
     }
 
     .btn-crystal.solid {
-      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
-      border: 1px solid var(--navy-light);
+      background: linear-gradient(135deg, #0072CE, #0054A6);
+      border: 1px solid rgba(45, 133, 224, 0.6);
       color: #fff;
-      box-shadow: 0 0 20px rgba(0, 114, 206, 0.3);
+      box-shadow: 0 4px 24px rgba(0, 114, 206, 0.4);
     }
 
     .btn-crystal.solid:hover {
-      background: linear-gradient(135deg, var(--navy-mid), var(--navy-light));
-      box-shadow: 0 0 40px rgba(0, 114, 206, 0.55);
+      background: linear-gradient(135deg, #1a84dc, #0072CE);
+      box-shadow: 0 6px 36px rgba(0, 114, 206, 0.6);
       transform: translateY(-2px);
     }
 
     .btn-crystal.outline {
       background: transparent;
-      border: 1px solid var(--border-bright);
+      border: 1px solid rgba(168, 216, 240, 0.45);
       color: var(--sky);
     }
 
     .btn-crystal.outline:hover {
-      background: rgba(168, 216, 240, 0.08);
+      background: rgba(168, 216, 240, 0.07);
       border-color: var(--sky);
       color: #fff;
       transform: translateY(-2px);
     }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(28px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0)
-      }
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .section-label {
@@ -2149,34 +2674,47 @@ footer::before {
 }
 
     /* ============================================================
-       RESPONSIVE – FIX #4: Hamburger + mobile nav
+       RESPONSIVE – Hamburger + mobile nav
        ============================================================ */
     @media (max-width: 900px) {
       nav {
-        padding: 14px 20px;
+        padding: 0 20px;
       }
 
       .nav-links {
         display: none;
+        position: static;
+        transform: none;
       }
 
       .nav-links.open {
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 72px;
+        top: 68px;
         left: 0;
         right: 0;
-        background: var(--bg-surface);
+        background: #ffffff;
         padding: 20px 24px;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid #e5eaf2;
+        box-shadow: 0 4px 12px rgba(0,54,106,0.08);
         z-index: 99;
         gap: 16px;
       }
 
       .nav-links.open a {
-        font-size: 0.9rem;
+        font-size: 0.82rem;
         padding: 8px 0;
+        color: #1a2a4a;
+        border-bottom: 1px solid #f0f3f8;
+      }
+      .nav-links.open a::after {
+        display: none;
+      }
+      .nav-links.open a.active,
+      .nav-links.open a:hover {
+        color: #0054A6;
+        text-shadow: none;
       }
 
       .nav-hamburger {
@@ -2263,14 +2801,32 @@ footer::before {
       }
     }
 
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 110px 32px 60px;
+        gap: 0;
+        text-align: center;
+      }
+      .hero-left {
+        align-items: center;
+      }
+      .hero-right {
+        display: none;
+      }
+      .title-intro {
+        white-space: normal;
+        font-size: clamp(2rem, 6vw, 3rem);
+      }
+      .title-heavy {
+        white-space: normal;
+        font-size: clamp(2.5rem, 8vw, 4rem);
+      }
+    }
+
     @media (max-width: 560px) {
       .steps {
         grid-template-columns: 1fr;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: center;
       }
     }
   </style>
@@ -2283,11 +2839,11 @@ footer::before {
   <!-- NAVBAR -->
   <nav>
     <a href="#" class="nav-logo">
-      <img src="asset/TH.png" alt="TH Logo" class="img-th" />
-      <span class="logo-text">
+      <div class="logo-text">
+        <span class="text-th-logo">TH<span class="text-th-star">*</span></span>
         <span class="text-true">true</span>
         <span class="text-dna">DNA</span>
-      </span>
+      </div>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" onclick="closeMenu()">Chiến dịch</a></li>
@@ -2299,26 +2855,123 @@ footer::before {
     </ul>
     <!-- FIX #4: Hamburger button -->
     <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
-    <button class="nav-cta">Nhập mã ngay</button>
+    <a href="#redeem" class="nav-cta" style="display:flex; align-items:center; justify-content:center; text-decoration:none;">Nhập mã ngay</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <svg class="hero-dna-bg" viewBox="0 0 1000 800" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="waveGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Draw large sweeping DNA curves that comfortably fit in 1000x800 bounding boxes instead of risking bounds cut -->
+      <path d="M -100 400 Q 150 700, 400 400 T 900 400 T 1400 400" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-dasharray="8 8" fill="none" filter="url(#waveGlow)"/>
+      <path d="M -100 400 Q 150 100, 400 400 T 900 400 T 1400 400" stroke="rgba(168,216,240,0.8)" stroke-width="2" fill="none" filter="url(#waveGlow)"/>
+      
+      <circle cx="150" cy="550" r="3" fill="#fff" filter="url(#waveGlow)"/>
+      <circle cx="400" cy="400" r="3" fill="#fff" filter="url(#waveGlow)"/>
+      <circle cx="650" cy="550" r="3" fill="#fff" filter="url(#waveGlow)"/>
+      <circle cx="150" cy="250" r="3" fill="#fff" filter="url(#waveGlow)"/>
+      <circle cx="400" cy="400" r="3" fill="#fff" filter="url(#waveGlow)"/>
+      <circle cx="650" cy="250" r="3" fill="#fff" filter="url(#waveGlow)"/>
+    </svg>
+
     <div class="hero-orb"></div>
     <div class="hero-orb"></div>
     <div class="hero-orb"></div>
-    <div class="hero-content">
-      <div class="hero-badge">TH true DNA</div>
+
+    <!-- LEFT: Text content -->
+    <div class="hero-left">
+      <p class="hero-eyebrow">● TH TRUE DNA</p>
       <h1 class="hero-title">
-        <span class="line-main">KHÁM PHÁ ADN VỊ SỮA<br>CỦA RIÊNG BẠN</span>
-        <span class="line-sub">Tinh Thể Độc Bản Được AI Kiến Tạo – Không Ai Giống Ai</span>
+        <span class="title-intro">KHÁM PHÁ ADN VỊ SỮA</span>
+        <strong class="title-heavy">CỦA RIÊNG BẠN</strong>
       </h1>
-      <p class="hero-sub">Mỗi mã dưới lốc sữa TH True Milk chứa một "dãy ADN ánh sáng" riêng. Nhập mã của bạn – hệ thống
-        AI sẽ "đúc" nên tinh thể độc bản mang dấu ấn cá nhân.</p>
-      <div class="hero-offer">✦ 1.000 tinh thể đầu tiên nhận thêm quà tặng phiên bản giới hạn ✦</div>
-      <div class="hero-actions">
-        <a href="#redeem" class="btn-crystal solid">Đúc Tinh Thể Ngay</a>
-        <a href="#about" class="btn-crystal outline">Khám Phá ADN Của Tôi</a>
+      <p class="hero-subtitle-gold">Tinh Thể Độc Bản Được AI Kiến Tạo – Không Ai Giống Ai</p>
+      <p class="hero-desc">Mỗi mã thẻ dưới lốc sữa TH True MILK chứa một "dãy ADN ánh sáng" riêng của bạn. Hệ thống AI của chúng tôi sẽ giải mã và đúc nên tinh thể độc bản - một tác phẩm vô giá mang đậm dấu ấn cá nhân.</p>
+      
+      <div class="hero-actions" style="display: flex; gap: 16px; align-items: center; margin-bottom: 22px; flex-wrap: wrap;">
+        <a href="#redeem" class="btn-hero-cta" style="margin-bottom: 0;">
+          <span class="btn-glow"></span>
+          <span class="btn-text">BẮT ĐẦU KIẾN TẠO NGAY</span>
+        </a>
+        <a href="#about" class="btn-crystal outline" style="padding: 17px 35px; border-radius: 50px; font-size: 0.9rem; animation: fadeUp 1s ease .45s both; text-transform: uppercase;">
+          TÌM HIỂU THÊM ↓
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Product Scene -->
+    <div class="hero-right">
+      <div class="product-scene">
+
+        <!-- Glow rings -->
+        <div class="scene-ring r1"></div>
+        <div class="scene-ring r2"></div>
+        <div class="scene-ring r3"></div>
+
+        <!-- Orbit arcs -->
+        <div class="orbit-ring o1"></div>
+        <div class="orbit-ring o2"></div>
+
+        <!-- DNA Helix SVG (background decor) -->
+        <svg class="dna-helix" viewBox="0 0 480 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="hBlur"><feGaussianBlur stdDeviation="1.2"/></filter>
+          </defs>
+          <!-- Left helix strand -->
+          <path d="M 60 40 Q 100 100, 60 160 Q 20 220, 60 280 Q 100 340, 60 400 Q 20 460, 60 510" stroke="rgba(168,216,240,0.35)" stroke-width="1.5" fill="none" filter="url(#hBlur)"/>
+          <path d="M 80 40 Q 40 100, 80 160 Q 120 220, 80 280 Q 40 340, 80 400 Q 120 460, 80 510" stroke="rgba(168,216,240,0.2)" stroke-width="1" fill="none" filter="url(#hBlur)"/>
+          <!-- Crossbars left helix -->
+          <line x1="60" y1="100" x2="80" y2="103" stroke="rgba(168,216,240,0.4)" stroke-width="1.2"/><circle cx="60" cy="100" r="2.5" fill="rgba(168,216,240,0.7)"/><circle cx="80" cy="103" r="2.5" fill="rgba(168,216,240,0.7)"/>
+          <line x1="70" y1="160" x2="70" y2="165" stroke="rgba(168,216,240,0.4)" stroke-width="1.2"/>
+          <line x1="60" y1="220" x2="80" y2="218" stroke="rgba(168,216,240,0.4)" stroke-width="1.2"/><circle cx="60" cy="220" r="2" fill="rgba(168,216,240,0.5)"/><circle cx="80" cy="218" r="2" fill="rgba(168,216,240,0.5)"/>
+          <line x1="60" y1="340" x2="80" y2="344" stroke="rgba(168,216,240,0.35)" stroke-width="1.2"/><circle cx="60" cy="340" r="2.5" fill="rgba(168,216,240,0.65)"/><circle cx="80" cy="344" r="2.5" fill="rgba(168,216,240,0.65)"/>
+          <line x1="60" y1="400" x2="80" y2="398" stroke="rgba(168,216,240,0.3)" stroke-width="1"/>
+          <!-- Right helix strand -->
+          <path d="M 400 30 Q 440 90, 400 150 Q 360 210, 400 270 Q 440 330, 400 400 Q 360 460, 400 510" stroke="rgba(232,201,122,0.3)" stroke-width="1.5" fill="none" filter="url(#hBlur)"/>
+          <path d="M 420 30 Q 380 90, 420 150 Q 460 210, 420 270 Q 380 330, 420 400 Q 460 460, 420 510" stroke="rgba(232,201,122,0.18)" stroke-width="1" fill="none" filter="url(#hBlur)"/>
+          <line x1="400" y1="90" x2="420" y2="93" stroke="rgba(232,201,122,0.4)" stroke-width="1.2"/><circle cx="400" cy="90" r="2.5" fill="rgba(232,201,122,0.7)"/><circle cx="420" cy="93" r="2.5" fill="rgba(232,201,122,0.7)"/>
+          <line x1="400" y1="210" x2="420" y2="208" stroke="rgba(232,201,122,0.35)" stroke-width="1.2"/><circle cx="400" cy="210" r="2" fill="rgba(232,201,122,0.5)"/>
+          <line x1="400" y1="330" x2="420" y2="334" stroke="rgba(232,201,122,0.35)" stroke-width="1.2"/><circle cx="420" cy="334" r="2.5" fill="rgba(232,201,122,0.6)"/>
+        </svg>
+
+        <!-- Light streaks -->
+        <div class="light-streak ls1"></div>
+        <div class="light-streak ls2"></div>
+        <div class="light-streak ls3"></div>
+        <div class="light-streak ls4"></div>
+
+        <!-- Ground glow -->
+        <div class="product-ground-glow"></div>
+
+        <!-- 3-D icosahedron crystal cage (JS canvas) -->
+        <canvas id="heroIcosa" class="hero-icosa-canvas" width="520" height="520"></canvas>
+
+        <!-- Product image / Center Splashes -->
+        <div class="product-img-wrap" style="width: 520px; height: 520px; position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:5;">
+          
+          <!-- HÌNH ẢNH SỮA SPLASH (Hình 3D rendered chân thực) -->
+          <!-- Hãy đổi src này thành 1.png, 2.png hoặc 6.png tùy thuộc vào hình nào là cụm tinh thể/sữa đẹp nhất của bạn -->
+          <img src="asset/6.png" class="realistic-milk-splash" alt="TH True DNA Milk Splash" onerror="this.src='asset/2.png'">
+
+        </div>
+
+        <!-- Milk drops -->
+        <div class="milk-drop md1"></div>
+        <div class="milk-drop md2"></div>
+        <div class="milk-drop md3"></div>
+        <div class="milk-drop md4"></div>
+        <div class="milk-drop md5"></div>
+        <div class="milk-drop md6"></div>
+
+        <!-- Sparkles -->
+        <div class="sparkle sp1"></div>
+        <div class="sparkle sp2"></div>
+        <div class="sparkle sp3"></div>
+        <div class="sparkle sp4"></div>
+
       </div>
     </div>
   </section>
@@ -2680,12 +3333,18 @@ footer::before {
   <!-- TOAST -->
   <div id="toastWrap"></div>
 
-  <script src="//code.tidio.co/76pum0cutzep7saxerdop4t99a5h23di.js" async></script>
+  <script src="https://code.tidio.co/76pum0cutzep7saxerdop4t99a5h23di.js" async></script>
 
   <footer>
     <div class="footer-container">
       <div class="footer-col brand-col">
-        <img src="asset/TH.png" alt="TH Logo" class="footer-logo" />
+        <div class="footer-brand-logo" style="margin-bottom: 20px; display: inline-flex; align-items: baseline;">
+          <span style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: #fff; position: relative;">
+            TH<span style="color: #e8c97a; font-size: 1.4rem; position: absolute; top: -4px; right: -18px;">*</span>
+          </span>
+          <span style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; font-style: italic; text-transform: lowercase; color: rgba(238, 244, 255, 0.95); margin-left: 20px; margin-right: 8px;">true</span>
+          <span style="font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.16em; color: var(--sky);">DNA</span>
+        </div>
         <p class="footer-desc">TH true DNA — Khám phá ADN vị sữa của riêng bạn. Trải nghiệm nghệ thuật số độc bản kết hợp trí tuệ nhân tạo từ TH true MILK.</p>
         <div class="footer-socials">
           <a href="https://www.facebook.com/thmilk/" target="_blank" rel="noopener" aria-label="Facebook">
@@ -2734,6 +3393,52 @@ footer::before {
     document.addEventListener('click', function (e) {
       const nav = document.querySelector('nav');
       if (!nav.contains(e.target)) closeMenu();
+    });
+
+    // Active class cho menu khi lướt cuộn (Scroll Spy) - Đã tối ưu hiệu suất
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+    let isScrolling = false;
+
+    window.addEventListener('scroll', () => {
+      if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+          let current = null;
+          const scrollY = window.scrollY;
+
+          // Chỉ xét các section có id
+          sections.forEach(sec => {
+            // Trừ bớt 250px để khi mép trên của section vừa ló dạng ở giữa màn hình là đã active
+            const sectionTop = sec.offsetTop - 250; 
+            if (scrollY >= sectionTop) {
+              const id = sec.getAttribute('id');
+              if (id) {
+                current = id;
+              }
+            }
+          });
+
+          // Nếu đang cuộn ở sát mép trên cùng (Vùng Hero mặt nước), tắt gạch chân
+          if (scrollY < window.innerHeight * 0.3) {
+             current = null;
+          }
+
+          navItems.forEach(item => {
+            if (current && item.getAttribute('href') === `#${current}`) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+          isScrolling = false;
+        });
+        isScrolling = true;
+      }
+    });
+
+    // Vẫn giữ logic đóng menu trên mobile khi click
+    navItems.forEach(item => {
+      item.addEventListener('click', () => closeMenu());
     });
 
     // Background particles
@@ -2786,9 +3491,134 @@ footer::before {
     }
     const particles = Array.from({ length: 90 }, () => new Particle());
     (function loop() {
+      // Tối ưu hiệu năng: Dừng vẽ particles nếu user cuộn màn hình vượt quá viewport hero
+      if (window.scrollY > window.innerHeight * 1.5) {
+        requestAnimationFrame(loop);
+        return; 
+      }
       bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
       particles.forEach(p => { p.update(); p.draw(); });
       requestAnimationFrame(loop);
+    })();
+
+    // ─── Hero Icosahedron Crystal ─────────────────────────────────────────────
+    (function () {
+      const canvas = document.getElementById('heroIcosa');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const W = 520, H = 520, CX = W / 2, CY = H / 2, RADIUS = 210;
+      const PHI = (1 + Math.sqrt(5)) / 2;
+      const L0  = Math.sqrt(1 + PHI * PHI);
+      const VERTS = [
+        [0,1,PHI],[0,-1,PHI],[0,1,-PHI],[0,-1,-PHI],
+        [1,PHI,0],[-1,PHI,0],[1,-PHI,0],[-1,-PHI,0],
+        [PHI,0,1],[-PHI,0,1],[PHI,0,-1],[-PHI,0,-1]
+      ].map(([x,y,z])=>[x/L0,y/L0,z/L0]);
+      const FACES = [
+        [0,1,8],[0,8,4],[0,4,5],[0,5,9],[0,9,1],
+        [1,6,8],[8,6,10],[8,10,4],[4,10,2],[4,2,5],
+        [5,2,11],[5,11,9],[9,11,7],[9,7,1],[1,7,6],
+        [3,6,7],[3,7,11],[3,11,2],[3,2,10],[3,10,6]
+      ];
+      const faceBaseHue = FACES.map((_,i) => i * 18);
+
+      function rotX(v,a){ const c=Math.cos(a),s=Math.sin(a); return [v[0],v[1]*c-v[2]*s,v[1]*s+v[2]*c]; }
+      function rotY(v,a){ const c=Math.cos(a),s=Math.sin(a); return [v[0]*c+v[2]*s,v[1],-v[0]*s+v[2]*c]; }
+      function cross(a,b){ return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]; }
+      function dot3(a,b){ return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]; }
+      function norm(v){ const l=Math.sqrt(dot3(v,v)); return [v[0]/l,v[1]/l,v[2]/l]; }
+      function proj(v){
+        const fov=4.2, z=v[2]+fov;
+        return [CX+(v[0]*RADIUS*fov)/z, CY-(v[1]*RADIUS*fov)/z, v[2]];
+      }
+      const LIGHT = norm([0.55, 0.80, 1.0]);
+
+      let angle = 0;
+      function frame(){
+        // Tối ưu GPU: Không render khối 3D nếu đã cuộn qua khu vực Hero
+        if (window.scrollY > window.innerHeight * 1.5) {
+          requestAnimationFrame(frame);
+          return;
+        }
+
+        ctx.clearRect(0,0,W,H);
+        angle += 0.0035;
+
+        const T = VERTS.map(v => rotY(rotX(v, 0.32), angle));
+        const P = T.map(proj);
+
+        const fd = FACES.map((f,i)=>{
+          const [a,b,c] = f.map(fi=>T[fi]);
+          const ab=[b[0]-a[0],b[1]-a[1],b[2]-a[2]];
+          const ac=[c[0]-a[0],c[1]-a[1],c[2]-a[2]];
+          const normal = norm(cross(ab,ac));
+          const cen = [(a[0]+b[0]+c[0])/3,(a[1]+b[1]+c[1])/3,(a[2]+b[2]+c[2])/3];
+          return { i, f, normal, cen, avgZ:cen[2], dl:dot3(normal,LIGHT), front:normal[2]<0 };
+        });
+        fd.sort((a,b)=>a.avgZ-b.avgZ);
+
+        fd.forEach(({i,f,normal,cen,dl,front})=>{
+          const pts = f.map(fi=>P[fi]);
+          ctx.beginPath();
+          ctx.moveTo(pts[0][0],pts[0][1]);
+          ctx.lineTo(pts[1][0],pts[1][1]);
+          ctx.lineTo(pts[2][0],pts[2][1]);
+          ctx.closePath();
+
+          if(front){
+            const d = Math.max(0,dl);
+            if(cen[0]<-0.22 && d>0.05){
+              // Left-side: strong prismatic rainbow (matches reference)
+              const hue = (faceBaseHue[i] + angle*20) % 360;
+              ctx.fillStyle = `hsla(${hue},90%,78%,${0.07+d*0.22})`;
+            } else if(cen[1]>0.22 && d>0.25){
+              // Top: bright white-silver light catch
+              ctx.fillStyle = `rgba(225,244,255,${0.05+d*0.30})`;
+            } else if(cen[0]>0.22 && d>0.15){
+              // Right: cool blue
+              ctx.fillStyle = `rgba(155,210,248,${0.03+d*0.15})`;
+            } else {
+              ctx.fillStyle = `rgba(175,220,252,${0.02+d*0.13})`;
+            }
+            ctx.fill();
+            // Double-stroke: glow pass then crisp pass
+            ctx.strokeStyle = `rgba(200,232,255,${0.22+d*0.60})`;
+            ctx.lineWidth = 1.8;
+            ctx.stroke();
+            if(d>0.55){
+              ctx.strokeStyle = `rgba(255,255,255,${(d-0.55)*1.8})`;
+              ctx.lineWidth = 0.55;
+              ctx.stroke();
+            }
+          } else {
+            ctx.fillStyle = 'rgba(70,110,170,0.012)';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(110,155,210,0.14)';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        });
+
+        // Sparkle glow at each vertex
+        P.forEach(([px,py],vi)=>{
+          const tz = T[vi][2];
+          if(tz > -0.15){
+            const b = (tz+1)/2;
+            const r = 2 + b*4;
+            const g = ctx.createRadialGradient(px,py,0,px,py,r*3.5);
+            g.addColorStop(0, `rgba(255,255,255,${0.35+b*0.50})`);
+            g.addColorStop(0.35,`rgba(200,232,255,${0.12+b*0.18})`);
+            g.addColorStop(1,   'rgba(80,140,220,0)');
+            ctx.beginPath();
+            ctx.arc(px,py,r*3.5,0,Math.PI*2);
+            ctx.fillStyle = g;
+            ctx.fill();
+          }
+        });
+
+        requestAnimationFrame(frame);
+      }
+      frame();
     })();
 
     // Crystal engine helpers
