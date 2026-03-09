@@ -440,7 +440,8 @@
       text-transform: uppercase;
       transition: color .25s, text-shadow .25s;
       position: relative;
-      padding-bottom: 4px; /* Space for the underline */
+      padding-bottom: 4px;
+      /* Space for the underline */
     }
 
     /* The underline that appears on hover and active */
@@ -523,7 +524,8 @@
       align-items: center;
       padding: 120px 80px 100px;
       overflow: hidden;
-      background: #020815; /* Deeper navy matching the image */
+      background: #020815;
+      /* Deeper navy matching the image */
       gap: 20px;
     }
 
@@ -547,15 +549,15 @@
       inset: -50%;
       width: 200%;
       height: 200%;
-      background-image: 
-        radial-gradient(1.5px 1.5px at 20% 30%, rgba(255,255,255,0.6) 100%, transparent),
-        radial-gradient(2px 2px at 15% 70%, rgba(255,255,255,0.4) 100%, transparent),
-        radial-gradient(1.5px 1.5px at 25% 85%, rgba(168,216,240,0.6) 100%, transparent),
-        radial-gradient(2px 2px at 85% 20%, rgba(255,255,255,0.5) 100%, transparent),
-        radial-gradient(1.5px 1.5px at 90% 75%, rgba(168,216,240,0.7) 100%, transparent),
-        radial-gradient(1.5px 1.5px at 40% 40%, rgba(255,255,255,0.3) 100%, transparent),
-        radial-gradient(2px 2px at 60% 15%, rgba(168,216,240,0.4) 100%, transparent),
-        radial-gradient(2.5px 2.5px at 75% 60%, rgba(255,255,255,0.6) 100%, transparent);
+      background-image:
+        radial-gradient(1.5px 1.5px at 20% 30%, rgba(255, 255, 255, 0.6) 100%, transparent),
+        radial-gradient(2px 2px at 15% 70%, rgba(255, 255, 255, 0.4) 100%, transparent),
+        radial-gradient(1.5px 1.5px at 25% 85%, rgba(168, 216, 240, 0.6) 100%, transparent),
+        radial-gradient(2px 2px at 85% 20%, rgba(255, 255, 255, 0.5) 100%, transparent),
+        radial-gradient(1.5px 1.5px at 90% 75%, rgba(168, 216, 240, 0.7) 100%, transparent),
+        radial-gradient(1.5px 1.5px at 40% 40%, rgba(255, 255, 255, 0.3) 100%, transparent),
+        radial-gradient(2px 2px at 60% 15%, rgba(168, 216, 240, 0.4) 100%, transparent),
+        radial-gradient(2.5px 2.5px at 75% 60%, rgba(255, 255, 255, 0.6) 100%, transparent);
       opacity: 0.4;
       pointer-events: none;
       z-index: 1;
@@ -564,8 +566,13 @@
     }
 
     @keyframes driftStars {
-      0% { transform: rotate(0deg) translateY(0); }
-      100% { transform: rotate(5deg) translateY(-5%); }
+      0% {
+        transform: rotate(0deg) translateY(0);
+      }
+
+      100% {
+        transform: rotate(5deg) translateY(-5%);
+      }
     }
 
     /* Lớp lưới nền bên dưới - Tách lớp để không đè lên chữ */
@@ -575,7 +582,7 @@
       left: -20%;
       width: 140%;
       height: 80vh;
-      background-image: 
+      background-image:
         linear-gradient(rgba(0, 150, 255, 0.15) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 150, 255, 0.15) 1px, transparent 1px);
       background-size: 60px 40px;
@@ -589,8 +596,13 @@
     }
 
     @keyframes moveGrid {
-      0% { background-position: 0 0; }
-      100% { background-position: 0 40px; }
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: 0 40px;
+      }
     }
 
     /* Vòng tròn quỹ đạo (DNA wave slanting) nằm hoàn toàn dưới chữ */
@@ -602,9 +614,9 @@
       height: 100%;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.25; 
+      opacity: 0.25;
       /* transform: rotate(15deg); Bỏ xoay để tránh góc cắt SVG */
-      filter: blur(1px) drop-shadow(0 0 15px rgba(168,216,240,0.3));
+      filter: blur(1px) drop-shadow(0 0 15px rgba(168, 216, 240, 0.3));
       mask-image: radial-gradient(circle at 30% 60%, black 10%, transparent 60%);
       -webkit-mask-image: radial-gradient(circle at 30% 60%, black 10%, transparent 60%);
     }
@@ -643,8 +655,15 @@
     }
 
     @keyframes pulseGlow {
-      0% { opacity: 0.6; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.1); }
+      0% {
+        opacity: 0.6;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
     }
 
     /* ── LEFT COLUMN ── */
@@ -682,8 +701,17 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: .35; transform: scale(1.7); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .35;
+        transform: scale(1.7);
+      }
     }
 
     .hero-title {
@@ -734,7 +762,9 @@
     }
 
     @keyframes shineText {
-      to { background-position: 200% center; }
+      to {
+        background-position: 200% center;
+      }
     }
 
     .hero-subtitle-gold {
@@ -759,7 +789,8 @@
       max-width: 580px;
       margin-bottom: 40px;
       animation: fadeUp 1s ease .4s both;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5); /* Thêm bóng chữ để không bị chìm nền */
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+      /* Thêm bóng chữ để không bị chìm nền */
     }
 
     /* Glowing Premium CTA */
@@ -800,8 +831,17 @@
     }
 
     @keyframes ctaBorderPulse {
-      0%, 100% { box-shadow: 0 5px 25px rgba(0, 84, 166, 0.4), inset 0 0 15px rgba(168, 216, 240, 0.2); border-color: rgba(168, 216, 240, 0.5); }
-      50% { box-shadow: 0 5px 40px rgba(0, 169, 255, 0.7), inset 0 0 25px rgba(168, 216, 240, 0.5); border-color: rgba(255, 255, 255, 1); }
+
+      0%,
+      100% {
+        box-shadow: 0 5px 25px rgba(0, 84, 166, 0.4), inset 0 0 15px rgba(168, 216, 240, 0.2);
+        border-color: rgba(168, 216, 240, 0.5);
+      }
+
+      50% {
+        box-shadow: 0 5px 40px rgba(0, 169, 255, 0.7), inset 0 0 25px rgba(168, 216, 240, 0.5);
+        border-color: rgba(255, 255, 255, 1);
+      }
     }
 
     .btn-hero-cta:hover {
@@ -811,7 +851,7 @@
       border-color: #ffffff;
       box-shadow: 0 10px 40px rgba(0, 169, 255, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.4);
     }
-    
+
     .btn-hero-cta:hover::before {
       transform: translateX(100%);
       transition: transform 0.6s ease;
@@ -830,15 +870,23 @@
       left: -100%;
       width: 50%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
       transform: skewX(-25deg);
       animation: buttonShimmer 3.5s infinite;
     }
 
     @keyframes buttonShimmer {
-      0% { left: -100%; }
-      20% { left: 200%; }
-      100% { left: 200%; }
+      0% {
+        left: -100%;
+      }
+
+      20% {
+        left: 200%;
+      }
+
+      100% {
+        left: 200%;
+      }
     }
 
     /* Bottom Banner */
@@ -851,7 +899,8 @@
       max-width: 1200px;
       padding: 20px 40px;
       text-align: center;
-      background: rgba(255, 255, 255, 0.05); /* Match the bright glass reflection */
+      background: rgba(255, 255, 255, 0.05);
+      /* Match the bright glass reflection */
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-radius: 60px;
@@ -903,9 +952,9 @@
       height: 150%;
       transform: translate(-50%, -50%);
       background: radial-gradient(ellipse at center,
-        rgba(168, 216, 240, 0.08) 0%,
-        rgba(110, 30, 220, 0.04) 40%,
-        transparent 70%);
+          rgba(168, 216, 240, 0.08) 0%,
+          rgba(110, 30, 220, 0.04) 40%,
+          transparent 70%);
       pointer-events: none;
       z-index: 1;
     }
@@ -926,26 +975,44 @@
       pointer-events: none;
       animation: ringPulse 3.5s ease-in-out infinite;
     }
+
     .scene-ring.r1 {
-      width: 340px; height: 340px;
+      width: 340px;
+      height: 340px;
       border: 1px solid rgba(168, 216, 240, 0.3);
       box-shadow: 0 0 50px rgba(0, 114, 206, 0.4), inset 0 0 50px rgba(0, 114, 206, 0.2);
     }
+
     .scene-ring.r2 {
-      width: 460px; height: 460px;
+      width: 460px;
+      height: 460px;
       border: 1px dashed rgba(168, 216, 240, 0.15);
-      animation-delay: -1.8s; animation-duration: 4.8s;
+      animation-delay: -1.8s;
+      animation-duration: 4.8s;
       transform: rotate(0deg);
     }
+
     .scene-ring.r3 {
-      width: 540px; height: 540px;
+      width: 540px;
+      height: 540px;
       border: 1px solid rgba(255, 255, 255, 0.05);
-      animation-delay: -.9s; animation-duration: 6s;
+      animation-delay: -.9s;
+      animation-duration: 6s;
     }
 
     @keyframes ringPulse {
-      0%, 100% { opacity: 0.6; transform: scale(1) rotate(0deg); }
-      50%       { opacity: 1; transform: scale(1.05) rotate(10deg); border-color: rgba(255, 255, 255, 0.4); }
+
+      0%,
+      100% {
+        opacity: 0.6;
+        transform: scale(1) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.05) rotate(10deg);
+        border-color: rgba(255, 255, 255, 0.4);
+      }
     }
 
     /* DNA helix background decoration */
@@ -953,7 +1020,8 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       z-index: 0;
       pointer-events: none;
       opacity: 0.3;
@@ -968,12 +1036,16 @@
       animation: spinSlow 28s linear infinite;
       z-index: 1;
     }
+
     .orbit-ring.o1 {
-      width: 290px; height: 190px;
+      width: 290px;
+      height: 190px;
       transform: rotate(-30deg);
     }
+
     .orbit-ring.o2 {
-      width: 200px; height: 300px;
+      width: 200px;
+      height: 300px;
       transform: rotate(50deg);
       animation-direction: reverse;
       animation-duration: 22s;
@@ -981,8 +1053,13 @@
     }
 
     @keyframes spinSlow {
-      from { transform: rotate(var(--r, 0deg)); }
-      to   { transform: rotate(calc(var(--r, 0deg) + 360deg)); }
+      from {
+        transform: rotate(var(--r, 0deg));
+      }
+
+      to {
+        transform: rotate(calc(var(--r, 0deg) + 360deg));
+      }
     }
 
     /* Light streaks */
@@ -993,14 +1070,54 @@
       pointer-events: none;
       animation: streakFade 4s ease-in-out infinite;
     }
-    .ls1 { width: 120px; top: 28%; left: 5%;  background: linear-gradient(90deg, transparent, rgba(168,216,240,0.55), transparent); transform: rotate(-15deg); animation-delay: 0s; }
-    .ls2 { width: 90px;  top: 55%; right: 3%; background: linear-gradient(90deg, transparent, rgba(168,216,240,0.45), transparent); transform: rotate(12deg);  animation-delay: -1.5s; }
-    .ls3 { width: 70px;  top: 72%; left: 12%; background: linear-gradient(90deg, transparent, rgba(232,201,122,0.4), transparent);  transform: rotate(-8deg);  animation-delay: -2.5s; }
-    .ls4 { width: 100px; top: 18%; right: 8%; background: linear-gradient(90deg, transparent, rgba(232,201,122,0.35), transparent); transform: rotate(20deg);  animation-delay: -0.8s; }
+
+    .ls1 {
+      width: 120px;
+      top: 28%;
+      left: 5%;
+      background: linear-gradient(90deg, transparent, rgba(168, 216, 240, 0.55), transparent);
+      transform: rotate(-15deg);
+      animation-delay: 0s;
+    }
+
+    .ls2 {
+      width: 90px;
+      top: 55%;
+      right: 3%;
+      background: linear-gradient(90deg, transparent, rgba(168, 216, 240, 0.45), transparent);
+      transform: rotate(12deg);
+      animation-delay: -1.5s;
+    }
+
+    .ls3 {
+      width: 70px;
+      top: 72%;
+      left: 12%;
+      background: linear-gradient(90deg, transparent, rgba(232, 201, 122, 0.4), transparent);
+      transform: rotate(-8deg);
+      animation-delay: -2.5s;
+    }
+
+    .ls4 {
+      width: 100px;
+      top: 18%;
+      right: 8%;
+      background: linear-gradient(90deg, transparent, rgba(232, 201, 122, 0.35), transparent);
+      transform: rotate(20deg);
+      animation-delay: -0.8s;
+    }
 
     @keyframes streakFade {
-      0%, 100% { opacity: 0; }
-      30%, 70%  { opacity: 1; }
+
+      0%,
+      100% {
+        opacity: 0;
+      }
+
+      30%,
+      70% {
+        opacity: 1;
+      }
     }
 
     /* Product image – centered */
@@ -1011,9 +1128,18 @@
       justify-content: center;
       align-items: center;
       animation: floatProduct 5.5s transform cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }    @keyframes floatProduct {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50%       { transform: translateY(-16px) scale(1.015); }
+    }
+
+    @keyframes floatProduct {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-16px) scale(1.015);
+      }
     }
 
     /* Halo / Ground reflection for the crystal */
@@ -1022,7 +1148,7 @@
       bottom: -60px;
       width: 320px;
       height: 100px;
-      background: radial-gradient(ellipse, rgba(168,216,240,0.5) 0%, rgba(0,84,166,0.3) 40%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(168, 216, 240, 0.5) 0%, rgba(0, 84, 166, 0.3) 40%, transparent 70%);
       transform: rotateX(75deg);
       filter: blur(15px);
       z-index: 0;
@@ -1030,8 +1156,17 @@
     }
 
     @keyframes pulseGround {
-      0%, 100% { opacity: 0.5; transform: rotateX(75deg) scale(0.9); }
-      50% { opacity: 1; transform: rotateX(75deg) scale(1.05); }
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: rotateX(75deg) scale(0.9);
+      }
+
+      50% {
+        opacity: 1;
+        transform: rotateX(75deg) scale(1.05);
+      }
     }
 
     /* Central DNA and Milk Scene */
@@ -1054,13 +1189,30 @@
     }
 
     @keyframes dropFloat {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-15px) scale(1.1); filter: drop-shadow(0 0 15px #fff); }
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-15px) scale(1.1);
+        filter: drop-shadow(0 0 15px #fff);
+      }
     }
 
     @keyframes innerSceneFloat {
-      0%, 100% { transform: translateY(0) scale(1) rotate(0deg); filter: drop-shadow(0 0 40px rgba(168, 216, 240, 0.4));}
-      50% { transform: translateY(-12px) scale(1.02) rotate(1deg); filter: drop-shadow(0 0 60px rgba(168, 216, 240, 0.6)) drop-shadow(0 0 120px rgba(0, 100, 200, 0.8)); }
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 40px rgba(168, 216, 240, 0.4));
+      }
+
+      50% {
+        transform: translateY(-12px) scale(1.02) rotate(1deg);
+        filter: drop-shadow(0 0 60px rgba(168, 216, 240, 0.6)) drop-shadow(0 0 120px rgba(0, 100, 200, 0.8));
+      }
     }
 
     .dna-core {
@@ -1079,8 +1231,15 @@
     }
 
     @keyframes floatProduct {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50%       { transform: translateY(-16px) scale(1.015); }
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-16px) scale(1.015);
+      }
     }
 
     /* Hero crystal canvas (JS-rendered 3-D icosahedron) */
@@ -1092,8 +1251,7 @@
       z-index: 2;
       pointer-events: none;
       filter:
-        drop-shadow(0 0 28px rgba(168, 216, 240, 0.50))
-        drop-shadow(0 0 75px rgba(80,  50, 220, 0.22));
+        drop-shadow(0 0 28px rgba(168, 216, 240, 0.50)) drop-shadow(0 0 75px rgba(80, 50, 220, 0.22));
     }
 
     /* Hide leftover inline SVG (replaced by canvas) */
@@ -1104,16 +1262,27 @@
       bottom: 2%;
       left: 50%;
       transform: translateX(-50%);
-      width: 250px; height: 40px;
+      width: 250px;
+      height: 40px;
       background: radial-gradient(ellipse, rgba(0, 150, 220, 0.6), transparent 70%);
       border-radius: 50%;
       z-index: 3;
       filter: blur(10px);
       animation: glowPulse 3s ease-in-out infinite;
     }
+
     @keyframes glowPulse {
-      0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-      50%       { opacity: 1;   transform: translateX(-50%) scale(1.2); }
+
+      0%,
+      100% {
+        opacity: 0.6;
+        transform: translateX(-50%) scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.2);
+      }
     }
 
     /* Milk drop particles moving smoothly */
@@ -1125,42 +1294,147 @@
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(168, 216, 240, 0.6);
       animation: dropFloat var(--d, 5s) ease-in-out infinite;
     }
-    .md1 { width:15px; height:18px; top:12%; left:20%; --d:4.2s; }
-    .md2 { width:12px; height:15px; top:18%; right:15%; --d:5.8s; animation-delay:-2s; }
-    .md3 { width:14px; height:17px; bottom:20%; left:12%; --d:3.9s; animation-delay:-1.2s; }
-    .md4 { width:10px; height:12px; bottom:15%; right:18%; --d:5.2s; animation-delay:-.7s; }
-    .md5 { width:12px; height:14px; top:45%; left:5%; --d:4.7s; animation-delay:-3s; }
-    .md6 { width:10px; height:13px; top:38%; right:6%; --d:6s; animation-delay:-1.8s; }
+
+    .md1 {
+      width: 15px;
+      height: 18px;
+      top: 12%;
+      left: 20%;
+      --d: 4.2s;
+    }
+
+    .md2 {
+      width: 12px;
+      height: 15px;
+      top: 18%;
+      right: 15%;
+      --d: 5.8s;
+      animation-delay: -2s;
+    }
+
+    .md3 {
+      width: 14px;
+      height: 17px;
+      bottom: 20%;
+      left: 12%;
+      --d: 3.9s;
+      animation-delay: -1.2s;
+    }
+
+    .md4 {
+      width: 10px;
+      height: 12px;
+      bottom: 15%;
+      right: 18%;
+      --d: 5.2s;
+      animation-delay: -.7s;
+    }
+
+    .md5 {
+      width: 12px;
+      height: 14px;
+      top: 45%;
+      left: 5%;
+      --d: 4.7s;
+      animation-delay: -3s;
+    }
+
+    .md6 {
+      width: 10px;
+      height: 13px;
+      top: 38%;
+      right: 6%;
+      --d: 6s;
+      animation-delay: -1.8s;
+    }
 
     @keyframes dropFloat {
-      0%   { transform: translateY(0) rotate(-15deg) scale(1); opacity: 0.9; }
-      50%  { transform: translateY(-30px) rotate(15deg) scale(1.1); opacity: 0.6; }
-      100% { transform: translateY(0) rotate(-15deg) scale(1); opacity: 0.9; }
+      0% {
+        transform: translateY(0) rotate(-15deg) scale(1);
+        opacity: 0.9;
+      }
+
+      50% {
+        transform: translateY(-30px) rotate(15deg) scale(1.1);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translateY(0) rotate(-15deg) scale(1);
+        opacity: 0.9;
+      }
     }
 
     /* Small sparkle diamonds */
     .sparkle {
       position: absolute;
       pointer-events: none;
-      width: 0; height: 0;
+      width: 0;
+      height: 0;
     }
-    .sparkle::before, .sparkle::after {
+
+    .sparkle::before,
+    .sparkle::after {
       content: '';
       position: absolute;
       background: rgba(255, 255, 255, 0.85);
       border-radius: 1px;
     }
-    .sparkle::before { width: 1.5px; height: 10px; top: -5px; left: 0; }
-    .sparkle::after  { width: 10px; height: 1.5px; top: 0; left: -5px; }
 
-    .sp1 { top: 8%; left: 30%; animation: sparkleTwinkle 2.4s ease-in-out infinite; }
-    .sp2 { top: 12%; right: 25%; animation: sparkleTwinkle 3.1s ease-in-out infinite; animation-delay:-.9s; }
-    .sp3 { bottom: 14%; right: 28%; animation: sparkleTwinkle 2.8s ease-in-out infinite; animation-delay:-1.6s; }
-    .sp4 { bottom: 10%; left: 26%; animation: sparkleTwinkle 3.6s ease-in-out infinite; animation-delay:-2.1s; }
+    .sparkle::before {
+      width: 1.5px;
+      height: 10px;
+      top: -5px;
+      left: 0;
+    }
+
+    .sparkle::after {
+      width: 10px;
+      height: 1.5px;
+      top: 0;
+      left: -5px;
+    }
+
+    .sp1 {
+      top: 8%;
+      left: 30%;
+      animation: sparkleTwinkle 2.4s ease-in-out infinite;
+    }
+
+    .sp2 {
+      top: 12%;
+      right: 25%;
+      animation: sparkleTwinkle 3.1s ease-in-out infinite;
+      animation-delay: -.9s;
+    }
+
+    .sp3 {
+      bottom: 14%;
+      right: 28%;
+      animation: sparkleTwinkle 2.8s ease-in-out infinite;
+      animation-delay: -1.6s;
+    }
+
+    .sp4 {
+      bottom: 10%;
+      left: 26%;
+      animation: sparkleTwinkle 3.6s ease-in-out infinite;
+      animation-delay: -2.1s;
+    }
 
     @keyframes sparkleTwinkle {
-      0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
-      40%, 60%  { opacity: 1; transform: scale(1.2) rotate(45deg); }
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+      }
+
+      40%,
+      60% {
+        opacity: 1;
+        transform: scale(1.2) rotate(45deg);
+      }
     }
 
     /* ── Keep btn-crystal for other sections ── */
@@ -1207,8 +1481,15 @@
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .section-label {
@@ -1231,37 +1512,71 @@
     }
 
     /* ============================================================
-   ABOUT - Bồng Bềnh & Lộng Lẫy (Chỉ dùng CSS)
+   ABOUT — Hệ Hành Tinh & Tinh Thể Trong Suốt
    ============================================================ */
-    /* Khai báo hiệu ứng chuyển động */
-    @keyframes floatSoft {
+
+    /* ── Keyframes riêng cho About (không đụng hero) ── */
+    @keyframes aboutFloat {
 
       0%,
       100% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0px) rotate(0deg);
       }
 
-      50% {
-        transform: translateY(-15px) scale(1.02);
+      40% {
+        transform: translateY(-20px) rotate(0.8deg);
+      }
+
+      70% {
+        transform: translateY(-10px) rotate(-0.5deg);
       }
     }
 
-    @keyframes pulseGlowText {
+    @keyframes crystalPulse {
 
       0%,
       100% {
-        text-shadow: 0 0 20px var(--sky), 0 0 40px var(--sky);
-        opacity: 0.8;
+        filter: drop-shadow(0 0 12px rgba(168, 216, 240, 0.4)) drop-shadow(0 0 30px rgba(168, 216, 240, 0.15));
       }
 
       50% {
-        text-shadow: 0 0 40px var(--sky), 0 0 80px var(--sky-dim);
-        opacity: 1;
-        color: #fff;
+        filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 60px rgba(168, 216, 240, 0.35)) drop-shadow(0 0 90px rgba(232, 201, 122, 0.15));
       }
     }
 
-    @keyframes spinRings {
+    /* Quỹ đạo hành tinh — dùng transform3d để có cảm giác nghiêng */
+    @keyframes orbitPlanet1 {
+      from {
+        transform: rotateZ(0deg) translateX(155px) rotateZ(0deg);
+      }
+
+      to {
+        transform: rotateZ(360deg) translateX(155px) rotateZ(-360deg);
+      }
+    }
+
+    @keyframes orbitPlanet2 {
+      from {
+        transform: rotateZ(0deg) translateX(200px) rotateZ(0deg);
+      }
+
+      to {
+        transform: rotateZ(-360deg) translateX(200px) rotateZ(360deg);
+      }
+    }
+
+    @keyframes orbitPlanet3 {
+      from {
+        transform: rotateZ(0deg) translateX(240px) rotateZ(0deg);
+      }
+
+      to {
+        transform: rotateZ(360deg) translateX(240px) rotateZ(-360deg);
+      }
+    }
+
+    /* Hành tinh tự xoay */
+    @keyframes selfRotate {
       from {
         transform: rotate(0deg);
       }
@@ -1271,30 +1586,120 @@
       }
     }
 
+    /* Vòng xoay quỹ đạo */
+    @keyframes ringOrbit1 {
+      from {
+        transform: rotateX(72deg) rotateZ(0deg);
+      }
+
+      to {
+        transform: rotateX(72deg) rotateZ(360deg);
+      }
+    }
+
+    @keyframes ringOrbit2 {
+      from {
+        transform: rotateX(55deg) rotateY(20deg) rotateZ(0deg);
+      }
+
+      to {
+        transform: rotateX(55deg) rotateY(20deg) rotateZ(-360deg);
+      }
+    }
+
+    @keyframes ringOrbit3 {
+      from {
+        transform: rotateX(80deg) rotateY(-15deg) rotateZ(0deg);
+      }
+
+      to {
+        transform: rotateX(80deg) rotateY(-15deg) rotateZ(360deg);
+      }
+    }
+
+    /* Tinh thể lấp lánh */
+    @keyframes crystalFacetShimmer {
+
+      0%,
+      100% {
+        opacity: 0.55;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      90%,
+      100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+      }
+
+      93% {
+        opacity: 1;
+        transform: scale(1.3) rotate(20deg);
+      }
+
+      96% {
+        opacity: 0.6;
+        transform: scale(0.9) rotate(-10deg);
+      }
+    }
+
+    @keyframes aboutShimmerText {
+      0% {
+        background-position: -300% center;
+      }
+
+      100% {
+        background-position: 300% center;
+      }
+    }
+
+    /* ── Section ── */
     .about {
       padding: 140px 60px;
-      /* Bỏ viền cứng, dùng dải gradient trong suốt tạo cảm giác không gian sâu thẳm */
-      background: linear-gradient(180deg, var(--bg-base) 0%, rgba(8, 21, 42, 0.4) 50%, var(--bg-base) 100%);
+      background:
+        radial-gradient(ellipse 60% 70% at 25% 50%, rgba(0, 30, 70, 0.5) 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg-base) 0%, rgba(5, 12, 28, 0.6) 50%, var(--bg-base) 100%);
       border-top: none;
       position: relative;
       overflow: hidden;
     }
 
+    /* Tinh vân nền mờ — khác với hero dùng particle canvas */
+    .about::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      left: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: radial-gradient(circle, rgba(20, 60, 120, 0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
     .about-grid {
-      /* Mở rộng không gian tràn viền hơn thay vì đóng khung 1200px */
       width: 100%;
       max-width: 1440px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 100px;
+      gap: 80px;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
+    /* ── Text ── */
     .about-text h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.5rem, 4.5vw, 3.8rem);
-      /* Chữ to và thanh thoát hơn */
       font-weight: 300;
       line-height: 1.25;
       margin-bottom: 24px;
@@ -1302,10 +1707,14 @@
     }
 
     .about-text h2 em {
-      color: var(--gold);
       font-style: italic;
-      text-shadow: 0 0 30px rgba(232, 201, 122, 0.4);
-      /* Điểm nhấn phát sáng */
+      background: linear-gradient(90deg,
+          var(--gold) 0%, #fff8e0 30%, var(--gold) 60%, #ffe8a0 80%, var(--gold) 100%);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: aboutShimmerText 5s linear infinite;
     }
 
     .about-text p {
@@ -1332,7 +1741,6 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       border-radius: 30px;
-      /* Chuyển từ khối vuông sang viên thuốc bo tròn (Glassmorphism) */
       backdrop-filter: blur(8px);
       transition: all 0.4s ease;
       cursor: default;
@@ -1346,1339 +1754,1839 @@
       color: #fff;
     }
 
-    /* --- Phép thuật CSS biến khối vuông thành Tinh thể cầu lơ lửng --- */
+    /* ══════════════════════════════════════════════
+   DNA VISUAL BOX — HỆ HÀNH TINH + TINH THỂ
+══════════════════════════════════════════════ */
     .dna-visual-box {
       width: 100%;
-      max-width: 480px;
+      max-width: 500px;
       margin: 0 auto;
       aspect-ratio: 1;
-      border: 1px solid rgba(168, 216, 240, 0.08);
-      border-radius: 50%;
-      /* Biến thành hình tròn */
-      background: radial-gradient(circle at center, rgba(168, 216, 240, 0.08) 0%, transparent 70%);
-      box-shadow:
-        inset 0 0 60px rgba(168, 216, 240, 0.05),
-        0 0 80px rgba(0, 84, 166, 0.2);
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 8rem;
-      /* Phóng to icon */
-      color: var(--sky);
-      animation: floatSoft 8s ease-in-out infinite;
-      /* Cho lơ lửng */
-      position: relative;
+      animation: aboutFloat 10s ease-in-out infinite;
+      /* Không border, không background — để hành tinh "trôi nổi" trong không gian */
     }
 
-    /* Làm ký tự ◈ phát sáng nhịp nhàng */
-    .dna-visual-box::first-letter {
-      animation: pulseGlowText 4s infinite alternate;
-    }
-
-    /* Thêm các vòng quỹ đạo sáng xoay quanh bằng CSS (Không cần thẻ HTML) */
+    /* ── Lõi tinh thể trong suốt ── */
     .dna-visual-box::before {
-      content: '';
+      content: '◈';
       position: absolute;
-      inset: -20px;
-      border: 1px dashed rgba(168, 216, 240, 0.2);
-      border-radius: 50%;
-      animation: spinRings 30s linear infinite;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 7.5rem;
+      /* Trong suốt, nhiều lớp màu chồng nhau như mặt đa diện */
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(168, 216, 240, 0.5);
+      text-stroke: 1px rgba(168, 216, 240, 0.5);
+      /* Phản chiếu ánh sáng nhiều góc */
+      text-shadow:
+        4px 4px 0px rgba(168, 216, 240, 0.08),
+        -4px -4px 0px rgba(232, 201, 122, 0.06),
+        0px 0px 25px rgba(168, 216, 240, 0.5),
+        0px 0px 60px rgba(168, 216, 240, 0.25),
+        0px 0px 100px rgba(168, 216, 240, 0.12),
+        0px 0px 3px rgba(255, 255, 255, 0.8);
+      animation: crystalPulse 4s ease-in-out infinite;
+      z-index: 5;
+      pointer-events: none;
     }
 
+    /* ── Vầng sáng trung tâm phía sau tinh thể ── */
     .dna-visual-box::after {
       content: '';
       position: absolute;
-      inset: -45px;
-      border: 1px solid rgba(232, 201, 122, 0.05);
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      border-top-color: rgba(232, 201, 122, 0.4);
-      /* Điểm sáng chổi sao */
-      animation: spinRings 20s linear infinite reverse;
-      /* Xoay ngược chiều */
+      background: radial-gradient(circle,
+          rgba(168, 216, 240, 0.18) 0%,
+          rgba(100, 160, 220, 0.08) 40%,
+          transparent 70%);
+      filter: blur(15px);
+      z-index: 2;
+      animation: crystalPulse 4s ease-in-out infinite reverse;
+    }
+
+    /* ══ VÒNG QUỸ ĐẠO — dùng wrapper div ══ */
+
+    /* Vòng 1 — nghiêng 72deg, xoay chậm, màu sky */
+    .orbit-ring-1 {
+      position: absolute;
+      width: 310px;
+      height: 310px;
+      border-radius: 50%;
+      border: 1px solid rgba(168, 216, 240, 0.18);
+      box-shadow: 0 0 8px rgba(168, 216, 240, 0.06), inset 0 0 8px rgba(168, 216, 240, 0.04);
+      animation: ringOrbit1 22s linear infinite;
+      z-index: 3;
+    }
+
+    /* Vòng 2 — nghiêng ngược, màu gold mờ */
+    .orbit-ring-2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      border: 1px dashed rgba(232, 201, 122, 0.14);
+      animation: ringOrbit2 35s linear infinite;
+      z-index: 2;
+    }
+
+    /* Vòng 3 — lớn nhất, mờ nhất */
+    .orbit-ring-3 {
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      border: 1px solid rgba(168, 216, 240, 0.07);
+      border-top-color: rgba(168, 216, 240, 0.25);
+      animation: ringOrbit3 50s linear infinite;
+      z-index: 1;
+    }
+
+    /* ══ HÀNH TINH ══ */
+
+    /* Container để làm hành tinh xoay quỹ đạo đúng */
+    .planet-orbit-wrap {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 6;
+    }
+
+    /* Hành tinh 1 — xanh nhạt, quỹ đạo gần */
+    .planet-1 {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%,
+          rgba(200, 235, 255, 0.95),
+          rgba(100, 180, 240, 0.8) 50%,
+          rgba(30, 100, 180, 0.9));
+      box-shadow:
+        0 0 12px rgba(168, 216, 240, 0.8),
+        0 0 24px rgba(168, 216, 240, 0.4),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.3);
+      animation: orbitPlanet1 14s linear infinite;
+    }
+
+    /* Hành tinh 2 — vàng nhạt, quỹ đạo giữa, ngược chiều */
+    .planet-2 {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%,
+          rgba(255, 245, 200, 0.95),
+          rgba(232, 201, 122, 0.85) 50%,
+          rgba(180, 140, 60, 0.9));
+      box-shadow:
+        0 0 10px rgba(232, 201, 122, 0.9),
+        0 0 22px rgba(232, 201, 122, 0.4),
+        inset -2px -2px 3px rgba(0, 0, 0, 0.3);
+      animation: orbitPlanet2 22s linear infinite;
+    }
+
+    /* Hành tinh 3 — trắng nhỏ, quỹ đạo xa, nhanh hơn */
+    .planet-3 {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%,
+          rgba(255, 255, 255, 0.98),
+          rgba(200, 230, 255, 0.8) 50%,
+          rgba(100, 160, 220, 0.7));
+      box-shadow:
+        0 0 8px rgba(255, 255, 255, 0.9),
+        0 0 18px rgba(168, 216, 240, 0.5);
+      animation: orbitPlanet3 9s linear infinite;
+    }
+
+    /* Hành tinh 4 — đỏ hồng nhỏ li ti, quỹ đạo gần, ngược chiều */
+    .planet-4 {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%,
+          rgba(255, 200, 200, 0.95),
+          rgba(220, 120, 120, 0.8) 50%,
+          rgba(160, 60, 80, 0.85));
+      box-shadow:
+        0 0 8px rgba(255, 150, 150, 0.7),
+        0 0 16px rgba(255, 100, 100, 0.3);
+      animation: orbitPlanet1 18s linear infinite reverse;
+      /* Dùng lại keyframe nhưng reverse + thời gian khác = quỹ đạo khác */
+    }
+
+    /* ── Tia lấp lánh ngẫu nhiên ── */
+    .crystal-sparkle {
+      position: absolute;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.85);
+      text-shadow: 0 0 6px #fff, 0 0 14px var(--sky);
+      pointer-events: none;
+      z-index: 7;
+    }
+
+    .crystal-sparkle.sp1 {
+      top: 22%;
+      left: 58%;
+      animation: sparkle 6s ease-in-out infinite 0s;
+    }
+
+    .crystal-sparkle.sp2 {
+      top: 62%;
+      left: 35%;
+      animation: sparkle 6s ease-in-out infinite 2s;
+      font-size: 0.65rem;
+    }
+
+    .crystal-sparkle.sp3 {
+      top: 35%;
+      left: 25%;
+      animation: sparkle 6s ease-in-out infinite 4s;
+      font-size: 0.7rem;
+      color: rgba(232, 201, 122, 0.9);
+      text-shadow: 0 0 6px var(--gold), 0 0 14px var(--gold);
     }
 
     /* ============================================================
    HOW IT WORKS - Glassmorphism & Căn giữa lung linh
    ============================================================ */
-.how {
-  padding: 140px 60px;
-  /* Thay viền cứng bằng vầng sáng mờ ảo tỏa ra từ trên xuống */
-  background: radial-gradient(ellipse at center top, rgba(8, 21, 42, 0.4) 0%, var(--bg-base) 70%);
-  border-top: none;
-  position: relative;
-}
+    .how {
+      padding: 140px 60px;
+      /* Thay viền cứng bằng vầng sáng mờ ảo tỏa ra từ trên xuống */
+      background: radial-gradient(ellipse at center top, rgba(8, 21, 42, 0.4) 0%, var(--bg-base) 70%);
+      border-top: none;
+      position: relative;
+    }
 
-.how-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-}
+    .how-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
 
-.how-header {
-  text-align: center;
-  margin-bottom: 80px;
-}
+    .how-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
 
-.how-header h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
-  font-weight: 300;
-  color: var(--text-1);
-  margin-bottom: 16px;
-}
+    .how-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+      font-weight: 300;
+      color: var(--text-1);
+      margin-bottom: 16px;
+    }
 
-.how-header h2 em {
-  color: var(--gold);
-  font-style: italic;
-  text-shadow: 0 0 25px rgba(232, 201, 122, 0.3);
-}
+    .how-header h2 em {
+      color: var(--gold);
+      font-style: italic;
+      text-shadow: 0 0 25px rgba(232, 201, 122, 0.3);
+    }
 
-.how-header p {
-  color: var(--text-2);
-  font-size: 1.05rem;
-  line-height: 1.8;
-  font-weight: 300;
-}
+    .how-header p {
+      color: var(--text-2);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
 
-/* --- Lưới chứa các bước --- */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px; /* Tách rời các khối tạo khoảng không gian */
-  background: transparent;
-  border: none;
-}
+    /* --- Lưới chứa các bước --- */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      /* Tách rời các khối tạo khoảng không gian */
+      background: transparent;
+      border: none;
+    }
 
-/* --- Thẻ bài từng bước --- */
-.step {
-  background: rgba(8, 21, 42, 0.4); /* Kính tối mờ */
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(168, 216, 240, 0.15);
-  border-radius: 24px; /* Bo góc mềm mại */
-  padding: 50px 30px;
-  position: relative;
-  overflow: hidden; /* Quan trọng: để chứa hiệu ứng vệt sáng bên trong */
-  
-  /* Căn giữa toàn bộ nội dung */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  z-index: 1;
-}
+    /* --- Thẻ bài từng bước --- */
+    .step {
+      background: rgba(8, 21, 42, 0.4);
+      /* Kính tối mờ */
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(168, 216, 240, 0.15);
+      border-radius: 24px;
+      /* Bo góc mềm mại */
+      padding: 50px 30px;
+      position: relative;
+      overflow: hidden;
+      /* Quan trọng: để chứa hiệu ứng vệt sáng bên trong */
 
-/* Vệt ánh sáng chạy chéo chìm bên trong thẻ */
-.step::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 50%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-  transform: skewX(-25deg);
-  transition: all 0.6s ease;
-  z-index: 0;
-  pointer-events: none;
-}
+      /* Căn giữa toàn bộ nội dung */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
 
-/* HIỆU ỨNG HOVER LUNG LINH */
-.step:hover {
-  background: rgba(13, 31, 60, 0.7);
-  border-color: rgba(168, 216, 240, 0.5);
-  transform: translateY(-12px); /* Nổi bồng bềnh lên */
-  box-shadow: 0 20px 40px rgba(0, 84, 166, 0.3), inset 0 0 20px rgba(168, 216, 240, 0.1);
-}
+      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
 
-/* Kích hoạt vệt sáng lướt qua khi rê chuột */
-.step:hover::before {
-  left: 200%;
-  transition: all 0.8s ease;
-}
+    /* Vệt ánh sáng chạy chéo chìm bên trong thẻ */
+    .step::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+      transform: skewX(-25deg);
+      transition: all 0.6s ease;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-/* Đường chân phát sáng thay cho gạch ngang cũ */
-.step::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  height: 3px; width: 0;
-  background: linear-gradient(90deg, transparent, var(--sky), transparent);
-  transition: width 0.5s ease;
-  border-radius: 3px;
-  box-shadow: 0 0 10px var(--sky);
-}
-.step:hover::after {
-  width: 60%; /* Tỏa sáng ra từ giữa */
-}
+    /* HIỆU ỨNG HOVER LUNG LINH */
+    .step:hover {
+      background: rgba(13, 31, 60, 0.7);
+      border-color: rgba(168, 216, 240, 0.5);
+      transform: translateY(-12px);
+      /* Nổi bồng bềnh lên */
+      box-shadow: 0 20px 40px rgba(0, 84, 166, 0.3), inset 0 0 20px rgba(168, 216, 240, 0.1);
+    }
 
-/* --- Typography --- */
-.step-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 4rem; /* Số to, ấn tượng */
-  font-weight: 300;
-  color: rgba(168, 216, 240, 0.1); /* Chìm vào nền */
-  line-height: 1;
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 2;
-  transition: all 0.4s ease;
-}
+    /* Kích hoạt vệt sáng lướt qua khi rê chuột */
+    .step:hover::before {
+      left: 200%;
+      transition: all 0.8s ease;
+    }
 
-/* Hover làm số sáng lên */
-.step:hover .step-num {
-  color: rgba(168, 216, 240, 0.5);
-  text-shadow: 0 0 20px rgba(168, 216, 240, 0.3);
-  transform: scale(1.1);
-}
+    /* Đường chân phát sáng thay cho gạch ngang cũ */
+    .step::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, transparent, var(--sky), transparent);
+      transition: width 0.5s ease;
+      border-radius: 3px;
+      box-shadow: 0 0 10px var(--sky);
+    }
 
-.step h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--text-1);
-  margin-bottom: 12px;
-  position: relative;
-  z-index: 2;
-}
+    .step:hover::after {
+      width: 60%;
+      /* Tỏa sáng ra từ giữa */
+    }
 
-.step p {
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: var(--text-2);
-  font-weight: 300;
-  position: relative;
-  z-index: 2;
-}
+    /* --- Typography --- */
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      /* Số to, ấn tượng */
+      font-weight: 300;
+      color: rgba(168, 216, 240, 0.1);
+      /* Chìm vào nền */
+      line-height: 1;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+      transition: all 0.4s ease;
+    }
 
-/* --- Mobile Responsive --- */
-@media (max-width: 900px) {
-  .steps {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-}
-@media (max-width: 560px) {
-  .steps {
-    grid-template-columns: 1fr;
-  }
-}
+    /* Hover làm số sáng lên */
+    .step:hover .step-num {
+      color: rgba(168, 216, 240, 0.5);
+      text-shadow: 0 0 20px rgba(168, 216, 240, 0.3);
+      transform: scale(1.1);
+    }
+
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--text-1);
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .step p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-2);
+      font-weight: 300;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* --- Mobile Responsive --- */
+    @media (max-width: 900px) {
+      .steps {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* ============================================================
    CRYSTALS - Ethereal Dark Luxury (3D Flip + Ánh sáng ma thuật)
    ============================================================ */
-.crystals {
-  padding: 140px 60px;
-  position: relative;
-  /* Nền sương mù bóng đêm sâu thẳm */
-  background: linear-gradient(180deg, var(--bg-base) 0%, rgba(8, 21, 42, 0.6) 50%, var(--bg-base) 100%);
-  border-top: none;
-  overflow: hidden;
-}
+    .crystals {
+      padding: 140px 60px;
+      position: relative;
+      /* Nền sương mù bóng đêm sâu thẳm */
+      background: linear-gradient(180deg, var(--bg-base) 0%, rgba(8, 21, 42, 0.6) 50%, var(--bg-base) 100%);
+      border-top: none;
+      overflow: hidden;
+    }
 
-/* Các luồng sáng vũ trụ mờ ảo đằng sau khu vực thẻ */
-.crystals::before {
-  content: '';
-  position: absolute;
-  top: 10%; left: 20%; width: 60%; height: 60%;
-  background: radial-gradient(ellipse at center, rgba(168, 216, 240, 0.1) 0%, transparent 60%);
-  filter: blur(80px);
-  animation: floatCrystal 10s infinite alternate;
-  pointer-events: none;
-}
+    /* Các luồng sáng vũ trụ mờ ảo đằng sau khu vực thẻ */
+    .crystals::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 20%;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(ellipse at center, rgba(168, 216, 240, 0.1) 0%, transparent 60%);
+      filter: blur(80px);
+      animation: floatCrystal 10s infinite alternate;
+      pointer-events: none;
+    }
 
-.crystals-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
-.crystals-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 70px; }
-.crystals-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: var(--text-1); }
-.crystals-header h2 em { color: var(--sky); font-style: italic; text-shadow: 0 0 25px rgba(168, 216, 240, 0.4); }
-.crystals-header p { font-size: 1.05rem; color: var(--text-2); line-height: 1.9; font-weight: 300; }
+    .crystals-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
 
-.crystal-grid {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 32px;
-  perspective: 1200px; /* Không gian 3D */
-}
+    .crystals-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 70px;
+    }
 
-/* THẺ BÀI (Wrapper) */
-.crystal-card {
-  position: relative;
-  width: calc(33.333% - 22px);
-  min-width: 280px;
-  aspect-ratio: 3/4.2;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-}
+    .crystals-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+      font-weight: 300;
+      color: var(--text-1);
+    }
 
-/* KHI HOVER: Lật thẻ + Quầng sáng tâm linh tỏa ra sau lưng */
-.crystal-card:hover {
-  transform: translateY(-15px) rotateY(180deg);
-}
-.crystal-card:hover::after {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 60%);
-  filter: blur(20px);
-  transform: rotateY(180deg); /* Đi theo mặt sau */
-  z-index: -1;
-}
+    .crystals-header h2 em {
+      color: var(--sky);
+      font-style: italic;
+      text-shadow: 0 0 25px rgba(168, 216, 240, 0.4);
+    }
 
-.crystal-card-bg, .crystal-overlay {
-  position: absolute; inset: 0; border-radius: 24px;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
+    .crystals-header p {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      line-height: 1.9;
+      font-weight: 300;
+    }
 
-/* =========================================
+    .crystal-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      perspective: 1200px;
+      /* Không gian 3D */
+    }
+
+    /* THẺ BÀI (Wrapper) */
+    .crystal-card {
+      position: relative;
+      width: calc(33.333% - 22px);
+      min-width: 280px;
+      aspect-ratio: 3/4.2;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* KHI HOVER: Lật thẻ + Quầng sáng tâm linh tỏa ra sau lưng */
+    .crystal-card:hover {
+      transform: translateY(-15px) rotateY(180deg);
+    }
+
+    .crystal-card:hover::after {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+      filter: blur(20px);
+      transform: rotateY(180deg);
+      /* Đi theo mặt sau */
+      z-index: -1;
+    }
+
+    .crystal-card-bg,
+    .crystal-overlay {
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    /* =========================================
    MẶT TRƯỚC (Lung linh sương khói)
    ========================================= */
-.crystal-card-bg {
-  background: rgba(10, 18, 35, 0.6); /* Kính tối màu */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-  box-shadow: inset 0 0 40px rgba(255,255,255,0.03), 0 15px 40px rgba(0,0,0,0.6);
-  z-index: 1;
-}
+    .crystal-card-bg {
+      background: rgba(10, 18, 35, 0.6);
+      /* Kính tối màu */
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.03), 0 15px 40px rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
 
-/* Ánh sáng ma thuật từ trong tâm thẻ dội ra (Inner Glow) */
-.crystal-card-bg.sunflower { background-image: radial-gradient(circle at 50% 60%, rgba(245,166,35,0.3) 0%, transparent 65%); }
-.crystal-card-bg.pure { background-image: radial-gradient(circle at 50% 60%, rgba(168,216,240,0.3) 0%, transparent 65%); }
-.crystal-card-bg.emerald { background-image: radial-gradient(circle at 50% 60%, rgba(32,156,130,0.3) 0%, transparent 65%); }
-.crystal-card-bg.coral { background-image: radial-gradient(circle at 50% 60%, rgba(255,107,87,0.3) 0%, transparent 65%); }
-.crystal-card-bg.rosequartz { background-image: radial-gradient(circle at 50% 60%, rgba(244,143,177,0.3) 0%, transparent 65%); }
+    /* Ánh sáng ma thuật từ trong tâm thẻ dội ra (Inner Glow) */
+    .crystal-card-bg.sunflower {
+      background-image: radial-gradient(circle at 50% 60%, rgba(245, 166, 35, 0.3) 0%, transparent 65%);
+    }
 
-.crystal-inner-shape {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 2;
-  transform: translateZ(1px);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
+    .crystal-card-bg.pure {
+      background-image: radial-gradient(circle at 50% 60%, rgba(168, 216, 240, 0.3) 0%, transparent 65%);
+    }
 
-.crystal-inner-shape svg {
-  width: 58%; opacity: 0.95;
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 35px rgba(255, 255, 255, 0.1));
-  animation: floatCrystal 5s ease-in-out infinite, mysticPulse 3s ease-in-out infinite alternate;
-}
+    .crystal-card-bg.emerald {
+      background-image: radial-gradient(circle at 50% 60%, rgba(32, 156, 130, 0.3) 0%, transparent 65%);
+    }
 
-@keyframes floatCrystal { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-@keyframes mysticPulse { 0% { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3)); } 100% { filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.7)); } }
+    .crystal-card-bg.coral {
+      background-image: radial-gradient(circle at 50% 60%, rgba(255, 107, 87, 0.3) 0%, transparent 65%);
+    }
 
-.crystal-badge {
-  position: absolute; top: 18px; right: 18px; padding: 6px 14px;
-  background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 20px;
-  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-1); z-index: 3;
-  transform: translateZ(2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
+    .crystal-card-bg.rosequartz {
+      background-image: radial-gradient(circle at 50% 60%, rgba(244, 143, 177, 0.3) 0%, transparent 65%);
+    }
 
-/* =========================================
+    .crystal-inner-shape {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transform: translateZ(1px);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .crystal-inner-shape svg {
+      width: 58%;
+      opacity: 0.95;
+      filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 35px rgba(255, 255, 255, 0.1));
+      animation: floatCrystal 5s ease-in-out infinite, mysticPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatCrystal {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes mysticPulse {
+      0% {
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+      }
+
+      100% {
+        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.7));
+      }
+    }
+
+    .crystal-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-1);
+      z-index: 3;
+      transform: translateZ(2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    /* =========================================
    MẶT SAU (Lật ra đọc thông tin)
    ========================================= */
-.crystal-overlay {
-  transform: rotateY(180deg) translateZ(1px); 
-  /* Nền mặt sau cũng là kính mờ nhưng tối hơn chút để nổi bật chữ */
-  background: radial-gradient(circle at top, rgba(255,255,255,0.08) 0%, rgba(5, 13, 27, 0.9) 70%);
-  backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 40px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-  z-index: 4; box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
-}
+    .crystal-overlay {
+      transform: rotateY(180deg) translateZ(1px);
+      /* Nền mặt sau cũng là kính mờ nhưng tối hơn chút để nổi bật chữ */
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08) 0%, rgba(5, 13, 27, 0.9) 70%);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 4;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
+    }
 
-.crystal-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.8rem;
-  margin-bottom: 16px;
-  font-weight: 400;
-}
+    .crystal-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
 
-.crystal-desc { font-size: 0.95rem; color: rgba(238, 244, 255, 0.85); line-height: 1.8; font-weight: 300; }
+    .crystal-desc {
+      font-size: 0.95rem;
+      color: rgba(238, 244, 255, 0.85);
+      line-height: 1.8;
+      font-weight: 300;
+    }
 
-/* =========================================
+    /* =========================================
    PHÉP MÀU: Tự động đổi màu chữ theo màu tinh thể mặt trước
    (Dùng ký hiệu ~ để CSS tự nhận diện lớp liền kề)
    ========================================= */
-.crystal-card-bg.sunflower ~ .crystal-overlay .crystal-name { color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
-.crystal-card-bg.pure ~ .crystal-overlay .crystal-name { color: #A8D8F0; text-shadow: 0 0 20px rgba(168, 216, 240, 0.4); }
-.crystal-card-bg.emerald ~ .crystal-overlay .crystal-name { color: #88E2D0; text-shadow: 0 0 20px rgba(136, 226, 208, 0.4); }
-.crystal-card-bg.coral ~ .crystal-overlay .crystal-name { color: #FFB6A1; text-shadow: 0 0 20px rgba(255, 182, 161, 0.4); }
-.crystal-card-bg.rosequartz ~ .crystal-overlay .crystal-name { color: #F48FB1; text-shadow: 0 0 20px rgba(244, 143, 177, 0.4); }
+    .crystal-card-bg.sunflower~.crystal-overlay .crystal-name {
+      color: #FFD700;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
 
-/* Bụi sao lấp lánh (Sparkles) hiện lên ở góc thẻ khi lật */
-.crystal-overlay::before, .crystal-overlay::after {
-  position: absolute;
-  color: #fff;
-  opacity: 0.7;
-  font-size: 1.2rem;
-  animation: floatCrystal 3s infinite alternate;
-  text-shadow: 0 0 10px rgba(255,255,255,0.8);
-}
-.crystal-overlay::before { content: '✦'; top: 10%; left: 10%; animation-delay: 1s; }
-.crystal-overlay::after { content: '✨'; bottom: 10%; right: 10%; font-size: 1rem; }
+    .crystal-card-bg.pure~.crystal-overlay .crystal-name {
+      color: #A8D8F0;
+      text-shadow: 0 0 20px rgba(168, 216, 240, 0.4);
+    }
 
-/* Mobile responsive */
-@media (max-width: 900px) { .crystal-card { width: 100%; max-width: 340px; } .crystals-header { grid-template-columns: 1fr; gap: 20px; } }
+    .crystal-card-bg.emerald~.crystal-overlay .crystal-name {
+      color: #88E2D0;
+      text-shadow: 0 0 20px rgba(136, 226, 208, 0.4);
+    }
+
+    .crystal-card-bg.coral~.crystal-overlay .crystal-name {
+      color: #FFB6A1;
+      text-shadow: 0 0 20px rgba(255, 182, 161, 0.4);
+    }
+
+    .crystal-card-bg.rosequartz~.crystal-overlay .crystal-name {
+      color: #F48FB1;
+      text-shadow: 0 0 20px rgba(244, 143, 177, 0.4);
+    }
+
+    /* Bụi sao lấp lánh (Sparkles) hiện lên ở góc thẻ khi lật */
+    .crystal-overlay::before,
+    .crystal-overlay::after {
+      position: absolute;
+      color: #fff;
+      opacity: 0.7;
+      font-size: 1.2rem;
+      animation: floatCrystal 3s infinite alternate;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    .crystal-overlay::before {
+      content: '✦';
+      top: 10%;
+      left: 10%;
+      animation-delay: 1s;
+    }
+
+    .crystal-overlay::after {
+      content: '✨';
+      bottom: 10%;
+      right: 10%;
+      font-size: 1rem;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 900px) {
+      .crystal-card {
+        width: 100%;
+        max-width: 340px;
+      }
+
+      .crystals-header {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
 
     /* ============================================================
    REDEEM - Xưởng Đúc Tinh Thể (Căn chỉnh theo Mockup)
    ============================================================ */
-.redeem-section {
-  padding: 140px 60px;
-  position: relative;
-  background: radial-gradient(ellipse at top, rgba(8, 21, 42, 0.5) 0%, var(--bg-base) 70%);
-  border-top: none;
-  text-align: center;
-  overflow: hidden;
-}
+    .redeem-section {
+      padding: 140px 60px;
+      position: relative;
+      background: radial-gradient(ellipse at top, rgba(8, 21, 42, 0.5) 0%, var(--bg-base) 70%);
+      border-top: none;
+      text-align: center;
+      overflow: hidden;
+    }
 
-.redeem-section h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
-  font-weight: 300;
-  color: var(--text-1);
-  margin-bottom: 16px;
-}
+    .redeem-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+      font-weight: 300;
+      color: var(--text-1);
+      margin-bottom: 16px;
+    }
 
-.redeem-section h2 em {
-  color: var(--sky);
-  font-style: italic;
-  text-shadow: 0 0 25px rgba(168, 216, 240, 0.4);
-}
+    .redeem-section h2 em {
+      color: var(--sky);
+      font-style: italic;
+      text-shadow: 0 0 25px rgba(168, 216, 240, 0.4);
+    }
 
-.redeem-section > div > p {
-  color: var(--text-2);
-  margin-bottom: 48px;
-  font-size: 1.05rem;
-  line-height: 1.8;
-  font-weight: 300;
-}
+    .redeem-section>div>p {
+      color: var(--text-2);
+      margin-bottom: 48px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
 
-/* --------------------------------------
+    /* --------------------------------------
    THANH NHẬP MÃ (Sửa lỗi khối trắng tràn viền)
    -------------------------------------- */
-.code-row {
-  display: flex;
-  max-width: 640px;
-  margin: 0 auto 50px;
-  background: rgba(13, 31, 60, 0.5); /* Nền tối mờ */
-  border: 1px solid rgba(168, 216, 240, 0.25);
-  border-radius: 50px;
-  padding: 8px; /* Tăng padding để nút lọt thỏm vào trong */
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 15px 35px rgba(0, 84, 166, 0.15);
-  position: relative;
-  transition: all 0.4s ease;
-  align-items: center; /* Đảm bảo căn giữa theo chiều dọc */
-}
+    .code-row {
+      display: flex;
+      max-width: 640px;
+      margin: 0 auto 50px;
+      background: rgba(13, 31, 60, 0.5);
+      /* Nền tối mờ */
+      border: 1px solid rgba(168, 216, 240, 0.25);
+      border-radius: 50px;
+      padding: 8px;
+      /* Tăng padding để nút lọt thỏm vào trong */
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 15px 35px rgba(0, 84, 166, 0.15);
+      position: relative;
+      transition: all 0.4s ease;
+      align-items: center;
+      /* Đảm bảo căn giữa theo chiều dọc */
+    }
 
-.code-row:focus-within {
-  border-color: rgba(168, 216, 240, 0.6);
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(168, 216, 240, 0.3);
-}
+    .code-row:focus-within {
+      border-color: rgba(168, 216, 240, 0.6);
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(168, 216, 240, 0.3);
+    }
 
-.code-input {
-  flex: 1;
-  background: transparent !important; /* Ghi đè mọi background màu trắng */
-  border: none;
-  padding: 16px 24px;
-  color: var(--text-1);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.05rem;
-  letter-spacing: 0.15em;
-  outline: none;
-  text-align: center;
-}
+    .code-input {
+      flex: 1;
+      background: transparent !important;
+      /* Ghi đè mọi background màu trắng */
+      border: none;
+      padding: 16px 24px;
+      color: var(--text-1);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.15em;
+      outline: none;
+      text-align: center;
+    }
 
-/* KHẮC PHỤC LỖI TRÀN MÀU NỀN CỦA TRÌNH DUYỆT (Autofill) */
-.code-input:-webkit-autofill,
-.code-input:-webkit-autofill:hover,
-.code-input:-webkit-autofill:focus,
-.code-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-  -webkit-text-fill-color: var(--text-1) !important;
-  transition: background-color 5000s ease-in-out 0s;
-}
+    /* KHẮC PHỤC LỖI TRÀN MÀU NỀN CỦA TRÌNH DUYỆT (Autofill) */
+    .code-input:-webkit-autofill,
+    .code-input:-webkit-autofill:hover,
+    .code-input:-webkit-autofill:focus,
+    .code-input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+      -webkit-text-fill-color: var(--text-1) !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
 
-.code-input::placeholder {
-  color: rgba(238, 244, 255, 0.35);
-  font-weight: 300;
-}
+    .code-input::placeholder {
+      color: rgba(238, 244, 255, 0.35);
+      font-weight: 300;
+    }
 
-.code-submit {
-  padding: 16px 40px;
-  background: linear-gradient(135deg, var(--sky), #4287f5);
-  border: none;
-  border-radius: 40px; /* Nút cũng bo tròn lọt lòng khối chứa */
-  color: #050d1b;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 0 20px rgba(168, 216, 240, 0.4);
-  height: 100%;
-}
+    .code-submit {
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--sky), #4287f5);
+      border: none;
+      border-radius: 40px;
+      /* Nút cũng bo tròn lọt lòng khối chứa */
+      color: #050d1b;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 0 20px rgba(168, 216, 240, 0.4);
+      height: 100%;
+    }
 
-.code-submit:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 35px rgba(168, 216, 240, 0.6);
-  background: linear-gradient(135deg, #fff, var(--sky));
-}
+    .code-submit:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 35px rgba(168, 216, 240, 0.6);
+      background: linear-gradient(135deg, #fff, var(--sky));
+    }
 
-/* --------------------------------------
+    /* --------------------------------------
    KHU VỰC KẾT QUẢ ĐÚC (Bố cục Center & RPG Stats)
    -------------------------------------- */
-#crystalOutput {
-  border: 1px solid rgba(168, 216, 240, 0.15);
-  background: rgba(8, 21, 42, 0.5); /* Nền tối sang trọng */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 32px;
-  padding: 50px;
-  display: grid;
-  grid-template-columns: 1fr 1.1fr; /* Cột chữ bên phải rộng hơn chút cho thoáng */
-  gap: 60px;
-  align-items: center; /* Căn giữa 2 cột theo chiều dọc */
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-}
+    #crystalOutput {
+      border: 1px solid rgba(168, 216, 240, 0.15);
+      background: rgba(8, 21, 42, 0.5);
+      /* Nền tối sang trọng */
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 32px;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      /* Cột chữ bên phải rộng hơn chút cho thoáng */
+      gap: 60px;
+      align-items: center;
+      /* Căn giữa 2 cột theo chiều dọc */
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
 
-/* --- Canvas (Ảnh tinh thể bên trái) --- */
-canvas#crystalCanvas2 {
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(168, 216, 240, 0.05);
-  background: radial-gradient(circle at center, rgba(168, 216, 240, 0.1), #030712);
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1; 
-  object-fit: cover;
-}
+    /* --- Canvas (Ảnh tinh thể bên trái) --- */
+    canvas#crystalCanvas2 {
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(168, 216, 240, 0.05);
+      background: radial-gradient(circle at center, rgba(168, 216, 240, 0.1), #030712);
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
 
-/* Nút Lưu Tinh Thể / Lưu Ảnh AI */
-.dl-btn {
-  margin-top: 24px;
-  padding: 16px 28px;
-  background: rgba(13, 31, 60, 0.6); 
-  border: 1px solid rgba(168, 216, 240, 0.2);
-  border-radius: 40px;
-  color: var(--text-1);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  width: 100%;
-}
+    /* Nút Lưu Tinh Thể / Lưu Ảnh AI */
+    .dl-btn {
+      margin-top: 24px;
+      padding: 16px 28px;
+      background: rgba(13, 31, 60, 0.6);
+      border: 1px solid rgba(168, 216, 240, 0.2);
+      border-radius: 40px;
+      color: var(--text-1);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      width: 100%;
+    }
 
-.dl-btn:hover {
-  background: rgba(168, 216, 240, 0.1);
-  border-color: var(--sky);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(168, 216, 240, 0.15);
-}
+    .dl-btn:hover {
+      background: rgba(168, 216, 240, 0.1);
+      border-color: var(--sky);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(168, 216, 240, 0.15);
+    }
 
-/* --- CỘT BÊN PHẢI: CĂN GIỮA TOÀN BỘ THÔNG TIN --- */
-#crystalOutput > div:nth-child(2) {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Căn giữa các khối */
-  text-align: center;  /* Căn giữa chữ */
-}
+    /* --- CỘT BÊN PHẢI: CĂN GIỮA TOÀN BỘ THÔNG TIN --- */
+    #crystalOutput>div:nth-child(2) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Căn giữa các khối */
+      text-align: center;
+      /* Căn giữa chữ */
+    }
 
-/* Biến Label thành dạng đối xứng ( --- Tinh thể của bạn --- ) */
-#crystalOutput .section-label {
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 16px;
-  opacity: 0.8;
-}
-#crystalOutput .section-label::before,
-#crystalOutput .section-label::after {
-  content: '';
-  width: 40px;
-  height: 1px;
-  background: var(--sky-dim);
-  display: block;
-}
+    /* Biến Label thành dạng đối xứng ( --- Tinh thể của bạn --- ) */
+    #crystalOutput .section-label {
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
 
-/* Tên và tag tinh thể */
-#crystalName {
-  font-size: 2.4rem !important; /* To và ấn tượng hơn */
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  margin-bottom: 10px !important;
-  line-height: 1.2;
-}
+    #crystalOutput .section-label::before,
+    #crystalOutput .section-label::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--sky-dim);
+      display: block;
+    }
 
-#crystalType {
-  font-size: 0.75rem !important;
-  letter-spacing: 0.25em !important;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 6px 18px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  display: inline-block;
-  margin-bottom: 24px !important;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
+    /* Tên và tag tinh thể */
+    #crystalName {
+      font-size: 2.4rem !important;
+      /* To và ấn tượng hơn */
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      margin-bottom: 10px !important;
+      line-height: 1.2;
+    }
 
-/* Lời giải nghĩa */
-#crystalMeaning {
-  font-size: 1.05rem !important;
-  line-height: 1.8 !important;
-  color: rgba(238, 244, 255, 0.85) !important;
-  max-width: 95%; /* Không để chữ tràn sát lề */
-  margin: 0 auto 32px !important;
-}
+    #crystalType {
+      font-size: 0.75rem !important;
+      letter-spacing: 0.25em !important;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 6px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: inline-block;
+      margin-bottom: 24px !important;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-/* Bảng chỉ số RPG (Đóng khung nền mờ cực xịn) */
-#crystalAttrs {
-  width: 100%;
-  background: rgba(3, 7, 18, 0.4); /* Nền kính tối */
-  border: 1px solid rgba(168, 216, 240, 0.1);
-  border-radius: 20px;
-  padding: 24px 30px;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
-}
+    /* Lời giải nghĩa */
+    #crystalMeaning {
+      font-size: 1.05rem !important;
+      line-height: 1.8 !important;
+      color: rgba(238, 244, 255, 0.85) !important;
+      max-width: 95%;
+      /* Không để chữ tràn sát lề */
+      margin: 0 auto 32px !important;
+    }
 
-/* --- BOX GỢI Ý SẢN PHẨM --- */
-.product-suggestion {
-  width: 100%;
-  margin-top: 36px;
-  padding: 32px 24px;
-  background: linear-gradient(135deg, rgba(168, 216, 240, 0.05), rgba(232, 201, 122, 0.03));
-  border: 1px solid rgba(232, 201, 122, 0.25);
-  border-radius: 24px;
-  box-shadow: inset 0 0 20px rgba(232, 201, 122, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Căn giữa mọi thứ bên trong box */
-  text-align: center;
-}
+    /* Bảng chỉ số RPG (Đóng khung nền mờ cực xịn) */
+    #crystalAttrs {
+      width: 100%;
+      background: rgba(3, 7, 18, 0.4);
+      /* Nền kính tối */
+      border: 1px solid rgba(168, 216, 240, 0.1);
+      border-radius: 20px;
+      padding: 24px 30px;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+    }
 
-.product-suggestion .btn-crystal.solid {
-  background: #1a73e8 !important;
-  border: none !important;
-  color: #fff !important;
-  box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4) !important;
-  border-radius: 12px !important;
-  padding: 14px 32px !important;
-  font-size: 0.85rem !important;
-}
+    /* --- BOX GỢI Ý SẢN PHẨM --- */
+    .product-suggestion {
+      width: 100%;
+      margin-top: 36px;
+      padding: 32px 24px;
+      background: linear-gradient(135deg, rgba(168, 216, 240, 0.05), rgba(232, 201, 122, 0.03));
+      border: 1px solid rgba(232, 201, 122, 0.25);
+      border-radius: 24px;
+      box-shadow: inset 0 0 20px rgba(232, 201, 122, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Căn giữa mọi thứ bên trong box */
+      text-align: center;
+    }
 
-.product-suggestion .btn-crystal.solid:hover {
-  background: #1557b0 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(26, 115, 232, 0.6) !important;
-}
+    .product-suggestion .btn-crystal.solid {
+      background: #1a73e8 !important;
+      border: none !important;
+      color: #fff !important;
+      box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4) !important;
+      border-radius: 12px !important;
+      padding: 14px 32px !important;
+      font-size: 0.85rem !important;
+    }
 
-.voucher-code {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--gold);
-  background: rgba(3, 7, 18, 0.6);
-  padding: 14px 28px;
-  border-radius: 12px;
-  border: 1px dashed rgba(232, 201, 122, 0.5);
-  display: inline-block;
-  margin: 16px auto;
-  letter-spacing: 0.2em;
-  text-shadow: 0 0 15px rgba(232, 201, 122, 0.3);
-}
+    .product-suggestion .btn-crystal.solid:hover {
+      background: #1557b0 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(26, 115, 232, 0.6) !important;
+    }
 
-/* Mobile responsive */
-@media (max-width: 900px) {
-  #crystalOutput {
-    grid-template-columns: 1fr;
-    padding: 30px 20px;
-    gap: 40px;
-  }
-  .code-row {
-    flex-direction: column;
-    border-radius: 24px;
-    padding: 16px;
-    background: rgba(13, 31, 60, 0.8);
-  }
-  .code-input {
-    border-radius: 12px;
-    margin-bottom: 12px;
-    padding: 14px;
-  }
-  .code-submit {
-    border-radius: 12px;
-    width: 100%;
-  }
-}
+    .voucher-code {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(3, 7, 18, 0.6);
+      padding: 14px 28px;
+      border-radius: 12px;
+      border: 1px dashed rgba(232, 201, 122, 0.5);
+      display: inline-block;
+      margin: 16px auto;
+      letter-spacing: 0.2em;
+      text-shadow: 0 0 15px rgba(232, 201, 122, 0.3);
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 900px) {
+      #crystalOutput {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+        gap: 40px;
+      }
+
+      .code-row {
+        flex-direction: column;
+        border-radius: 24px;
+        padding: 16px;
+        background: rgba(13, 31, 60, 0.8);
+      }
+
+      .code-input {
+        border-radius: 12px;
+        margin-bottom: 12px;
+        padding: 14px;
+      }
+
+      .code-submit {
+        border-radius: 12px;
+        width: 100%;
+      }
+    }
 
     /* ============================================================
    AI MECHANISM - Ethereal Holographic Pipeline
    ============================================================ */
-.ai-mechanism {
-  padding: 140px 60px;
-  background: radial-gradient(ellipse at center, rgba(8, 21, 42, 0.5) 0%, var(--bg-base) 80%);
-  border-top: none;
-  position: relative;
-  overflow: hidden;
-}
+    .ai-mechanism {
+      padding: 140px 60px;
+      background: radial-gradient(ellipse at center, rgba(8, 21, 42, 0.5) 0%, var(--bg-base) 80%);
+      border-top: none;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* Ánh sáng vũ trụ chạy ngầm đằng sau */
-.ai-mechanism::before {
-  content: '';
-  position: absolute;
-  top: 30%; left: -10%; width: 40%; height: 40%;
-  background: radial-gradient(circle, rgba(168, 216, 240, 0.08) 0%, transparent 60%);
-  filter: blur(60px);
-  pointer-events: none;
-}
-.ai-mechanism::after {
-  content: '';
-  position: absolute;
-  bottom: -10%; right: -10%; width: 50%; height: 50%;
-  background: radial-gradient(circle, rgba(232, 201, 122, 0.05) 0%, transparent 60%);
-  filter: blur(80px);
-  pointer-events: none;
-}
+    /* Ánh sáng vũ trụ chạy ngầm đằng sau */
+    .ai-mechanism::before {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: -10%;
+      width: 40%;
+      height: 40%;
+      background: radial-gradient(circle, rgba(168, 216, 240, 0.08) 0%, transparent 60%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
 
-.ai-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+    .ai-mechanism::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      right: -10%;
+      width: 50%;
+      height: 50%;
+      background: radial-gradient(circle, rgba(232, 201, 122, 0.05) 0%, transparent 60%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
 
-.ai-header { text-align: center; margin-bottom: 80px; }
-.ai-header h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
-  font-weight: 300;
-  color: var(--text-1);
-  margin-bottom: 16px;
-}
-.ai-header h2 em {
-  color: var(--sky);
-  font-style: italic;
-  text-shadow: 0 0 25px rgba(168, 216, 240, 0.4);
-}
-.ai-header p {
-  color: var(--text-2);
-  font-size: 1.05rem;
-  line-height: 1.8;
-  font-weight: 300;
-}
+    .ai-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
 
-/* --- Khung chứa các bước (Pipeline Layout) --- */
-.pipeline {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 26px;
-  position: relative;
-  padding-top: 36px; /* Nhường chỗ cho quả cầu lồi lên trên */
-  border: none;
-  background: transparent;
-}
+    .ai-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
 
-/* --- THẺ BƯỚC (Căn giữa mọi thứ) --- */
-.pipeline-node {
-  background: linear-gradient(180deg, rgba(13, 31, 60, 0.6) 0%, rgba(5, 13, 27, 0.4) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(168, 216, 240, 0.15);
-  border-top: 1px solid rgba(168, 216, 240, 0.4); /* Nhấn viền sáng ở trên */
-  border-radius: 24px;
-  padding: 50px 24px 30px; /* Cách top 50px để chừa chỗ cho quả cầu */
-  position: relative;
-  z-index: 1;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  
-  transition: all 0.5s ease;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-}
+    .ai-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+      font-weight: 300;
+      color: var(--text-1);
+      margin-bottom: 16px;
+    }
 
-.pipeline-node:hover {
-  transform: translateY(-8px);
-  background: linear-gradient(180deg, rgba(13, 31, 60, 0.8) 0%, rgba(5, 13, 27, 0.6) 100%);
-  border-color: rgba(168, 216, 240, 0.5);
-  box-shadow: 0 25px 50px rgba(0, 84, 166, 0.3), inset 0 0 20px rgba(168, 216, 240, 0.05);
-}
+    .ai-header h2 em {
+      color: var(--sky);
+      font-style: italic;
+      text-shadow: 0 0 25px rgba(168, 216, 240, 0.4);
+    }
 
-/* Xóa bỏ mũi tên cũ */
-.pipeline-node::after { display: none !important; }
+    .ai-header p {
+      color: var(--text-2);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
 
-/* --- QUẢ CẦU HOLOGRAPHIC (Gắn trên đỉnh thẻ) --- */
-.node-icon {
-  position: absolute;
-  top: -32px; /* Lòi lên trên đúng 32px (một nửa quả cầu) */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 64px;
-  height: 64px;
-  background: var(--bg-surface); /* Nền đặc che đi viền thẻ */
-  border: 2px solid rgba(168, 216, 240, 0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: transparent !important; /* Phép thuật ẩn icon text cũ */
-  margin: 0;
-  box-shadow: inset 0 0 20px rgba(0, 84, 166, 0.4), 0 0 20px rgba(0, 0, 0, 0.5);
-  z-index: 2;
-}
+    /* --- Khung chứa các bước (Pipeline Layout) --- */
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+      position: relative;
+      padding-top: 36px;
+      /* Nhường chỗ cho quả cầu lồi lên trên */
+      border: none;
+      background: transparent;
+    }
 
-/* Vòng sáng xoay mượt mà bên ngoài quả cầu */
-.node-icon::before {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1px dashed rgba(168, 216, 240, 0.4);
-  animation: spinRings 6s linear infinite;
-}
+    /* --- THẺ BƯỚC (Căn giữa mọi thứ) --- */
+    .pipeline-node {
+      background: linear-gradient(180deg, rgba(13, 31, 60, 0.6) 0%, rgba(5, 13, 27, 0.4) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(168, 216, 240, 0.15);
+      border-top: 1px solid rgba(168, 216, 240, 0.4);
+      /* Nhấn viền sáng ở trên */
+      border-radius: 24px;
+      padding: 50px 24px 30px;
+      /* Cách top 50px để chừa chỗ cho quả cầu */
+      position: relative;
+      z-index: 1;
 
-/* LÕI NĂNG LƯỢNG BÊN TRONG (Luôn nằm im ở giữa, chỉ đập nhịp nhàng) */
-.node-icon::after {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%); /* Cố định chính giữa */
-  animation: pulseCore 2.5s ease-in-out infinite alternate;
-}
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
 
-@keyframes pulseCore {
-  0% { opacity: 0.6; filter: drop-shadow(0 0 5px currentColor); }
-  100% { opacity: 1; filter: drop-shadow(0 0 20px currentColor); }
-}
+      transition: all 0.5s ease;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
 
-/* Hình dạng Lõi Bước 1: Hạt giống (Seed) */
-.pipeline-node:nth-child(1) .node-icon::after {
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--sky); color: var(--sky);
-}
+    .pipeline-node:hover {
+      transform: translateY(-8px);
+      background: linear-gradient(180deg, rgba(13, 31, 60, 0.8) 0%, rgba(5, 13, 27, 0.6) 100%);
+      border-color: rgba(168, 216, 240, 0.5);
+      box-shadow: 0 25px 50px rgba(0, 84, 166, 0.3), inset 0 0 20px rgba(168, 216, 240, 0.05);
+    }
 
-/* Hình dạng Lõi Bước 2: Cấu trúc kim cương */
-.pipeline-node:nth-child(2) .node-icon::after {
-  width: 14px; height: 14px;
-  background: #60A5FA; color: #60A5FA;
-  transform: translate(-50%, -50%) rotate(45deg); /* Kết hợp xoay 45 độ */
-}
+    /* Xóa bỏ mũi tên cũ */
+    .pipeline-node::after {
+      display: none !important;
+    }
 
-/* Hình dạng Lõi Bước 3: Tinh vân chuyển sắc */
-.pipeline-node:nth-child(3) .node-icon::after {
-  width: 16px; height: 16px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--sky), var(--gold));
-  color: var(--sky);
-}
+    /* --- QUẢ CẦU HOLOGRAPHIC (Gắn trên đỉnh thẻ) --- */
+    .node-icon {
+      position: absolute;
+      top: -32px;
+      /* Lòi lên trên đúng 32px (một nửa quả cầu) */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 64px;
+      height: 64px;
+      background: var(--bg-surface);
+      /* Nền đặc che đi viền thẻ */
+      border: 2px solid rgba(168, 216, 240, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent !important;
+      /* Phép thuật ẩn icon text cũ */
+      margin: 0;
+      box-shadow: inset 0 0 20px rgba(0, 84, 166, 0.4), 0 0 20px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
 
-/* Hình dạng Lõi Bước 4: Tinh thể hoàn thiện Vàng Kim */
-.pipeline-node:nth-child(4) .node-icon::after {
-  width: 20px; height: 20px;
-  background: var(--gold-bright); color: var(--gold-bright);
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-}
-.pipeline-node:nth-child(4) .node-icon {
-  border-color: rgba(232, 201, 122, 0.4);
-  box-shadow: inset 0 0 20px rgba(232, 201, 122, 0.2), 0 0 20px rgba(0, 0, 0, 0.5);
-}
+    /* Vòng sáng xoay mượt mà bên ngoài quả cầu */
+    .node-icon::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1px dashed rgba(168, 216, 240, 0.4);
+      animation: spinRings 6s linear infinite;
+    }
 
-/* --- TYPOGRAPHY (Căn giữa cân đối) --- */
-.node-label {
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(168, 216, 240, 0.8);
-  margin-bottom: 12px;
-  background: rgba(168, 216, 240, 0.08);
-  padding: 4px 14px;
-  border-radius: 20px;
-  border: 1px solid rgba(168, 216, 240, 0.15);
-}
+    /* LÕI NĂNG LƯỢNG BÊN TRONG (Luôn nằm im ở giữa, chỉ đập nhịp nhàng) */
+    .node-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* Cố định chính giữa */
+      animation: pulseCore 2.5s ease-in-out infinite alternate;
+    }
 
-.node-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.45rem;
-  color: var(--text-1);
-  margin-bottom: 12px;
-  font-weight: 400;
-  line-height: 1.25;
-}
+    @keyframes pulseCore {
+      0% {
+        opacity: 0.6;
+        filter: drop-shadow(0 0 5px currentColor);
+      }
 
-.node-desc {
-  font-size: 0.9rem;
-  color: var(--text-2);
-  line-height: 1.75;
-  font-weight: 300;
-}
+      100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 20px currentColor);
+      }
+    }
 
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 900px) {
-  .pipeline {
-    grid-template-columns: 1fr;
-    gap: 40px; 
-  }
-}
+    /* Hình dạng Lõi Bước 1: Hạt giống (Seed) */
+    .pipeline-node:nth-child(1) .node-icon::after {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--sky);
+      color: var(--sky);
+    }
 
-/* ============================================================
+    /* Hình dạng Lõi Bước 2: Cấu trúc kim cương */
+    .pipeline-node:nth-child(2) .node-icon::after {
+      width: 14px;
+      height: 14px;
+      background: #60A5FA;
+      color: #60A5FA;
+      transform: translate(-50%, -50%) rotate(45deg);
+      /* Kết hợp xoay 45 độ */
+    }
+
+    /* Hình dạng Lõi Bước 3: Tinh vân chuyển sắc */
+    .pipeline-node:nth-child(3) .node-icon::after {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky), var(--gold));
+      color: var(--sky);
+    }
+
+    /* Hình dạng Lõi Bước 4: Tinh thể hoàn thiện Vàng Kim */
+    .pipeline-node:nth-child(4) .node-icon::after {
+      width: 20px;
+      height: 20px;
+      background: var(--gold-bright);
+      color: var(--gold-bright);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+
+    .pipeline-node:nth-child(4) .node-icon {
+      border-color: rgba(232, 201, 122, 0.4);
+      box-shadow: inset 0 0 20px rgba(232, 201, 122, 0.2), 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* --- TYPOGRAPHY (Căn giữa cân đối) --- */
+    .node-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(168, 216, 240, 0.8);
+      margin-bottom: 12px;
+      background: rgba(168, 216, 240, 0.08);
+      padding: 4px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(168, 216, 240, 0.15);
+    }
+
+    .node-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      color: var(--text-1);
+      margin-bottom: 12px;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+
+    .node-desc {
+      font-size: 0.9rem;
+      color: var(--text-2);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* --- MOBILE RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .pipeline {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* ============================================================
    WHY DIFFERENT — Holographic Ticket 
    ============================================================ */
-.why-different {
-  padding: 140px 60px 180px;
-  background:
-    radial-gradient(ellipse at 30% 60%, rgba(0,84,166,0.2) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 30%, rgba(168,216,240,0.07) 0%, transparent 50%),
-    var(--bg-base);
-  border-top: none;
-  position: relative;
-  overflow: hidden;
-}
+    .why-different {
+      padding: 140px 60px 180px;
+      background:
+        radial-gradient(ellipse at 30% 60%, rgba(0, 84, 166, 0.2) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 30%, rgba(168, 216, 240, 0.07) 0%, transparent 50%),
+        var(--bg-base);
+      border-top: none;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* Ambient light từ phía sau deck bài */
-.why-different::before {
-  content: '';
-  position: absolute;
-  bottom: 20%; left: 50%;
-  transform: translateX(-50%);
-  width: 700px; height: 300px;
-  background: radial-gradient(ellipse, rgba(0,84,166,0.18) 0%, transparent 65%);
-  filter: blur(60px);
-  pointer-events: none;
-  z-index: 0;
-}
+    /* Ambient light từ phía sau deck bài */
+    .why-different::before {
+      content: '';
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(0, 84, 166, 0.18) 0%, transparent 65%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-/* Header */
-.ht-header {
-  text-align: center;
-  margin-bottom: 100px;
-  position: relative;
-  z-index: 2;
-}
-.ht-header h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
-  font-weight: 300;
-  color: var(--text-1);
-  margin-bottom: 14px;
-  line-height: 1.15;
-}
-.ht-header h2 em {
-  color: var(--gold);
-  font-style: italic;
-  text-shadow: 0 0 40px rgba(232,201,122,0.45);
-}
-.ht-header p {
-  font-size: .9rem;
-  color: var(--text-2);
-  font-weight: 300;
-  max-width: 460px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
+    /* Header */
+    .ht-header {
+      text-align: center;
+      margin-bottom: 100px;
+      position: relative;
+      z-index: 2;
+    }
 
-/* =============================================
+    .ht-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+      font-weight: 300;
+      color: var(--text-1);
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+
+    .ht-header h2 em {
+      color: var(--gold);
+      font-style: italic;
+      text-shadow: 0 0 40px rgba(232, 201, 122, 0.45);
+    }
+
+    .ht-header p {
+      font-size: .9rem;
+      color: var(--text-2);
+      font-weight: 300;
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* =============================================
    DECK — Bộ bài chồng nhau
    ============================================= */
-.ht-deck-wrap {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-}
+    .ht-deck-wrap {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
 
-/* Container chứa 4 thẻ chồng */
-.ht-deck {
-  position: relative;
-  width: 380px;
-  height: 220px;
-  cursor: pointer;
-}
+    /* Container chứa 4 thẻ chồng */
+    .ht-deck {
+      position: relative;
+      width: 380px;
+      height: 220px;
+      cursor: pointer;
+    }
 
-/* Trạng thái hover: deck nở ra */
-.ht-deck:hover .ht-card:nth-child(1) { transform: translateX(-320px) rotate(-8deg) translateY(-10px); }
-.ht-deck:hover .ht-card:nth-child(2) { transform: translateX(-107px) rotate(-3deg) translateY(-5px); }
-.ht-deck:hover .ht-card:nth-child(3) { transform: translateX(107px) rotate(3deg) translateY(-5px); }
-.ht-deck:hover .ht-card:nth-child(4) { transform: translateX(320px) rotate(8deg) translateY(-10px); }
+    /* Trạng thái hover: deck nở ra */
+    .ht-deck:hover .ht-card:nth-child(1) {
+      transform: translateX(-320px) rotate(-8deg) translateY(-10px);
+    }
 
-/* =============================================
+    .ht-deck:hover .ht-card:nth-child(2) {
+      transform: translateX(-107px) rotate(-3deg) translateY(-5px);
+    }
+
+    .ht-deck:hover .ht-card:nth-child(3) {
+      transform: translateX(107px) rotate(3deg) translateY(-5px);
+    }
+
+    .ht-deck:hover .ht-card:nth-child(4) {
+      transform: translateX(320px) rotate(8deg) translateY(-10px);
+    }
+
+    /* =============================================
    THẺ VÉ — Base
    ============================================= */
-.ht-card {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 240px;
-  height: 380px;
-  margin-left: -120px;
-  margin-top: -190px;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform .5s cubic-bezier(.25,.8,.25,1), box-shadow .5s ease;
-  transform-origin: center bottom;
+    .ht-card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 240px;
+      height: 380px;
+      margin-left: -120px;
+      margin-top: -190px;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .5s cubic-bezier(.25, .8, .25, 1), box-shadow .5s ease;
+      transform-origin: center bottom;
 
-  /* Glassmorphism base */
-  background: linear-gradient(145deg,
-    rgba(13,31,60,0.85) 0%,
-    rgba(8,21,42,0.92) 50%,
-    rgba(5,13,27,0.95) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(168,216,240,0.18);
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.5),
-    0 0 0 1px rgba(255,255,255,0.04),
-    inset 0 1px 0 rgba(255,255,255,0.1);
-}
+      /* Glassmorphism base */
+      background: linear-gradient(145deg,
+          rgba(13, 31, 60, 0.85) 0%,
+          rgba(8, 21, 42, 0.92) 50%,
+          rgba(5, 13, 27, 0.95) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(168, 216, 240, 0.18);
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
 
-/* Stack mặc định — chồng lệch nhau */
-.ht-card:nth-child(1) {
-  transform: translateX(-18px) rotate(-4deg);
-  z-index: 1;
-  border-color: rgba(232,201,122,0.22);
-}
-.ht-card:nth-child(2) {
-  transform: translateX(-6px) rotate(-1.5deg);
-  z-index: 2;
-  border-color: rgba(168,216,240,0.2);
-}
-.ht-card:nth-child(3) {
-  transform: translateX(6px) rotate(1.5deg);
-  z-index: 3;
-  border-color: rgba(168,216,240,0.22);
-}
-.ht-card:nth-child(4) {
-  transform: translateX(18px) rotate(4deg);
-  z-index: 4;
-  border-color: rgba(0,180,255,0.25);
-}
+    /* Stack mặc định — chồng lệch nhau */
+    .ht-card:nth-child(1) {
+      transform: translateX(-18px) rotate(-4deg);
+      z-index: 1;
+      border-color: rgba(232, 201, 122, 0.22);
+    }
 
-/* Hover từng thẻ riêng */
-.ht-deck:hover .ht-card {
-  box-shadow:
-    0 40px 80px rgba(0,0,0,0.6),
-    0 0 40px rgba(0,84,166,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.15);
-}
-.ht-deck:hover .ht-card:nth-child(4) {
-  box-shadow:
-    0 50px 100px rgba(0,0,0,0.65),
-    0 0 60px rgba(0,114,206,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.2);
-}
+    .ht-card:nth-child(2) {
+      transform: translateX(-6px) rotate(-1.5deg);
+      z-index: 2;
+      border-color: rgba(168, 216, 240, 0.2);
+    }
 
-/* =============================================
+    .ht-card:nth-child(3) {
+      transform: translateX(6px) rotate(1.5deg);
+      z-index: 3;
+      border-color: rgba(168, 216, 240, 0.22);
+    }
+
+    .ht-card:nth-child(4) {
+      transform: translateX(18px) rotate(4deg);
+      z-index: 4;
+      border-color: rgba(0, 180, 255, 0.25);
+    }
+
+    /* Hover từng thẻ riêng */
+    .ht-deck:hover .ht-card {
+      box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(0, 84, 166, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    .ht-deck:hover .ht-card:nth-child(4) {
+      box-shadow:
+        0 50px 100px rgba(0, 0, 0, 0.65),
+        0 0 60px rgba(0, 114, 206, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    /* =============================================
    HOLOGRAPHIC SHIMMER — xanh dương & trắng, vừa phải
    ============================================= */
-.ht-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    115deg,
-    transparent 0%,
-    transparent 20%,
-    rgba(255,255,255,0.02) 26%,
-    rgba(168,216,240,0.07) 32%,
-    rgba(255,255,255,0.09) 38%,
-    rgba(45,133,224,0.08) 44%,
-    rgba(168,216,240,0.10) 50%,
-    rgba(255,255,255,0.08) 56%,
-    rgba(0,84,166,0.06) 62%,
-    rgba(168,216,240,0.04) 68%,
-    transparent 76%,
-    transparent 100%
-  );
-  background-size: 400% 400%;
-  opacity: 0;
-  transition: opacity .5s ease;
-  z-index: 10;
-  mix-blend-mode: screen;
-  pointer-events: none;
-  animation: none;
-}
+    .ht-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(115deg,
+          transparent 0%,
+          transparent 20%,
+          rgba(255, 255, 255, 0.02) 26%,
+          rgba(168, 216, 240, 0.07) 32%,
+          rgba(255, 255, 255, 0.09) 38%,
+          rgba(45, 133, 224, 0.08) 44%,
+          rgba(168, 216, 240, 0.10) 50%,
+          rgba(255, 255, 255, 0.08) 56%,
+          rgba(0, 84, 166, 0.06) 62%,
+          rgba(168, 216, 240, 0.04) 68%,
+          transparent 76%,
+          transparent 100%);
+      background-size: 400% 400%;
+      opacity: 0;
+      transition: opacity .5s ease;
+      z-index: 10;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      animation: none;
+    }
 
-.ht-deck:hover .ht-card::before {
-  opacity: 1;
-  animation: holoShimmer 2.8s linear forwards;
-}
-.ht-deck:hover .ht-card:nth-child(2)::before { animation-delay: .2s; }
-.ht-deck:hover .ht-card:nth-child(3)::before { animation-delay: .4s; }
-.ht-deck:hover .ht-card:nth-child(4)::before { animation-delay: .6s; }
+    .ht-deck:hover .ht-card::before {
+      opacity: 1;
+      animation: holoShimmer 2.8s linear forwards;
+    }
 
-@keyframes holoShimmer {
-  0%   { background-position: 200% 0%; filter: brightness(1); }
-  100% { background-position: -100% 0%; filter: brightness(1.12); }
-}
+    .ht-deck:hover .ht-card:nth-child(2)::before {
+      animation-delay: .2s;
+    }
 
-/* =============================================
+    .ht-deck:hover .ht-card:nth-child(3)::before {
+      animation-delay: .4s;
+    }
+
+    .ht-deck:hover .ht-card:nth-child(4)::before {
+      animation-delay: .6s;
+    }
+
+    @keyframes holoShimmer {
+      0% {
+        background-position: 200% 0%;
+        filter: brightness(1);
+      }
+
+      100% {
+        background-position: -100% 0%;
+        filter: brightness(1.12);
+      }
+    }
+
+    /* =============================================
    NỘI DUNG BÊN TRONG THẺ
    ============================================= */
-.ht-card-body {
-  position: relative;
-  z-index: 5;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 22px 20px 20px;
-}
+    .ht-card-body {
+      position: relative;
+      z-index: 5;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 22px 20px 20px;
+    }
 
-/* --- TOP BAR: logo + barcode --- */
-.ht-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
+    /* --- TOP BAR: logo + barcode --- */
+    .ht-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
 
-.ht-logo-area {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.ht-logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: .85rem;
-  font-weight: 700;
-  font-style: italic;
-  color: var(--text-1);
-  letter-spacing: .02em;
-  line-height: 1;
-}
-.ht-logo-sub {
-  font-family: 'Montserrat', sans-serif;
-  font-size: .48rem;
-  font-weight: 500;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--sky);
-  opacity: .7;
-}
+    .ht-logo-area {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
 
-/* Barcode dọc */
-.ht-barcode {
-  display: flex;
-  gap: 2px;
-  align-items: flex-start;
-  height: 40px;
-}
-.ht-barcode span {
-  display: block;
-  width: 2px;
-  background: rgba(168,216,240,0.35);
-  border-radius: 1px;
-  transition: background .3s;
-}
-.ht-barcode span:nth-child(odd)  { height: 100%; }
-.ht-barcode span:nth-child(3n)   { height: 65%; background: rgba(168,216,240,0.2); }
-.ht-barcode span:nth-child(5n)   { height: 80%; width: 3px; background: rgba(168,216,240,0.5); }
-.ht-deck:hover .ht-barcode span  { background: rgba(168,216,240,0.6); }
+    .ht-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: .85rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--text-1);
+      letter-spacing: .02em;
+      line-height: 1;
+    }
 
-/* --- DIVIDER chấm đứt --- */
-.ht-divider {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin: 4px -20px;
-  position: relative;
-}
-.ht-divider::before,
-.ht-divider::after {
-  content: '';
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: var(--bg-base);
-  box-shadow: inset 0 0 0 1px rgba(168,216,240,0.15);
-  flex-shrink: 0;
-  position: relative;
-  z-index: 2;
-}
-.ht-divider-line {
-  flex: 1;
-  border-top: 1px dashed rgba(168,216,240,0.18);
-}
+    .ht-logo-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .48rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--sky);
+      opacity: .7;
+    }
 
-/* --- MIDDLE: Tên tính năng kiểu stamp --- */
-.ht-stamp-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 16px 0 12px;
-}
-.ht-stamp-icon {
-  font-size: 1.8rem;
-  margin-bottom: 12px;
-  color: var(--sky);
-  filter: drop-shadow(0 0 10px rgba(168,216,240,0.6));
-  transition: filter .4s;
-  line-height: 1;
-}
-.ht-deck:hover .ht-card .ht-stamp-icon {
-  filter: drop-shadow(0 0 20px rgba(168,216,240,1));
-}
-.ht-stamp-label {
-  font-family: 'Montserrat', sans-serif;
-  font-size: .55rem;
-  font-weight: 600;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 8px;
-  opacity: .8;
-}
-.ht-stamp-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--text-1);
-  line-height: 1.25;
-  /* Emboss effect */
-  text-shadow:
-    0 1px 0 rgba(255,255,255,0.08),
-    0 -1px 0 rgba(0,0,0,0.5);
-}
-.ht-stamp-desc {
-  margin-top: 10px;
-  font-size: .73rem;
-  color: var(--text-2);
-  line-height: 1.7;
-  font-weight: 300;
-}
+    /* Barcode dọc */
+    .ht-barcode {
+      display: flex;
+      gap: 2px;
+      align-items: flex-start;
+      height: 40px;
+    }
 
-/* --- BOTTOM: Serial number --- */
-.ht-serial {
-  margin-top: auto;
-  padding-top: 14px;
-}
-.ht-serial-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.ht-serial-num {
-  font-family: 'Courier New', monospace;
-  font-size: .58rem;
-  letter-spacing: .18em;
-  color: rgba(168,216,240,0.3);
-  transition: color .4s;
-}
-.ht-deck:hover .ht-card .ht-serial-num {
-  color: rgba(168,216,240,0.55);
-}
-.ht-serial-tag {
-  font-family: 'Montserrat', sans-serif;
-  font-size: .5rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(232,201,122,0.4);
-  border: 1px solid rgba(232,201,122,0.15);
-  padding: 2px 8px;
-  border-radius: 2px;
-}
+    .ht-barcode span {
+      display: block;
+      width: 2px;
+      background: rgba(168, 216, 240, 0.35);
+      border-radius: 1px;
+      transition: background .3s;
+    }
 
-/* Màu accent khác nhau cho mỗi thẻ */
-.ht-card:nth-child(1) .ht-stamp-icon { color: var(--gold); filter: drop-shadow(0 0 10px rgba(232,201,122,0.6)); }
-.ht-card:nth-child(2) .ht-stamp-icon { color: var(--sky); }
-.ht-card:nth-child(3) .ht-stamp-icon { color: #a78bfa; filter: drop-shadow(0 0 10px rgba(167,139,250,0.6)); }
-.ht-card:nth-child(4) .ht-stamp-icon { color: #030444; filter: drop-shadow(0 0 10px rgba(1, 15, 78, 0.6)); }
+    .ht-barcode span:nth-child(odd) {
+      height: 100%;
+    }
 
-.ht-card:nth-child(2) { background: linear-gradient(145deg, rgba(15,10,30,0.9) 0%, rgba(8, 5, 20, 0.74) 100%); }
-.ht-card:nth-child(1) { background: linear-gradient(145deg, rgba(20,15,5,0.9) 0%, rgba(13,10,3,0.95) 100%); }
-.ht-card:nth-child(4) { background: linear-gradient(145deg, rgba(1, 14, 49, 0.88) 0%, rgba(0, 72, 94, 0.95) 100%); }
+    .ht-barcode span:nth-child(3n) {
+      height: 65%;
+      background: rgba(168, 216, 240, 0.2);
+    }
 
-/* =============================================
+    .ht-barcode span:nth-child(5n) {
+      height: 80%;
+      width: 3px;
+      background: rgba(168, 216, 240, 0.5);
+    }
+
+    .ht-deck:hover .ht-barcode span {
+      background: rgba(168, 216, 240, 0.6);
+    }
+
+    /* --- DIVIDER chấm đứt --- */
+    .ht-divider {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 4px -20px;
+      position: relative;
+    }
+
+    .ht-divider::before,
+    .ht-divider::after {
+      content: '';
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg-base);
+      box-shadow: inset 0 0 0 1px rgba(168, 216, 240, 0.15);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ht-divider-line {
+      flex: 1;
+      border-top: 1px dashed rgba(168, 216, 240, 0.18);
+    }
+
+    /* --- MIDDLE: Tên tính năng kiểu stamp --- */
+    .ht-stamp-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 16px 0 12px;
+    }
+
+    .ht-stamp-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      color: var(--sky);
+      filter: drop-shadow(0 0 10px rgba(168, 216, 240, 0.6));
+      transition: filter .4s;
+      line-height: 1;
+    }
+
+    .ht-deck:hover .ht-card .ht-stamp-icon {
+      filter: drop-shadow(0 0 20px rgba(168, 216, 240, 1));
+    }
+
+    .ht-stamp-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .55rem;
+      font-weight: 600;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      opacity: .8;
+    }
+
+    .ht-stamp-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--text-1);
+      line-height: 1.25;
+      /* Emboss effect */
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.08),
+        0 -1px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .ht-stamp-desc {
+      margin-top: 10px;
+      font-size: .73rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* --- BOTTOM: Serial number --- */
+    .ht-serial {
+      margin-top: auto;
+      padding-top: 14px;
+    }
+
+    .ht-serial-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ht-serial-num {
+      font-family: 'Courier New', monospace;
+      font-size: .58rem;
+      letter-spacing: .18em;
+      color: rgba(168, 216, 240, 0.3);
+      transition: color .4s;
+    }
+
+    .ht-deck:hover .ht-card .ht-serial-num {
+      color: rgba(168, 216, 240, 0.55);
+    }
+
+    .ht-serial-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .5rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(232, 201, 122, 0.4);
+      border: 1px solid rgba(232, 201, 122, 0.15);
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    /* Màu accent khác nhau cho mỗi thẻ */
+    .ht-card:nth-child(1) .ht-stamp-icon {
+      color: var(--gold);
+      filter: drop-shadow(0 0 10px rgba(232, 201, 122, 0.6));
+    }
+
+    .ht-card:nth-child(2) .ht-stamp-icon {
+      color: var(--sky);
+    }
+
+    .ht-card:nth-child(3) .ht-stamp-icon {
+      color: #a78bfa;
+      filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.6));
+    }
+
+    .ht-card:nth-child(4) .ht-stamp-icon {
+      color: #030444;
+      filter: drop-shadow(0 0 10px rgba(1, 15, 78, 0.6));
+    }
+
+    .ht-card:nth-child(2) {
+      background: linear-gradient(145deg, rgba(15, 10, 30, 0.9) 0%, rgba(8, 5, 20, 0.74) 100%);
+    }
+
+    .ht-card:nth-child(1) {
+      background: linear-gradient(145deg, rgba(20, 15, 5, 0.9) 0%, rgba(13, 10, 3, 0.95) 100%);
+    }
+
+    .ht-card:nth-child(4) {
+      background: linear-gradient(145deg, rgba(1, 14, 49, 0.88) 0%, rgba(0, 72, 94, 0.95) 100%);
+    }
+
+    /* =============================================
    HINT TEXT bên cạnh deck
    ============================================= */
-.ht-hint {
-  position: absolute;
-  bottom: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  white-space: nowrap;
-}
-.ht-hint span {
-  font-family: 'Montserrat', sans-serif;
-  font-size: .6rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(168,216,240,0.3);
-  transition: color .3s;
-}
-.ht-deck:hover ~ .ht-hint span,
-.ht-deck-wrap:hover .ht-hint span {
-  color: rgba(168,216,240,0.6);
-}
-.ht-hint-line {
-  width: 30px; height: 1px;
-  background: rgba(168,216,240,0.2);
-}
+    .ht-hint {
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
 
-/* Footer */
-.ht-footer {
-  text-align: center;
-  margin-top: 100px;
-  position: relative;
-  z-index: 2;
-}
-.ht-footer-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-.ht-footer-divider::before,
-.ht-footer-divider::after {
-  content: '';
-  width: 80px; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(168,216,240,0.25));
-}
-.ht-footer-divider::after {
-  background: linear-gradient(270deg, transparent, rgba(168,216,240,0.25));
-}
-.ht-footer-divider-icon {
-  font-size: .8rem;
-  color: rgba(168,216,240,0.35);
-}
-.ht-footer p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
-  font-weight: 300;
-  font-style: italic;
-  color: var(--text-2);
-  letter-spacing: .02em;
-}
-.ht-footer p em {
-  color: var(--gold);
-  font-style: normal;
-  text-shadow: 0 0 20px rgba(232,201,122,0.35);
-}
+    .ht-hint span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .6rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(168, 216, 240, 0.3);
+      transition: color .3s;
+    }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .why-different { padding: 80px 24px 140px; }
-  .ht-deck { width: 260px; height: 160px; }
-  .ht-card { width: 200px; height: 320px; margin-left: -100px; margin-top: -160px; }
-.ht-deck:hover .ht-card:nth-child(1) { transform: translateX(-320px) rotate(-8deg) translateY(-10px); }
-.ht-deck:hover .ht-card:nth-child(2) { transform: translateX(-107px) rotate(-3deg) translateY(-5px); }
-.ht-deck:hover .ht-card:nth-child(3) { transform: translateX(107px) rotate(3deg) translateY(-5px); }
-.ht-deck:hover .ht-card:nth-child(4) { transform: translateX(320px) rotate(8deg) translateY(-10px); }
-}
+    .ht-deck:hover~.ht-hint span,
+    .ht-deck-wrap:hover .ht-hint span {
+      color: rgba(168, 216, 240, 0.6);
+    }
+
+    .ht-hint-line {
+      width: 30px;
+      height: 1px;
+      background: rgba(168, 216, 240, 0.2);
+    }
+
+    /* Footer */
+    .ht-footer {
+      text-align: center;
+      margin-top: 100px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ht-footer-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .ht-footer-divider::before,
+    .ht-footer-divider::after {
+      content: '';
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(168, 216, 240, 0.25));
+    }
+
+    .ht-footer-divider::after {
+      background: linear-gradient(270deg, transparent, rgba(168, 216, 240, 0.25));
+    }
+
+    .ht-footer-divider-icon {
+      font-size: .8rem;
+      color: rgba(168, 216, 240, 0.35);
+    }
+
+    .ht-footer p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-2);
+      letter-spacing: .02em;
+    }
+
+    .ht-footer p em {
+      color: var(--gold);
+      font-style: normal;
+      text-shadow: 0 0 20px rgba(232, 201, 122, 0.35);
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .why-different {
+        padding: 80px 24px 140px;
+      }
+
+      .ht-deck {
+        width: 260px;
+        height: 160px;
+      }
+
+      .ht-card {
+        width: 200px;
+        height: 320px;
+        margin-left: -100px;
+        margin-top: -160px;
+      }
+
+      .ht-deck:hover .ht-card:nth-child(1) {
+        transform: translateX(-320px) rotate(-8deg) translateY(-10px);
+      }
+
+      .ht-deck:hover .ht-card:nth-child(2) {
+        transform: translateX(-107px) rotate(-3deg) translateY(-5px);
+      }
+
+      .ht-deck:hover .ht-card:nth-child(3) {
+        transform: translateX(107px) rotate(3deg) translateY(-5px);
+      }
+
+      .ht-deck:hover .ht-card:nth-child(4) {
+        transform: translateX(320px) rotate(8deg) translateY(-10px);
+      }
+    }
+
     /* ============================================================
        OFFER
        ============================================================ */
@@ -2776,185 +3684,195 @@ canvas#crystalCanvas2 {
     /* ============================================================
    FOOTER - 2 Cột Rộng Rãi & Tối Giản
    ============================================================ */
-footer {
-  background: #030712; 
-  border-top: 1px solid rgba(168, 216, 240, 0.1);
-  padding: 80px 60px 24px;
-  position: relative;
-  color: var(--text-2);
-  font-family: 'Montserrat', sans-serif;
-}
+    footer {
+      background: #030712;
+      border-top: 1px solid rgba(168, 216, 240, 0.1);
+      padding: 80px 60px 24px;
+      position: relative;
+      color: var(--text-2);
+      font-family: 'Montserrat', sans-serif;
+    }
 
-/* Ánh sáng hắt nhẹ làm điểm nhấn ranh giới */
-footer::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 50%; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(168, 216, 240, 0.4), transparent);
-}
+    /* Ánh sáng hắt nhẹ làm điểm nhấn ranh giới */
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(168, 216, 240, 0.4), transparent);
+    }
 
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Chia 2 cột tỷ lệ 50:50 */
-  gap: 120px; /* Tạo khoảng trống siêu rộng ở giữa để thoáng mắt */
-  margin-bottom: 60px;
-}
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      /* Chia 2 cột tỷ lệ 50:50 */
+      gap: 120px;
+      /* Tạo khoảng trống siêu rộng ở giữa để thoáng mắt */
+      margin-bottom: 60px;
+    }
 
-/* --- Brand & Logo (Cột Trái) --- */
-.footer-logo {
-  height: 60px;
-  filter: brightness(0) invert(1); /* Nếu logo gốc là đen, nó sẽ tự lật sang trắng */
-  margin-bottom: 24px;
-  opacity: 0.9;
-}
+    /* --- Brand & Logo (Cột Trái) --- */
+    .footer-logo {
+      height: 60px;
+      filter: brightness(0) invert(1);
+      /* Nếu logo gốc là đen, nó sẽ tự lật sang trắng */
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
 
-.footer-desc {
-  font-size: 0.9rem;
-  line-height: 1.8;
-  font-weight: 300;
-  color: var(--text-3);
-  margin-bottom: 36px;
-  max-width: 450px; /* Rộng rãi thoải mái */
-}
+    .footer-desc {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      font-weight: 300;
+      color: var(--text-3);
+      margin-bottom: 36px;
+      max-width: 450px;
+      /* Rộng rãi thoải mái */
+    }
 
-/* --- Tiêu đề cột --- */
-.footer-title {
-  font-size: 0.95rem;
-  color: var(--text-1);
-  margin-bottom: 24px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
+    /* --- Tiêu đề cột --- */
+    .footer-title {
+      font-size: 0.95rem;
+      color: var(--text-1);
+      margin-bottom: 24px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
 
-/* --- Link & Contact list (Cột Phải) --- */
-.footer-links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 18px; /* Tăng gap cho chữ thoáng */
-}
+    /* --- Link & Contact list (Cột Phải) --- */
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      /* Tăng gap cho chữ thoáng */
+    }
 
-.footer-links li {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--text-3);
-}
+    .footer-links li {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-3);
+    }
 
-.text-contact li {
-  line-height: 1.7;
-}
+    .text-contact li {
+      line-height: 1.7;
+    }
 
-.footer-links a {
-  color: var(--text-3);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+    .footer-links a {
+      color: var(--text-3);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-.footer-links a:hover {
-  color: var(--sky);
-}
+    .footer-links a:hover {
+      color: var(--sky);
+    }
 
-/* Tô sáng Hotline */
-.highlight-link {
-  color: var(--sky) !important;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
+    /* Tô sáng Hotline */
+    .highlight-link {
+      color: var(--sky) !important;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
 
-/* --- Social Icons (SVG) --- */
-.footer-socials {
-  display: flex;
-  gap: 16px;
-}
+    /* --- Social Icons (SVG) --- */
+    .footer-socials {
+      display: flex;
+      gap: 16px;
+    }
 
-.footer-socials a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-1);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
+    .footer-socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-.footer-socials a svg {
-  width: 20px;
-  height: 20px;
-}
+    .footer-socials a svg {
+      width: 20px;
+      height: 20px;
+    }
 
-.footer-socials a:hover {
-  background: rgba(168, 216, 240, 0.1);
-  border-color: var(--sky);
-  color: var(--sky);
-  transform: translateY(-4px);
-  box-shadow: 0 5px 15px rgba(168, 216, 240, 0.2);
-}
+    .footer-socials a:hover {
+      background: rgba(168, 216, 240, 0.1);
+      border-color: var(--sky);
+      color: var(--sky);
+      transform: translateY(-4px);
+      box-shadow: 0 5px 15px rgba(168, 216, 240, 0.2);
+    }
 
-/* --- Bottom Copyright Bar --- */
-.footer-bottom {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    /* --- Bottom Copyright Bar --- */
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.footer-copy {
-  font-size: 0.85rem;
-  color: var(--text-3);
-  font-weight: 300;
-}
+    .footer-copy {
+      font-size: 0.85rem;
+      color: var(--text-3);
+      font-weight: 300;
+    }
 
-.footer-bottom-links {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
+    .footer-bottom-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
 
-.footer-bottom-links a {
-  color: var(--text-3);
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: color 0.3s;
-}
+    .footer-bottom-links a {
+      color: var(--text-3);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
 
-.footer-bottom-links a:hover {
-  color: var(--sky);
-}
+    .footer-bottom-links a:hover {
+      color: var(--sky);
+    }
 
-.footer-bottom-links .divider {
-  color: rgba(255, 255, 255, 0.15);
-}
+    .footer-bottom-links .divider {
+      color: rgba(255, 255, 255, 0.15);
+    }
 
-.one-line{
-  white-space: nowrap;
-}
+    .one-line {
+      white-space: nowrap;
+    }
 
-/* --- Mobile Responsive --- */
-@media (max-width: 768px) {
-  footer {
-    padding: 60px 24px 30px;
-  }
-  .footer-container {
-    grid-template-columns: 1fr; /* Gộp thành 1 cột trên điện thoại */
-    gap: 60px;
-  }
-  .footer-bottom {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
-}
+    /* --- Mobile Responsive --- */
+    @media (max-width: 768px) {
+      footer {
+        padding: 60px 24px 30px;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        /* Gộp thành 1 cột trên điện thoại */
+        gap: 60px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
 
     /* ============================================================
        RESPONSIVE – Hamburger + mobile nav
@@ -2980,7 +3898,7 @@ footer::before {
         background: #ffffff;
         padding: 20px 24px;
         border-bottom: 1px solid #e5eaf2;
-        box-shadow: 0 4px 12px rgba(0,54,106,0.08);
+        box-shadow: 0 4px 12px rgba(0, 54, 106, 0.08);
         z-index: 99;
         gap: 16px;
       }
@@ -2991,9 +3909,11 @@ footer::before {
         color: #1a2a4a;
         border-bottom: 1px solid #f0f3f8;
       }
+
       .nav-links.open a::after {
         display: none;
       }
+
       .nav-links.open a.active,
       .nav-links.open a:hover {
         color: #0054A6;
@@ -3091,16 +4011,20 @@ footer::before {
         gap: 0;
         text-align: center;
       }
+
       .hero-left {
         align-items: center;
       }
+
       .hero-right {
         display: none;
       }
+
       .title-intro {
         white-space: normal;
         font-size: clamp(2rem, 6vw, 3rem);
       }
+
       .title-heavy {
         white-space: normal;
         font-size: clamp(2.5rem, 8vw, 4rem);
@@ -3138,26 +4062,36 @@ footer::before {
     </ul>
     <!-- FIX #4: Hamburger button -->
     <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
-    <a href="#redeem" class="nav-cta" style="display:flex; align-items:center; justify-content:center; text-decoration:none;">Nhập mã ngay</a>
+    <a href="#redeem" class="nav-cta"
+      style="display:flex; align-items:center; justify-content:center; text-decoration:none;">Nhập mã ngay</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg-grid"></div>
-    <svg class="hero-dna-bg" viewBox="0 0 1000 800" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <svg class="hero-dna-bg" viewBox="0 0 1000 800" fill="none" preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <filter id="waveGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="waveGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="4" />
+          <feMerge>
+            <feMergeNode />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
       <!-- Draw large sweeping DNA curves that comfortably fit in 1000x800 bounding boxes instead of risking bounds cut -->
-      <path d="M -100 400 Q 150 700, 400 400 T 900 400 T 1400 400" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-dasharray="8 8" fill="none" filter="url(#waveGlow)"/>
-      <path d="M -100 400 Q 150 100, 400 400 T 900 400 T 1400 400" stroke="rgba(168,216,240,0.8)" stroke-width="2" fill="none" filter="url(#waveGlow)"/>
-      
-      <circle cx="150" cy="550" r="3" fill="#fff" filter="url(#waveGlow)"/>
-      <circle cx="400" cy="400" r="3" fill="#fff" filter="url(#waveGlow)"/>
-      <circle cx="650" cy="550" r="3" fill="#fff" filter="url(#waveGlow)"/>
-      <circle cx="150" cy="250" r="3" fill="#fff" filter="url(#waveGlow)"/>
-      <circle cx="400" cy="400" r="3" fill="#fff" filter="url(#waveGlow)"/>
-      <circle cx="650" cy="250" r="3" fill="#fff" filter="url(#waveGlow)"/>
+      <path d="M -100 400 Q 150 700, 400 400 T 900 400 T 1400 400" stroke="rgba(255,255,255,0.4)" stroke-width="3"
+        stroke-dasharray="8 8" fill="none" filter="url(#waveGlow)" />
+      <path d="M -100 400 Q 150 100, 400 400 T 900 400 T 1400 400" stroke="rgba(168,216,240,0.8)" stroke-width="2"
+        fill="none" filter="url(#waveGlow)" />
+
+      <circle cx="150" cy="550" r="3" fill="#fff" filter="url(#waveGlow)" />
+      <circle cx="400" cy="400" r="3" fill="#fff" filter="url(#waveGlow)" />
+      <circle cx="650" cy="550" r="3" fill="#fff" filter="url(#waveGlow)" />
+      <circle cx="150" cy="250" r="3" fill="#fff" filter="url(#waveGlow)" />
+      <circle cx="400" cy="400" r="3" fill="#fff" filter="url(#waveGlow)" />
+      <circle cx="650" cy="250" r="3" fill="#fff" filter="url(#waveGlow)" />
     </svg>
 
     <div class="hero-orb"></div>
@@ -3172,14 +4106,17 @@ footer::before {
         <strong class="title-heavy">CỦA RIÊNG BẠN</strong>
       </h1>
       <p class="hero-subtitle-gold">Tinh Thể Độc Bản Được AI Kiến Tạo – Không Ai Giống Ai</p>
-      <p class="hero-desc">Mỗi mã thẻ dưới lốc sữa TH True MILK chứa một "dãy ADN ánh sáng" riêng của bạn. Hệ thống AI của chúng tôi sẽ giải mã và đúc nên tinh thể độc bản - một tác phẩm vô giá mang đậm dấu ấn cá nhân.</p>
-      
-      <div class="hero-actions" style="display: flex; gap: 16px; align-items: center; margin-bottom: 22px; flex-wrap: wrap;">
+      <p class="hero-desc">Mỗi mã thẻ dưới lốc sữa TH True MILK chứa một "dãy ADN ánh sáng" riêng của bạn. Hệ thống AI
+        của chúng tôi sẽ giải mã và đúc nên tinh thể độc bản - một tác phẩm vô giá mang đậm dấu ấn cá nhân.</p>
+
+      <div class="hero-actions"
+        style="display: flex; gap: 16px; align-items: center; margin-bottom: 22px; flex-wrap: wrap;">
         <a href="#redeem" class="btn-hero-cta" style="margin-bottom: 0;">
           <span class="btn-glow"></span>
           <span class="btn-text">BẮT ĐẦU KIẾN TẠO NGAY</span>
         </a>
-        <a href="#about" class="btn-crystal outline" style="padding: 17px 35px; border-radius: 50px; font-size: 0.9rem; animation: fadeUp 1s ease .45s both; text-transform: uppercase;">
+        <a href="#about" class="btn-crystal outline"
+          style="padding: 17px 35px; border-radius: 50px; font-size: 0.9rem; animation: fadeUp 1s ease .45s both; text-transform: uppercase;">
           TÌM HIỂU THÊM ↓
         </a>
       </div>
@@ -3201,23 +4138,39 @@ footer::before {
         <!-- DNA Helix SVG (background decor) -->
         <svg class="dna-helix" viewBox="0 0 480 520" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <filter id="hBlur"><feGaussianBlur stdDeviation="1.2"/></filter>
+            <filter id="hBlur">
+              <feGaussianBlur stdDeviation="1.2" />
+            </filter>
           </defs>
           <!-- Left helix strand -->
-          <path d="M 60 40 Q 100 100, 60 160 Q 20 220, 60 280 Q 100 340, 60 400 Q 20 460, 60 510" stroke="rgba(168,216,240,0.35)" stroke-width="1.5" fill="none" filter="url(#hBlur)"/>
-          <path d="M 80 40 Q 40 100, 80 160 Q 120 220, 80 280 Q 40 340, 80 400 Q 120 460, 80 510" stroke="rgba(168,216,240,0.2)" stroke-width="1" fill="none" filter="url(#hBlur)"/>
+          <path d="M 60 40 Q 100 100, 60 160 Q 20 220, 60 280 Q 100 340, 60 400 Q 20 460, 60 510"
+            stroke="rgba(168,216,240,0.35)" stroke-width="1.5" fill="none" filter="url(#hBlur)" />
+          <path d="M 80 40 Q 40 100, 80 160 Q 120 220, 80 280 Q 40 340, 80 400 Q 120 460, 80 510"
+            stroke="rgba(168,216,240,0.2)" stroke-width="1" fill="none" filter="url(#hBlur)" />
           <!-- Crossbars left helix -->
-          <line x1="60" y1="100" x2="80" y2="103" stroke="rgba(168,216,240,0.4)" stroke-width="1.2"/><circle cx="60" cy="100" r="2.5" fill="rgba(168,216,240,0.7)"/><circle cx="80" cy="103" r="2.5" fill="rgba(168,216,240,0.7)"/>
-          <line x1="70" y1="160" x2="70" y2="165" stroke="rgba(168,216,240,0.4)" stroke-width="1.2"/>
-          <line x1="60" y1="220" x2="80" y2="218" stroke="rgba(168,216,240,0.4)" stroke-width="1.2"/><circle cx="60" cy="220" r="2" fill="rgba(168,216,240,0.5)"/><circle cx="80" cy="218" r="2" fill="rgba(168,216,240,0.5)"/>
-          <line x1="60" y1="340" x2="80" y2="344" stroke="rgba(168,216,240,0.35)" stroke-width="1.2"/><circle cx="60" cy="340" r="2.5" fill="rgba(168,216,240,0.65)"/><circle cx="80" cy="344" r="2.5" fill="rgba(168,216,240,0.65)"/>
-          <line x1="60" y1="400" x2="80" y2="398" stroke="rgba(168,216,240,0.3)" stroke-width="1"/>
+          <line x1="60" y1="100" x2="80" y2="103" stroke="rgba(168,216,240,0.4)" stroke-width="1.2" />
+          <circle cx="60" cy="100" r="2.5" fill="rgba(168,216,240,0.7)" />
+          <circle cx="80" cy="103" r="2.5" fill="rgba(168,216,240,0.7)" />
+          <line x1="70" y1="160" x2="70" y2="165" stroke="rgba(168,216,240,0.4)" stroke-width="1.2" />
+          <line x1="60" y1="220" x2="80" y2="218" stroke="rgba(168,216,240,0.4)" stroke-width="1.2" />
+          <circle cx="60" cy="220" r="2" fill="rgba(168,216,240,0.5)" />
+          <circle cx="80" cy="218" r="2" fill="rgba(168,216,240,0.5)" />
+          <line x1="60" y1="340" x2="80" y2="344" stroke="rgba(168,216,240,0.35)" stroke-width="1.2" />
+          <circle cx="60" cy="340" r="2.5" fill="rgba(168,216,240,0.65)" />
+          <circle cx="80" cy="344" r="2.5" fill="rgba(168,216,240,0.65)" />
+          <line x1="60" y1="400" x2="80" y2="398" stroke="rgba(168,216,240,0.3)" stroke-width="1" />
           <!-- Right helix strand -->
-          <path d="M 400 30 Q 440 90, 400 150 Q 360 210, 400 270 Q 440 330, 400 400 Q 360 460, 400 510" stroke="rgba(232,201,122,0.3)" stroke-width="1.5" fill="none" filter="url(#hBlur)"/>
-          <path d="M 420 30 Q 380 90, 420 150 Q 460 210, 420 270 Q 380 330, 420 400 Q 460 460, 420 510" stroke="rgba(232,201,122,0.18)" stroke-width="1" fill="none" filter="url(#hBlur)"/>
-          <line x1="400" y1="90" x2="420" y2="93" stroke="rgba(232,201,122,0.4)" stroke-width="1.2"/><circle cx="400" cy="90" r="2.5" fill="rgba(232,201,122,0.7)"/><circle cx="420" cy="93" r="2.5" fill="rgba(232,201,122,0.7)"/>
-          <line x1="400" y1="210" x2="420" y2="208" stroke="rgba(232,201,122,0.35)" stroke-width="1.2"/><circle cx="400" cy="210" r="2" fill="rgba(232,201,122,0.5)"/>
-          <line x1="400" y1="330" x2="420" y2="334" stroke="rgba(232,201,122,0.35)" stroke-width="1.2"/><circle cx="420" cy="334" r="2.5" fill="rgba(232,201,122,0.6)"/>
+          <path d="M 400 30 Q 440 90, 400 150 Q 360 210, 400 270 Q 440 330, 400 400 Q 360 460, 400 510"
+            stroke="rgba(232,201,122,0.3)" stroke-width="1.5" fill="none" filter="url(#hBlur)" />
+          <path d="M 420 30 Q 380 90, 420 150 Q 460 210, 420 270 Q 380 330, 420 400 Q 460 460, 420 510"
+            stroke="rgba(232,201,122,0.18)" stroke-width="1" fill="none" filter="url(#hBlur)" />
+          <line x1="400" y1="90" x2="420" y2="93" stroke="rgba(232,201,122,0.4)" stroke-width="1.2" />
+          <circle cx="400" cy="90" r="2.5" fill="rgba(232,201,122,0.7)" />
+          <circle cx="420" cy="93" r="2.5" fill="rgba(232,201,122,0.7)" />
+          <line x1="400" y1="210" x2="420" y2="208" stroke="rgba(232,201,122,0.35)" stroke-width="1.2" />
+          <circle cx="400" cy="210" r="2" fill="rgba(232,201,122,0.5)" />
+          <line x1="400" y1="330" x2="420" y2="334" stroke="rgba(232,201,122,0.35)" stroke-width="1.2" />
+          <circle cx="420" cy="334" r="2.5" fill="rgba(232,201,122,0.6)" />
         </svg>
 
         <!-- Light streaks -->
@@ -3233,11 +4186,13 @@ footer::before {
         <canvas id="heroIcosa" class="hero-icosa-canvas" width="520" height="520"></canvas>
 
         <!-- Product image / Center Splashes -->
-        <div class="product-img-wrap" style="width: 520px; height: 520px; position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:5;">
-          
+        <div class="product-img-wrap"
+          style="width: 520px; height: 520px; position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:5;">
+
           <!-- HÌNH ẢNH SỮA SPLASH (Hình 3D rendered chân thực) -->
           <!-- Hãy đổi src này thành 1.png, 2.png hoặc 6.png tùy thuộc vào hình nào là cụm tinh thể/sữa đẹp nhất của bạn -->
-          <img src="asset/6.png" class="realistic-milk-splash" alt="TH True DNA Milk Splash" onerror="this.src='asset/2.png'">
+          <img src="asset/6.png" class="realistic-milk-splash" alt="TH True DNA Milk Splash"
+            onerror="this.src='asset/2.png'">
 
         </div>
 
@@ -3262,7 +4217,27 @@ footer::before {
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="about-grid">
-      <div class="dna-visual-box">◈</div>
+
+      <div class="dna-visual-box">
+        <!-- Vòng quỹ đạo -->
+        <div class="orbit-ring-1"></div>
+        <div class="orbit-ring-2"></div>
+        <div class="orbit-ring-3"></div>
+
+        <!-- Hành tinh -->
+        <div class="planet-orbit-wrap">
+          <div class="planet-1"></div>
+          <div class="planet-2"></div>
+          <div class="planet-3"></div>
+          <div class="planet-4"></div>
+        </div>
+
+        <!-- Tia lấp lánh -->
+        <span class="crystal-sparkle sp1">✦</span>
+        <span class="crystal-sparkle sp2">✦</span>
+        <span class="crystal-sparkle sp3">✦</span>
+      </div>
+
       <div class="about-text">
         <div class="section-label">Về chiến dịch</div>
         <h2>Khoa học · Nghệ thuật ·<br><em>Cá nhân hóa cực hạn</em></h2>
@@ -3277,6 +4252,7 @@ footer::before {
           <span class="tag">Digital Collectible</span>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -3526,13 +4502,13 @@ footer::before {
     </div>
   </section>
 
-<!-- WHY DIFFERENT — Holographic Ticket -->
+  <!-- WHY DIFFERENT — Holographic Ticket -->
   <section class="why-different">
 
     <div class="ht-header">
       <div class="section-label" style="justify-content:center;">Trải nghiệm</div>
       <h2>Chưa <em>Từng Có</em></h2>
-      <p  class="one-line">Bốn điểm độc bản — mỗi thẻ một dấu ấn riêng, không ai có thể sao chép</p>
+      <p class="one-line">Bốn điểm độc bản — mỗi thẻ một dấu ấn riêng, không ai có thể sao chép</p>
     </div>
 
     <div class="ht-deck-wrap">
@@ -3680,29 +4656,29 @@ footer::before {
     </div>
 
   </section>
-  
+
   <script>
-  // Tinh thể xoay theo chuột trong kính
-  (function(){
-    var lens = document.getElementById('microLens');
-    var crystal = document.getElementById('microCrystalSvg');
-    if (!lens || !crystal) return;
-    lens.addEventListener('mousemove', function(e){
-      var r = lens.getBoundingClientRect();
-      var cx = r.left + r.width/2, cy = r.top + r.height/2;
-      var dx = (e.clientX - cx) / (r.width/2);
-      var dy = (e.clientY - cy) / (r.height/2);
-      crystal.style.transform = 'rotateY('+( dx*18)+'deg) rotateX('+(-dy*12)+'deg)';
-    });
-    lens.addEventListener('mouseleave', function(){
-      crystal.style.transform = '';
-      crystal.style.transition = 'transform .6s ease';
-      setTimeout(function(){ crystal.style.transition = 'transform .08s linear'; }, 650);
-    });
-    lens.addEventListener('mouseenter', function(){
-      crystal.style.transition = 'transform .08s linear';
-    });
-  })();
+    // Tinh thể xoay theo chuột trong kính
+    (function () {
+      var lens = document.getElementById('microLens');
+      var crystal = document.getElementById('microCrystalSvg');
+      if (!lens || !crystal) return;
+      lens.addEventListener('mousemove', function (e) {
+        var r = lens.getBoundingClientRect();
+        var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        var dx = (e.clientX - cx) / (r.width / 2);
+        var dy = (e.clientY - cy) / (r.height / 2);
+        crystal.style.transform = 'rotateY(' + (dx * 18) + 'deg) rotateX(' + (-dy * 12) + 'deg)';
+      });
+      lens.addEventListener('mouseleave', function () {
+        crystal.style.transform = '';
+        crystal.style.transition = 'transform .6s ease';
+        setTimeout(function () { crystal.style.transition = 'transform .08s linear'; }, 650);
+      });
+      lens.addEventListener('mouseenter', function () {
+        crystal.style.transition = 'transform .08s linear';
+      });
+    })();
   </script>
 
   <!-- OFFER -->
@@ -3781,22 +4757,35 @@ footer::before {
     <div class="footer-container">
       <div class="footer-col brand-col">
         <div class="footer-brand-logo" style="margin-bottom: 20px; display: inline-flex; align-items: baseline;">
-          <span style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: #fff; position: relative;">
+          <span
+            style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: #fff; position: relative;">
             TH<span style="color: #e8c97a; font-size: 1.4rem; position: absolute; top: -4px; right: -18px;">*</span>
           </span>
-          <span style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; font-style: italic; text-transform: lowercase; color: rgba(238, 244, 255, 0.95); margin-left: 20px; margin-right: 8px;">true</span>
-          <span style="font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.16em; color: var(--sky);">DNA</span>
+          <span
+            style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; font-style: italic; text-transform: lowercase; color: rgba(238, 244, 255, 0.95); margin-left: 20px; margin-right: 8px;">true</span>
+          <span
+            style="font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.16em; color: var(--sky);">DNA</span>
         </div>
-        <p class="footer-desc">TH true DNA — Khám phá ADN vị sữa của riêng bạn. Trải nghiệm nghệ thuật số độc bản kết hợp trí tuệ nhân tạo từ TH true MILK.</p>
+        <p class="footer-desc">TH true DNA — Khám phá ADN vị sữa của riêng bạn. Trải nghiệm nghệ thuật số độc bản kết
+          hợp trí tuệ nhân tạo từ TH true MILK.</p>
         <div class="footer-socials">
           <a href="https://www.facebook.com/thmilk/" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+            </svg>
           </a>
           <a href="https://www.youtube.com/user/THtrueMILK" target="_blank" rel="noopener" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
           </a>
           <a href="https://www.instagram.com/thtruemilk/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+            </svg>
           </a>
         </div>
       </div>
@@ -3807,7 +4796,11 @@ footer::before {
           <li><strong>Trụ sở:</strong> 166 Nguyễn Thái Học, P. Quang Trung, TP. Vinh, Nghệ An</li>
           <li><strong>VP Hà Nội:</strong> Tòa nhà BAC A BANK, 09 Đào Duy Anh, Đống Đa, Hà Nội</li>
           <li><strong>Hotline:</strong> <a href="tel:1800545440" class="highlight-link">1800 54 54 40</a></li>
-          <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#a6c5cec7cbd5c9c5cdcec7c5cecec7c8c1e6d2cecbcfcacd88d0c8"><span class="__cf_email__" data-cfemail="adcec5ccc0dec2cec6c5cccec5c5ccc3caedd9c5c0c4c1c683dbc3">[email&#160;protected]</span></a></li>
+          <li><strong>Email:</strong> <a
+              href="/cdn-cgi/l/email-protection#a6c5cec7cbd5c9c5cdcec7c5cecec7c8c1e6d2cecbcfcacd88d0c8"><span
+                class="__cf_email__"
+                data-cfemail="adcec5ccc0dec2cec6c5cccec5c5ccc3caedd9c5c0c4c1c683dbc3">[email&#160;protected]</span></a>
+          </li>
         </ul>
       </div>
     </div>
@@ -3820,7 +4813,8 @@ footer::before {
       </div>
     </div>
   </footer>
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
     // FIX #4: Hamburger toggle
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
@@ -3848,7 +4842,7 @@ footer::before {
           // Chỉ xét các section có id
           sections.forEach(sec => {
             // Trừ bớt 250px để khi mép trên của section vừa ló dạng ở giữa màn hình là đã active
-            const sectionTop = sec.offsetTop - 250; 
+            const sectionTop = sec.offsetTop - 250;
             if (scrollY >= sectionTop) {
               const id = sec.getAttribute('id');
               if (id) {
@@ -3859,7 +4853,7 @@ footer::before {
 
           // Nếu đang cuộn ở sát mép trên cùng (Vùng Hero mặt nước), tắt gạch chân
           if (scrollY < window.innerHeight * 0.3) {
-             current = null;
+            current = null;
           }
 
           navItems.forEach(item => {
@@ -3933,7 +4927,7 @@ footer::before {
       // Tối ưu hiệu năng: Dừng vẽ particles nếu user cuộn màn hình vượt quá viewport hero
       if (window.scrollY > window.innerHeight * 1.5) {
         requestAnimationFrame(loop);
-        return; 
+        return;
       }
       bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
       particles.forEach(p => { p.update(); p.draw(); });
@@ -3947,85 +4941,85 @@ footer::before {
       const ctx = canvas.getContext('2d');
       const W = 520, H = 520, CX = W / 2, CY = H / 2, RADIUS = 210;
       const PHI = (1 + Math.sqrt(5)) / 2;
-      const L0  = Math.sqrt(1 + PHI * PHI);
+      const L0 = Math.sqrt(1 + PHI * PHI);
       const VERTS = [
-        [0,1,PHI],[0,-1,PHI],[0,1,-PHI],[0,-1,-PHI],
-        [1,PHI,0],[-1,PHI,0],[1,-PHI,0],[-1,-PHI,0],
-        [PHI,0,1],[-PHI,0,1],[PHI,0,-1],[-PHI,0,-1]
-      ].map(([x,y,z])=>[x/L0,y/L0,z/L0]);
+        [0, 1, PHI], [0, -1, PHI], [0, 1, -PHI], [0, -1, -PHI],
+        [1, PHI, 0], [-1, PHI, 0], [1, -PHI, 0], [-1, -PHI, 0],
+        [PHI, 0, 1], [-PHI, 0, 1], [PHI, 0, -1], [-PHI, 0, -1]
+      ].map(([x, y, z]) => [x / L0, y / L0, z / L0]);
       const FACES = [
-        [0,1,8],[0,8,4],[0,4,5],[0,5,9],[0,9,1],
-        [1,6,8],[8,6,10],[8,10,4],[4,10,2],[4,2,5],
-        [5,2,11],[5,11,9],[9,11,7],[9,7,1],[1,7,6],
-        [3,6,7],[3,7,11],[3,11,2],[3,2,10],[3,10,6]
+        [0, 1, 8], [0, 8, 4], [0, 4, 5], [0, 5, 9], [0, 9, 1],
+        [1, 6, 8], [8, 6, 10], [8, 10, 4], [4, 10, 2], [4, 2, 5],
+        [5, 2, 11], [5, 11, 9], [9, 11, 7], [9, 7, 1], [1, 7, 6],
+        [3, 6, 7], [3, 7, 11], [3, 11, 2], [3, 2, 10], [3, 10, 6]
       ];
-      const faceBaseHue = FACES.map((_,i) => i * 18);
+      const faceBaseHue = FACES.map((_, i) => i * 18);
 
-      function rotX(v,a){ const c=Math.cos(a),s=Math.sin(a); return [v[0],v[1]*c-v[2]*s,v[1]*s+v[2]*c]; }
-      function rotY(v,a){ const c=Math.cos(a),s=Math.sin(a); return [v[0]*c+v[2]*s,v[1],-v[0]*s+v[2]*c]; }
-      function cross(a,b){ return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]; }
-      function dot3(a,b){ return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]; }
-      function norm(v){ const l=Math.sqrt(dot3(v,v)); return [v[0]/l,v[1]/l,v[2]/l]; }
-      function proj(v){
-        const fov=4.2, z=v[2]+fov;
-        return [CX+(v[0]*RADIUS*fov)/z, CY-(v[1]*RADIUS*fov)/z, v[2]];
+      function rotX(v, a) { const c = Math.cos(a), s = Math.sin(a); return [v[0], v[1] * c - v[2] * s, v[1] * s + v[2] * c]; }
+      function rotY(v, a) { const c = Math.cos(a), s = Math.sin(a); return [v[0] * c + v[2] * s, v[1], -v[0] * s + v[2] * c]; }
+      function cross(a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; }
+      function dot3(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+      function norm(v) { const l = Math.sqrt(dot3(v, v)); return [v[0] / l, v[1] / l, v[2] / l]; }
+      function proj(v) {
+        const fov = 4.2, z = v[2] + fov;
+        return [CX + (v[0] * RADIUS * fov) / z, CY - (v[1] * RADIUS * fov) / z, v[2]];
       }
       const LIGHT = norm([0.55, 0.80, 1.0]);
 
       let angle = 0;
-      function frame(){
+      function frame() {
         // Tối ưu GPU: Không render khối 3D nếu đã cuộn qua khu vực Hero
         if (window.scrollY > window.innerHeight * 1.5) {
           requestAnimationFrame(frame);
           return;
         }
 
-        ctx.clearRect(0,0,W,H);
+        ctx.clearRect(0, 0, W, H);
         angle += 0.0035;
 
         const T = VERTS.map(v => rotY(rotX(v, 0.32), angle));
         const P = T.map(proj);
 
-        const fd = FACES.map((f,i)=>{
-          const [a,b,c] = f.map(fi=>T[fi]);
-          const ab=[b[0]-a[0],b[1]-a[1],b[2]-a[2]];
-          const ac=[c[0]-a[0],c[1]-a[1],c[2]-a[2]];
-          const normal = norm(cross(ab,ac));
-          const cen = [(a[0]+b[0]+c[0])/3,(a[1]+b[1]+c[1])/3,(a[2]+b[2]+c[2])/3];
-          return { i, f, normal, cen, avgZ:cen[2], dl:dot3(normal,LIGHT), front:normal[2]<0 };
+        const fd = FACES.map((f, i) => {
+          const [a, b, c] = f.map(fi => T[fi]);
+          const ab = [b[0] - a[0], b[1] - a[1], b[2] - a[2]];
+          const ac = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
+          const normal = norm(cross(ab, ac));
+          const cen = [(a[0] + b[0] + c[0]) / 3, (a[1] + b[1] + c[1]) / 3, (a[2] + b[2] + c[2]) / 3];
+          return { i, f, normal, cen, avgZ: cen[2], dl: dot3(normal, LIGHT), front: normal[2] < 0 };
         });
-        fd.sort((a,b)=>a.avgZ-b.avgZ);
+        fd.sort((a, b) => a.avgZ - b.avgZ);
 
-        fd.forEach(({i,f,normal,cen,dl,front})=>{
-          const pts = f.map(fi=>P[fi]);
+        fd.forEach(({ i, f, normal, cen, dl, front }) => {
+          const pts = f.map(fi => P[fi]);
           ctx.beginPath();
-          ctx.moveTo(pts[0][0],pts[0][1]);
-          ctx.lineTo(pts[1][0],pts[1][1]);
-          ctx.lineTo(pts[2][0],pts[2][1]);
+          ctx.moveTo(pts[0][0], pts[0][1]);
+          ctx.lineTo(pts[1][0], pts[1][1]);
+          ctx.lineTo(pts[2][0], pts[2][1]);
           ctx.closePath();
 
-          if(front){
-            const d = Math.max(0,dl);
-            if(cen[0]<-0.22 && d>0.05){
+          if (front) {
+            const d = Math.max(0, dl);
+            if (cen[0] < -0.22 && d > 0.05) {
               // Left-side: strong prismatic rainbow (matches reference)
-              const hue = (faceBaseHue[i] + angle*20) % 360;
-              ctx.fillStyle = `hsla(${hue},90%,78%,${0.07+d*0.22})`;
-            } else if(cen[1]>0.22 && d>0.25){
+              const hue = (faceBaseHue[i] + angle * 20) % 360;
+              ctx.fillStyle = `hsla(${hue},90%,78%,${0.07 + d * 0.22})`;
+            } else if (cen[1] > 0.22 && d > 0.25) {
               // Top: bright white-silver light catch
-              ctx.fillStyle = `rgba(225,244,255,${0.05+d*0.30})`;
-            } else if(cen[0]>0.22 && d>0.15){
+              ctx.fillStyle = `rgba(225,244,255,${0.05 + d * 0.30})`;
+            } else if (cen[0] > 0.22 && d > 0.15) {
               // Right: cool blue
-              ctx.fillStyle = `rgba(155,210,248,${0.03+d*0.15})`;
+              ctx.fillStyle = `rgba(155,210,248,${0.03 + d * 0.15})`;
             } else {
-              ctx.fillStyle = `rgba(175,220,252,${0.02+d*0.13})`;
+              ctx.fillStyle = `rgba(175,220,252,${0.02 + d * 0.13})`;
             }
             ctx.fill();
             // Double-stroke: glow pass then crisp pass
-            ctx.strokeStyle = `rgba(200,232,255,${0.22+d*0.60})`;
+            ctx.strokeStyle = `rgba(200,232,255,${0.22 + d * 0.60})`;
             ctx.lineWidth = 1.8;
             ctx.stroke();
-            if(d>0.55){
-              ctx.strokeStyle = `rgba(255,255,255,${(d-0.55)*1.8})`;
+            if (d > 0.55) {
+              ctx.strokeStyle = `rgba(255,255,255,${(d - 0.55) * 1.8})`;
               ctx.lineWidth = 0.55;
               ctx.stroke();
             }
@@ -4039,17 +5033,17 @@ footer::before {
         });
 
         // Sparkle glow at each vertex
-        P.forEach(([px,py],vi)=>{
+        P.forEach(([px, py], vi) => {
           const tz = T[vi][2];
-          if(tz > -0.15){
-            const b = (tz+1)/2;
-            const r = 2 + b*4;
-            const g = ctx.createRadialGradient(px,py,0,px,py,r*3.5);
-            g.addColorStop(0, `rgba(255,255,255,${0.35+b*0.50})`);
-            g.addColorStop(0.35,`rgba(200,232,255,${0.12+b*0.18})`);
-            g.addColorStop(1,   'rgba(80,140,220,0)');
+          if (tz > -0.15) {
+            const b = (tz + 1) / 2;
+            const r = 2 + b * 4;
+            const g = ctx.createRadialGradient(px, py, 0, px, py, r * 3.5);
+            g.addColorStop(0, `rgba(255,255,255,${0.35 + b * 0.50})`);
+            g.addColorStop(0.35, `rgba(200,232,255,${0.12 + b * 0.18})`);
+            g.addColorStop(1, 'rgba(80,140,220,0)');
             ctx.beginPath();
-            ctx.arc(px,py,r*3.5,0,Math.PI*2);
+            ctx.arc(px, py, r * 3.5, 0, Math.PI * 2);
             ctx.fillStyle = g;
             ctx.fill();
           }
@@ -4741,11 +5735,12 @@ TH True Milk brand essence, natural purity`;
     function showToast(type, msg) {
       const wrap = document.getElementById('toastWrap');
       const t = document.createElement('div');
-    t.className = 'toast ' + type;
+      t.className = 'toast ' + type;
       t.innerHTML = msg;
       wrap.appendChild(t);
       setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity .4s'; setTimeout(() => t.remove(), 400); }, 3500);
     }
   </script>
 </body>
+
 </html>
