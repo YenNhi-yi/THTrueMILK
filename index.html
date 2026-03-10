@@ -5622,6 +5622,7 @@ TH True Milk brand essence, natural purity`;
         // Tracking
         if (typeof track === 'function') {
           track('crystal_generate', { crystal_name: ctype.name });
+          track('lead_submit', { crystal_name: ctype.name, status: 'success' });
         }
       }, 900);
     }
