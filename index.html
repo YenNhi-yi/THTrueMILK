@@ -5434,119 +5434,77 @@ Hãy trả về JSON với đúng format sau, không thêm gì khác:
     // POLLINATIONS AI – Sinh ảnh nghệ thuật tinh thể (miễn phí, ổn định)
     // ============================================================
     function fetchCrystalImage(crystalName, crystalType, attrs) {
-  const highest = [...attrs].sort((a, b) => b.val - a.val)[0];
- 
-  const colorMap = {
-    'PHA LÊ':       'translucent ice blue crystal, pure white light refraction, frozen water droplets',
-    'HƯỚNG DƯƠNG':  'golden yellow sunflower crystal, warm amber glow, honey light rays',
-    'ĐẠI DƯƠNG':    'deep teal emerald crystal, ocean green bioluminescence, underwater light',
-    'SAN HÔ':       'coral red branching crystal, warm orange ember glow, fire light',
-    'THẠCH ANH TÍM':'purple amethyst hexagonal crystal, violet mystical aura, starlight',
-    'HỒNG NGỌC':    'rose pink ruby crystal, soft pink shimmer, cherry blossom light',
-  };
-  const colorDesc = colorMap[crystalType] || 'luminous magical crystal, ethereal rainbow light';
- 
-  const prompt = `A single majestic ${colorDesc}, floating in dark cosmic space, milk-white mist surrounding the base, ultra detailed macro photography, cinematic dramatic lighting, 8K hyperrealistic, pure black background, no text no watermark, ${highest.name} energy radiating at ${highest.val} percent intensity, TH True Milk brand essence, natural purity`;
- 
-  const encoded = encodeURIComponent(prompt);
-  const seed = Math.floor(Math.random() * 99999) + 1;
-  // Dùng model=flux cho chất lượng tốt hơn, thêm nologo=true
-  return `https://image.pollinations.ai/prompt/${encoded}?width=512&height=512&seed=${seed}&model=flux&nologo=true`;
-}
+      const highest = [...attrs].sort((a, b) => b.val - a.val)[0];
+      const lowest = [...attrs].sort((a, b) => a.val - b.val)[0];
+
+      const colorMap = {
+        'PHA LÊ': 'translucent ice blue crystal, pure white light refraction, frozen water droplets',
+        'HƯỚNG DƯƠNG': 'golden yellow sunflower crystal, warm amber glow, honey light rays',
+        'ĐẠI DƯƠNG': 'deep teal emerald crystal, ocean green bioluminescence, underwater light',
+        'SAN HÔ': 'coral red branching crystal, warm orange ember glow, fire light',
+        'THẠCH ANH TÍM': 'purple amethyst hexagonal crystal, violet mystical aura, starlight',
+        'HỒNG NGỌC': 'rose pink ruby crystal, soft pink shimmer, cherry blossom light',
+      };
+      const colorDesc = colorMap[crystalType] || 'luminous magical crystal, ethereal rainbow light';
+
+      const prompt = `A single majestic ${colorDesc}, floating in dark cosmic space, 
+milk-white mist surrounding the base, ultra detailed macro photography, 
+cinematic dramatic lighting, 8K hyperrealistic, pure black background, 
+no text no watermark, ${highest.name} energy radiating at ${highest.val} percent intensity, 
+TH True Milk brand essence, natural purity`;
+
+      // Pollinations AI: chỉ cần encode prompt vào URL
+      const encoded = encodeURIComponent(prompt);
+      const seed = Math.floor(Math.random() * 999999);
+      return `https://image.pollinations.ai/prompt/${encoded}?width=512&height=512&seed=${seed}&nologo=true&enhance=true`;
+    }
+
     function showGeminiImage(imageUrl, crystalName) {
-  const wrapper = document.getElementById('geminiImageWrapper');
-  const img     = document.getElementById('geminiArtImage');
-  const status  = document.getElementById('geminiImageStatus');
-  const ph      = document.getElementById('geminiImagePlaceholder');
-  if (!wrapper || !img) return;
- 
-  // Reset state
-  img.src = '';
-  img.style.display = 'none';
-  wrapper.style.display = 'block';
- 
-  // Hiện loading
-  if (ph) ph.innerHTML = `
-    <div style="color:var(--sky);opacity:.65;font-style:italic;font-size:.8rem;text-align:center;padding:20px 10px;">
+      const wrapper = document.getElementById('geminiImageWrapper');
+      const img = document.getElementById('geminiArtImage');
+      const status = document.getElementById('geminiImageStatus');
+      const ph = document.getElementById('geminiImagePlaceholder');
+      if (!wrapper || !img) return;
+
+      // Hiện loading spinner trước
+      if (ph) ph.innerHTML = `<div style="color:var(--sky);opacity:.6;font-style:italic;font-size:.8rem;text-align:center;padding:20px;">
       <div style="font-size:1.5rem;margin-bottom:8px;animation:pulse 1.5s infinite;">◈</div>
-      AI đang vẽ tinh thể...<br>
-      <span style="font-size:.68rem;opacity:.6;">(có thể mất 10–30 giây)</span>
+      AI đang vẽ tinh thể...
     </div>`;
-  status.innerHTML = '';
- 
-  let attempts = 0;
-  const MAX_ATTEMPTS = 3;
-  const TIMEOUT_MS = 30000; // 30 giây mỗi lần thử
- 
-  function tryLoad(url) {
-    attempts++;
- 
-    // Timeout guard
-    const timer = setTimeout(() => {
-      if (img.src !== url) return; // đã load xong rồi
-      console.warn('[Pollinations] Timeout attempt', attempts);
-      if (attempts < MAX_ATTEMPTS) {
-        // Thử lại với seed khác
-        const newUrl = url.replace(/seed=\d+/, 'seed=' + Math.floor(Math.random() * 99999 + 1));
-        tryLoad(newUrl);
-      } else {
-        onFail();
-      }
-    }, TIMEOUT_MS);
- 
-    // Dùng <img> trực tiếp — KHÔNG dùng fetch() vì bị CORS
-    img.onload = () => {
-      clearTimeout(timer);
-      img.style.display = 'block';
-      if (ph) ph.style.display = 'none';
-      status.innerHTML = '✦ Diễn giải nghệ thuật bởi <strong style="color:var(--sky)">Pollinations AI</strong>';
-    };
- 
-    img.onerror = () => {
-      clearTimeout(timer);
-      console.warn('[Pollinations] Load error, attempt', attempts);
-      if (attempts < MAX_ATTEMPTS) {
-        // Delay 2s rồi thử lại
-        setTimeout(() => {
-          const newUrl = url.replace(/seed=\d+/, 'seed=' + Math.floor(Math.random() * 99999 + 1));
-          tryLoad(newUrl);
-        }, 2000);
-      } else {
-        onFail();
-      }
-    };
- 
-    // Gán src SAU khi đã set onload/onerror
-    img.src = url;
-  }
- 
-  function onFail() {
-    if (ph) ph.innerHTML = '';
-    img.style.display = 'none';
-    status.innerHTML = '<span style="color:var(--text-3);font-style:italic;font-size:.7rem;">Không thể sinh ảnh AI lúc này — thử lại sau</span>';
-  }
- 
-  tryLoad(imageUrl);
-}
+      wrapper.style.display = 'block';
+
+      // Load ảnh
+      const tempImg = new Image();
+      tempImg.onload = function () {
+        img.src = imageUrl;
+        if (ph) ph.style.display = 'none';
+        status.innerHTML = '✦ Diễn giải nghệ thuật bởi <strong style="color:var(--sky)">Pollinations AI</strong>';
+      };
+      tempImg.onerror = function () {
+        if (ph) ph.innerHTML = '';
+        status.innerHTML = '<span style="color:var(--text-3);font-style:italic;font-size:.7rem;">Không thể sinh ảnh AI lúc này</span>';
+      };
+      tempImg.src = imageUrl;
+    }
+
     function showGeminiLoading() {
-  const wrapper = document.getElementById('geminiImageWrapper');
-  if (!wrapper) return;
-  wrapper.style.display = 'block';
-  document.getElementById('geminiArtImage').src = '';
-  document.getElementById('geminiArtImage').style.display = 'none';
-  const ph = document.getElementById('geminiImagePlaceholder');
-  if (ph) ph.innerHTML = `
-    <div style="color:var(--sky);opacity:.65;font-style:italic;font-size:.8rem;text-align:center;padding:20px 10px;">
+      const wrapper = document.getElementById('geminiImageWrapper');
+      if (!wrapper) return;
+      wrapper.style.display = 'block';
+      document.getElementById('geminiArtImage').src = '';
+      const ph = document.getElementById('geminiImagePlaceholder');
+      if (ph) ph.innerHTML = `<div style="color:var(--sky);opacity:.6;font-style:italic;font-size:.8rem;text-align:center;padding:20px;">
       <div style="font-size:1.5rem;margin-bottom:8px;animation:pulse 1.5s infinite;">◈</div>
       AI đang vẽ tinh thể của bạn...
     </div>`;
-  document.getElementById('geminiImageStatus').innerHTML = '';
-}
- 
-function hideGeminiImage() {
-  const wrapper = document.getElementById('geminiImageWrapper');
-  if (wrapper) wrapper.style.display = 'none';
-}
+      document.getElementById('geminiImageStatus').innerHTML = '';
+    }
+
+    function hideGeminiImage() {
+      const wrapper = document.getElementById('geminiImageWrapper');
+      if (wrapper) wrapper.style.display = 'none';
+    }
+
     function generateCrystal() {  // ← dòng cũ, giữ nguyên
       const raw = document.getElementById('codeInput').value.trim();
       if (!raw) { alert('Vui lòng nhập mã thẻ cào!'); return; }
@@ -5670,37 +5628,22 @@ function hideGeminiImage() {
     }
 
     function downloadGeminiImage() {
-  const img  = document.getElementById('geminiArtImage');
-  const name = document.getElementById('crystalName').textContent || 'tinh-the-ai';
-  if (!img || !img.src || !img.complete || img.naturalWidth === 0) {
-    showToast('err', 'Ảnh chưa tải xong, vui lòng đợi.');
-    return;
-  }
- 
-  // Cách 1: Mở tab mới để user tự lưu (hoạt động khi CORS block download)
-  const link = document.createElement('a');
-  link.href = img.src;
-  link.target = '_blank';
-  link.rel = 'noopener';
-  link.download = name.replace(/\s+/g, '-').toLowerCase() + '-ai.png';
- 
-  // Thử download trực tiếp trước
-  try {
-    // Canvas trick: chỉ hoạt động nếu ảnh same-origin hoặc có CORS header
-    const canvas = document.createElement('canvas');
-    canvas.width  = img.naturalWidth  || 512;
-    canvas.height = img.naturalHeight || 512;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0);
-    const dataUrl = canvas.toDataURL('image/png');
-    link.href = dataUrl;
-    link.click();
-  } catch(e) {
-    // Fallback: mở tab mới
-    window.open(img.src, '_blank', 'noopener');
-    showToast('inf', '💡 Nhấp chuột phải vào ảnh → Lưu hình ảnh để tải về.');
-  }
-}
+      const img = document.getElementById('geminiArtImage');
+      if (!img || !img.src || img.src === window.location.href) return;
+      const name = document.getElementById('crystalName').textContent || 'tinh-the-ai';
+      // Dùng fetch để download ảnh cross-origin từ Pollinations
+      fetch(img.src)
+        .then(r => r.blob())
+        .then(blob => {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.download = name.replace(/\s+/g, '-').toLowerCase() + '-ai.png';
+          link.href = url;
+          link.click();
+          URL.revokeObjectURL(url);
+        })
+        .catch(() => alert('Không thể tải ảnh, vui lòng thử lại.'));
+    }
 
     function downloadCrystal() {
       const cv = document.getElementById('crystalCanvas2');
